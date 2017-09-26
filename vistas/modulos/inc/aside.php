@@ -92,7 +92,7 @@
                 <a href="usuario"> <i class="fa fa-wrench"></i> <span>Usuarios/Permisos</span> </a>
             </li>
             <li>
-                <a href="imprimirc"> <i class="fa fa-file-text"></i> <span>Imprimir</span> </a>
+                <a href="imprimirc"> <i class="fa fa-print"></i> <span>Imprimir</span> </a>
             </li>
         </ul>
     </section>
