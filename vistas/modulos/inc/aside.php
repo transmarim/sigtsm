@@ -58,7 +58,7 @@
                 <a href="escritorio"> <i class="fa fa-dashboard"></i> <span>Escritorio</span> </a>
             </li>
             <li class="treeview">
-                <a href=""> <i class="fa fa-files-o"></i> <span>Servicios</span> </a>
+                <a href=""> <i class="fa fa-files-o"></i> <span>Boletas</span> </a>
                 <ul class="treeview-menu">
                     <li><a href="tickettsm"><i class="fa fa-circle-o"></i>TSM</a></li>
                     <li><a href="ticketcarib"><i class="fa fa-circle-o"></i>CARIB</a></li>
