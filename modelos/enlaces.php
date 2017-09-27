@@ -18,6 +18,7 @@ class EnlacesModels{
        $enlaces == "seguro" ||
        $enlaces == "vehiculo" ||
        $enlaces == "usuario" ||
+       $enlaces == "pagoticket" ||
        $enlaces == "imprimirc"){
        /*MODULO A CARGAR SERA*/
        $module = "vistas/modulos/".$enlaces.".php";

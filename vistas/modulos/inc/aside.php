@@ -92,6 +92,9 @@
                 <a href="usuario"> <i class="fa fa-wrench"></i> <span>Usuarios/Permisos</span> </a>
             </li>
             <li>
+                <a href="pagoticket"> <i class="fa fa-paypal"></i> <span>Tickets x Pagar</span> </a>
+            </li>
+            <li>
                 <a href="imprimirc"> <i class="fa fa-print"></i> <span>Imprimir</span> </a>
             </li>
         </ul>
