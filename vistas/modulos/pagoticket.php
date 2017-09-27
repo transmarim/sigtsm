@@ -67,7 +67,7 @@
                             <select name="tipo_comprobante" id="tipo_comprobante" class="form-control selectpicker" required="">
                                <option value="Transferencia">Transferencia</option>
                                <option value="Cheque">Cheque</option>
-                               <option value="Cheque">Efectivo</option>
+                               <option value="Efectivo">Efectivo</option>
                             </select>
                           </div>
                           <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
@@ -88,19 +88,17 @@
                             <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                               <thead style="background-color:#A9D0F5">
                                     <th>Opciones</th>
-                                    <th>Articulo</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio Compra</th>
-                                    <th>Precio Venta</th>
+                                    <th>Ticket</th>
+                                    <th>Agencia</th>
+                                    <th>Monto</th>
                                     <th>Subtotal</th>
                                 </thead>
                                 <tfoot>
-                                    <th>TOTAL</th>
+                                    <th>TOTAL BS</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th></th>
-                                    <th><h4 id="total">S/. 0.00</h4><input type="hidden" name="total_compra" id="total_compra"></th> 
+                                    <th><h4 id="total">0.00 </h4><input type="hidden" name="total_compra" id="total_compra"></th> 
                                 </tfoot>
                                 <tbody>
                                   
