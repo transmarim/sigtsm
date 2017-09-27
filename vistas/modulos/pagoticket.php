@@ -28,24 +28,18 @@
                           <thead>
                             <th>Opciones</th>
                             <th>Fecha</th>
-                            <th>Proveedor</th>
-                            <th>Usuario</th>
-                            <th>Documento</th>
-                            <th>Numero</th>
-                            <th>Total Compra</th>
-                            <th>Estado</th>
+                            <th>Chofer</th>
+                            <th>Comprobante</th>
+                            <th>Monto</th>
                           </thead>
                           <tbody>                            
                           </tbody>
                           <tfoot>
                             <th>Opciones</th>
                             <th>Fecha</th>
-                            <th>Proveedor</th>
-                            <th>Usuario</th>
-                            <th>Documento</th>
-                            <th>Numero</th>
-                            <th>Total Compra</th>
-                            <th>Estado</th>
+                            <th>Chofer</th>
+                            <th>Comprobante</th>
+                            <th>Monto</th>
                           </tfoot>
                         </table>
                     </div>

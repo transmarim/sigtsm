@@ -17,6 +17,7 @@ class EnlacesModels{
        $enlaces == "certificado" ||
        $enlaces == "seguro" ||
        $enlaces == "vehiculo" ||
+       $enlaces == "descuento" ||
        $enlaces == "usuario" ||
        $enlaces == "pagoticket" ||
        $enlaces == "imprimirc"){

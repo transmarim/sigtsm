@@ -70,6 +70,7 @@
                     <li><a href="cliente"><i class="fa fa-users"></i>Clientes</a></li>
                     <li><a href="centro"><i class="fa fa-ship"></i>Buques</a></li>
                     <li><a href="chofer"><i class="fa fa-id-card"></i>Chofer</a></li>
+                    <li><a href="descuento"><i class="fa fa-minus-circle"></i>Descuentos</a></li>
                 </ul>
             </li>
             <li class="treeview">
