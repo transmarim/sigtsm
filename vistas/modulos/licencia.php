@@ -62,6 +62,9 @@
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
                           <button class="btn btn-danger" type="button" onclick="cancelarform()"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-primary">
+                            Ayuda
+                            </button>
                         </div>
                       </form>
                     </div>
@@ -69,7 +72,38 @@
                   </div><!-- /.box -->
               </div><!-- /.col -->
           </div><!-- /.row -->
-      </section><!-- /.content -->
+      </section>
+        <div class="modal modal-primary fade" id="modal-primary">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                              <span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title">Modulo Descuentos</h4>
+                          </div>
+                          <div class="modal-body">
+                             <div class="box-body">
+                                          <dl class="dl-horizontal">
+                                            <dt>Chofer</dt>
+                                            <dd style="text-align:justify">Seleccione un chofer al cual se le aplicara gravamen, este chofer debe estar activo y/o registrado previamente en el sistema.</dd>
+                                            <dt>Fecha</dt>
+                                            <dd style="text-align:justify">Indique la fecha donde se aplicara el gravamen, esta fecha debe estar en el rango de la semana para efectos de reportes de pronto pago</dd>
+                                            <dt>Descuento</dt>
+                                            <dd>Listados de descuentos aplicables, previamente definidos en el modulo de descuento.</dd>
+                                            <dt>Porcentual</dt>
+                                            <dd>Indique si el gravamen es porcentual, de ser asi ingrese con un entero el % a retener del total a pagar del chofer, de lo contrario se supondra que es un monto fijo y debera ingresar el monto a retener en Bs.
+                                            </dd>
+                                          </dl>
+                                    </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
     </section>
     <!-- Main content -->
     
