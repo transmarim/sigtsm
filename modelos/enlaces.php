@@ -15,6 +15,7 @@ class EnlacesModels{
        $enlaces == "chofer" ||
        $enlaces == "licencia" ||
        $enlaces == "certificado" ||
+       $enlaces == "descuentochofer" ||
        $enlaces == "seguro" ||
        $enlaces == "vehiculo" ||
        $enlaces == "descuento" ||
