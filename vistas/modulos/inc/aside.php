@@ -60,8 +60,9 @@
             <li class="treeview">
                 <a href=""> <i class="fa fa-files-o"></i> <span>Boletas</span> </a>
                 <ul class="treeview-menu">
-                    <li><a href="tickettsm"><i class="fa fa-circle-o"></i>TSM</a></li>
-                    <li><a href="ticketcarib"><i class="fa fa-circle-o"></i>CARIB</a></li>
+                    <li><a href="tickettsm"><i class="fa fa-trademark"></i>TSM</a></li>
+                    <li><a href="ticketcarib"><i class="fa fa-contao"></i>Caribbean</a></li>
+                    <li><a href="descuentochofer"><i class="fa fa-usd"></i>Descuentos Boletas</a></li>
                 </ul>
             </li>
             <li class="treeview">
