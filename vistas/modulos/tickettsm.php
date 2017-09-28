@@ -61,7 +61,7 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Codigo *:</label>
-                          <input type="number" class="form-control" name="codigo" id="codigo" step="1" required>
+                          <input type="number" class="form-control" name="codigo" id="codigo" step="1" placeholder="Codigo del ticket" required>
                         </div>
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Fecha Pago *:</label>
@@ -115,20 +115,31 @@
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                               <span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Modulo Descuentos</h4>
+                            <h4 class="modal-title">Modulo Tickets TSM</h4>
                           </div>
                           <div class="modal-body">
                              <div class="box-body">
                                           <dl class="dl-horizontal">
+                                            <dt>Cliente</dt>
+                                            <dd style="text-align:justify">Seleccione el cliente que aparece en el ticket o boleta y al cual fue realizado el servicio, este debe estar activo y/o previamente registrado en el sistema.</dd>
                                             <dt>Chofer</dt>
-                                            <dd style="text-align:justify">Seleccione un chofer al cual se le aplicara gravamen, este chofer debe estar activo y/o registrado previamente en el sistema.</dd>
-                                            <dt>Fecha</dt>
-                                            <dd style="text-align:justify">Indique la fecha donde se aplicara el gravamen, esta fecha debe estar en el rango de la semana para efectos de reportes de pronto pago</dd>
-                                            <dt>Descuento</dt>
-                                            <dd>Listados de descuentos aplicables, previamente definidos en el modulo de descuento.</dd>
-                                            <dt>Porcentual</dt>
-                                            <dd>Indique si el gravamen es porcentual, de ser asi ingrese con un entero el % a retener del total a pagar del chofer, de lo contrario se supondra que es un monto fijo y debera ingresar el monto a retener en Bs.
-                                            </dd>
+                                            <dd style="text-align:justify">Indique el chofer que ejecuto el servicio y/o boleta.</dd>
+                                            <dt>Buque</dt>
+                                            <dd style="text-align:justify">Seleccione el buque o centro de costo propocionado por el cliente para recargo del servicio, este debe estar activo y/o previamente registrado en el sistema.</dd>
+                                            <dt>Codigo</dt>
+                                            <dd style="text-align:justify">Indique el codigo unico, que se encuentra en la parte superior derecha de la boleta o ticket de servicio a ingresar.</dd>
+                                            <dt>Fecha de Pago</dt>
+                                            <dd style="text-align:justify">Agregue la fecha o semana en la cual se planea realizar el pago por el servicio, esta sera usada como referencia para la elaboracion de reportes pronto pago.</dd>
+                                            <dt>Fecha de Posteo</dt>
+                                            <dd style="text-align:justify">Señale la fecha en la cual fue realizado el servicio, este debe coincidir con el soporte fisico respectivo.</dd>
+                                            <dt>Monto a Pagar</dt>
+                                            <dd style="text-align:justify">Indique el monto a pagar por el servicio realizado al proveedor.</dd>
+                                             <dt>Monto a Retener</dt>
+                                            <dd style="text-align:justify">Campo automatico, su calculo esta establecido por el 1% por sobre la base o monto a pagar por concepto de ISLR. Solo es modificable por el administrador del sistema.</dd>
+                                            <dt>Monto a Cobrar</dt>
+                                            <dd style="text-align:justify">Ingrese el monto a cobrar al cliente por el servicio, este campo no es obligatario, sirve solo para informacion adicional.</dd>
+                                            <dt>Descripcion</dt>
+                                            <dd style="text-align:justify">Escriba la descripcion del servicio realizado, ruta, puntos, entre otros.</dd>
                                           </dl>
                                     </div>
                           </div>
