@@ -122,20 +122,29 @@
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                               <span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Modulo Descuentos</h4>
+                            <h4 class="modal-title">Modulo Chofer</h4>
                           </div>
                           <div class="modal-body">
                              <div class="box-body">
                                           <dl class="dl-horizontal">
-                                            <dt>Chofer</dt>
-                                            <dd style="text-align:justify">Seleccione un chofer al cual se le aplicara gravamen, este chofer debe estar activo y/o registrado previamente en el sistema.</dd>
-                                            <dt>Fecha</dt>
-                                            <dd style="text-align:justify">Indique la fecha donde se aplicara el gravamen, esta fecha debe estar en el rango de la semana para efectos de reportes de pronto pago</dd>
-                                            <dt>Descuento</dt>
-                                            <dd>Listados de descuentos aplicables, previamente definidos en el modulo de descuento.</dd>
-                                            <dt>Porcentual</dt>
-                                            <dd>Indique si el gravamen es porcentual, de ser asi ingrese con un entero el % a retener del total a pagar del chofer, de lo contrario se supondra que es un monto fijo y debera ingresar el monto a retener en Bs.
-                                            </dd>
+                                            <dt>Nombre</dt>
+                                            <dd style="text-align:justify">Ingrese el nombre del nuevo chofer en el sistema, se recomienda identificarlo correctamente.</dd>
+                                            <dt>Vehiculo</dt>
+                                            <dd style="text-align:justify">Seleccione del listado, el vehiculo asignado al chofer, si el vehiculo que desea no se encuentra en la lista, verifique que haya sido registrado, este activo o no se encuentre ya asignado a otro chofer.</dd>
+                                            <dt>Licencia</dt>
+                                            <dd style="text-align:justify">Seleccione del lista, la licencia asignada al chofer, si la licencia que desea no se encuentra en la lista, verifique que haya sido registrada, este activa o no se encuentre ya asignada a otro chofer.</dd>
+                                            <dt>Certificado</dt>
+                                            <dd style="text-align:justify">Seleccione del listado, el certificado asignado al chofer, si el certificado que desea no se encuentra en la lista, verifique que haya sido registrado, este activo o no se encuentre ya asignado a otro chofer.</dd>
+                                            <dt>Cedula</dt>
+                                            <dd style="text-align:justify">Seleccione del listado, la cedula asignada al chofer, si la cedula que desea no se encuentra en la lista, verifique que haya sido registrada, este activa o no se encuentre ya asignada a otro chofer.</dd>
+                                            <dt>Telefono</dt>
+                                            <dd style="text-align:justify">Ingresar el telefono fijo o movil de contacto del chofer a ingresar.</dd>
+                                            <dt>Fecha Nac</dt>
+                                            <dd style="text-align:justify">Ingresar la fecha de nacimiento del chofer.</dd>
+                                            <dt>Email</dt>
+                                            <dd style="text-align:justify">Ingresar el email del chofer, este campo es obligatorio, ya que a esta direccion llegaran los reportes de los pronto pago.</dd>
+                                            <dt>Imagen</dt>
+                                            <dd style="text-align:justify">Seleccione la imagen del chofer, los formatos permitidos son JPG y PNG. Con resolucion maxima de 50px x 50px</dd>
                                           </dl>
                                     </div>
                           </div>

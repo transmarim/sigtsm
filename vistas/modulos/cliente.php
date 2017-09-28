@@ -64,7 +64,7 @@
                           </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <label>Codigo *:</label>
+                          <label>Codigo Fiscal *:</label>
                           <input type="number" class="form-control" name="codigo" id="codigo" step="1" required>
                         </div>
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -95,19 +95,25 @@
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                               <span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Modulo Descuentos</h4>
+                            <h4 class="modal-title">Modulo Cliente</h4>
                           </div>
                           <div class="modal-body">
                              <div class="box-body">
                                           <dl class="dl-horizontal">
-                                            <dt>Chofer</dt>
-                                            <dd style="text-align:justify">Seleccione un chofer al cual se le aplicara gravamen, este chofer debe estar activo y/o registrado previamente en el sistema.</dd>
-                                            <dt>Fecha</dt>
-                                            <dd style="text-align:justify">Indique la fecha donde se aplicara el gravamen, esta fecha debe estar en el rango de la semana para efectos de reportes de pronto pago</dd>
-                                            <dt>Descuento</dt>
-                                            <dd>Listados de descuentos aplicables, previamente definidos en el modulo de descuento.</dd>
-                                            <dt>Porcentual</dt>
-                                            <dd>Indique si el gravamen es porcentual, de ser asi ingrese con un entero el % a retener del total a pagar del chofer, de lo contrario se supondra que es un monto fijo y debera ingresar el monto a retener en Bs.
+                                            <dt>Nombre</dt>
+                                            <dd style="text-align:justify">Ingrese el nombre del nuevo cliente en el sistema.</dd>
+                                            <dt>Telefono</dt>
+                                            <dd style="text-align:justify">Ingrese el telefono del cliente en el sistema.</dd>
+                                            <dt>Tipo</dt>
+                                            <dd style="text-align:justify">Seleccione el tipo de documento fiscal del cliente (RIF,C.I)</dd>
+                                            <dt>Codigo</dt>
+                                            <dd style="text-align:justify">Ingrese el codigo fiscal sin argumentos J, V o G, solo enteros.
+                                            </dd>
+                                            <dt>Email</dt>
+                                            <dd style="text-align:justify">Ingrese el email del cliente en el sistema.
+                                            </dd>
+                                            <dt>Direccion</dt>
+                                            <dd style="text-align:justify">Ingrese la direccion o domicilio fiscal del cliente.
                                             </dd>
                                           </dl>
                                     </div>
