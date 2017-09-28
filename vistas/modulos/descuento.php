@@ -40,7 +40,7 @@
                     <div class="panel-body" id="formularioregistros">
                       <form name="formulario" id="formulario" method="POST">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <label>Concepto *:</label>
+                          <label>Concepto del descuento *:</label>
                           <input type="hidden" name="iddescuento" id="iddescuento">
                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required>
                         </div>
