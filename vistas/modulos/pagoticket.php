@@ -32,7 +32,7 @@
                             <th>Comprobante</th>
                             <th>Monto</th>
                           </thead>
-                          <tbody>                            
+                          <tbody>
                           </tbody>
                           <tfoot>
                             <th>Opciones</th>
@@ -49,7 +49,7 @@
                             <label>Chofer(*):</label>
                             <input type="hidden" name="idingreso" id="idingreso">
                             <select id="idproveedor" name="idproveedor" class="form-control selectpicker" data-live-search="true" required>
-                              
+
                             </select>
                           </div>
                           <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -73,7 +73,7 @@
                             <input type="text" class="form-control" name="num_comprobante" id="num_comprobante" maxlength="10" placeholder="Numero" required="">
                           </div>
                           <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <a data-toggle="modal" href="#myModal">           
+                            <a data-toggle="modal" href="#myModal">
                               <button id="btnAgregarArt" type="button" class="btn btn-primary"> <span class="fa fa-plus"></span> Agregar Tickets</button>
                             </a>
                           </div>
@@ -92,10 +92,10 @@
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th><h4 id="total">0.00 </h4><input type="hidden" name="total_compra" id="total_compra"></th> 
+                                    <th><h4 id="total">0.00 </h4><input type="hidden" name="total_compra" id="total_compra"></th>
                                 </tfoot>
                                 <tbody>
-                                  
+
                                 </tbody>
                             </table>
                           </div>
@@ -127,16 +127,19 @@
                              <div class="box-body">
                                           <dl class="dl-horizontal">
                                             <dt>Chofer</dt>
-                                            <dd style="text-align:justify">Seleccione el nombre chofer al cual se le realizara el pago.</dd>
+                                            <dd style="text-align:justify">Seleccione el nombre chofer al cual se le realizará el pago.</dd>
                                             <dt>Fecha</dt>
-                                            <dd style="text-align:justify">Indique la fecha en la que se hara el pago al respectivo chofer</dd>
+                                            <dd style="text-align:justify">Indique la fecha en la que se hará el pago al respectivo chofer</dd>
                                             <dt>Tipo de pago</dt>
-                                            <dd>Seleccione el metodo por el cual se le realizara el pago al chofer.</dd>
+                                            <dd style="text-align:justify">Seleccione el metodo por el cual se le realizará el pago al chofer.</dd>
                                             <dt>Comprobante</dt>
-                                            <dd>Ingrese el numero de comprobante del recibo de pago.
+                                            <dd style="text-align:justify">Ingrese el numero de comprobante del recibo de pago.
+                                            </dd>
+                                            <dt>Agregar Ticket</dt>
+                                            <dd style="text-align:justify">Seleccione de la ventana los tickets pendientes por pagar al chofer.
                                             </dd>
                                             <dt>Monto pagado</dt>
-                                            <dd>Ingrese el monto cancelado al chofer por dicho ticket.
+                                            <dd style="text-align:justify">Ingrese el monto cancelado al chofer por los tickets seleccionados.
                                             </dd>
                                           </dl>
                                     </div>
@@ -167,7 +170,7 @@
                 <th>Agencia</th>
             </thead>
             <tbody>
-              
+
             </tbody>
             <tfoot>
                 <th>Ticket</th>
@@ -178,16 +181,16 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        </div>        
+        </div>
       </div>
     </div>
-  </div>  
+  </div>
   <!-- Fin modal -->
-    
+
        </section>
-       
+
     <!-- Main content -->
-    
+
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
 </div>

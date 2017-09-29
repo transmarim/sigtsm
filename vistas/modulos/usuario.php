@@ -77,7 +77,7 @@
                                 <li>Permisos</li>
                             </ul>
                           </div>
-                         
+
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Imagen:</label>
                             <input type="file" class="form-control" name="imagen" id="imagen">
@@ -105,7 +105,7 @@
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                               <span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Modulo Descuentos</h4>
+                            <h4 class="modal-title">Modulo Usuarios</h4>
                           </div>
                           <div class="modal-body">
                              <div class="box-body">
@@ -113,17 +113,17 @@
                                             <dt>Nombre</dt>
                                             <dd style="text-align:justify">Ingrese el nombre completo del usuario.</dd>
                                             <dt>Login</dt>
-                                            <dd style="text-align:justify">Ingrese el login que desea asignar al chofer, con este usuario el chofer tendra acceso sistema.</dd>
+                                            <dd style="text-align:justify">Ingrese el login que desea asignar al usuario, con éste, el usuario o chofer tendra acceso sistema.</dd>
                                             <dt>Clave</dt>
-                                            <dd>Ingrese la clave que desea asignar al chofer, con esta contraseña el chofer tendra acceso al sistema.</dd>
+                                            <dd style="text-align:justify">Ingrese la clave que desea asignar al usuario, con esta contraseña el usuario o chofer tendra acceso al sistema.</dd>
                                             <dt>Email</dt>
-                                            <dd>Ingrese el correro electronico que utilice actualmente el chofer.
+                                            <dd style="text-align:justify">Ingrese el correo electronico que utiliza actualmente el usuario o chofer.
                                             </dd>
                                             <dt>Vincular a chofer</dt>
-                                            <dd>Seleccione el nombre del chofer que desea vincular a los datos suministrados.
+                                            <dd style="text-align:justify">Seleccione el nombre del chofer que desea vincular a los datos suministrados, si es un personal administrativo omitir la seleccion
                                             </dd>
                                             <dt>Imagen</dt>
-                                            <dd>Seleccione la imagen del chofer, los formatos permitidos son JPG y PNG.
+                                            <dd style="text-align:justify">Suba una imagen del chofer o usuario, los formatos permitidos son JPG y PNG con resolucion maxima de 50px por 50px.
                                             </dd>
                                           </dl>
                                     </div>
@@ -138,9 +138,7 @@
                     </div>
     </section>
     <!-- Main content -->
-    
+
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
 </div>
-    
-    

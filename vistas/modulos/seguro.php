@@ -93,7 +93,7 @@
                                             <dt>Vence</dt>
                                             <dd style="text-align:justify">Indique la fecha de vencimiento del seguro del vehiculo.</dd>
                                             <dt>Tipo</dt>
-                                            <dd>Seleccione el tipo de seguro que posee el vehiculo.</dd>
+                                            <dd style="text-align:justify">Seleccione el tipo de seguro que posee el vehiculo.</dd>
                                           </dl>
                                     </div>
                           </div>
@@ -107,7 +107,7 @@
                     </div>
     </section>
     <!-- Main content -->
-    
+
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
 </div>

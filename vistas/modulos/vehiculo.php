@@ -26,8 +26,9 @@
                     <div class="panel-body table-responsive" id="listadoregistros">
                       <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
-                          <th>NUMERO</th>
-                          <th>VENCE</th>
+                          <th>PLACA</th>
+                          <th>MODELO</th>
+                          <th>AÑO</th>
                           <th>ESTADO</th>
                           <th>OPCIONES</th>
                         </thead>
@@ -35,8 +36,9 @@
 
                         </tbody>
                         <tfoot>
-                        <th>NUMERO</th>
-                        <th>VENCE</th>
+                        <th>PLACA</th>
+                        <th>MODELO</th>
+                        <th>AÑO</th>
                         <th>ESTADO</th>
                         <th>OPCIONES</th>
                         </tfoot>
@@ -63,9 +65,13 @@
                           <input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
                           <img src="" width="150px" height="120px" id="imagenmuestra">
                         </div>
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                           <label>Modelo *:</label>
                           <input type="text" class="form-control" name="modelo" id="modelo" required>
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                          <label>Año *:</label>
+                          <input type="number" class="form-control" name="anovehiculo" id="anovehiculo" required>
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
@@ -93,13 +99,16 @@
                              <div class="box-body">
                                           <dl class="dl-horizontal">
                                             <dt>Placa</dt>
-                                            <dd style="text-align:justify">Ingrese el numero de placa del vechiculo respectivo.</dd>
+                                            <dd style="text-align:justify">Ingrese el numero de placa del vehiculo respectivo.</dd>
                                             <dt>Seguro</dt>
                                             <dd style="text-align:justify">Ingrese el codigo de poliza, descrito en la planilla de seguro del vehiculo</dd>
                                             <dt>Titulo</dt>
-                                            <dd>Adjuntar el certificado de registro del vehiculo</dd>
+                                            <dd style="text-align:justify">Suba el certificado de registro del vehiculo en formato PDF.</dd>
                                             <dt>Modelo</dt>
-                                            <dd>Descripcion del nombre y año del vehiculo.
+                                            <dd style="text-align:justify">Descripcion del modelo del vehiculo.
+                                            </dd>
+                                            <dt>Año</dt>
+                                            <dd style="text-align:justify">Ingrese el año del vehiculo.
                                             </dd>
                                           </dl>
                                     </div>
@@ -114,7 +123,7 @@
                     </div>
     </section>
     <!-- Main content -->
-    
+
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
 </div>

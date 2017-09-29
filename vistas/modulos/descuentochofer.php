@@ -102,9 +102,9 @@
                              <div class="box-body">
                                           <dl class="dl-horizontal">
                                             <dt>Chofer</dt>
-                                            <dd style="text-align:justify">Seleccione un chofer al cual se le aplicara el descuento, este chofer debe estar activo y/o registrado previamente en el sistema.</dd>
+                                            <dd style="text-align:justify">Seleccione un chofer al cual se le aplicará el descuento, este chofer debe estar activo y/o registrado previamente en el sistema.</dd>
                                             <dt>Fecha</dt>
-                                            <dd style="text-align:justify">Indique la fecha donde se aplicara el descuento.</dd>
+                                            <dd style="text-align:justify">Indique la fecha donde se aplicará el descuento.</dd>
                                             <dt>Descuento</dt>
                                             <dd>Seleccione el descuento que sera aplicado.</dd>
                                             <dt>¿Es Porcentual?</dt>
@@ -114,7 +114,7 @@
                                             <dd>Ingrese el monto exacto descontado.
                                             </dd>
                                             <dt>% Descontado</dt>
-                                            <dd>Ingrese el porcentaje del monto descontado.
+                                            <dd>Ingrese el porcentaje del monto descontado sobre el total.
                                             </dd>
                                           </dl>
                                     </div>

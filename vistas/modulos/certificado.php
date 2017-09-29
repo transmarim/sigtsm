@@ -79,7 +79,7 @@
                              <div class="box-body">
                                           <dl class="dl-horizontal">
                                             <dt>Numero</dt>
-                                            <dd style="text-align:justify">Ingrese el numero de certificado.</dd>
+                                            <dd style="text-align:justify">Ingrese el numero del certificado.</dd>
                                             <dt>Vence</dt>
                                             <dd style="text-align:justify">Indique la fecha de vencimiento del certificado.</dd>
                                           </dl>
@@ -95,7 +95,7 @@
                     </div>
     </section>
     <!-- Main content -->
-    
+
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
 </div>
