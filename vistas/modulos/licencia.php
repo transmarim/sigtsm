@@ -79,20 +79,15 @@
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                               <span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Modulo Descuentos</h4>
+                            <h4 class="modal-title">Modulo Licencias</h4>
                           </div>
                           <div class="modal-body">
                              <div class="box-body">
                                           <dl class="dl-horizontal">
-                                            <dt>Chofer</dt>
-                                            <dd style="text-align:justify">Seleccione un chofer al cual se le aplicara gravamen, este chofer debe estar activo y/o registrado previamente en el sistema.</dd>
-                                            <dt>Fecha</dt>
-                                            <dd style="text-align:justify">Indique la fecha donde se aplicara el gravamen, esta fecha debe estar en el rango de la semana para efectos de reportes de pronto pago</dd>
-                                            <dt>Descuento</dt>
-                                            <dd>Listados de descuentos aplicables, previamente definidos en el modulo de descuento.</dd>
-                                            <dt>Porcentual</dt>
-                                            <dd>Indique si el gravamen es porcentual, de ser asi ingrese con un entero el % a retener del total a pagar del chofer, de lo contrario se supondra que es un monto fijo y debera ingresar el monto a retener en Bs.
-                                            </dd>
+                                            <dt>Grado</dt>
+                                            <dd style="text-align:justify">Seleccione el grado de la licencia.</dd>
+                                            <dt>Vence</dt>
+                                            <dd style="text-align:justify">Ingrese la fecha de vencimiento de la licencia.</dd>
                                           </dl>
                                     </div>
                           </div>

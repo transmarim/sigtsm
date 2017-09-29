@@ -121,19 +121,22 @@
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                               <span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Modulo Descuentos</h4>
+                            <h4 class="modal-title">Modulo Pago de Tickets</h4>
                           </div>
                           <div class="modal-body">
                              <div class="box-body">
                                           <dl class="dl-horizontal">
                                             <dt>Chofer</dt>
-                                            <dd style="text-align:justify">Seleccione un chofer al cual se le aplicara gravamen, este chofer debe estar activo y/o registrado previamente en el sistema.</dd>
+                                            <dd style="text-align:justify">Seleccione el nombre chofer al cual se le realizara el pago.</dd>
                                             <dt>Fecha</dt>
-                                            <dd style="text-align:justify">Indique la fecha donde se aplicara el gravamen, esta fecha debe estar en el rango de la semana para efectos de reportes de pronto pago</dd>
-                                            <dt>Descuento</dt>
-                                            <dd>Listados de descuentos aplicables, previamente definidos en el modulo de descuento.</dd>
-                                            <dt>Porcentual</dt>
-                                            <dd>Indique si el gravamen es porcentual, de ser asi ingrese con un entero el % a retener del total a pagar del chofer, de lo contrario se supondra que es un monto fijo y debera ingresar el monto a retener en Bs.
+                                            <dd style="text-align:justify">Indique la fecha en la que se hara el pago al respectivo chofer</dd>
+                                            <dt>Tipo de pago</dt>
+                                            <dd>Seleccione el metodo por el cual se le realizara el pago al chofer.</dd>
+                                            <dt>Comprobante</dt>
+                                            <dd>Ingrese el numero de comprobante del recibo de pago.
+                                            </dd>
+                                            <dt>Monto pagado</dt>
+                                            <dd>Ingrese el monto cancelado al chofer por dicho ticket.
                                             </dd>
                                           </dl>
                                     </div>
