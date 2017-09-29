@@ -20,6 +20,7 @@ class EnlacesModels{
        $enlaces == "vehiculo" ||
        $enlaces == "descuento" ||
        $enlaces == "usuario" ||
+       $enlaces == "imprimiru" ||
        $enlaces == "pagoticket" ||
        $enlaces == "imprimirc"){
        /*MODULO A CARGAR SERA*/
