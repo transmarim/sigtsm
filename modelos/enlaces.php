@@ -22,6 +22,7 @@ class EnlacesModels{
        $enlaces == "usuario" ||
        $enlaces == "imprimiru" ||
        $enlaces == "pagoticket" ||
+       $enlaces == "enviaralert" ||
        $enlaces == "imprimirc"){
        /*MODULO A CARGAR SERA*/
        $module = "vistas/modulos/".$enlaces.".php";

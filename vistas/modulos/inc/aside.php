@@ -90,6 +90,13 @@
                     <li><a href="#"><i class="fa fa-object-group"></i>Guardia Semanal</a></li>
                 </ul>
             </li>
+            <li class="treeview">
+               <a href=""> <i class="fa fa-exclamation-triangle"></i> <span>Alertas</span> </a>
+               <ul class="treeview-menu">
+                   <li><a href="#"><i class="fa fa-eye"></i>Ver Alertas</a></li>
+                   <li><a href="enviaralert"><i class="fa fa-paper-plane"></i>Enviar Alertas</a></li>
+               </ul>
+           </li>
              <li>
                 <a href="usuario"> <i class="fa fa-wrench"></i> <span>Usuarios/Permisos</span> </a>
             </li>
