@@ -33,7 +33,7 @@
                           <tbody>
                             <tr>
                               <td>123456</td>
-                              <td></td>
+                              <td>JOSE EJEMPLO</td>
                               <td style="text-align:center;"><a data-toggle="modal" href="#myModal"><button id="btnAgregarArt" type="button" class="btn btn-warning btn-social"><span class="fa fa-dropbox"></span>Enviar Alerta</button>
                                 </a>
                               </td>
@@ -45,34 +45,8 @@
                             <th>Opciones</th>
                           </tfoot>
                         </table>
-                    </div>
-                    <div class="panel-body" id="formularioregistros">
-                        <form name="formulario" id="formulario" method="POST">
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Chofer(*):</label>
-                            <input type="hidden" name="idchofer" id="idchofer">
-                            <select id="idchofer" name="idchofer" class="form-control selectpicker" data-live-search="true" required>
-                            </select>
-                          </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Asunto(*):</label>
-                            <select id="asunto" name="asunto" class="form-control selectpicker" data-live-search="true" required>
-                              <option value="">DOCUMENTOS VENCIDOS</option>
-                              <option value="">CEDULA VENCIDA</option>
-                            </select>
-                          </div>
-                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label>Cuerpo del mensaje:</label>
-                            <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" maxlength="255" cols="30" rows="3"></textarea>
-                          </div>
-                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                            <button id="btnCancelar" class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
-                              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-primary">
-                                Ayuda
-                                </button>
-                          </div>
-                        </form>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-primary">Ayuda
+                          </button>
                     </div>
                     <!--Fin centro -->
                   </div><!-- /.box -->
@@ -85,7 +59,7 @@
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                               <span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Modulo Pago de Tickets</h4>
+                            <h4 class="modal-title">Modulo Alertas</h4>
                           </div>
                           <div class="modal-body">
                              <div class="box-body">
@@ -124,24 +98,33 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Seleccione Tickets Pagados</h4>
+          <h4 class="modal-title">Formulario de Alerta</h4>
         </div>
         <div class="modal-body">
-          <table id="tblarticulos" class="table table-striped table-bordered table-condensed table-hover">
-            <thead>
-                <th>Ticket</th>
-                <th>Monto</th>
-                <th>Agencia</th>
-            </thead>
-            <tbody>
-
-            </tbody>
-            <tfoot>
-                <th>Ticket</th>
-                <th>Monto</th>
-                <th>Agencia</th>
-            </tfoot>
-          </table>
+          <div class="panel-body" id="formularioregistros">
+              <form name="formulario" id="formulario" method="POST">
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Chofer(*):</label>
+                  <input type="hidden" name="idchofer" id="idchofer">
+                  <input type="text" class="form-control"  id="idchofer" name="idchofer" required disabled>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Asunto(*):</label>
+                  <select id="asunto" name="asunto" class="form-control selectpicker" data-live-search="true" required>
+                    <option value="">DOCUMENTOS VENCIDOS</option>
+                    <option value="">CEDULA VENCIDA</option>
+                  </select>
+                </div>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <label>Cuerpo del mensaje:</label>
+                  <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" maxlength="255" cols="30" rows="3"></textarea>
+                </div>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-paper-plane"></i> Enviar</button>
+                  <button id="btnCancelar" class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-trash"></i> Limpiar</button>
+                </div>
+              </form>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
