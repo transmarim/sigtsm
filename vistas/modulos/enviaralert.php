@@ -17,7 +17,6 @@
                   <div class="box">
                     <div class="box-header with-border">
                           <h1 class="box-title">Enviar Alertas</h1>
-                          <button class="pull-right btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -34,7 +33,7 @@
                             <tr>
                               <td>123456</td>
                               <td>JOSE EJEMPLO</td>
-                              <td style="text-align:center;"><a data-toggle="modal" href="#myModal"><button id="btnAgregarArt" type="button" class="btn btn-warning btn-social"><span class="fa fa-dropbox"></span>Enviar Alerta</button>
+                              <td><a data-toggle="modal" href="#myModal"><button id="btnAgregarArt" type="button" class="btn btn-warning btn-block btn-social" style="text-align:center;"><span class="fa fa-exclamation"></span>Notificar Alerta</button>
                                 </a>
                               </td>
                             </tr>
