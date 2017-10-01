@@ -93,7 +93,7 @@
             <li class="treeview">
                <a href=""> <i class="fa fa-exclamation-triangle"></i> <span>Alertas</span> </a>
                <ul class="treeview-menu">
-                   <li><a href="#"><i class="fa fa-eye"></i>Ver Alertas</a></li>
+                   <li><a href="veralert"><i class="fa fa-eye"></i>Ver Alertas</a></li>
                    <li><a href="enviaralert"><i class="fa fa-paper-plane"></i>Enviar Alertas</a></li>
                </ul>
            </li>
