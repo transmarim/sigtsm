@@ -24,6 +24,8 @@ class EnlacesModels{
        $enlaces == "veralert" ||
        $enlaces == "pagoticket" ||
        $enlaces == "enviaralert" ||
+       $enlaces == "prontopago" ||
+       $enlaces == "tarifas" ||
        $enlaces == "imprimirc"){
        /*MODULO A CARGAR SERA*/
        $module = "vistas/modulos/".$enlaces.".php";

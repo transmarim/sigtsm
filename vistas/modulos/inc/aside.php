@@ -104,8 +104,12 @@
                 <a href="pagoticket"> <i class="fa fa-paypal"></i> <span>Tickets x Pagar</span> </a>
             </li>
             <li>
+                <a href="prontopago"> <i class="fa fa-envelope-o"></i> <span>Enviar Pronto-Pago</span> </a>
+            </li>
+            <li>
                 <a href="imprimiru"> <i class="fa fa-print"></i> <span>Imprimir</span> </a>
             </li>
+            
         </ul>
     </section>
 </aside>
