@@ -86,7 +86,7 @@
              <li class="treeview">
                 <a href=""> <i class="fa fa-external-link"></i> <span>Otros</span> </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-money"></i>Tarifas</a></li>
+                    <li><a href="tarifas"><i class="fa fa-money"></i>Tarifas</a></li>
                     <li><a href="#"><i class="fa fa-object-group"></i>Guardia Semanal</a></li>
                 </ul>
             </li>
@@ -109,7 +109,7 @@
             <li>
                 <a href="imprimiru"> <i class="fa fa-print"></i> <span>Imprimir</span> </a>
             </li>
-            
+
         </ul>
     </section>
 </aside>
