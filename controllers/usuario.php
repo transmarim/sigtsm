@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("../modelos/Usuarios.php");
+require_once("../modelos/Usuario.php");
 
 $usuario = new Usuario();
 
@@ -46,5 +46,33 @@ switch ($_GET["op"]){
 			echo $rspta ? "Usuario actualizado con exito":"No se pudieron registrar todos los datos del usuario";
 		}
     break;
+    case 'listar':
+    
+    break;
+        
+    case 'permisos':
+        /*Obtenemos todos los permisos de la tabla permisos*/
+		require_once "../modelos/Permiso.php";
+		$permiso = new Permiso();
+		$rspta = $permiso->listar();
 
+		//Obtener los permisos asignados al usuario
+		$id=$_GET['id'];
+		$marcados = $usuario->listarmarcados($id);
+		//Declaramos el array para almacenar todos los permisos marcados
+		$valores=array();
+
+		//Almacenar los permisos asignados al usuario en el array
+		while ($per = $marcados->fetch_object())
+			{
+				array_push($valores, $per->idpermiso);
+			}
+
+		//Mostramos la lista de permisos en la vista y si estan o no marcados
+		while ($reg = $rspta->fetch_object())
+				{
+					$sw=in_array($reg->idpermiso,$valores)?'checked':'';
+					echo '<li> <input type="checkbox" '.$sw.'  name="permiso[]" value="'.$reg->idpermiso.'"> '.$reg->nombre.'</li>';
+				}
+    break;    
 }

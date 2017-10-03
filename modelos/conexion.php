@@ -24,9 +24,9 @@ if(!function_exists('Consulta')){
     $query = $conn->query($sql);
     return $conn->insert_id;
   }
-  function limpiarCadena($sql){
+  function limpiarCadena($str){
     global $conn;
-    $str = mysqli_real_escape_string($conexion,trim($str));
+    $str = mysqli_real_escape_string($conn,trim($str));
     return htmlspecialchars($str);
   }
 }
