@@ -141,4 +141,5 @@
 
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
+    <script type="text/javascript" src="vistas/js/usuario.js"></script>
 </div>
