@@ -2,7 +2,7 @@
 /*host*/
 define("DB_HOST","localhost");
 /*nombre*/
-define("DB_NAME","sigtsm");
+define("DB_NAME","transmarim");
 /*user*/
 define("DB_USERNAME","root");
 /*pw*/
