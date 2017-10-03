@@ -13,7 +13,7 @@ class Usuario{
         $sw = true;
         
         while($num_elementos < count($permisos) ){
-            $sql_detalle = "INSERT INTO usuario_permiso (idusuario,idpermiso) VALUES ('$idusuarionew','$permisos[$num_elementos]')";
+            $sql_detalle = "INSERT INTO usuario_permiso(idusuario,idpermiso) VALUES ('$idusuarionew','$permisos[$num_elementos]')";
             Consulta($sql_detalle) or $sw = false;
             $num_elementos = $num_elementos+1;
         }

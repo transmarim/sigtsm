@@ -6,6 +6,8 @@ function init(){
         guardaryeditar(e);
     });
     
+    $("#imagenmuestra").hide();
+    
     //Mostramos los permisos
 	$.post("controllers/usuario.php?op=permisos&id=",function(r){
 	        $("#permisos").html(r);
