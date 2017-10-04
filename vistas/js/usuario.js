@@ -2,6 +2,7 @@ var tabla;
 
 function init(){
     mostrarform(false);
+    listar();
     $("#formulario").on("submit",function(e){
         guardaryeditar(e);
     });
@@ -37,6 +38,33 @@ function mostrarform(flag){
         $("#formulario").hide();
         $("#btnagregar").show();
     }
+}
+
+function listar(){
+    tabla=$('#tbllistado').dataTable(
+	{
+		"aProcessing": true,//Activamos el procesamiento del datatables
+	    "aServerSide": true,//Paginaci├│n y filtrado realizados por el servidor
+	    dom: 'Bfrtip',//Definimos los elementos del control de tabla
+	    buttons: [		          
+		            'copyHtml5',
+		            'excelHtml5',
+		            'csvHtml5',
+		            'pdf'
+		        ],
+		"ajax":
+				{
+					url: 'controllers/usuario.php?op=listar',
+					type : "get",
+					dataType : "json",						
+					error: function(e){
+						console.log(e.responseText);	
+					}
+				},
+		"bDestroy": true,
+		"iDisplayLength": 5,//Paginacion
+	    "order": [[ 0, "desc" ]]//Ordenar (columna,orden)
+	}).DataTable();
 }
 
 function cancelarform(){

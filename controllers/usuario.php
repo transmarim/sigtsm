@@ -47,7 +47,27 @@ switch ($_GET["op"]){
 		}
     break;
     case 'listar':
-    
+        $rspta = $usuario->listar();
+        $data = Array();
+        while($reg = $rspta->fetch_object()){
+           $data[]=array(
+               "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.
+ 					' <button class="btn btn-danger" onclick="desactivar('.$reg->idusuario.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.
+ 					' <button class="btn btn-primary" onclick="activar('.$reg->idusuario.')"><i class="fa fa-check"></i></button>',
+               "1"=>$reg->nombre,
+               "2"=>$reg->email,
+               "3"=>$reg->login,
+               "4"=>"<img src='../vistas/img/usuarios/".$reg->imagen."' height='50px' width='50px'>",
+               "5"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+           );
+        }
+        /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/
+        $results = array(
+ 			"sEcho"=>1, //Informacion para el datatables
+ 			"iTotalRecords"=>count($data), //enviamos el total registros al datatable
+ 			"iTotalDisplayRecords"=>count($data), //enviamos el total registros a visualizar
+ 			"aaData"=>$data);
+        echo json_encode($results);
     break;
         
     case 'permisos':
