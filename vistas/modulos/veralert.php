@@ -22,14 +22,14 @@
                                 <div class="box-body">
                                     <div class="alert alert-danger alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <h4><i class="icon fa fa-ban"></i> Peligro!</h4>Los siguientes choferes tienen su cedula de indentidad vencida:
+                                        <h4><i class="icon fa fa-ban"></i> Vencido!</h4>Los siguientes choferes tienen su cedula de indentidad vencida:
                                         <ul>
                                           <li>Jose Ejemplo</li>
                                         </ul>
                                       </div>
                                     <div class="alert alert-warning alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <h4><i class="icon fa fa-warning"></i> Cuidado!</h4>Los siguientes choferes tienen su cedula proxima a vencer:
+                                        <h4><i class="icon fa fa-warning"></i> Advertencia!</h4>Los siguientes choferes tienen su cedula proxima a vencer:
                                         <ul>
                                           <li>Jose Ejemplo</li>
                                         </ul></div>
@@ -46,14 +46,14 @@
                                 <div class="box-body">
                                     <div class="alert alert-danger alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <h4><i class="icon fa fa-ban"></i> Peligro!</h4>Los siguientes choferes tienen su certificado vencido:
+                                        <h4><i class="icon fa fa-ban"></i> Vencido!</h4>Los siguientes choferes tienen su certificado vencido:
                                         <ul>
                                           <li>Jose Ejemplo</li>
                                         </ul>
                                       </div>
                                     <div class="alert alert-warning alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <h4><i class="icon fa fa-warning"></i> Cuidado!</h4>Los siguientes choferes tienen su certificado proximo a vencer:
+                                        <h4><i class="icon fa fa-warning"></i> Advertencia!</h4>Los siguientes choferes tienen su certificado proximo a vencer:
                                         <ul>
                                           <li>Jose Ejemplo</li>
                                         </ul></div>
@@ -72,14 +72,14 @@
                                 <div class="box-body">
                                     <div class="alert alert-danger alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <h4><i class="icon fa fa-ban"></i> Peligro!</h4>Los siguientes choferes tienen su licencia vencida:
+                                        <h4><i class="icon fa fa-ban"></i> Vencido!</h4>Los siguientes choferes tienen su licencia vencida:
                                         <ul>
                                           <li>Jose Ejemplo</li>
                                         </ul>
                                       </div>
                                     <div class="alert alert-warning alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <h4><i class="icon fa fa-warning"></i> Cuidado!</h4>Los siguientes choferes tienen su licencia proxima a vencer:
+                                        <h4><i class="icon fa fa-warning"></i> Advertencia!</h4>Los siguientes choferes tienen su licencia proxima a vencer:
                                         <ul>
                                           <li>Jose Ejemplo</li>
                                         </ul></div>
@@ -96,14 +96,14 @@
                                 <div class="box-body">
                                     <div class="alert alert-danger alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <h4><i class="icon fa fa-ban"></i> Peligro!</h4>Los siguientes vehiculos tienen su seguro vencido:
+                                        <h4><i class="icon fa fa-ban"></i> Vencido!</h4>Los siguientes vehiculos tienen su seguro vencido:
                                         <ul>
                                           <li>IAO-72A</li>
                                         </ul>
                                       </div>
                                     <div class="alert alert-warning alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <h4><i class="icon fa fa-warning"></i> Cuidado!</h4>Los siguientes vehiculos tienen su seguro proximo a vencer:
+                                        <h4><i class="icon fa fa-warning"></i> Advertencia!</h4>Los siguientes vehiculos tienen su seguro proximo a vencer:
                                         <ul>
                                           <li>Jose Ejemplo</li>
                                         </ul></div>

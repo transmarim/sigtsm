@@ -75,7 +75,7 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href=""> <i class="fa fa-address-book-o"></i> <span>Complementos</span> </a>
+                <a href=""> <i class="fa fa-address-book-o"></i> <span>Documentos/Choferes</span> </a>
                 <ul class="treeview-menu">
                     <li><a href="vehiculo"><i class="fa fa-car"></i>Vehiculo</a></li>
                     <li><a href="licencia"><i class="fa fa-address-card"></i>Licencias</a></li>
@@ -101,7 +101,7 @@
                 <a href="usuario"> <i class="fa fa-wrench"></i> <span>Usuarios/Permisos</span> </a>
             </li>
             <li>
-                <a href="pagoticket"> <i class="fa fa-paypal"></i> <span>Tickets x Pagar</span> </a>
+                <a href="pagoticket"> <i class="fa fa-paypal"></i> <span>Tickets por Pagar</span> </a>
             </li>
             <li>
                 <a href="prontopago"> <i class="fa fa-envelope-o"></i> <span>Enviar Pronto-Pago</span> </a>
