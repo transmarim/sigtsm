@@ -6,9 +6,9 @@ function init(){
     $("#formulario").on("submit",function(e){
         guardaryeditar(e);
     });
-    
+
     $("#imagenmuestra").hide();
-    
+
     //Mostramos los permisos
 	$.post("controllers/usuario.php?op=permisos&id=",function(r){
 	        $("#permisos").html(r);
@@ -46,7 +46,7 @@ function listar(){
 		"aProcessing": true,//Activamos el procesamiento del datatables
 	    "aServerSide": true,//Paginaci├│n y filtrado realizados por el servidor
 	    dom: 'Bfrtip',//Definimos los elementos del control de tabla
-	    buttons: [		          
+	    buttons: [
 		            'copyHtml5',
 		            'excelHtml5',
 		            'csvHtml5',
@@ -56,9 +56,9 @@ function listar(){
 				{
 					url: 'controllers/usuario.php?op=listar',
 					type : "get",
-					dataType : "json",						
+					dataType : "json",
 					error: function(e){
-						console.log(e.responseText);	
+						console.log(e.responseText);
 					}
 				},
 		"bDestroy": true,
@@ -83,13 +83,13 @@ function guardaryeditar(e){
        contentType: false,
 	   processData: false,
        success: function(respuesta){
-           alert(respuesta);
-           mostrarform(false);
+         swal(respuesta, "Presione OK para continuar");
+         mostrarform(false);
 	       tabla.ajax.reload();
        }
     });
 }
-    
+
  function mostrar(idusuario){
      $.post("controllers/usuario.php?op=mostrar",{idusuario:idusuario},function(data,status){
           // Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript
@@ -111,7 +111,39 @@ function guardaryeditar(e){
          $("#permisos").html(respuesta);
      });
  }
-    
 
+ function desactivar(idusuario){
+    swal({
+        title: "Esta seguro..?"
+        , text: "Al desactivar este usuario, no podra ingresar al sistema"
+        , type: "warning"
+        , showCancelButton: true
+        , confirmButtonColor: "#da4f49"
+        , confirmButtonText: "Si, deseo desactivarlo!"
+        , closeOnConfirm: false
+        }, function () {
+            $.post('controllers/usuario.php?op=desactivar',{idusuario:idusuario},function(e){
+            swal("Desactivado!", e , "success");  
+            tabla.ajax.reload();
+            });
+        });
+ }
+
+ function activar(idusuario){
+    swal({
+        title: "Esta seguro..?"
+        , text: "Al activar este usuario, podra reingresar al sistema"
+        , type: "warning"
+        , showCancelButton: true
+        , confirmButtonColor: "#da4f49"
+        , confirmButtonText: "Si, deseo activarlo!"
+        , closeOnConfirm: false
+        }, function () {
+            $.post('controllers/usuario.php?op=activar',{idusuario:idusuario},function(e){
+            swal("Activado!", e , "success");  
+            tabla.ajax.reload();
+            });
+        });
+ }
 
 init();

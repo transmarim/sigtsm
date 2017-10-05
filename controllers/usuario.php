@@ -25,7 +25,7 @@ switch ($_GET["op"]){
 		{
 			$imagen=$_POST["imagenactual"];
 		}
-		else 
+		else
 		{
 			$ext = explode(".", $_FILES["imagen"]["name"]);
 			if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
@@ -38,7 +38,7 @@ switch ($_GET["op"]){
 		$clavehash=hash("SHA256",$clave);
 
 		if (empty($idusuario)){
-            $rspta=$usuario->insertar($idchofer,$nombre,$login,$clavehash,$email,$imagen,$_POST['permiso']); 
+            $rspta=$usuario->insertar($idchofer,$nombre,$login,$clavehash,$email,$imagen,$_POST['permiso']);
             echo $rspta ? "Usuario registrado con exito":"No se pudieron registrar todos los datos del usuario";
 		}
 		else {
@@ -69,13 +69,13 @@ switch ($_GET["op"]){
  			"aaData"=>$data);
         echo json_encode($results);
     break;
-    
+
     case 'mostrar':
         /*ID USUARIO SE ENVIA POR POST ESTA DECLARADO EN LA INICIALIACION*/
         $rspta = $usuario->mostrar($idusuario);
         echo json_encode($rspta);
     break;
-        
+
     case 'permisos':
         /*Obtenemos todos los permisos de la tabla permisos*/
 		require_once "../modelos/Permiso.php";
@@ -100,5 +100,15 @@ switch ($_GET["op"]){
 					$sw=in_array($reg->idpermiso,$valores)?'checked':'';
 					echo '<li> <input type="checkbox" '.$sw.'  name="permiso[]" value="'.$reg->idpermiso.'"> '.$reg->nombre.'</li>';
 				}
-    break;    
+    break;
+        
+    case 'desactivar':
+      $rspta = $usuario->desactivar($idusuario);
+      echo $rspta ? "Usuario desativado": "El usuario no se puede desactivar";
+    break;
+        
+    case 'activar':
+    $rspta = $usuario->activar($idusuario);
+    echo $rspta ? "Usuario activado": "El usuario no se puede activar";
+    break;
 }
