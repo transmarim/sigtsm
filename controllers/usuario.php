@@ -57,7 +57,7 @@ switch ($_GET["op"]){
                "1"=>$reg->nombre,
                "2"=>$reg->email,
                "3"=>$reg->login,
-               "4"=>"<img src='../vistas/img/usuarios/".$reg->imagen."' height='50px' width='50px'>",
+               "4"=>"<img src='vistas/img/usuarios/".$reg->imagen."' height='50px' width='50px'>",
                "5"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
            );
         }
