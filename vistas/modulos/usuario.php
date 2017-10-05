@@ -66,9 +66,9 @@
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                          <label>Vincular a Chofer:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                           <select id="idchofer" class="form-control selectpicker" data-live-search="true" name="idchofer">
-                              <option value="">NADIE</option>
-                              <option value="V-">PEDRO</option>
-                              <option value="J-">DANIEL</option>
+                              <option value="0">NADIE</option>
+                              <option value="1">PEDRO</option>
+                              <option value="2">DANIEL</option>
                           </select>
                         </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

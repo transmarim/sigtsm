@@ -38,11 +38,11 @@ switch ($_GET["op"]){
 		$clavehash=hash("SHA256",$clave);
 
 		if (empty($idusuario)){
-            $rspta=$usuario->insertar($idchofer,$nombre,$login,$clave,$email,$imagen,$_POST['permiso']); 
+            $rspta=$usuario->insertar($idchofer,$nombre,$login,$clavehash,$email,$imagen,$_POST['permiso']); 
             echo $rspta ? "Usuario registrado con exito":"No se pudieron registrar todos los datos del usuario";
 		}
 		else {
-            $rspta=$usuario->editar($idusuario,$idchofer,$nombre,$login,$clave,$email,$imagen,$_POST['permiso']);
+            $rspta=$usuario->editar($idusuario,$idchofer,$nombre,$login,$clavehash,$email,$imagen,$_POST['permiso']);
 			echo $rspta ? "Usuario actualizado con exito":"No se pudieron registrar todos los datos del usuario";
 		}
     break;
@@ -68,6 +68,12 @@ switch ($_GET["op"]){
  			"iTotalDisplayRecords"=>count($data), //enviamos el total registros a visualizar
  			"aaData"=>$data);
         echo json_encode($results);
+    break;
+    
+    case 'mostrar':
+        /*ID USUARIO SE ENVIA POR POST ESTA DECLARADO EN LA INICIALIACION*/
+        $rspta = $usuario->mostrar($idusuario);
+        echo json_encode($rspta);
     break;
         
     case 'permisos':

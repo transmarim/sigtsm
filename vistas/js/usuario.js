@@ -84,12 +84,34 @@ function guardaryeditar(e){
 	   processData: false,
        success: function(respuesta){
            alert(respuesta);
+           mostrarform(false);
+	       tabla.ajax.reload();
        }
     });
-    
-    
-    
 }
+    
+ function mostrar(idusuario){
+     $.post("controllers/usuario.php?op=mostrar",{idusuario:idusuario},function(data,status){
+          // Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript
+         data = JSON.parse(data);
+         /*LLAMO MOSTRAR FORM*/
+         mostrarform(true);
+         $("#idusuario").val(data.idusuario);
+         $("#nombre").val(data.nombre);
+         $("#login").val(data.login);
+         $("#clave").val(data.clave);
+         $("#email").val(data.email);
+         $("#idchofer").val(data.idchofer);
+         $("#idchofer").selectpicker('refresh');
+         /*MOSTRAMOS IMG DE MUESTRA*/
+         $("#imagenmuestra").show();
+         $("#imagenmuestra").attr("src","vistas/img/usuarios/"+data.imagen);
+     });
+     $.post('controllers/usuario.php?op=permisos&id='+idusuario,function(respuesta){
+         $("#permisos").html(respuesta);
+     });
+ }
+    
 
 
 init();

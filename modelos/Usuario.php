@@ -32,7 +32,7 @@ class Usuario{
         $sw = true;
         
         while($num_elementos < count($permisos) ){
-            $sql_detalle = "INSERT INTO usuario_permiso (idusuario,idpermiso) VALUES ('$idusuarionew','$permisos[$num_elementos]')";
+            $sql_detalle = "INSERT INTO usuario_permiso (idusuario,idpermiso) VALUES ('$idusuario','$permisos[$num_elementos]')";
             Consulta($sql_detalle) or $sw = false;
             $num_elementos = $num_elementos+1;
         }
@@ -49,7 +49,7 @@ class Usuario{
         return Consulta($sql);
     }
     
-    public static function mostrar($idsuario){
+    public static function mostrar($idusuario){
         $sql = "SELECT * FROM usuario WHERE idusuario='$idusuario'";
         return ConsultaFila($sql);
     }
