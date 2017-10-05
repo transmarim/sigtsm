@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="vistas/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600">
   <link rel="stylesheet" href="vistas/css/bootstrap-select.min.css">
-  <link rel="stylesheet" href="vistas/plugins/datatables/jquery.dataTables.min.css">    
+  <link rel="stylesheet" href="vistas/plugins/datatables/jquery.dataTables.min.css">
   <link rel="stylesheet" href="vistas/plugins/datatables/buttons.dataTables.min.css">
   <link rel="stylesheet" href="vistas/plugins/datatables/responsive.dataTables.min.css">
+  <link rel="stylesheet" href="vistas/plugins/sweetalert/sweetalert.css">
 </head>
