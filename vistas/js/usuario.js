@@ -13,6 +13,8 @@ function init(){
 	$.post("controllers/usuario.php?op=permisos&id=",function(r){
 	        $("#permisos").html(r);
 	})
+    validarimg();
+    
 }
 
 function limpiar(){
@@ -145,5 +147,20 @@ function guardaryeditar(e){
             });
         });
  }
+
+function validarimg(){
+    $("#imagen").change(function(){
+        var imagen = this.files[0];
+        var imagenType = imagen.type;
+        var flag = false;
+        var imagenSize = imagen.size;
+         if(Number(imagenSize)<500000 && (imagenType == "image/jpeg" || imagenType == "image/png")){
+             swal('Excelente!','La imagen cumple con los parametros permitidos.','success');
+         }else{
+             swal('Error!','El archivo que intenta subir no cumple con los parametros permitidos.','error');
+             $("#imagen").val("");
+         }
+    });
+}
 
 init();

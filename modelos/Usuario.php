@@ -26,7 +26,7 @@ class Usuario{
         /*ELIMINAMOS LOS PERMISOS ACTUALES*/
         
         $sqldel = "DELETE FROM usuario_permiso WHERE idusuario='$idusuario'";
-        Consulta($sql);
+        Consulta($sqldel);
         
         $num_elementos = 0;
         $sw = true;
