@@ -101,13 +101,13 @@ function guardaryeditar(e){
          $("#idusuario").val(data.idusuario);
          $("#nombre").val(data.nombre);
          $("#login").val(data.login);
-         $("#clave").val(data.clave);
          $("#email").val(data.email);
          $("#idchofer").val(data.idchofer);
          $("#idchofer").selectpicker('refresh');
          /*MOSTRAMOS IMG DE MUESTRA*/
          $("#imagenmuestra").show();
          $("#imagenmuestra").attr("src","vistas/img/usuarios/"+data.imagen);
+         $("#imagenactual").val(data.imagen);
      });
      $.post('controllers/usuario.php?op=permisos&id='+idusuario,function(respuesta){
          $("#permisos").html(respuesta);

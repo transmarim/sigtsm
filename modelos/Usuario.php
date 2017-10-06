@@ -7,10 +7,9 @@ class Usuario{
     }
     public static function insertar($idchofer,$nombre,$login,$clave,$email,$imagen,$permisos){
         $sql = "INSERT INTO usuario (idchofer,nombre,login,clave,email,imagen,condicion) VALUES ('$idchofer','$nombre','$login','$clave','$email','$imagen',1)";
-        
-        $idusuarionew = Consulta_retornarID($sql);
+        $sw = $true;
+        $idusuarionew = Consulta_retornarID($sql) or $sw = false;
         $num_elementos = 0;
-        $sw = true;
         
         while($num_elementos < count($permisos) ){
             $sql_detalle = "INSERT INTO usuario_permiso(idusuario,idpermiso) VALUES ('$idusuarionew','$permisos[$num_elementos]')";
@@ -22,14 +21,14 @@ class Usuario{
     
     public static function editar($idusuario,$idchofer,$nombre,$login,$clave,$email,$imagen,$permisos){
         $sql = "UPDATE usuario SET idchofer='$idchofer',nombre='$nombre',login='$login',clave='$clave',email='$email',imagen='$imagen' WHERE idusuario = '$idusuario'";
-        Consulta($sql);
+        $sw = true;
+        Consulta($sql) or $sw = false;
         /*ELIMINAMOS LOS PERMISOS ACTUALES*/
         
         $sqldel = "DELETE FROM usuario_permiso WHERE idusuario='$idusuario'";
         Consulta($sqldel);
         
         $num_elementos = 0;
-        $sw = true;
         
         while($num_elementos < count($permisos) ){
             $sql_detalle = "INSERT INTO usuario_permiso (idusuario,idpermiso) VALUES ('$idusuario','$permisos[$num_elementos]')";

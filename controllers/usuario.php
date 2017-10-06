@@ -43,7 +43,7 @@ switch ($_GET["op"]){
 		}
 		else {
             $rspta=$usuario->editar($idusuario,$idchofer,$nombre,$login,$clavehash,$email,$imagen,$_POST['permiso']);
-			echo $rspta ? "Usuario actualizado con exito":"No se pudieron registrar todos los datos del usuario";
+			echo $rspta ? "Usuario actualizado con exito":"No se pudieron actualizar los datos del usuario";
 		}
     break;
     case 'listar':
