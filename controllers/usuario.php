@@ -30,8 +30,10 @@ switch ($_GET["op"]){
 			$ext = explode(".", $_FILES["imagen"]["name"]);
 			if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
 			{
+                if($_FILES["imagen"]["size"]<500000){
 				$imagen = round(microtime(true)) . '.' . end($ext);
 				move_uploaded_file($_FILES["imagen"]["tmp_name"], "../vistas/img/usuarios/". $imagen);
+                }
 			}
 		}
 		//Hash SHA256 en la contrasena
