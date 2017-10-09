@@ -88,6 +88,7 @@
                 <ul class="treeview-menu">
                     <li><a href="tarifas"><i class="fa fa-money"></i>Tarifas</a></li>
                     <li><a href="#"><i class="fa fa-object-group"></i>Guardia Semanal</a></li>
+                    <li><a href="talonario"><i class="fa fa-book"></i>Talonarios/Choferes</a></li>
                 </ul>
             </li>
             <li class="treeview">

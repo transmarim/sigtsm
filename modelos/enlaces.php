@@ -20,6 +20,7 @@ class EnlacesModels{
        $enlaces == "vehiculo" ||
        $enlaces == "descuento" ||
        $enlaces == "usuario" ||
+       $enlaces == "talonario" ||
        $enlaces == "imprimiru" ||
        $enlaces == "veralert" ||
        $enlaces == "pagoticket" ||
