@@ -5,18 +5,18 @@
     <section class="content-header">
         <h1>
         Control
-        <small>Licencias</small>
+        <small>Talonarios entregados</small>
       </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-            <li class="active">Licencias</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Otros</a></li>
+            <li class="active">Talonarios</li>
         </ol>
         <section class="content">
             <div class="row">
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Licencias</h1>
+                          <h1 class="box-title">Talonarios</h1>
                           <button class="pull-right btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button>
                         <div class="box-tools pull-right">
                         </div>
@@ -26,18 +26,18 @@
                     <div class="panel-body table-responsive" id="listadoregistros">
                       <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
-                          <th>GRADO</th>
-                          <th>VENCE</th>
-                          <th>ESTADO</th>
+                          <th>CHOFER</th>
+                          <th>DESDE</th>
+                          <th>HASTA</th>
                           <th>OPCIONES</th>
                         </thead>
                         <tbody>
 
                         </tbody>
                         <tfoot>
-                        <th>GRADO</th>
-                        <th>VENCE</th>
-                        <th>ESTADO</th>
+                        <th>CHOFER</th>
+                        <th>DESDE</th>
+                        <th>HASTA</th>
                         <th>OPCIONES</th>
                         </tfoot>
                       </table>
@@ -56,7 +56,7 @@
                           </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <label>Fecha*:</label>
+                          <label>Fecha de entrega*:</label>
                           <input type="date" class="form-control" name="fecha" id="fecha" required>
                         </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
