@@ -14,6 +14,7 @@ function init(){
 	        $("#permisos").html(r);
 	})
     validarimg();
+    validarinput();
     
 }
 
@@ -160,6 +161,28 @@ function validarimg(){
              swal('Error!','El archivo que intenta subir no cumple con los parametros permitidos.','error');
              $("#imagen").val("");
          }
+    });
+}
+
+function validarinput(){
+    $("#nombre").change(function(){
+        var expreTexto = /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/;
+        var cajetin = $(this).parent();
+        
+        if(!expreTexto.test($(this).val())){
+            if(cajetin.hasClass("has-success")){
+                cajetin.removeClass("has-success");
+            }
+            cajetin.addClass("has-error");
+            cajetin.append('<label class="control-label" for="inputError"><i class="fa fa-times"></i> Valido</label>');
+        } else {
+            if(cajetin.hasClass("has-error")){
+                cajetin.removeClass("has-error");
+            }
+            cajetin.addClass("has-success");
+            cajetin.append('<label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> Valido</label>');
+        }
+        
     });
 }
 
