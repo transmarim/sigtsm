@@ -14,7 +14,10 @@ function init(){
 	        $("#permisos").html(r);
 	})
     validarimg();
-    validarinput();
+    validarinput('#nombre','textodoble');
+    validarinput('#login','login');
+    validarinput('#clave','pw');
+    validarinput('#email','email');
     
 }
 
@@ -27,6 +30,8 @@ function limpiar(){
     $("#idchofer").selectpicker("val","");
     $("#imagenmuestra").attr("src","");
 	$("#imagenactual").val("");
+    /*QUITAR CLASES A LOS ELEMENTOS*/
+    $(".form-group").removeClass('has-success has-error');
 }
 
 function mostrarform(flag){
@@ -164,26 +169,101 @@ function validarimg(){
     });
 }
 
-function validarinput(){
-    $("#nombre").change(function(){
-        var expreTexto = /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/;
-        var cajetin = $(this).parent();
-        
-        if(!expreTexto.test($(this).val())){
-            if(cajetin.hasClass("has-success")){
-                cajetin.removeClass("has-success");
-            }
-            cajetin.addClass("has-error");
-            cajetin.append('<label class="control-label" for="inputError"><i class="fa fa-times"></i> Valido</label>');
-        } else {
-            if(cajetin.hasClass("has-error")){
-                cajetin.removeClass("has-error");
-            }
-            cajetin.addClass("has-success");
-            cajetin.append('<label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> Valido</label>');
-        }
-        
-    });
+function validarinput(idcampo,texto){
+//    if(texto == 'textodoble'){
+//        $(idcampo).change(function(){
+//        var expreTexto = /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/;
+//        var cajetin = $(this).parent();
+//        
+//        if(!expreTexto.test($(this).val())){
+//            if(cajetin.hasClass("has-success")){
+//                cajetin.removeClass("has-success");
+//            } 
+//            cajetin.addClass("has-error");
+//        } else {
+//            if(cajetin.hasClass("has-error")){
+//                cajetin.removeClass("has-error");
+//            }
+//            cajetin.addClass("has-success");
+//        }
+//        
+//    })
+//  }
+//
+    switch(texto){
+        case 'textodoble':
+            $(idcampo).change(function(){
+          var expreTexto = /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/;
+          var cajetin = $(this).parent();
+          
+          if(!expreTexto.test($(this).val())){
+              if(cajetin.hasClass("has-success")){
+                  cajetin.removeClass("has-success");
+              } 
+              cajetin.addClass("has-error");
+          } else {
+              if(cajetin.hasClass("has-error")){
+                  cajetin.removeClass("has-error");
+              }
+              cajetin.addClass("has-success");
+          } 
+      })
+        break;
+        case 'login':
+        $(idcampo).change(function(){
+          var expreTexto = /^[a-z\d_]{4,15}$/i;
+          var cajetin = $(this).parent();
+          
+          if(!expreTexto.test($(this).val())){
+              if(cajetin.hasClass("has-success")){
+                  cajetin.removeClass("has-success");
+              } 
+              cajetin.addClass("has-error");
+          } else {
+              if(cajetin.hasClass("has-error")){
+                  cajetin.removeClass("has-error");
+              }
+              cajetin.addClass("has-success");
+          } 
+      })
+        break;
+        case 'pw':
+        $(idcampo).change(function(){
+          var expreTexto = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+          var cajetin = $(this).parent();
+          
+          if(!expreTexto.test($(this).val())){
+              if(cajetin.hasClass("has-success")){
+                  cajetin.removeClass("has-success");
+              } 
+              cajetin.addClass("has-error");
+          } else {
+              if(cajetin.hasClass("has-error")){
+                  cajetin.removeClass("has-error");
+              }
+              cajetin.addClass("has-success");
+          } 
+      })
+        break;
+        case 'email':
+        $(idcampo).change(function(){
+          var expreTexto = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+          var cajetin = $(this).parent();
+          
+          if(!expreTexto.test($(this).val())){
+              if(cajetin.hasClass("has-success")){
+                  cajetin.removeClass("has-success");
+              } 
+              cajetin.addClass("has-error");
+          } else {
+              if(cajetin.hasClass("has-error")){
+                  cajetin.removeClass("has-error");
+              }
+              cajetin.addClass("has-success");
+          } 
+      })
+        break;
+    }
 }
 
 init();
