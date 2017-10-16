@@ -3,10 +3,6 @@ var tabla;
 function init(){
     mostrarform(false);
     listar();
-    $("#formulario").on("submit",function(e){
-        guardaryeditar(e);
-    });
-
     $("#imagenmuestra").hide();
 
     //Mostramos los permisos
@@ -14,10 +10,15 @@ function init(){
 	        $("#permisos").html(r);
 	})
     validarimg();
-    validarinput('#nombre','textodoble');
+    var val1 = validarinput('#nombre','textodoble');
     validarinput('#login','login');
     validarinput('#clave','pw');
     validarinput('#email','email');
+    
+     $("#formulario").on("submit",function(e){
+        guardaryeditar(e);
+        alert(val1);
+    });
     
 }
 

@@ -7,7 +7,7 @@ class Usuario{
     }
     public static function insertar($idchofer,$nombre,$login,$clave,$email,$imagen,$permisos){
         $sql = "INSERT INTO usuario (idchofer,nombre,login,clave,email,imagen,condicion) VALUES ('$idchofer','$nombre','$login','$clave','$email','$imagen',1)";
-        $sw = $true;
+        $sw = true;
         $idusuarionew = Consulta_retornarID($sql) or $sw = false;
         $num_elementos = 0;
         
