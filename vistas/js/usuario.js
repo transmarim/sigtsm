@@ -17,8 +17,11 @@ function init(){
     validarinput('#email',/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/);
     
      $("#formulario").on("submit",function(e){
-        guardaryeditar(e);
-         alert(bandera);
+        if(!bandera){
+            guardaryeditar(e);
+        }else{
+            e.preventDefault(); swal('Error!','Los datos a ingresar no son validos.','error');
+        }
     });
     
 }
