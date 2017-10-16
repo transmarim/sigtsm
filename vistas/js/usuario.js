@@ -1,4 +1,5 @@
 var tabla;
+var bandera;
 
 function init(){
     mostrarform(false);
@@ -17,6 +18,7 @@ function init(){
     
      $("#formulario").on("submit",function(e){
         guardaryeditar(e);
+         alert(bandera);
     });
     
 }
@@ -176,16 +178,18 @@ function validarinput(idcampo,texto){
           var cajetin = $(this).parent();
           if(!expreTexto.test($(this).val())){
               if(cajetin.hasClass("has-success")){
-                  cajetin.removeClass("has-success");
+                cajetin.removeClass("has-success");
               } 
               cajetin.addClass("has-error");
+              bandera = true;
           } else {
               if(cajetin.hasClass("has-error")){
-                  cajetin.removeClass("has-error");
+                cajetin.removeClass("has-error");
               }
-              cajetin.addClass("has-success");
+             cajetin.addClass("has-success");
+              bandera = false;
           } 
-      })
+      });
 }
 
 init();
