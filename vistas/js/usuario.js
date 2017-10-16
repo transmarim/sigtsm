@@ -170,32 +170,11 @@ function validarimg(){
 }
 
 function validarinput(idcampo,texto){
-//    if(texto == 'textodoble'){
-//        $(idcampo).change(function(){
-//        var expreTexto = /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/;
-//        var cajetin = $(this).parent();
-//        
-//        if(!expreTexto.test($(this).val())){
-//            if(cajetin.hasClass("has-success")){
-//                cajetin.removeClass("has-success");
-//            } 
-//            cajetin.addClass("has-error");
-//        } else {
-//            if(cajetin.hasClass("has-error")){
-//                cajetin.removeClass("has-error");
-//            }
-//            cajetin.addClass("has-success");
-//        }
-//        
-//    })
-//  }
-//
     switch(texto){
         case 'textodoble':
             $(idcampo).change(function(){
           var expreTexto = /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/;
           var cajetin = $(this).parent();
-          
           if(!expreTexto.test($(this).val())){
               if(cajetin.hasClass("has-success")){
                   cajetin.removeClass("has-success");
@@ -213,7 +192,6 @@ function validarinput(idcampo,texto){
         $(idcampo).change(function(){
           var expreTexto = /^[a-z\d_]{4,15}$/i;
           var cajetin = $(this).parent();
-          
           if(!expreTexto.test($(this).val())){
               if(cajetin.hasClass("has-success")){
                   cajetin.removeClass("has-success");
@@ -231,7 +209,6 @@ function validarinput(idcampo,texto){
         $(idcampo).change(function(){
           var expreTexto = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
           var cajetin = $(this).parent();
-          
           if(!expreTexto.test($(this).val())){
               if(cajetin.hasClass("has-success")){
                   cajetin.removeClass("has-success");
@@ -249,7 +226,6 @@ function validarinput(idcampo,texto){
         $(idcampo).change(function(){
           var expreTexto = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
           var cajetin = $(this).parent();
-          
           if(!expreTexto.test($(this).val())){
               if(cajetin.hasClass("has-success")){
                   cajetin.removeClass("has-success");
