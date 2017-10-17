@@ -113,4 +113,51 @@ switch ($_GET["op"]){
     $rspta = $usuario->activar($idusuario);
     echo $rspta ? "Usuario activado": "El usuario no se puede activar";
     break;
+        
+    case 'salir':
+		//Limpiamos las variables de sesion   
+    session_unset();
+        //Destruimos la sesion
+    session_destroy();
+        //Redireccionamos al login
+    header("Location: inicio");
+	break;
+    
+    case 'verificar':
+		$logina=$_POST['logina'];
+	    $clavea=$_POST['clavea'];
+
+	    //Hash SHA256 en la contrase├▒a
+		$clavehash=hash("SHA256",$clavea);
+
+		$rspta=$usuario->verificar($logina, $clavehash);
+
+		$fetch=$rspta->fetch_object();
+
+		if (isset($fetch))
+	    {
+	        //Declaramos las variables de sesi├│n
+	        $_SESSION['idusuario']=$fetch->idusuario;
+	        $_SESSION['nombre']=$fetch->nombre;
+	        $_SESSION['imagen']=$fetch->imagen;
+	        $_SESSION['login']=$fetch->login;
+
+	        //Obtenemos los permisos del usuario
+	    	$marcados = $usuario->listarmarcados($fetch->idusuario);
+
+	    	//Declaramos el array para almacenar todos los permisos marcados
+			$valores=array();
+
+			//Almacenamos los permisos marcados en el array
+			while ($per = $marcados->fetch_object())
+				{
+					array_push($valores, $per->idpermiso);
+				}
+
+			//Determinamos los accesos del usuario
+			in_array(1,$valores)?$_SESSION['escritorio']=1:$_SESSION['escritorio']=0;
+			in_array(2,$valores)?$_SESSION['almacen']=1:$_SESSION['almacen']=0;
+	    }
+	    echo json_encode($fetch);
+	break;
 }

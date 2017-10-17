@@ -7,9 +7,9 @@
   <div class="login-box-body">
     <p class="login-box-msg">Ingrese sus datos</p>
 
-    <form action="escritorio" method="post">
+    <form method="post" id="frmAcceso">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Usuario">
+        <input type="text" class="form-control" placeholder="Usuario">
         <span class="fa fa-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -28,3 +28,7 @@
   </div>
   <!-- /.login-box-body -->
 </div>
+<script src="vistas/plugins/jquery/jquery.min.js"></script>
+<script src="vistas/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="vistas/plugins/sweetalert/sweetalert.min.js"></script>
+<script type="text/javascript" src="vistas/js/login.js"></script>
