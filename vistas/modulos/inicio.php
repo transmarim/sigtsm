@@ -9,11 +9,11 @@
 
     <form method="post" id="frmAcceso">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Usuario">
+        <input type="text" class="form-control" placeholder="Usuario" id="login">
         <span class="fa fa-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Clave">
+        <input type="password" class="form-control" placeholder="Clave" id="clave">
         <span class="fa fa-lock form-control-feedback"></span>
       </div>
       <div class="row">

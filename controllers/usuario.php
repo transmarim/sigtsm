@@ -127,7 +127,7 @@ switch ($_GET["op"]){
 		$logina=$_POST['logina'];
 	    $clavea=$_POST['clavea'];
 
-	    //Hash SHA256 en la contrase├▒a
+	    //Hash SHA256 en la contrasena
 		$clavehash=hash("SHA256",$clavea);
 
 		$rspta=$usuario->verificar($logina, $clavehash);
