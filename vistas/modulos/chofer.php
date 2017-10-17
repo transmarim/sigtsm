@@ -77,7 +77,6 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Cedula *:</label>
-                          <input type="hidden" name="idcliente" id="idcliente">
                            <input type="number" class="form-control" name="cedula" id="cedula" placeholder="Cedula" required>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
