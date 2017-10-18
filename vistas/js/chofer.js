@@ -112,7 +112,7 @@ function mostrar(idchofer){
          $("#direccion").val(data.direccion);
          /*MOSTRAMOS IMG DE MUESTRA*/
          $("#imagenmuestra").show();
-         $("#imagenmuestra").attr("src","vistas/img/usuarios/"+data.imagen);
+         $("#imagenmuestra").attr("src","vistas/img/choferes/"+data.imagen);
          $("#imagenactual").val(data.imagen);
      });
     }

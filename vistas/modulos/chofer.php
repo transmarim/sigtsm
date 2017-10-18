@@ -30,6 +30,7 @@
                           <th>Nombre</th>
                           <th>Cedula</th>
                           <th>Tlf</th>
+                          <th>Imagen</th>
                           <th>Status</th>
                         </thead>
                         <tbody>
@@ -41,6 +42,7 @@
                           <th>Cedula</th>
                           <th>Tlf</th>
                           <th>Status</th>
+                          <th>Imagen</th>
                         </tfoot>
                       </table>
                     </div>
