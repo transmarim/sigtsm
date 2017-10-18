@@ -6,7 +6,7 @@ class Chofer{
         
     }
     public static function insertar($idvehiculo,$idlicencia,$idcertificado,$nombre,$cedula,$email,$imagen,$telefono,$fechanac,$direccion){
-        $sql = "INSERT INTO chofer (idvehiculo,idlicencia,idcertificado,nombre,cedula,email,imagen,telefono,fechanac,direccion,condicion) VALUES ('$idvehiculo','$idlicencia','$idcertificado','$nombre','$cedula','$imagen','$telefono','$fechanac','$direccion',1)";
+        $sql = "INSERT INTO chofer (idvehiculo,idlicencia,idcertificado,nombre,cedula,email,imagen,telefono,fechanac,direccion,condicion) VALUES ('$idvehiculo','$idlicencia','$idcertificado','$nombre','$cedula','$email','$imagen','$telefono','$fechanac','$direccion',1)";
         $sw = true;
         Consulta($sql) or $sw = false;
         return $sw;

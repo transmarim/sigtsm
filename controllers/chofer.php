@@ -46,7 +46,7 @@ switch ($_GET["op"]){
 			}
 		}
 
-		if (empty($idusuario)){
+		if (empty($idchofer)){
             $rspta=$chofer->insertar($idvehiculo,$idlicencia,$idcertificado,$nombre,$cedula,$email,$imagen,$telefono,$fechanac,$direccion);
             echo $rspta ? "Chofer registrado con exito":"No se pudieron registrar todos los datos del chofer";
 		}
@@ -61,12 +61,12 @@ switch ($_GET["op"]){
         $data = Array();
         while($reg = $rspta->fetch_object()){
            $data[]=array(
-               "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="desactivar('.$reg->idusuario.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-primary" onclick="activar('.$reg->idusuario.')"><i class="fa fa-check"></i></button>',
+               "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idchofer.')"><i class="fa fa-pencil"></i></button>'.
+ 					' <button class="btn btn-danger" onclick="desactivar('.$reg->idchofer.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idchofer.')"><i class="fa fa-pencil"></i></button>'.
+ 					' <button class="btn btn-primary" onclick="activar('.$reg->idchofer.')"><i class="fa fa-check"></i></button>',
                "1"=>$reg->nombre,
-               "2"=>$reg->email,
-               "3"=>$reg->login,
+               "2"=>$reg->cedula,
+               "3"=>$reg->telefono,
                "4"=>"<img src='vistas/img/choferes/".$reg->imagen."' height='50px' width='50px'>",
                "5"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
            );
@@ -82,18 +82,18 @@ switch ($_GET["op"]){
 
     case 'mostrar':
         /*ID USUARIO SE ENVIA POR POST ESTA DECLARADO EN LA INICIALIACION*/
-        $rspta = $chofer->mostrar($idusuario);
+        $rspta = $chofer->mostrar($idchofer);
         echo json_encode($rspta);
     break;
 
     case 'desactivar':
-      $rspta = $chofer->desactivar($idusuario);
-      echo $rspta ? "Usuario desativado": "El usuario no se puede desactivar";
+      $rspta = $chofer->desactivar($idchofer);
+      echo $rspta ? "Chofer desativado": "El chofer no se puede desactivar";
     break;
 
     case 'activar':
-    $rspta = $chofer->activar($idusuario);
-    echo $rspta ? "Usuario activado": "El usuario no se puede activar";
+    $rspta = $chofer->activar($idchofer);
+    echo $rspta ? "Chofer activado": "El chofer no se puede activar";
     break;
 
 }

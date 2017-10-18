@@ -24,23 +24,23 @@
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
-                      <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
+                      <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
-                          <th>NOMBRE</th>
-                          <th>CODIGO</th>
-                          <th>TLF</th>
-                          <th>STATUS</th>
-                          <th>OPCIONES</th>
+                          <th>Opciones</th>
+                          <th>Nombre</th>
+                          <th>Cedula</th>
+                          <th>Tlf</th>
+                          <th>Status</th>
                         </thead>
                         <tbody>
 
                         </tbody>
                         <tfoot>
-                          <th>NOMBRE</th>
-                          <th>CODIGO</th>
-                          <th>TLF</th>
-                          <th>STATUS</th>
-                          <th>OPCIONES</th>
+                          <th>Opciones</th>
+                          <th>Nombre</th>
+                          <th>Cedula</th>
+                          <th>Tlf</th>
+                          <th>Status</th>
                         </tfoot>
                       </table>
                     </div>
@@ -55,24 +55,24 @@
                          <label>Vehiculo *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                           <select id="idvehiculo" class="form-control selectpicker" data-live-search="true" name="idvehiculo" required>
                               <option value="">--</option>
-                              <option value="V-">IAO72A</option>
-                              <option value="J-">IAO72A</option>
+                              <option value="1">1</option>
+                              <option value="2">IAO72A</option>
                           </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                          <label>Licencia *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                           <select id="idlicencia" class="form-control selectpicker" data-live-search="true" name="idlicencia" required>
                               <option value="">--</option>
-                              <option value="V-">VEN22</option>
-                              <option value="J-">VEN23</option>
+                              <option value="1">1</option>
+                              <option value="2">VEN23</option>
                           </select>
                         </div>
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                          <label>Certificado *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                           <select id="idcertificado" class="form-control selectpicker" data-live-search="true" name="idcertificado" required>
                               <option value="">--</option>
-                              <option value="V-">VEN22</option>
-                              <option value="J-">VEN23</option>
+                              <option value="1">1</option>
+                              <option value="2">VEN23</option>
                           </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -160,4 +160,12 @@
     
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
+    <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+    <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="vistas/plugins/datatables/jszip.min.js"></script>
+    <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+    <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+    <script type="text/javascript" src="vistas/js/chofer.js"></script>
 </div>

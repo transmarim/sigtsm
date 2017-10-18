@@ -1,0 +1,1 @@
+SELECT l.idlicencia FROM licencia as l , chofer AS c WHERE l.idlicencia != c.idlicencia
