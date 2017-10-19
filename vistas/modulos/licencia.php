@@ -24,7 +24,7 @@
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
-                      <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
+                      <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                           <th>GRADO</th>
                           <th>VENCE</th>

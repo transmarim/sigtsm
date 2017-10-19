@@ -6,6 +6,11 @@ function init(){
     listar();
     $("#imagenmuestra").hide();
 
+    $.post("controllers/licencia.php?op=selectLicencia",function(respuesta){
+    $("#idlicencia").html(respuesta);
+    $("#idlicencia").selectpicker('refresh');
+    });
+    
      $("#formulario").on("submit",function(e){
        guardaryeditar(e);
     });
@@ -36,6 +41,7 @@ function mostrarform(flag){
         $("#formulario").show('fast');
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
+        
     }else{
         $("#listadoregistros").show();
         $("#formulario").hide();
@@ -100,7 +106,7 @@ function mostrar(idchofer){
          $("#idchofer").val(data.idchofer);
          $("#nombre").val(data.nombre);
          $("#idvehiculo").val(data.idvehiculo);
-         $("#idvehiculo").selectpicker('refresh');
+         $("#idvehiculo").selectpicker('refresh');        
          $("#idlicencia").val(data.idlicencia);
          $("#idlicencia").selectpicker('refresh');
          $("#idcertificado").val(data.idcertificado);
