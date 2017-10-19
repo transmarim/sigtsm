@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                          <label>Telefono :</label> 
-                          <input type="number" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
+                          <input type="number" class="form-control" name="telefono" id="telefono" placeholder="Telefono" min="1" max="99999999999">
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Fecha Nac:</label>
