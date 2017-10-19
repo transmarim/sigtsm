@@ -5,7 +5,8 @@ function init(){
     mostrarform(false);
     listar();
     $("#imagenmuestra").hide();
-
+    
+    /*MOSTRAR SELECT LICENCIA*/
     $.post("controllers/licencia.php?op=selectLicencia",function(respuesta){
     $("#idlicencia").html(respuesta);
     $("#idlicencia").selectpicker('refresh');
@@ -106,7 +107,10 @@ function mostrar(idchofer){
          $("#idchofer").val(data.idchofer);
          $("#nombre").val(data.nombre);
          $("#idvehiculo").val(data.idvehiculo);
-         $("#idvehiculo").selectpicker('refresh');        
+         $("#idvehiculo").selectpicker('refresh');
+         /*MODIFICAR SELECT*/
+         $("#idlicencia").find("option[value='"+data.idlicencia+"']").remove();
+         $("#idlicencia").append('<option value="'+data.idlicencia+'">'+data.idlicencia+'</option>');
          $("#idlicencia").val(data.idlicencia);
          $("#idlicencia").selectpicker('refresh');
          $("#idcertificado").val(data.idcertificado);

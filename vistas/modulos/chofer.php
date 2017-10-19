@@ -64,9 +64,6 @@
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                          <label>Licencia *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                           <select id="idlicencia" class="form-control selectpicker" data-live-search="true" name="idlicencia" required>
-                              <option value="">--</option>
-                              <option value="1">1</option>
-                              <option value="2">VEN23</option>
                           </select>
                         </div>
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
