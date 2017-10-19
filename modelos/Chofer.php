@@ -33,8 +33,14 @@ class Chofer{
         $sql = "SELECT * FROM chofer WHERE idchofer='$idchofer'";
         return ConsultaFila($sql);
     }
+    
     public static function listar(){
         $sql = "SELECT * FROM chofer";
+        return Consulta($sql);
+    }
+    
+     public static function select(){
+        $sql = "SELECT l.idchofer,l.nombre FROM chofer as l , usuario AS c WHERE l.idchofer != c.idchofer";
         return Consulta($sql);
     }
     

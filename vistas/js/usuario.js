@@ -9,7 +9,13 @@ function init(){
     //Mostramos los permisos
 	$.post("controllers/usuario.php?op=permisos&id=",function(r){
 	        $("#permisos").html(r);
-	})
+	});
+    
+    $.post("controllers/usuario.php?op=selectChofer",function(respuesta){
+    $("#idchofer").html(respuesta);
+    $("#idchofer").selectpicker('refresh');
+    });
+    
     validarimg();
     validarinput('#nombre',/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/);
     validarinput('#login',/^[a-z\d_]{4,15}$/i);
@@ -113,6 +119,8 @@ function guardaryeditar(e){
          $("#nombre").val(data.nombre);
          $("#login").val(data.login);
          $("#email").val(data.email);
+         $("#idchofer").find("option[value='"+data.idchofer+"']").remove();
+         $("#idchofer").append('<option value="'+data.idchofer+'">'+data.idchofer+'</option>');
          $("#idchofer").val(data.idchofer);
          $("#idchofer").selectpicker('refresh');
          /*MOSTRAMOS IMG DE MUESTRA*/

@@ -160,4 +160,14 @@ switch ($_GET["op"]){
 	    }
 	    echo json_encode($fetch);
 	break;
+        
+    case 'selectChofer':
+        require_once "../modelos/Chofer.php";
+        $chofer = new Chofer();
+        $rspta = $chofer->select();
+    while ($reg = $rspta->fetch_object())
+        {
+            echo '<option value=' .$reg->idchofer. '>' .$reg->nombre. '</option>';
+        }
+    break;
 }
