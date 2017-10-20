@@ -40,8 +40,8 @@ class Licencia{
     }
 
     public static function select(){
-        $sql = "SELECT l.idlicencia FROM licencia as l , chofer AS c WHERE l.idlicencia != c.idlicencia";
+        $sql = "SELECT T1.idlicencia, T1.fechaven FROM licencia as T1 LEFT OUTER JOIN chofer as T2 ON T1.idlicencia = T2.idlicencia WHERE T2.idlicencia is null";
         return Consulta($sql);
     }
-
+    
 }

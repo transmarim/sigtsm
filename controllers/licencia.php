@@ -85,7 +85,7 @@ switch ($_GET["op"]){
     $rspta = $licencia->select();
     while ($reg = $rspta->fetch_object())
 				{
-					echo '<option value=' .$reg->idchofer. '>' .$reg->idnombre. '</option>';
+					echo '<option value=' .$reg->idlicencia. '>' .$reg->fechaven. '</option>';
 				}
     break;
 
