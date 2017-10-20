@@ -13,6 +13,8 @@ function init(){
     
     $.post("controllers/usuario.php?op=selectChofer",function(respuesta){
     $("#idchofer").html(respuesta);
+    $("#idchofer").find("option[value='0']").remove();
+    $("#idchofer").append('<option value="0">NADIE</option>');    
     $("#idchofer").selectpicker('refresh');
     });
     
@@ -123,9 +125,12 @@ function guardaryeditar(e){
          chofer = data.idchofer;
          
       $.post("controllers/chofer.php?op=mostrar",{idchofer:chofer},function(dato,status){
-          dato = JSON.parse(dato);
+        dato = JSON.parse(dato);
         $("#idchofer").find("option[value='"+dato.idchofer+"']").remove();
         $("#idchofer").append('<option value="'+dato.idchofer+'">'+dato.nombre+'</option>');
+        
+        $("#idchofer").find("option[value='0']").remove();
+        $("#idchofer").append('<option value="0">NADIE</option>');
         $("#idchofer").val(dato.idchofer);
         $("#idchofer").selectpicker('refresh');
         });

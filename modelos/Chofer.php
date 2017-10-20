@@ -40,7 +40,7 @@ class Chofer{
     }
     
      public static function select(){
-        $sql = "SELECT l.idchofer,l.nombre FROM chofer as l , usuario AS c WHERE l.idchofer != c.idchofer";
+        $sql = "SELECT l.idchofer,l.nombre FROM chofer as l , usuario AS c WHERE l.idchofer != c.idchofer GROUP BY idchofer";
         return Consulta($sql);
     }
     
