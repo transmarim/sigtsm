@@ -110,6 +110,7 @@ function guardaryeditar(e){
 }
 
  function mostrar(idusuario){
+     var chofer;
      $.post("controllers/usuario.php?op=mostrar",{idusuario:idusuario},function(data,status){
           // Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript
          data = JSON.parse(data);
@@ -119,15 +120,22 @@ function guardaryeditar(e){
          $("#nombre").val(data.nombre);
          $("#login").val(data.login);
          $("#email").val(data.email);
-         $("#idchofer").find("option[value='"+data.idchofer+"']").remove();
-         $("#idchofer").append('<option value="'+data.idchofer+'">'+data.idchofer+'</option>');
-         $("#idchofer").val(data.idchofer);
-         $("#idchofer").selectpicker('refresh');
+         chofer = data.idchofer;
+         
+      $.post("controllers/chofer.php?op=mostrar",{idchofer:chofer},function(dato,status){
+          dato = JSON.parse(dato);
+        $("#idchofer").find("option[value='"+dato.idchofer+"']").remove();
+        $("#idchofer").append('<option value="'+dato.idchofer+'">'+dato.nombre+'</option>');
+        $("#idchofer").val(dato.idchofer);
+        $("#idchofer").selectpicker('refresh');
+        });
+          
          /*MOSTRAMOS IMG DE MUESTRA*/
          $("#imagenmuestra").show();
          $("#imagenmuestra").attr("src","vistas/img/usuarios/"+data.imagen);
          $("#imagenactual").val(data.imagen);
      });
+
      $.post('controllers/usuario.php?op=permisos&id='+idusuario,function(respuesta){
          $("#permisos").html(respuesta);
      });
