@@ -11,13 +11,6 @@ function init(){
 	        $("#permisos").html(r);
 	});
     
-    $.post("controllers/usuario.php?op=selectChofer",function(respuesta){
-    $("#idchofer").html(respuesta);
-    $("#idchofer").find("option[value='0']").remove();
-    $("#idchofer").append('<option value="0">NADIE</option>');    
-    $("#idchofer").selectpicker('refresh');
-    });
-    
     validarimg();
     validarinput('#nombre',/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/);
     validarinput('#login',/^[a-z\d_]{4,15}$/i);
@@ -54,6 +47,15 @@ function mostrarform(flag){
         $("#formulario").show('fast');
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
+        
+        /*PEDIMOS QUE ACTUALIC EL SELECT CADA VEZ QUE ABRE EL FORM*/
+        $.post("controllers/usuario.php?op=selectChofer",function(respuesta){
+        $("#idchofer").html(respuesta);
+        $("#idchofer").find("option[value='0']").remove();
+        $("#idchofer").append('<option value="0">NADIE</option>');    
+        $("#idchofer").selectpicker('refresh');
+        });
+        
     }else{
         $("#listadoregistros").show();
         $("#formulario").hide();
@@ -65,7 +67,7 @@ function listar(){
     tabla=$('#tbllistado').dataTable(
 	{
 		"aProcessing": true,//Activamos el procesamiento del datatables
-	    "aServerSide": true,//Paginaci├│n y filtrado realizados por el servidor
+	    "aServerSide": true,//Paginacion y filtrado realizados por el servidor
 	    dom: 'Bfrtip',//Definimos los elementos del control de tabla
 	    buttons: [
 		            'copyHtml5',
@@ -95,7 +97,6 @@ function cancelarform(){
 
 function guardaryeditar(e){
     e.preventDefault();
-    /*$("#btnGuardar").prop("disabled",true);*/
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
        url:"controllers/usuario.php?op=guardaryeditar",
