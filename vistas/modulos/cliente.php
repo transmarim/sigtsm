@@ -24,23 +24,23 @@
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
-                      <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
+                      <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
-                          <th>NOMBRE</th>
-                          <th>CODIGO</th>
-                          <th>TLF</th>
-                          <th>STATUS</th>
-                          <th>OPCIONES</th>
+                          <th>Opciones</th>
+                          <th>Nombre</th>
+                          <th>Codigo</th>
+                          <th>Tlf</th>
+                          <th>Status</th>
                         </thead>
                         <tbody>
 
                         </tbody>
                         <tfoot>
-                          <th>NOMBRE</th>
-                          <th>CODIGO</th>
-                          <th>TLF</th>
-                          <th>STATUS</th>
-                          <th>OPCIONES</th>
+                          <th>Opciones</th>
+                          <th>Nombre</th>
+                          <th>Codigo</th>
+                          <th>Tlf</th>
+                          <th>Status</th>
                         </tfoot>
                       </table>
                     </div>
@@ -131,4 +131,12 @@
     
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
+    <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+    <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="vistas/plugins/datatables/jszip.min.js"></script>
+    <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+    <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+    <script type="text/javascript" src="vistas/js/cliente.js"></script>
 </div>
