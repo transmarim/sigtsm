@@ -39,8 +39,8 @@ class Seguro{
         return Consulta($sql);
     }
     
-     public static function listarc(){
-        $sql = "SELECT idseguro, numero FROM seguro WHERE condicion=1";
+     public static function select(){
+        $sql = "SELECT T1.idseguro, T1.numero FROM seguro as T1 LEFT OUTER JOIN vehiculo as T2 ON T1.idseguro = T2.idseguro WHERE T2.idseguro is null AND T1.condicion = 1";
         return Consulta($sql);
     }
     

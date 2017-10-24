@@ -65,5 +65,11 @@ switch ($_GET["op"]){
     $rspta = $seguro->activar($idseguro);
     echo $rspta ? "Seguro activado": "El seguro no se puede activar";
     break;
-
+        
+    case 'select':
+    $rspta = $seguro->select();
+    while($reg = $rspta->fetch_object()){
+        echo '<option value=' .$reg->idseguro. '>' .$reg->numero. '</option>';
+    }
+    break;
 }
