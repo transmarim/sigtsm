@@ -1,16 +1,10 @@
 var tabla;
 var bandera;
-
 function init(){
     mostrarform(false);
     listar();
-    $("#imagenmuestra").hide();
     
-    /*MOSTRAR SELECT LICENCIA*/
-    $.post("controllers/licencia.php?op=selectLicencia",function(respuesta){
-    $("#idlicencia").html(respuesta);
-    $("#idlicencia").selectpicker('refresh');
-    });
+    validarinput('#nombre',/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/);
     
      $("#formulario").on("submit",function(e){
        guardaryeditar(e);
@@ -19,19 +13,8 @@ function init(){
 }
 
 function limpiar(){
-    $("#idchofer").val("");
+    $("#iddescuento").val("");
     $("#nombre").val("");
-    $("#idvehiculo").selectpicker("val","");
-    $("#idlicencia").selectpicker("val","");
-    $("#idcertificado").selectpicker("val","");
-    $("#cedula").val("");
-    $("#telefono").val("");
-    $("#fechanac").val("");
-    $("#email").val("");
-    $("#direccion").val("");
-    $("#imagenmuestra").attr("src","");
-	$("#imagenactual").val("");
-    /*QUITAR CLASES A LOS ELEMENTOS*/
     $(".form-group").removeClass('has-success has-error');
 }
 
@@ -69,7 +52,7 @@ function listar(){
 		        ],
 		"ajax":
 				{
-					url: 'controllers/chofer.php?op=listar',
+					url: 'controllers/descuento.php?op=listar',
 					type : "get",
 					dataType : "json",
 					error: function(e){
@@ -86,7 +69,7 @@ function guardaryeditar(e){
     e.preventDefault();
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
-       url:"controllers/chofer.php?op=guardaryeditar",
+       url:"controllers/descuento.php?op=guardaryeditar",
        type:"POST",
        data: formData,
        contentType: false,
@@ -99,67 +82,68 @@ function guardaryeditar(e){
     });
 }
 
-function mostrar(idchofer){
-     $.post("controllers/chofer.php?op=mostrar",{idchofer:idchofer},function(data,status){
+function mostrar(iddescuento){
+     $.post("controllers/descuento.php?op=mostrar",{iddescuento:iddescuento},function(data,status){
           /*Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript*/
          data = JSON.parse(data);
          mostrarform(true);
-         $("#idchofer").val(data.idchofer);
+         $("#iddescuento").val(data.idcliente);
          $("#nombre").val(data.nombre);
-         $("#idvehiculo").val(data.idvehiculo);
-         $("#idvehiculo").selectpicker('refresh');
-         /*MODIFICAR SELECT*/
-         $("#idlicencia").find("option[value='"+data.idlicencia+"']").remove();
-         $("#idlicencia").append('<option value="'+data.idlicencia+'">'+data.idlicencia+'</option>');
-         $("#idlicencia").val(data.idlicencia);
-         $("#idlicencia").selectpicker('refresh');
-         $("#idcertificado").val(data.idcertificado);
-         $("#idcertificado").selectpicker('refresh');
-         $("#cedula").val(data.cedula);
-         $("#telefono").val(data.telefono);
-         $("#fechanac").val(data.fechanac);
-         $("#email").val(data.email);
-         $("#direccion").val(data.direccion);
-         /*MOSTRAMOS IMG DE MUESTRA*/
-         $("#imagenmuestra").show();
-         $("#imagenmuestra").attr("src","vistas/img/choferes/"+data.imagen);
-         $("#imagenactual").val(data.imagen);
      });
     }
 
- function desactivar(idchofer){
+ function desactivar(iddescuento){
     swal({
         title: "Esta seguro..?"
-        , text: "Al desactivar este chofer, no podra utilizarse en el sistema"
+        , text: "Al desactivar este descuento, no podra utilizarse en el sistema"
         , type: "warning"
         , showCancelButton: true
         , confirmButtonColor: "#da4f49"
         , confirmButtonText: "Si, deseo desactivarlo!"
         , closeOnConfirm: false
         }, function () {
-            $.post('controllers/chofer.php?op=desactivar',{idchofer:idchofer},function(e){
+            $.post('controllers/descuento.php?op=desactivar',{iddescuento:iddescuento},function(e){
             swal("Desactivado!", e , "success");  
             tabla.ajax.reload();
             });
         });
  }
 
- function activar(idchofer){
+ function activar(iddescuento){
     swal({
         title: "Esta seguro..?"
-        , text: "Al activar este chofer, podra utilizarse en el sistema"
+        , text: "Al activar este descuento, podra utilizarse en el sistema"
         , type: "warning"
         , showCancelButton: true
         , confirmButtonColor: "#da4f49"
         , confirmButtonText: "Si, deseo activarlo!"
         , closeOnConfirm: false
         }, function () {
-            $.post('controllers/chofer.php?op=activar',{idchofer:idchofer},function(e){
+            $.post('controllers/descuento.php?op=activar',{iddescuento:iddescuento},function(e){
             swal("Activado!", e , "success");  
             tabla.ajax.reload();
             });
         });
  }
 
+function validarinput(idcampo,texto){
+    $(idcampo).change(function(){
+          var expreTexto = texto;
+          var cajetin = $(this).parent();
+          if(!expreTexto.test($(this).val())){
+              if(cajetin.hasClass("has-success")){
+                cajetin.removeClass("has-success");
+              } 
+              cajetin.addClass("has-error");
+              bandera = true;
+          } else {
+              if(cajetin.hasClass("has-error")){
+                cajetin.removeClass("has-error");
+              }
+             cajetin.addClass("has-success");
+              bandera = false;
+          } 
+      });
+}
 
 init();
