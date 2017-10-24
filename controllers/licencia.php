@@ -26,18 +26,18 @@ switch ($_GET["op"]){
 			{
                 if($_FILES["imagen"]["size"]<500000){
 				$imagen = round(microtime(true)) . '.' . end($ext);
-				move_uploaded_file($_FILES["imagen"]["tmp_name"], "../vistas/img/choferes/". $imagen);
+				move_uploaded_file($_FILES["imagen"]["tmp_name"], "../vistas/img/licencias/". $imagen);
                 }
 			}
 		}
 
 		if (empty($idlicencia)){
-            $rspta=$licencia->insertar($idvehiculo,$idlicencia,$idcertificado,$nombre,$cedula,$email,$imagen,$telefono,$fechanac,$direccion);
-            echo $rspta ? "Chofer registrado con exito":"No se pudieron registrar todos los datos del chofer";
+            $rspta=$licencia->insertar($grado,$fechaven,$imagen);
+            echo $rspta ? "Licencia registrada con exito":"No se pudieron registrar todos los datos de la licencia";
 		}
 		else {
-            $rspta=$licencia->editar($idchofer,$idvehiculo,$idlicencia,$idcertificado,$nombre,$cedula,$email,$imagen,$telefono,$fechanac,$direccion);
-			echo $rspta ? "Chofer actualizado con exito":"No se pudieron actualizar los datos del chofer";
+            $rspta=$licencia->editar($idlicencia,$grado,$fechaven,$imagen);
+			echo $rspta ? "Licencia actualizada con exito":"No se pudieron actualizar los datos de la licencia";
 		}
     break;
 
@@ -46,14 +46,13 @@ switch ($_GET["op"]){
         $data = Array();
         while($reg = $rspta->fetch_object()){
            $data[]=array(
-               "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idchofer.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="desactivar('.$reg->idchofer.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idchofer.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-primary" onclick="activar('.$reg->idchofer.')"><i class="fa fa-check"></i></button>',
-               "1"=>$reg->nombre,
-               "2"=>$reg->cedula,
-               "3"=>$reg->telefono,
-               "4"=>"<img src='vistas/img/choferes/".$reg->imagen."' height='50px' width='50px'>",
-               "5"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+               "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idlicencia.')"><i class="fa fa-pencil"></i></button>'.
+ 					' <button class="btn btn-danger" onclick="desactivar('.$reg->idlicencia.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idlicencia.')"><i class="fa fa-pencil"></i></button>'.
+ 					' <button class="btn btn-primary" onclick="activar('.$reg->idlicencia.')"><i class="fa fa-check"></i></button>',
+               "1"=>$reg->grado,
+               "2"=>$reg->fechaven,
+               "3"=>"<img src='vistas/img/licencias/".$reg->imagen."' height='50px' width='50px'>",
+               "4"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
            );
         }
         /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/

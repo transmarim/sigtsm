@@ -26,19 +26,21 @@
                     <div class="panel-body table-responsive" id="listadoregistros">
                       <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
-                          <th>GRADO</th>
-                          <th>VENCE</th>
-                          <th>ESTADO</th>
-                          <th>OPCIONES</th>
+                          <th>Opciones</th>
+                          <th>Grado</th>
+                          <th>Vence</th>                         
+                          <th>Documento</th>
+                          <th>Estado</th>
                         </thead>
                         <tbody>
 
                         </tbody>
                         <tfoot>
-                        <th>GRADO</th>
-                        <th>VENCE</th>
-                        <th>ESTADO</th>
-                        <th>OPCIONES</th>
+                          <th>Opciones</th>
+                          <th>Grado</th>
+                          <th>Vence</th>                         
+                          <th>Documento</th>
+                          <th>Estado</th>
                         </tfoot>
                       </table>
                     </div>
@@ -52,13 +54,19 @@
                               <option value="1">1RA</option>
                               <option value="2">2NDA</option>
                               <option value="3">3RA</option>
-                              <option value="3">4TA</option>
+                              <option value="4">4TA</option>
                           </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Vence *:</label>
                           <input type="date" class="form-control" name="fechaven" id="fechaven" required>
                         </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Imagen:</label>
+                            <input type="file" class="form-control" name="imagen" id="imagen">
+                            <input type="hidden" name="imagenactual" id="imagenactual">
+                            <img src="" width="150px" height="150px" id="imagenmuestra">
+                          </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
                           <button class="btn btn-danger" type="button" onclick="cancelarform()"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
@@ -104,4 +112,12 @@
     
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
+    <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+    <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="vistas/plugins/datatables/jszip.min.js"></script>
+    <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+    <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+    <script type="text/javascript" src="vistas/js/licencia.js"></script>
 </div>
