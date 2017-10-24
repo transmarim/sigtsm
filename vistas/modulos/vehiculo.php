@@ -24,23 +24,23 @@
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
-                      <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
+                      <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
-                          <th>PLACA</th>
-                          <th>MODELO</th>
-                          <th>AÑO</th>
-                          <th>ESTADO</th>
-                          <th>OPCIONES</th>
+                          <th>Opciones</th>
+                          <th>Placa</th>
+                          <th>Modelo</th>
+                          <th>Año</th>
+                          <th>Estado</th>
                         </thead>
                         <tbody>
 
                         </tbody>
                         <tfoot>
-                        <th>PLACA</th>
-                        <th>MODELO</th>
-                        <th>AÑO</th>
-                        <th>ESTADO</th>
-                        <th>OPCIONES</th>
+                         <th>Opciones</th>
+                         <th>Placa</th>
+                         <th>Modelo</th>
+                         <th>Año</th>
+                         <th>Estado</th>
                         </tfoot>
                       </table>
                     </div>
@@ -48,7 +48,7 @@
                       <form name="formulario" id="formulario" method="POST">
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Placa *:</label>
-                          <input type="hidden" name="idseguro" id="idseguro">
+                          <input type="hidden" name="idvehiculo" id="idvehiculo">
                            <input type="text" class="form-control" name="placa" id="placa" placeholder="Placa" required>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
