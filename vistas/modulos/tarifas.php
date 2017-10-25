@@ -24,23 +24,24 @@
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
-                      <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
+                      <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
-                          <th>RUTA</th>
-                          <th>T. CHOFER</th>
-                          <th>T. TSM</th>
-                          <th>T. CARIBBEAN</th>
-                          <th>OPCIONES</th>
+                        <th>Opciones</th>
+                        <th>Ruta</th>
+                        <th>T. Chofer</th>
+                        <th>T. TSM</th>
+                        <th>T. CARIBBEAN</th>
+                        </tfoot>
                         </thead>
                         <tbody>
 
                         </tbody>
                         <tfoot>
-                        <th>RUTA</th>
-                        <th>T. CHOFER</th>
+                        <th>Opciones</th>
+                        <th>Ruta</th>
+                        <th>T. Chofer</th>
                         <th>T. TSM</th>
                         <th>T. CARIBBEAN</th>
-                        <th>OPCIONES</th>
                         </tfoot>
                       </table>
                     </div>
@@ -48,7 +49,7 @@
                       <form name="formulario" id="formulario" method="POST">
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Ruta *:</label>
-                          <input type="hidden" name="idtarifas" id="idtarifas">
+                          <input type="hidden" name="idtarifa" id="idtarifa">
                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ruta" required>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -110,4 +111,12 @@
 
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
+    <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+    <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="vistas/plugins/datatables/jszip.min.js"></script>
+    <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+    <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+    <script type="text/javascript" src="vistas/js/tarifas.js"></script>
 </div>
