@@ -47,7 +47,7 @@
                     <div class="panel-body" id="formularioregistros">
                       <form name="formulario" id="formulario" method="POST">
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <input type="hidden" name="idlicencia" id="idlicencia">
+                        <input type="hidden" name="idtalonario" id="idtalonario">
                          <label>Chofer*:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                           <select id="idchofer" class="form-control selectpicker" data-live-search="true" name="idchofer" required>
                               <option value="">Seleccione un chofer</option>
@@ -114,4 +114,12 @@
     
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
+        <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+    <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="vistas/plugins/datatables/jszip.min.js"></script>
+    <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+    <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+    <script type="text/javascript" src="vistas/js/talonario.js"></script>
 </div>
