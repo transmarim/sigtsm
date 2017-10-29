@@ -44,4 +44,9 @@ class Chofer{
         return Consulta($sql);
     }
     
+    public static function selectc(){
+        $sql = "SELECT idchofer, nombre FROM chofer WHERE condicion=1";
+        return Consulta($sql);
+    }
+    
 }

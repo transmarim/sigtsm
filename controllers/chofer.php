@@ -95,5 +95,13 @@ switch ($_GET["op"]){
     $rspta = $chofer->activar($idchofer);
     echo $rspta ? "Chofer activado": "El chofer no se puede activar";
     break;
+    
+    case 'selectc':
+    $rspta = $chofer->selectc();
+    while ($reg = $rspta->fetch_object())
+        {
+            echo '<option value=' .$reg->idchofer. '>' .$reg->nombre. '</option>';
+        }
+    break;
 
 }

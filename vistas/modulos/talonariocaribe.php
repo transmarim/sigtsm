@@ -116,5 +116,5 @@
     <script src="vistas/plugins/datatables/jszip.min.js"></script>
     <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
     <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
-    <script type="text/javascript" src="vistas/js/talonario.js"></script>
+    <script type="text/javascript" src="vistas/js/talonariocaribe.js"></script>
 </div>

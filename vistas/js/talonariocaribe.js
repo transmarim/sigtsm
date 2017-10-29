@@ -62,7 +62,7 @@ function listar(){
 		        ],
 		"ajax":
 				{
-					url: 'controllers/talonario.php?op=listar',
+					url: 'controllers/talonariocaribe.php?op=listar',
 					type : "get",
 					dataType : "json",
 					error: function(e){
@@ -79,7 +79,7 @@ function guardaryeditar(e){
     e.preventDefault();
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
-       url:"controllers/talonario.php?op=guardaryeditar",
+       url:"controllers/talonariocaribe.php?op=guardaryeditar",
        type:"POST",
        data: formData,
        contentType: false,
@@ -93,7 +93,7 @@ function guardaryeditar(e){
 }
 
 function mostrar(idtalonario){
-     $.post("controllers/talonario.php?op=mostrar",{idtalonario:idtalonario},function(data,status){
+     $.post("controllers/talonariocaribe.php?op=mostrar",{idtalonario:idtalonario},function(data,status){
           /*Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript*/
          data = JSON.parse(data);
          mostrarform(true);
@@ -116,7 +116,7 @@ function mostrar(idtalonario){
         , confirmButtonText: "Si, deseo eliminarla!"
         , closeOnConfirm: false
         }, function () {
-            $.post('controllers/talonario.php?op=eliminar',{idtalonario:idtalonario},function(e){
+            $.post('controllers/talonariocaribe.php?op=eliminar',{idtalonario:idtalonario},function(e){
             swal("Eliminada!", e , "success");  
             tabla.ajax.reload();
             });

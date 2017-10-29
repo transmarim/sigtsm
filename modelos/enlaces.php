@@ -21,6 +21,7 @@ class EnlacesModels{
        $enlaces == "descuento" ||
        $enlaces == "usuario" ||
        $enlaces == "talonario" ||
+       $enlaces == "talonariocaribe" ||
        $enlaces == "imprimiru" ||
        $enlaces == "veralert" ||
        $enlaces == "pagoticket" ||

@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once("../modelos/Talonario.php");
+require_once("../modelos/TalonarioCaribe.php");
 
-$talonario = new Talonario();
+$talonario = new TalonarioCaribe();
 
 /*INICIALIZO VARIABLES*/
 
