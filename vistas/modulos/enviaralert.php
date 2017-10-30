@@ -31,12 +31,6 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td>123456</td>
-                              <td>JOSE EJEMPLO</td>
-                              <td><a data-toggle="modal" href="#myModal"><button id="btnAgregarArt" type="button" class="btn btn-warning btn-block btn-social" style="text-align:center;"><span class="fa fa-exclamation"></span>Notificar Alerta</button>
-                                </a>
-                              </td>
-                            </tr>
                           </tbody>
                           <tfoot>
                             <th>Cedula</th>
@@ -105,13 +99,14 @@
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Chofer(*):</label>
                   <input type="hidden" name="idchofer" id="idchofer">
-                  <input type="text" class="form-control"  id="idchofer" name="idchofer" required disabled>
+                  <input type="text" class="form-control"  id="nombre" name="nombre" required disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Asunto(*):</label>
                   <select id="asunto" name="asunto" class="form-control selectpicker" data-live-search="true" required>
-                    <option value="">DOCUMENTOS VENCIDOS</option>
-                    <option value="">CEDULA VENCIDA</option>
+                    <option value="">--</option>
+                    <option value="DOCUMENTOS VENCIDOS">DOCUMENTOS VENCIDOS</option>
+                    <option value="CEDULA VENCIDA">CEDULA VENCIDA</option>
                   </select>
                 </div>
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -138,5 +133,13 @@
     <!-- Main content -->
 
     <!-- /.content -->
-    <?php include_once("vistas/modulos/inc/footer.php"); ?>
+   <?php include_once("vistas/modulos/inc/footer.php"); ?>
+    <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+    <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="vistas/plugins/datatables/jszip.min.js"></script>
+    <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+    <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+    <script type="text/javascript" src="vistas/js/enviaralert.js"></script>    
 </div>
