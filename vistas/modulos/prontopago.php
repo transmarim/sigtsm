@@ -105,7 +105,7 @@
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Chofer(*):</label>
                   <input type="hidden" name="idchofer" id="idchofer">
-                  <input type="text" class="form-control"  id="idchofer" name="idchofer" required disabled>
+                  <input type="text" class="form-control"  id="nombre" name="nombre" required disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Asunto(*):</label>
@@ -143,4 +143,7 @@
 
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
+    <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+    <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="vistas/js/prontopago.js"></script> 
 </div>
