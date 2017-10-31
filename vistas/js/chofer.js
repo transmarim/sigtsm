@@ -43,6 +43,11 @@ function mostrarform(flag){
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
         
+    $.post("controllers/vehiculo.php?op=selectVehiculo",function(respuesta){
+    $("#idvehiculo").html(respuesta);
+    $("#idvehiculo").selectpicker('refresh');
+    });
+        
     }else{
         $("#listadoregistros").show();
         $("#formulario").hide();
@@ -106,8 +111,15 @@ function mostrar(idchofer){
          mostrarform(true);
          $("#idchofer").val(data.idchofer);
          $("#nombre").val(data.nombre);
-         $("#idvehiculo").val(data.idvehiculo);
-         $("#idvehiculo").selectpicker('refresh');
+ 
+         $.post("controllers/vehiculo.php?op=mostrar",{idvehiculo:data.idvehiculo},function(dato,status){
+            dato = JSON.parse(dato);
+            $("#idvehiculo").find("option[value='"+dato.idvehiculo+"']").remove();
+            $("#idvehiculo").append('<option value="'+dato.idvehiculo+'">'+dato.placa+' - '+dato.modelo+'</option>');
+            $("#idvehiculo").val(dato.idvehiculo);
+            $("#idvehiculo").selectpicker('refresh');
+            });
+         
          /*MODIFICAR SELECT*/
          $("#idlicencia").find("option[value='"+data.idlicencia+"']").remove();
          $("#idlicencia").append('<option value="'+data.idlicencia+'">'+data.idlicencia+'</option>');

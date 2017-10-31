@@ -38,4 +38,10 @@ class Vehiculo{
         $sql = "SELECT * FROM vehiculo";
         return Consulta($sql);
     }
+    
+    public static function select(){
+        $sql = "SELECT T1.idvehiculo, T1.placa, T1.modelo FROM vehiculo as T1 LEFT OUTER JOIN chofer as T2 ON T1.idvehiculo = T2.idvehiculo WHERE T2.idvehiculo is null";
+        return Consulta($sql);
+    }
+    
 }

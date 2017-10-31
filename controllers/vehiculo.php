@@ -85,5 +85,13 @@ switch ($_GET["op"]){
     $rspta = $vehiculo->activar($idvehiculo);
     echo $rspta ? "Vehiculo activado": "El vehiculo no se puede activar";
     break;
+    
+    case 'selectVehiculo':
+    $rspta = $vehiculo->select();
+    while ($reg = $rspta->fetch_object())
+				{
+					echo '<option value=' .$reg->idvehiculo. '>'.$reg->placa.' - '.$reg->modelo.'</option>';
+				}
+    break;
 
 }
