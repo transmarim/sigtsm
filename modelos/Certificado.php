@@ -44,4 +44,9 @@ class Certificado{
         return Consulta($sql);
     }
     
+    public static function select(){
+        $sql = "SELECT T1.idcertificado, T1.numero FROM certificado as T1 LEFT OUTER JOIN chofer as T2 ON T1.idcertificado = T2.idcertificado WHERE T2.idcertificado is null";
+        return Consulta($sql);
+    }
+    
 }

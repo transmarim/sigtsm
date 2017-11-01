@@ -62,5 +62,13 @@ switch ($_GET["op"]){
     $rspta = $certificado->activar($idcertificado);
     echo $rspta ? "Certificado activado": "El certificado no se puede activar";
     break;
+    
+    case 'selectCertificado':
+    $rspta = $certificado->select();
+    while ($reg = $rspta->fetch_object())
+				{
+					echo '<option value='.$reg->idcertificado.'>'.$reg->numero.'</option>';
+				}
+    break;    
 
 }

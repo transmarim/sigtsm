@@ -56,9 +56,6 @@
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                          <label>Vehiculo *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                           <select id="idvehiculo" class="form-control selectpicker" data-live-search="true" name="idvehiculo" required>
-                              <option value="">--</option>
-                              <option value="1">1</option>
-                              <option value="2">IAO72A</option>
                           </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -69,9 +66,6 @@
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                          <label>Certificado *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                           <select id="idcertificado" class="form-control selectpicker" data-live-search="true" name="idcertificado" required>
-                              <option value="">--</option>
-                              <option value="1">1</option>
-                              <option value="2">VEN23</option>
                           </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

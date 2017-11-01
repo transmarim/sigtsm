@@ -47,6 +47,11 @@ function mostrarform(flag){
     $("#idvehiculo").html(respuesta);
     $("#idvehiculo").selectpicker('refresh');
     });
+    
+    $.post("controllers/certificado.php?op=selectCertificado",function(respuesta){
+    $("#idcertificado").html(respuesta);
+    $("#idcertificado").selectpicker('refresh');
+    });
         
     }else{
         $("#listadoregistros").show();
@@ -120,13 +125,19 @@ function mostrar(idchofer){
             $("#idvehiculo").selectpicker('refresh');
             });
          
+         $.post("controllers/certificado.php?op=mostrar",{idcertificado:data.idcertificado},function(dato2,status){
+            dato2 = JSON.parse(dato2);
+            $("#idcertificado").find("option[value='"+dato2.idcertificado+"']").remove();
+            $("#idcertificado").append('<option value="'+dato2.idcertificado+'">'+dato2.numero+'</option>');
+            $("#idcertificado").val(dato2.idcertificado);
+            $("#idcertificado").selectpicker('refresh');
+            });
+         
          /*MODIFICAR SELECT*/
          $("#idlicencia").find("option[value='"+data.idlicencia+"']").remove();
          $("#idlicencia").append('<option value="'+data.idlicencia+'">'+data.idlicencia+'</option>');
          $("#idlicencia").val(data.idlicencia);
          $("#idlicencia").selectpicker('refresh');
-         $("#idcertificado").val(data.idcertificado);
-         $("#idcertificado").selectpicker('refresh');
          $("#cedula").val(data.cedula);
          $("#telefono").val(data.telefono);
          $("#fechanac").val(data.fechanac);
