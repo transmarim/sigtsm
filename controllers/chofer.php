@@ -68,7 +68,7 @@ switch ($_GET["op"]){
                "2"=>$reg->cedula,
                "3"=>$reg->telefono,
                "4"=>"<img src='vistas/img/choferes/".$reg->imagen."' height='50px' width='50px'>",
-               "5"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+               "5"=>($reg->condicion)?'<span class="label bg-green">Activo</span>':'<span class="label bg-red">Inactivo</span>'
            );
         }
         /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/

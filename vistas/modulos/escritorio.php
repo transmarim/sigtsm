@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="item"> <img src="vistas/img/user3-128x128.jpg" alt="user image" class="offline">
                                         <p class="message">
-                                            <a href="#" class="name"> <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:15</small> Leonardo Ferrer </a> Ya pagaron viejo verde, no te hagas el loco. </p>
+                                            <a href="#" class="name"> <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:15</small> Leonardo Ferrer </a> Ya pagaron, confirma en tu banco. </p>
                                     </div>
                                     <div class="item"> <img src="vistas/img/user2-160x160.jpg" alt="user image" class="offline">
                                         <p class="message">

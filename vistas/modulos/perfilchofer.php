@@ -20,7 +20,7 @@
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile"> <img class="profile-user-img img-responsive img-circle" src="vistas/img/user1-128x128.jpg" alt="User profile picture">
-                        <h3 class="profile-username text-center">Luis Villalba</h3>
+                        <h3 class="profile-username text-center">Jesus Hernandez</h3>
                         <p class="text-muted text-center">Conductor</p>
                     </div>
                     <!-- /.box-body -->

@@ -5,10 +5,10 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="vistas/img/user2-160x160.jpg" class="user-image" alt="User Image"> <span class="hidden-xs">Luis Villalba</span> </a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="vistas/img/user2-160x160.jpg" class="user-image" alt="User Image"> <span class="hidden-xs">Jesus Hernandez</span> </a>
                     <ul class="dropdown-menu">
                         <li class="user-header"> <img src="vistas/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                            <p> Luis Villalba <small>Conductor</small> </p>
+                            <p> Jesus Hernandez <small>Conductor</small> </p>
                         </li>
                         <li class="user-footer">
                             <div class="pull-left"> <a href="perfilchofer" class="btn btn-default btn-flat">Editar</a> </div>
@@ -50,7 +50,7 @@
         <div class="user-panel">
             <div class="pull-left image"> <img src="vistas/img/user2-160x160.jpg" class="img-circle" alt="User Image"> </div>
             <div class="pull-left info">
-                <p>Luis Villalba</p> <a href="#"><i class="fa fa-circle text-success"></i> Online</a> </div>
+                <p>Jesus Hernandez</p> <a href="#"><i class="fa fa-circle text-success"></i> Online</a> </div>
         </div>
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MENU NAVEGACION</li>

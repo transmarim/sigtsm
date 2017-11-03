@@ -70,5 +70,14 @@ switch ($_GET["op"]){
     $rspta = $cliente->activar($idcliente);
     echo $rspta ? "Cliente activado": "El cliente no se puede activar";
     break;
+    
+    case 'listarc':
+    $rspta = $cliente->listarc();
+    while ($reg = $rspta->fetch_object())
+        {
+            echo '<option value=' .$reg->idcliente. '>' .$reg->nombre. '</option>';
+        }
+    break;
+        
 
 }

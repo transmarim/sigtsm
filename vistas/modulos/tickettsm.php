@@ -84,14 +84,6 @@
                           <input type="number" class="form-control" name="montoc" id="montoc" step="0.1">
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                         <label>Estado *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
-                          <select id="estado" class="form-control" name="estado" required>
-                              <option value="">--</option>
-                              <option value="0">POR PAGAR</option>
-                              <option value="1">PAGADO</option>
-                          </select>
-                        </div>
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Descripcion:</label>
                           <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" maxlength="255" cols="30" rows="3"></textarea>
                         </div>
@@ -156,4 +148,12 @@
     
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
+    <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+    <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="vistas/plugins/datatables/jszip.min.js"></script>
+    <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+    <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+    <script type="text/javascript" src="vistas/js/tickettsm.js"></script>
 </div>
