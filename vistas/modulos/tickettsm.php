@@ -24,23 +24,25 @@
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
-                      <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
+                      <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
-                          <th>FECHA</th>
-                          <th>AGENCIA</th>
-                          <th>TICKET</th>
-                          <th>BUQUE</th>
-                          <th>MONTO</th>
+                          <th>Opciones</th>
+                          <th>Fecha</th>
+                          <th>Ticket</th>
+                          <th>Agencia</th>
+                          <th>Buque</th>
+                          <th>Monto</th>
                         </thead>
                         <tbody>
 
                         </tbody>
                         <tfoot>
-                          <th>FECHA</th>
-                          <th>AGENCIA</th>
-                          <th>TICKET</th>
-                          <th>BUQUE</th>
-                          <th>MONTO</th>
+                           <th>Opciones</th>
+                          <th>Fecha</th>
+                          <th>Ticket</th>
+                          <th>Agencia</th>
+                          <th>Buque</th>
+                          <th>Monto</th>
                         </tfoot>
                       </table>
                     </div>
@@ -76,7 +78,7 @@
                           <input type="number" class="form-control" name="montop" id="montop" step="0.1" required>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <label>Monto a Retener:</label>
+                          <label>Monto a Retener <span style="color:red">1%</span>:</label>
                           <input type="number" class="form-control" name="montoret" id="montoret" required disabled>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

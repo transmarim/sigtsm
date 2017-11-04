@@ -58,5 +58,13 @@ switch ($_GET["op"]){
     $rspta = $centro->activar($idcentro);
     echo $rspta ? "Buque activado": "El buque no se puede activar";
     break;
+    
+    case 'listarc':
+    $rspta = $centro->listarc();
+    while ($reg = $rspta->fetch_object())
+    {
+        echo '<option value=' .$reg->idcentro. '>' .$reg->nombre. '</option>';
+    }
+    break;
 
 }

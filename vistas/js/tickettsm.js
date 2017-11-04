@@ -3,6 +3,7 @@ var bandera;
 
 function init(){
     mostrarform(false);
+    calcularRet();
     listar();
     $("#imagenmuestra").hide();
     
@@ -15,6 +16,11 @@ function init(){
     $.post("controllers/chofer.php?op=selectc",function(respuesta){
     $("#idchofer").html(respuesta);
     $("#idchofer").selectpicker('refresh');
+    });
+    
+    $.post("controllers/centro.php?op=listarc",function(respuesta){
+    $("#idcentro").html(respuesta);
+    $("#idcentro").selectpicker('refresh');
     });
     
      $("#formulario").on("submit",function(e){
@@ -45,16 +51,6 @@ function mostrarform(flag){
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
         
-    $.post("controllers/vehiculo.php?op=selectVehiculo",function(respuesta){
-    $("#idvehiculo").html(respuesta);
-    $("#idvehiculo").selectpicker('refresh');
-    });
-    
-    $.post("controllers/certificado.php?op=selectCertificado",function(respuesta){
-    $("#idcertificado").html(respuesta);
-    $("#idcertificado").selectpicker('refresh');
-    });
-        
     }else{
         $("#listadoregistros").show();
         $("#formulario").hide();
@@ -81,7 +77,7 @@ function listar(){
 		        ],
 		"ajax":
 				{
-					url: 'controllers/chofer.php?op=listar',
+					url: 'controllers/tickettsm.php?op=listar',
 					type : "get",
 					dataType : "json",
 					error: function(e){
@@ -89,7 +85,7 @@ function listar(){
 					}
 				},
 		"bDestroy": true,
-		"iDisplayLength": 5,//Paginacion
+		"iDisplayLength": 25,//Paginacion
 	    "order": [[ 0, "desc" ]]//Ordenar (columna,orden)
 	}).DataTable();
 }
@@ -98,7 +94,7 @@ function guardaryeditar(e){
     e.preventDefault();
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
-       url:"controllers/chofer.php?op=guardaryeditar",
+       url:"controllers/tickettsm.php?op=guardaryeditar",
        type:"POST",
        data: formData,
        contentType: false,
@@ -185,6 +181,14 @@ function mostrar(idchofer){
             });
         });
  }
+
+function calcularRet(){
+    $("#montop").change(function(){
+        var monto = $(this).val();
+        var ret = monto*0.01;
+        $("#montoret").val(ret);
+    })
+}
 
 
 init();
