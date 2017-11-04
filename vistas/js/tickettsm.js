@@ -5,7 +5,6 @@ function init(){
     mostrarform(false);
     calcularRet();
     listar();
-    $("#imagenmuestra").hide();
     
     /*MOSTRAR SELECT LICENCIA*/
     $.post("controllers/cliente.php?op=listarc",function(respuesta){
@@ -30,7 +29,7 @@ function init(){
 }
 
 function limpiar(){
-    $("#tickettsm").val("");
+    $("#idtickettsm").val("");
     $("#codigo").val("");
     $("#fecha").val("");
     $("#fechapago").val("");
@@ -45,6 +44,7 @@ function limpiar(){
 
 function mostrarform(flag){
     limpiar();
+    $("#montoret").attr("disabled", true);
     if(flag){
         $("#listadoregistros").hide();
         $("#formulario").show('fast');
@@ -91,6 +91,7 @@ function listar(){
 }
 
 function guardaryeditar(e){
+    $("#montoret").attr("disabled", false);
     e.preventDefault();
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
@@ -107,44 +108,25 @@ function guardaryeditar(e){
     });
 }
 
-function mostrar(idchofer){
-     $.post("controllers/chofer.php?op=mostrar",{idchofer:idchofer},function(data,status){
+function mostrar(idtickettsm){
+     $.post("controllers/tickettsm.php?op=mostrar",{idtickettsm:idtickettsm},function(data,status){
           /*Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript*/
          data = JSON.parse(data);
          mostrarform(true);
+         $("#idtickettsm").val(data.idtickettsm);
+         $("#idcliente").val(data.idcliente);
+         $("#idcliente").selectpicker('refresh');
          $("#idchofer").val(data.idchofer);
-         $("#nombre").val(data.nombre);
- 
-         $.post("controllers/vehiculo.php?op=mostrar",{idvehiculo:data.idvehiculo},function(dato,status){
-            dato = JSON.parse(dato);
-            $("#idvehiculo").find("option[value='"+dato.idvehiculo+"']").remove();
-            $("#idvehiculo").append('<option value="'+dato.idvehiculo+'">'+dato.placa+' - '+dato.modelo+'</option>');
-            $("#idvehiculo").val(dato.idvehiculo);
-            $("#idvehiculo").selectpicker('refresh');
-            });
-         
-         $.post("controllers/certificado.php?op=mostrar",{idcertificado:data.idcertificado},function(dato2,status){
-            dato2 = JSON.parse(dato2);
-            $("#idcertificado").find("option[value='"+dato2.idcertificado+"']").remove();
-            $("#idcertificado").append('<option value="'+dato2.idcertificado+'">'+dato2.numero+'</option>');
-            $("#idcertificado").val(dato2.idcertificado);
-            $("#idcertificado").selectpicker('refresh');
-            });
-         
-         /*MODIFICAR SELECT*/
-         $("#idlicencia").find("option[value='"+data.idlicencia+"']").remove();
-         $("#idlicencia").append('<option value="'+data.idlicencia+'">'+data.idlicencia+'</option>');
-         $("#idlicencia").val(data.idlicencia);
-         $("#idlicencia").selectpicker('refresh');
-         $("#cedula").val(data.cedula);
-         $("#telefono").val(data.telefono);
-         $("#fechanac").val(data.fechanac);
-         $("#email").val(data.email);
-         $("#direccion").val(data.direccion);
-         /*MOSTRAMOS IMG DE MUESTRA*/
-         $("#imagenmuestra").show();
-         $("#imagenmuestra").attr("src","vistas/img/choferes/"+data.imagen);
-         $("#imagenactual").val(data.imagen);
+         $("#idchofer").selectpicker('refresh');
+         $("#idcentro").val(data.idcentro);
+         $("#idcentro").selectpicker('refresh');
+         $("#codigo").val(data.codigo);
+         $("#fecha").val(data.fecha);
+         $("#fechapago").val(data.fechapago);
+         $("#montop").val(data.montop);
+         $("#montoc").val(data.montoc);
+         $("#montoret").val(data.montoret);
+         $("#descripcion").val(data.descripcion);
      });
     }
 
