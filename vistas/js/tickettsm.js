@@ -32,7 +32,6 @@ function limpiar(){
     $("#idtickettsm").val("");
     $("#codigo").val("");
     $("#fecha").val("");
-    $("#fechapago").val("");
     $("#montop").val("");
     $("#montoret").val("");
     $("#montoc").val("");

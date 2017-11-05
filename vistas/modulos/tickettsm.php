@@ -27,6 +27,7 @@
                       <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                           <th>Opciones</th>
+                          <th>Chofer</th>
                           <th>Fecha</th>
                           <th>Ticket</th>
                           <th>Agencia</th>
@@ -38,6 +39,7 @@
                         </tbody>
                         <tfoot>
                            <th>Opciones</th>
+                          <th>Chofer</th>
                           <th>Fecha</th>
                           <th>Ticket</th>
                           <th>Agencia</th>

@@ -50,12 +50,13 @@ switch ($_GET["op"]){
                "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idtickettsm.')"><i class="fa fa-pencil"></i></button>'.
  					' <button class="btn btn-danger" onclick="desactivar('.$reg->idtickettsm.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idtickettsm.')"><i class="fa fa-pencil"></i></button>'.
  					' <button class="btn btn-primary" onclick="activar('.$reg->idtickettsm.')"><i class="fa fa-check"></i></button>',
-               "1"=>$reg->fechapago,
-               "2"=>$reg->codigo,
-               "3"=>$reg->idcliente,
-               "4"=>$reg->idcentro,
-               "5"=>number_format($reg->montop,2,',','.'),
-               "6"=>($reg->condicion)?'<span class="label bg-green">Activo</span>':'<span class="label bg-red">Inactivo</span>'
+               "1"=>$reg->nombrech,
+               "2"=>$reg->fechapago,
+               "3"=>$reg->codigo,
+               "4"=>$reg->nombre,
+               "5"=>$reg->nombrec,
+               "6"=>number_format($reg->montop,2,',','.'),
+               "7"=>($reg->condicion)?'<span class="label bg-green">Activo</span>':'<span class="label bg-red">Inactivo</span>'
            );
         }
         /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/
