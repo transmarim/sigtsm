@@ -19,13 +19,8 @@ class Tickettsm{
         return $sw;
     }
     
-    public static function desactivar($idtickettsm){
-        $sql = "UPDATE tickettsm SET condicion='0' WHERE idtickettsm='$idtickettsm'";
-        return Consulta($sql);
-    }
-    
-    public static function activar($idtickettsm){
-        $sql = "UPDATE tickettsm SET condicion='1' WHERE idtickettsm='$idtickettsm'";
+    public static function eliminar($idtickettsm){
+        $sql = "DELETE FROM tickettsm WHERE idtickettsm='$idtickettsm'";
         return Consulta($sql);
     }
     

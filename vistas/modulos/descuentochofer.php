@@ -45,7 +45,7 @@
                                             <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                 <label>Chofer(*):</label>
                                                 <input type="hidden" name="idchofer_descuento" id="idchofer_descuento">
-                                                <select id="idproveedor" name="idproveedor" class="form-control selectpicker" data-live-search="true" required> </select>
+                                                <select id="idchofer" name="idchofer" class="form-control selectpicker" data-live-search="true" required> </select>
                                             </div>
                                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <label>Fecha(*):</label>
@@ -53,12 +53,9 @@
                                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <label>Descuento(*):</label>
                                                 <select name="iddescuento" id="iddescuento" class="form-control selectpicker" required="">
-                                                    <option value="Transferencia">Transferencia</option>
-                                                    <option value="Cheque">Cheque</option>
-                                                    <option value="Efectivo">Efectivo</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                            <div id="tipodemontoform" class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
                                                 <label>¿Es porcentual?:</label>
                                                 <select name="tipodemonto" id="tipodemonto" class="form-control selectpicker" required="">
                                                     <option value="">--</option>
@@ -66,10 +63,10 @@
                                                     <option value="0">No</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div id="montodescform" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                 <label>Monto Descontado:</label>
                                                 <input type="text" class="form-control" name="montodesc" id="montodesc" maxlength="20" placeholder="Monto descontado"> </div>
-                                            <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div id="porcentajeform" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                 <label>% Descontado:</label>
                                                 <input type="text" class="form-control" name="porcentaje" id="porcentaje" maxlength="2" placeholder="Ingrese porcentaje"> </div>
                                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -132,5 +129,13 @@
                 </section>
                 <!-- Main content -->
                 <!-- /.content -->
-                <?php include_once("vistas/modulos/inc/footer.php"); ?>
+                    <?php include_once("vistas/modulos/inc/footer.php"); ?>
+            <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+            <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+            <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+            <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+            <script src="vistas/plugins/datatables/jszip.min.js"></script>
+            <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+            <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+            <script type="text/javascript" src="vistas/js/descuentochofer.js"></script>
             </div>

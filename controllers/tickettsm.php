@@ -47,9 +47,7 @@ switch ($_GET["op"]){
         $data = Array();
         while($reg = $rspta->fetch_object()){
            $data[]=array(
-               "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idtickettsm.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="desactivar('.$reg->idtickettsm.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idtickettsm.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-primary" onclick="activar('.$reg->idtickettsm.')"><i class="fa fa-check"></i></button>',
+               "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idtickettsm.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="eliminar('.$reg->idtickettsm.')"><i class="fa fa-trash"></i></button>',
                "1"=>$reg->nombrech,
                "2"=>$reg->fechapago,
                "3"=>$reg->codigo,
@@ -74,14 +72,9 @@ switch ($_GET["op"]){
         echo json_encode($rspta);
     break;
 
-    case 'desactivar':
-      $rspta = $tickettsm->desactivar($idtickettsm);
-      echo $rspta ? "Ticket desativado": "El Ticket no se puede desactivar";
-    break;
-
-    case 'activar':
-    $rspta = $tickettsm->activar($idtickettsm);
-    echo $rspta ? "Ticket activado": "El chofer no se puede activar";
+    case 'eliminar':
+      $rspta = $tickettsm->eliminar($idtickettsm);
+      echo $rspta ? "Ticket eliminado": "El Ticket no se puede eliminar";
     break;
     
     case 'selectc':

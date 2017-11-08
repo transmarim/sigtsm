@@ -129,35 +129,18 @@ function mostrar(idtickettsm){
      });
     }
 
- function desactivar(idchofer){
+ function eliminar(idtickettsm){
     swal({
         title: "Esta seguro..?"
-        , text: "Al desactivar este chofer, no podra utilizarse en el sistema"
+        , text: "Al eliminar este ticket, no estara disponible en el sistema"
         , type: "warning"
         , showCancelButton: true
         , confirmButtonColor: "#da4f49"
-        , confirmButtonText: "Si, deseo desactivarlo!"
+        , confirmButtonText: "Si, deseo eliminarlo!"
         , closeOnConfirm: false
         }, function () {
-            $.post('controllers/chofer.php?op=desactivar',{idchofer:idchofer},function(e){
-            swal("Desactivado!", e , "success");  
-            tabla.ajax.reload();
-            });
-        });
- }
-
- function activar(idchofer){
-    swal({
-        title: "Esta seguro..?"
-        , text: "Al activar este chofer, podra utilizarse en el sistema"
-        , type: "warning"
-        , showCancelButton: true
-        , confirmButtonColor: "#da4f49"
-        , confirmButtonText: "Si, deseo activarlo!"
-        , closeOnConfirm: false
-        }, function () {
-            $.post('controllers/chofer.php?op=activar',{idchofer:idchofer},function(e){
-            swal("Activado!", e , "success");  
+            $.post('controllers/tickettsm.php?op=eliminar',{idtickettsm:idtickettsm},function(e){
+            swal("Eliminado!", e , "success");  
             tabla.ajax.reload();
             });
         });
