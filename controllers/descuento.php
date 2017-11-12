@@ -59,5 +59,13 @@ switch ($_GET["op"]){
     $rspta = $descuento->activar($iddescuento);
     echo $rspta ? "Descuento activado": "El descuento no se puede activar";
     break;
+    
+    case 'listarc':
+    $rspta = $descuento->listarc();
+    while ($reg = $rspta->fetch_object())
+        {
+            echo '<option value=' .$reg->iddescuento. '>' .$reg->nombre. '</option>';
+        }
+    break;
 
 }

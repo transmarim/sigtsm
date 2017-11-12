@@ -12,6 +12,11 @@ function init(){
     $("#idchofer").selectpicker('refresh');
     });
     
+    $.post("controllers/descuento.php?op=listarc",function(respuesta){
+    $("#iddescuento").html(respuesta);
+    $("#iddescuento").selectpicker('refresh');
+    });
+    
      $("#formulario").on("submit",function(e){
        guardaryeditar(e);
     });

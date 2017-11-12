@@ -56,11 +56,11 @@
                           <input type="number" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
                         </div>
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                         <label>Tipo *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                         <label>Tipo de Persona *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                           <select id="tipo_documento" class="form-control selectpicker" data-live-search="true" name="tipo_documento" required>
                               <option value="">--</option>
-                              <option value="V-">CEDULA</option>
-                              <option value="J-">RIF</option>
+                              <option value="V-">NATURAL</option>
+                              <option value="J-">JURIDICA</option>
                           </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -105,7 +105,7 @@
                                             <dt>Telefono</dt>
                                             <dd style="text-align:justify">Ingrese el telefono del cliente en el sistema.</dd>
                                             <dt>Tipo</dt>
-                                            <dd style="text-align:justify">Seleccione el tipo de documento fiscal del cliente (RIF,C.I)</dd>
+                                            <dd style="text-align:justify">Seleccione el tipo de documento fiscal del cliente (PN,PJ)</dd>
                                             <dt>Codigo</dt>
                                             <dd style="text-align:justify">Ingrese el codigo fiscal sin argumentos J, V o G, solo enteros.
                                             </dd>

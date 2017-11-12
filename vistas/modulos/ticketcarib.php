@@ -24,23 +24,27 @@
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
-                      <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
+                      <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
-                          <th>FECHA</th>
-                          <th>AGENCIA</th>
-                          <th>TICKET</th>
-                          <th>BUQUE</th>
-                          <th>MONTO</th>
+                          <th>Opciones</th>
+                          <th>Chofer</th>
+                          <th>Fecha</th>
+                          <th>Ticket</th>
+                          <th>Agencia</th>
+                          <th>Buque</th>
+                          <th>Monto</th>
                         </thead>
                         <tbody>
 
                         </tbody>
                         <tfoot>
-                          <th>FECHA</th>
-                          <th>AGENCIA</th>
-                          <th>TICKET</th>
-                          <th>BUQUE</th>
-                          <th>MONTO</th>
+                           <th>Opciones</th>
+                          <th>Chofer</th>
+                          <th>Fecha</th>
+                          <th>Ticket</th>
+                          <th>Agencia</th>
+                          <th>Buque</th>
+                          <th>Monto</th>
                         </tfoot>
                       </table>
                     </div>
@@ -48,7 +52,7 @@
                       <form name="formulario" id="formulario" method="POST">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Cliente *:</label>
-                          <input type="hidden" name="idtickettsm" id="idtickettsm">
+                          <input type="hidden" name="idticketcaribe" id="idticketcaribe">
                           <select id="idcliente" class="form-control selectpicker" data-live-search="true" name="idcliente"></select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -61,7 +65,7 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Codigo *:</label>
-                          <input type="number" class="form-control" name="codigo" id="codigo" step="1" required>
+                          <input type="number" class="form-control" name="codigo" id="codigo" step="1" placeholder="Codigo del ticket" required>
                         </div>
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Fecha Pago *:</label>
@@ -76,20 +80,12 @@
                           <input type="number" class="form-control" name="montop" id="montop" step="0.1" required>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <label>Monto a Retener:</label>
+                          <label>Monto a Retener <span style="color:red">1%</span>:</label>
                           <input type="number" class="form-control" name="montoret" id="montoret" required disabled>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Monto a Cobrar:</label>
                           <input type="number" class="form-control" name="montoc" id="montoc" step="0.1">
-                        </div>
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                         <label>Estado *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
-                          <select id="estado" class="form-control" name="estado" required>
-                              <option value="">--</option>
-                              <option value="0">POR PAGAR</option>
-                              <option value="1">PAGADO</option>
-                          </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Descripcion:</label>
@@ -156,4 +152,12 @@
     
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
+    <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+    <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="vistas/plugins/datatables/jszip.min.js"></script>
+    <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+    <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+    <script type="text/javascript" src="vistas/js/ticketcarib.js"></script>
 </div>
