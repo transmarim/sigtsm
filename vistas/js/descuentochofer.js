@@ -84,7 +84,7 @@ function guardaryeditar(e){
     e.preventDefault();
     var formData = new FormData($("#formulario")[0]);
     $.ajax({
-       url:"controllers/licencia.php?op=guardaryeditar",
+       url:"controllers/descuentochofer.php?op=guardaryeditar",
        type:"POST",
        data: formData,
        contentType: false,
@@ -149,6 +149,8 @@ function mostrar(idlicencia){
 
 function mostrartipo(){
     $("#tipodemonto").change(function(){
+        $("#porcentaje").val("");
+        $("#montodesc").val("");
         var tipo = $(this).selectpicker("val");
         if(tipo == 1){
             $("#porcentajeform").show();

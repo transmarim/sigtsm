@@ -24,6 +24,12 @@ if(!function_exists('Consulta')){
     $query = $conn->query($sql);
     return $conn->insert_id;
   }
+  function Consulta_num($sql){
+    global $conn;
+    $query = $conn->query($sql);
+    $rows = $query->num_rows;  
+    return $rows;
+  }
   function limpiarCadena($str){
     global $conn;
     $str = mysqli_real_escape_string($conn,trim($str));
