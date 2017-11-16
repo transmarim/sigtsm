@@ -30,6 +30,7 @@
                                                 <th>Concepto</th>
                                                 <th>Chofer</th>
                                                 <th>Monto</th>
+                                                <th>Fecha</th>
                                             </thead>
                                             <tbody> </tbody>
                                             <tfoot>
@@ -37,6 +38,7 @@
                                                 <th>Concepto</th>
                                                 <th>Chofer</th>
                                                 <th>Monto</th>
+                                                <th>Fecha</th>
                                             </tfoot>
                                         </table>
                                     </div>

@@ -25,7 +25,7 @@ class Descuentochofer{
     }
     
     public static function listar(){
-        $sql = "SELECT * FROM chofer_descuento";
+        $sql = "SELECT T1.idchofer_descuento, T3.nombre AS nombredesc, T2.nombre, T1.montodesc, T1.porcentaje, T1.fecha FROM chofer_descuento AS T1 LEFT JOIN chofer AS T2 ON T1.idchofer = T2.idchofer LEFT JOIN descuento AS T3 ON T3.iddescuento = T1.iddescuento";
         return Consulta($sql);
     }
     

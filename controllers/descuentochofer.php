@@ -62,12 +62,11 @@ switch ($_GET["op"]){
         $data = Array();
         while($reg = $rspta->fetch_object()){
            $data[]=array(
-               "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idchofer_descuento.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="desactivar('.$reg->idchofer_descuento.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idchofer_descuento.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-primary" onclick="activar('.$reg->idchofer_descuento.')"><i class="fa fa-check"></i></button>',
-               "1"=>$reg->idchofer,
-               "2"=>$reg->montodesc,
-               "3"=>$reg->fecha
+               "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idchofer_descuento.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="desactivar('.$reg->idchofer_descuento.')"><i class="fa fa-close"></i></button>',
+               "1"=>$reg->nombredesc,
+               "2"=>$reg->nombre,
+               "3"=>($reg->porcentaje)? $reg->porcentaje.'%' : $reg->montodesc,
+               "4"=>$reg->fecha
            );
         }
         /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/

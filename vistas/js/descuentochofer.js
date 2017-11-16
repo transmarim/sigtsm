@@ -67,7 +67,7 @@ function listar(){
 		        ],
 		"ajax":
 				{
-					url: 'controllers/licencia.php?op=listar',
+					url: 'controllers/descuentochofer.php?op=listar',
 					type : "get",
 					dataType : "json",
 					error: function(e){
@@ -76,7 +76,7 @@ function listar(){
 				},
 		"bDestroy": true,
 		"iDisplayLength": 10,//Paginacion
-	    "order": [[ 0, "desc" ]]//Ordenar (columna,orden)
+	    "order": [[ 2, "asc" ]]//Ordenar (columna,orden)
 	}).DataTable();
 }
 
