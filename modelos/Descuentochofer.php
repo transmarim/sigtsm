@@ -34,4 +34,11 @@ class Descuentochofer{
          return Consulta_num($sql);
     }
     
+    public static function eliminar($idchofer_descuento){
+        $sql = "DELETE FROM chofer_descuento WHERE idchofer_descuento='$idchofer_descuento'";
+        $sw = true;
+        Consulta($sql) or $sw = false;
+        return $sw;
+    }
+    
 }

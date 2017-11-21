@@ -97,51 +97,46 @@ function guardaryeditar(e){
     });
 }
 
-function mostrar(idlicencia){
-     $.post("controllers/licencia.php?op=mostrar",{idlicencia:idlicencia},function(data,status){
+function mostrar(idchofer_descuento){
+     $.post("controllers/descuentochofer.php?op=mostrar",{idchofer_descuento:idchofer_descuento},function(data,status){
           /*Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript*/
          data = JSON.parse(data);
          mostrarform(true);
-         $("#idlicencia").val(data.idlicencia);
-         $("#grado").val(data.grado);
-         $("#grado").selectpicker('refresh');
-         $("#fechaven").val(data.fechaven);
-         /*MOSTRAMOS IMG DE MUESTRA*/
-         $("#imagenmuestra").show();
-         $("#imagenmuestra").attr("src","vistas/img/licencias/"+data.imagen);
-         $("#imagenactual").val(data.imagen);
+         $("#idchofer_descuento").val(data.idchofer_descuento);
+         $("#idchofer").val(data.idchofer);
+         $("#idchofer").selectpicker('refresh');
+         var flag = data.porcentaje;
+         if(flag != 0){
+             $("#tipodemonto").val(1);
+             $("#tipodemonto").selectpicker('refresh');
+             $("#porcentaje").val(data.porcentaje);
+             $("#porcentajeform").show();
+             $("#montodescform").hide();
+         }else{
+             $("#tipodemonto").val(0);
+             $("#tipodemonto").selectpicker('refresh');
+             $("#montodesc").val(data.montodesc);
+             $("#porcentajeform").hide();
+             $("#montodescform").show();
+         }
+         $("#iddescuento").val(data.iddescuento);
+         $("#iddescuento").selectpicker('refresh');
+         $("#fecha").val(data.fecha);
      });
     }
 
- function desactivar(idlicencia){
+ function eliminar(idchofer_descuento){
     swal({
         title: "Esta seguro..?"
-        , text: "Al desactivar esta licencia, no podra utilizarse en el sistema"
+        , text: "Al eliminar este descuento no se vera reflejado en los reportes"
         , type: "warning"
         , showCancelButton: true
         , confirmButtonColor: "#da4f49"
-        , confirmButtonText: "Si, deseo desactivarlo!"
+        , confirmButtonText: "Si, deseo elimnarlo!"
         , closeOnConfirm: false
         }, function () {
-            $.post('controllers/licencia.php?op=desactivar',{idlicencia:idlicencia},function(e){
-            swal("Desactivado!", e , "success");  
-            tabla.ajax.reload();
-            });
-        });
- }
-
- function activar(idlicencia){
-    swal({
-        title: "Esta seguro..?"
-        , text: "Al activar esta licencia, podra utilizarse en el sistema"
-        , type: "warning"
-        , showCancelButton: true
-        , confirmButtonColor: "#da4f49"
-        , confirmButtonText: "Si, deseo activarla!"
-        , closeOnConfirm: false
-        }, function () {
-            $.post('controllers/licencia.php?op=activar',{idlicencia:idlicencia},function(e){
-            swal("Activado!", e , "success");  
+            $.post('controllers/descuentochofer.php?op=eliminar',{idchofer_descuento:idchofer_descuento},function(e){
+            swal("Eliminado!", e , "success");  
             tabla.ajax.reload();
             });
         });

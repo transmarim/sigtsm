@@ -62,7 +62,7 @@ switch ($_GET["op"]){
         $data = Array();
         while($reg = $rspta->fetch_object()){
            $data[]=array(
-               "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idchofer_descuento.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="desactivar('.$reg->idchofer_descuento.')"><i class="fa fa-close"></i></button>',
+               "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idchofer_descuento.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="eliminar('.$reg->idchofer_descuento.')"><i class="fa fa-trash"></i></button>',
                "1"=>$reg->nombredesc,
                "2"=>$reg->nombre,
                "3"=>($reg->porcentaje)? $reg->porcentaje.'%' : $reg->montodesc,
@@ -80,19 +80,15 @@ switch ($_GET["op"]){
 
     case 'mostrar':
         /*ID USUARIO SE ENVIA POR POST ESTA DECLARADO EN LA INICIALIACION*/
-        $rspta = $descuento->mostrar($iddescuento);
+        $rspta = $descuentochofer->mostrar($idchofer_descuento);
         echo json_encode($rspta);
     break;
 
-    case 'desactivar':
-      $rspta = $descuento->desactivar($iddescuento);
-      echo $rspta ? "Descuento desactivado": "El descuento no se puede desactivar";
+    case 'eliminar':
+      $rspta = $descuentochofer->eliminar($idchofer_descuento);
+      echo $rspta ? "Descuento eliminado": "El descuento no se puede eliminar";
     break;
 
-    case 'activar':
-    $rspta = $descuento->activar($iddescuento);
-    echo $rspta ? "Descuento activado": "El descuento no se puede activar";
-    break;
     
     case 'listarc':
     $rspta = $descuento->listarc();
