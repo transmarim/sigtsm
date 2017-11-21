@@ -75,16 +75,16 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href=""> <i class="fa fa-address-book-o"></i> <span>Documentos/Choferes</span> </a>
+                <a href=""> <i class="fa fa-address-book-o"></i> <span>Documentos</span> </a>
                 <ul class="treeview-menu">
                     <li><a href="vehiculo"><i class="fa fa-car"></i>Vehiculo</a></li>
-                    <li><a href="licencia"><i class="fa fa-address-card"></i>Licencias</a></li>
-                    <li><a href="certificado"><i class="fa fa-credit-card"></i>Certificados</a></li>
+                    <li><a href="licencia"><i class="fa fa-address-card"></i>Licencia</a></li>
+                    <li><a href="certificado"><i class="fa fa-credit-card"></i>Certificado</a></li>
                     <li><a href="seguro"><i class="fa fa-shield"></i>Seguro</a></li>
                 </ul>
             </li>
              <li class="treeview">
-                <a href=""> <i class="fa fa-external-link"></i> <span>Otros</span> </a>
+                <a href=""> <i class="fa fa-external-link"></i> <span>Carteleras</span> </a>
                 <ul class="treeview-menu">
                     <li><a href="tarifas"><i class="fa fa-money"></i>Tarifas</a></li>
                     <li><a href="#"><i class="fa fa-object-group"></i>Guardia Semanal</a></li>
@@ -100,7 +100,7 @@
                </ul>
            </li>
              <li>
-                <a href="usuario"> <i class="fa fa-wrench"></i> <span>Usuarios/Permisos</span> </a>
+                <a href="usuario"> <i class="fa fa-wrench"></i> <span>Permisos</span> </a>
             </li>
             <li>
                 <a href="pagoticket"> <i class="fa fa-paypal"></i> <span>Tickets por Pagar</span> </a>
@@ -109,7 +109,7 @@
                 <a href="prontopago"> <i class="fa fa-envelope-o"></i> <span>Enviar Pronto-Pago</span> </a>
             </li>
             <li>
-                <a href="imprimiru"> <i class="fa fa-print"></i> <span>Imprimir</span> </a>
+                <a href="imprimiru"> <i class="fa fa-print"></i> <span>Reportes</span> </a>
             </li>
 
         </ul>
