@@ -39,14 +39,11 @@ switch ($_GET["op"]){
         $data = Array();
         while($reg = $rspta->fetch_object()){
            $data[]=array(
-               "0"=>$reg->idlicencia,
-               "1"=>$reg->vencimiento,
-               "2"=>$reg->nombre
+               "nombre"=>$reg->nombre
            );
         }
         /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/
-//        echo json_encode($results);
-          echo var_dump($data);
+        echo json_encode($data);
     break;
 
 }
