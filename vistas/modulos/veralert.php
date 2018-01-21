@@ -22,7 +22,7 @@
                                 <div class="box-body">
                                     <div class="alert alert-danger alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <h4><i class="icon fa fa-ban"></i> Vencido!</h4>Los siguientes choferes tienen su cedula de indentidad vencida:
+                                        <h4><i class="icon fa fa-ban"></i> Vencido!</h4>Los siguientes choferes tienen su cedula de identidad vencida:
                                         <ul>
                                           <li>Jose Ejemplo</li>
                                         </ul>
@@ -73,8 +73,8 @@
                                     <div class="alert alert-danger alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                         <h4><i class="icon fa fa-ban"></i> Vencido!</h4>Los siguientes choferes tienen su licencia vencida:
-                                        <ul>
-                                          <li>Jose Ejemplo</li>
+                                        <ul id='licenciaVencida'>
+<!--                                          <li>Jose Ejemplo</li>-->
                                         </ul>
                                       </div>
                                     <div class="alert alert-warning alert-dismissible">
@@ -116,4 +116,5 @@
                     </div>
                 </section>
                 <?php include_once("vistas/modulos/inc/footer.php"); ?>
+                <script type="text/javascript" src="vistas/js/veralert.js"></script>
             </div>

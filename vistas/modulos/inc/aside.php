@@ -77,10 +77,28 @@
             <li class="treeview">
                 <a href=""> <i class="fa fa-address-book-o"></i> <span>Documentos</span> </a>
                 <ul class="treeview-menu">
-                    <li><a href="vehiculo"><i class="fa fa-car"></i>Vehiculo</a></li>
-                    <li><a href="licencia"><i class="fa fa-address-card"></i>Licencia</a></li>
-                    <li><a href="certificado"><i class="fa fa-credit-card"></i>Certificado</a></li>
-                    <li><a href="seguro"><i class="fa fa-shield"></i>Seguro</a></li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-hand-o-down"></i> Doc. de Vehiculos
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                        </a>
+                        <ul class="treeview-menu" style="display: none;">
+                            <li><a href="seguro"><i class="fa fa-shield"></i> Seguro</a></li>
+                            <li><a href="vehiculo"><i class="fa fa-car"></i> Vehiculo</a></li>
+                          </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-hand-o-down"></i> Doc. de Chofer
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                        </a>
+                        <ul class="treeview-menu" style="display: none;">
+                            <li><a href="seguro"><i class="fa fa-address-card"></i> Licencia</a></li>
+                            <li><a href="vehiculo"><i class="fa fa-credit-card"></i> Certificado</a></li>
+                          </ul>
+                    </li>
                 </ul>
             </li>
              <li class="treeview">
@@ -102,9 +120,11 @@
              <li>
                 <a href="usuario"> <i class="fa fa-wrench"></i> <span>Permisos</span> </a>
             </li>
+<!--
             <li>
                 <a href="pagoticket"> <i class="fa fa-paypal"></i> <span>Tickets por Pagar</span> </a>
             </li>
+-->
             <li>
                 <a href="prontopago"> <i class="fa fa-envelope-o"></i> <span>Enviar Pronto-Pago</span> </a>
             </li>

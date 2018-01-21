@@ -15,78 +15,95 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <!-- Main row -->
+        <!-- MENU IMPRESION -->
         <div class="row">
-            <!-- IMPRIMIR SOLO TICKET-->
-            <div class="col-md-12">
-                <div class="box box-primary">
+            <div class="col-md-4">
+                    <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Opciones de Reportes</h3>
+                </div>
+                <div class="box-body">
+                  <button type="button" class="btn btn-social btn-block btn-lg btn-github" onclick="mostrarform(true,2)"><i class="fa fa-paypal"></i>Detalle de Ticket</button>
+                  <button type="button" class="btn btn-social btn-block btn-lg btn-github" onclick="mostrarform(true,3)"><i class="fa fa-paypal"></i>Resumen Pre-Pago</button>
+                  <button type="button" class="btn btn-social btn-block btn-lg btn-github" onclick="mostrarform(true,4)"><i class="fa fa-paypal"></i>Servicios por clientes</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+            <!-- INICIO DEL BOX DE REPORTES -->
+                <div class="box box-primary reportes" id="cuadro2">
                     <div class="box-header" style="padding-bottom:0px"> <i class="fa fa-print"></i>
-                        <h3 class="box-title">Imprimir solo Ticket</h3> </div>
+                        <h3 class="box-title">Solo de Ticket</h3> </div>
                     <div class="panel-body" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
                             <div class="form-group">
-                                <label class="col-sm-2 col-xs-12 control-label">Nº de Ticket</label>
+                                <label class="col-sm-3 col-xs-12 control-label">No de Ticket</label>
                             </div>
-                            <div class="input-group margin col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group margin col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                 <input type="number" class="form-control" name="ticket" id="ticket" required min="1">
                                 <input type="hidden" class="form-control" name="idchofer" id="idchofer"> <span class="input-group-btn">
                         <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                         </span> </div>
+                        <div class="clearfix"></div>
+                                  <label class="col-sm-3 col-xs-12 control-label">Empresa:</label>
+                              <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                              <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                  <select id="idempresa" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
+                                      <option value="">--</option>
+                                      <option value="1">TRANSMARIM</option>
+                                      <option value="2">CARIBBEAN</option>
+                                  </select>
+                              </div>
                         </form>
                     </div>
-                </div>
             </div>
-            <!-- FIN SOLO TICKET-->
-            <!-- IMPRIMIR PREPAGO-->
-            <div class="col-md-12">
-                <div class="box box-primary">
+            <!-- /BOXPRIMARY -->
+            <div class="box box-primary reportes" id="cuadro3">
                     <div class="box-header" style="padding-bottom:0px"> <i class="fa fa-print"></i>
-                        <h3 class="box-title">Imprimir Prepago</h3> </div>
+                        <h3 class="box-title">Resumen Pre-Pago</h3> </div>
                     <div class="panel-body" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
-                            <div class="form-group">
-                                <label class="col-sm-2 col-xs-12 control-label">Seleccione el Rango:</label>
-                            </div>
-                            <div class="input-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" class="form-control fecharango" id="fechaprepago" required> <span class="input-group-btn">
-                        <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
-                        </span> </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 col-xs-12 control-label">Empresa:</label>
-                            </div>
+                      <div class="form-group">
+                                <label class="col-sm-3 col-xs-12 control-label">Empresa:</label>
                             <!-- INCLUIMOS LA CLASE SELECTPICKER -->
-                            <div class="input-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                 <select id="idempresa" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
                                     <option value="">--</option>
                                     <option value="1">TRANSMARIM</option>
                                     <option value="2">CARIBBEAN</option>
                                 </select>
                             </div>
+                          </div>
+                            <div class="clearfix"></div>
+                            <label class="col-sm-3 col-xs-12 control-label">Rango:</label>
+                            <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control fecharango" id="fechaprepago" required> <span class="input-group-btn">
+                        <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
+                        </span>
+                      </div>
                             <!-- /.input group -->
                         </form>
                     </div>
-                </div>
             </div>
-            <!-- FIN PREPAGO TICKET-->
-            <!-- IMPRIMIR PREPAGO-->
-            <div class="col-md-12">
-                <div class="box box-primary">
+            <!-- /BOXPRIMARY -->
+            <div class="box box-primary reportes" id="cuadro4">
                     <div class="box-header" style="padding-bottom:0px"> <i class="fa fa-print"></i>
-                        <h3 class="box-title">Imprimir Relacion x Cliente</h3> </div>
+                        <h3 class="box-title">Servicios por Cliente</h3> </div>
                     <div class="panel-body" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
                             <div class="form-group">
-                                <label class="col-sm-2 col-xs-12 control-label">Seleccione el Rango</label>
+                                <label class="col-sm-3 col-xs-12 control-label">Rango</label>
                             </div>
-                            <div class="input-group ol-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                 <input type="text" class="form-control fecharango" id="fechaempresa" required> <span class="input-group-btn">
                         <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                         </span> </div>
+                        <div class="clearfix"></div>
                             <div class="form-group">
-                                <label class="col-sm-2 col-xs-12 control-label">Cliente:</label>
+                                <label class="col-sm-3 col-xs-12 control-label">Cliente:</label>
                             </div>
                             <!-- INCLUIMOS LA CLASE SELECTPICKER -->
-                            <div class="input-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                 <select id="idcliente" class="form-control selectpicker" data-live-search="true" name="idcliente" required>
                                     <option value="">--</option>
                                     <option value="1">TRANSMARIM</option>
@@ -96,15 +113,13 @@
                             <!-- /.input group -->
                         </form>
                     </div>
-                </div>
             </div>
-            <!-- FIN PREPAGO TICKET-->
         </div>
-        <!-- /.row (main row) -->
     </section>
     <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
     <script type="text/javascript" src="vistas/plugins/datarange/moment.js"></script>
     <script type="text/javascript" src="vistas/plugins/datarange/daterangepicker.js"></script>
+    <script type="text/javascript" src="vistas/js/imprimirc.js"></script>
     <script type="text/javascript">function imprimirc(){$("#fechaprepago").daterangepicker({timePicker:!1,timePickerIncrement:30,format:"DD/MM/YYYY"}),$("#fechaempresa").daterangepicker({timePicker:!1,timePickerIncrement:30,format:"DD/MM/YYYY"}),$(".fecharango").daterangepicker({locale:{format:"MM/DD/YYYY",separator:" - ",applyLabel:"Aceptar",cancelLabel:"Cancelar",fromLabel:"Desde",toLabel:"Hasta",customRangeLabel:"Custom",weekLabel:"S",daysOfWeek:["Dom","Lun","Mar","Mier","Jue","Vie","Sab"],monthNames:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],firstDay:1},linkedCalendars:!1,autoUpdateInput:!0,showCustomRangeLabel:!1})}$(document).ready(imprimirc);</script>
 </div>
