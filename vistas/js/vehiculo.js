@@ -117,7 +117,7 @@ function mostrar(idvehiculo){
 
          /*MOSTRAMOS IMG DE MUESTRA*/
          $("#imagenmuestra").show();
-         $("#imagenmuestra").attr("src","vistas/img/choferes/"+data.imagen);
+         $("#imagenmuestra").attr("src","vistas/img/vehiculos/"+data.imagen);
          $("#imagenactual").val(data.imagen);
      });
     }

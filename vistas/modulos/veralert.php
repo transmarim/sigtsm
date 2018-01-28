@@ -70,19 +70,20 @@
                                 <div class="box-header with-border"> <i class="fa fa-credit-card"></i>
                                     <h3 class="box-title">Licencias Vencidas</h3> </div>
                                 <div class="box-body">
-                                    <div class="alert alert-danger alert-dismissible">
+                                    <div id="ldanger" class="alert alert-danger alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                         <h4><i class="icon fa fa-ban"></i> Vencido!</h4>Los siguientes choferes tienen su licencia vencida:
                                         <ol id='licenciaVencida'>
+                                            
                                         </ol>
                                       </div>
-                                    <div class="alert alert-warning alert-dismissible">
+                                    <div id="lwarning" class="alert alert-warning alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                         <h4><i class="icon fa fa-warning"></i> Advertencia!</h4>Los siguientes choferes tienen su licencia proxima a vencer:
-                                        <ul>
-                                          <li>Jose Ejemplo</li>
-                                        </ul></div>
-                                    <div class="alert alert-success alert-dismissible">
+                                        
+                                          <ol id='licenciaPorVencer'>
+                                          </ol></div>
+                                    <div id="lsuccess" class="alert alert-success alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                         <h4><i class="icon fa fa-check"></i> Exito!</h4> Todas las licencias estan vigentes. </div>
                                 </div>

@@ -39,6 +39,19 @@ switch ($_GET["op"]){
         $data = Array();
         while($reg = $rspta->fetch_object()){
            $data[]=array(
+               "nombre"=>$reg->nombre,
+               "vencimiento"=>$reg->vencimiento
+           );
+        }
+        /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/
+        echo json_encode($data);
+    break;
+    
+        case 'verAlertlicenciaV':
+        $rspta = $alerta->listAlertLicenciaV($hoy);
+        $data = Array();
+        while($reg = $rspta->fetch_object()){
+           $data[]=array(
                "nombre"=>$reg->nombre
            );
         }
