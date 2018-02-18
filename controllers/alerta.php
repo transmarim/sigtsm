@@ -59,4 +59,51 @@ switch ($_GET["op"]){
         echo json_encode($data);
     break;
 
+        case 'verAlertSeguro':
+        $rspta = $alerta->listAlertSeguro($hoy);
+        $data = Array();
+        while($reg = $rspta->fetch_object()){
+           $data[]=array(
+               "placa"=>$reg->placa,
+               "vencimiento"=>$reg->vencimiento
+           );
+        }
+        echo json_encode($data);
+    break;
+        
+        case 'verAlertSeguroV':
+        $rspta = $alerta->listAlertSeguroV($hoy);
+        $data = Array();
+        while($reg = $rspta->fetch_object()){
+           $data[]=array(
+               "placa"=>$reg->placa
+           );
+        }
+        echo json_encode($data);
+    break;
+
+        case 'verAlertCertificado':
+        $rspta = $alerta->listAlertCertificado($hoy);
+        $data = Array();
+        while($reg = $rspta->fetch_object()){
+           $data[]=array(
+               "nombre"=>$reg->nombre,
+               "vencimiento"=>$reg->vencimiento
+           );
+        }
+        echo json_encode($data);
+    break;
+        
+        case 'verAlertCertificadoV':
+        $rspta = $alerta->listAlertCertificadoV($hoy);
+        $data = Array();
+        while($reg = $rspta->fetch_object()){
+           $data[]=array(
+               "nombre"=>$reg->nombre
+           );
+        }
+        echo json_encode($data);
+    break;
+
+        
 }
