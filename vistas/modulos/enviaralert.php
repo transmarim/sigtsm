@@ -99,6 +99,7 @@
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Chofer(*):</label>
                   <input type="hidden" name="idchofer" id="idchofer">
+                  <input type="hidden" name="email" id="email">
                   <input type="text" class="form-control"  id="nombre" name="nombre" required disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -138,8 +139,5 @@
     <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
     <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
     <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
-    <script src="vistas/plugins/datatables/jszip.min.js"></script>
-    <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
-    <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
     <script type="text/javascript" src="vistas/js/enviaralert.js"></script>    
 </div>

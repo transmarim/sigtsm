@@ -4,10 +4,9 @@ var bandera;
 function init(){
     mostrarform(false);
     listar();
-    $("#imagenmuestra").hide();
-      
+
      $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+        guardaryeditar(e);
     });
     
 }
@@ -16,6 +15,7 @@ function limpiar(){
     $("#idchofer").val("");
     $("#nombre").val("");
     $("#descripcion").val("");
+    $("#email").val("");
     $("#asunto").selectpicker("val","");
     /*QUITAR CLASES A LOS ELEMENTOS*/
     $(".form-group").removeClass('has-success has-error');
@@ -60,19 +60,30 @@ function listar(){
 
 function guardaryeditar(e){
     e.preventDefault();
-    var formData = new FormData($("#formulario")[0]);
-    $.ajax({
-       url:"controllers/licencia.php?op=guardaryeditar",
-       type:"POST",
-       data: formData,
-       contentType: false,
-	   processData: false,
-       success: function(respuesta){
-         swal(respuesta, "Presione OK para continuar");
-         mostrarform(false);
-	     tabla.ajax.reload();
-       }
-    });
+    swal({
+        title: "Esta seguro..?"
+        , text: "Se enviara un email de alerta"
+        , type: "warning"
+        , showCancelButton: true
+        , confirmButtonColor: "#da4f49"
+        , confirmButtonText: "Si, deseo enviarlo!"
+        , closeOnConfirm: false
+        }, function () {
+            var formData = new FormData($("#formulario")[0]);
+            $.ajax({
+            url:"controllers/enviaralert.php?op=enviaralert",
+            type:"POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(respuesta){
+                swal(respuesta, "Presione OK para continuar",);
+                swal(respuesta, e , "success");
+            }
+            });
+        });
+
+    
 }
 
 function mostrar(idchofer){
@@ -82,42 +93,9 @@ function mostrar(idchofer){
          data = JSON.parse(data);
          $("#idchofer").val(data.idchofer);
          $("#nombre").val(data.nombre);
+         $("#email").val(data.email);
     });
     }
-
- function desactivar(idlicencia){
-    swal({
-        title: "Esta seguro..?"
-        , text: "Al desactivar esta licencia, no podra utilizarse en el sistema"
-        , type: "warning"
-        , showCancelButton: true
-        , confirmButtonColor: "#da4f49"
-        , confirmButtonText: "Si, deseo desactivarlo!"
-        , closeOnConfirm: false
-        }, function () {
-            $.post('controllers/licencia.php?op=desactivar',{idlicencia:idlicencia},function(e){
-            swal("Desactivado!", e , "success");  
-            tabla.ajax.reload();
-            });
-        });
- }
-
- function activar(idlicencia){
-    swal({
-        title: "Esta seguro..?"
-        , text: "Al activar esta licencia, podra utilizarse en el sistema"
-        , type: "warning"
-        , showCancelButton: true
-        , confirmButtonColor: "#da4f49"
-        , confirmButtonText: "Si, deseo activarla!"
-        , closeOnConfirm: false
-        }, function () {
-            $.post('controllers/licencia.php?op=activar',{idlicencia:idlicencia},function(e){
-            swal("Activado!", e , "success");  
-            tabla.ajax.reload();
-            });
-        });
- }
 
 
 init();
