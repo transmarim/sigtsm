@@ -61,7 +61,7 @@ class Usuario{
         return Consulta($sql);
     }
     public static function verificar($login,$clave){
-        $sql = "SELECT idusuario,nombre,login,clave,email,imagen FROM usuario WHERE login='$login' AND clave='$clave' AND condicion='1'";
+        $sql = "SELECT idusuario,idchofer,nombre,login,clave,email,imagen FROM usuario WHERE login='$login' AND clave='$clave' AND condicion='1'";
         return Consulta($sql);
     }
     

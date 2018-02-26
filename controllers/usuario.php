@@ -136,11 +136,14 @@ switch ($_GET["op"]){
 
 		if (isset($fetch))
 	    {
-	        //Declaramos las variables de sesion
-	        $_SESSION['idusuario']=$fetch->idusuario;
-	        $_SESSION['nombre']=$fetch->nombre;
-	        $_SESSION['imagen']=$fetch->imagen;
-	        $_SESSION['login']=$fetch->login;
+			//Verificamos si no es un chofer
+			if(!empty($fetch->idchofer)){
+
+				//Declaramos las variables de sesion
+				$_SESSION['idusuario']=$fetch->idusuario;
+				$_SESSION['nombre']=$fetch->nombre;
+				$_SESSION['imagen']=$fetch->imagen;
+				$_SESSION['login']=$fetch->login;
 
 	        //Obtenemos los permisos del usuario
 	    	$marcados = $usuario->listarmarcados($fetch->idusuario);
@@ -156,9 +159,26 @@ switch ($_GET["op"]){
 
 			//Determinamos los accesos del usuario
 			in_array(1,$valores)?$_SESSION['escritorio']=1:$_SESSION['escritorio']=0;
-			in_array(2,$valores)?$_SESSION['almacen']=1:$_SESSION['almacen']=0;
-	    }
-	    echo json_encode($fetch);
+			in_array(2,$valores)?$_SESSION['boletas']=1:$_SESSION['boletas']=0;
+			in_array(3,$valores)?$_SESSION['ingresar']=1:$_SESSION['ingresar']=0;
+			in_array(4,$valores)?$_SESSION['documentos']=1:$_SESSION['documentos']=0;
+			in_array(5,$valores)?$_SESSION['carteleras']=1:$_SESSION['carteleras']=0;
+			in_array(6,$valores)?$_SESSION['alertas']=1:$_SESSION['alertas']=0;
+			in_array(7,$valores)?$_SESSION['permisos']=1:$_SESSION['permisos']=0;
+			in_array(8,$valores)?$_SESSION['prontopago']=1:$_SESSION['prontopago']=0;			
+			in_array(9,$valores)?$_SESSION['reportes']=1:$_SESSION['reportes']=0;
+		}
+			echo json_encode($fetch);
+		} 
+		else{
+				//Declaramos las variables de sesion para los choferes
+				$_SESSION['idusuario']=$fetch->idusuario;
+				$_SESSION['nombre']=$fetch->nombre;
+				$_SESSION['imagen']=$fetch->imagen;
+				$_SESSION['login']=$fetch->login;
+				$_SESSION['idchofer']=$fetch->idchofer;			
+		 }
+
 	break;
         
     case 'selectChofer':
