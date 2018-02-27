@@ -137,13 +137,13 @@ switch ($_GET["op"]){
 		if (isset($fetch))
 	    {
 			//Verificamos si no es un chofer
-			if(!empty($fetch->idchofer)){
+			if($fetch->idchofer == 0){
 
-				//Declaramos las variables de sesion
-				$_SESSION['idusuario']=$fetch->idusuario;
-				$_SESSION['nombre']=$fetch->nombre;
-				$_SESSION['imagen']=$fetch->imagen;
-				$_SESSION['login']=$fetch->login;
+			//Declaramos las variables de sesion
+			$_SESSION['idusuario']=$fetch->idusuario;
+			$_SESSION['nombre']=$fetch->nombre;
+			$_SESSION['imagen']=$fetch->imagen;
+			$_SESSION['login']=$fetch->login;
 
 	        //Obtenemos los permisos del usuario
 	    	$marcados = $usuario->listarmarcados($fetch->idusuario);
@@ -167,17 +167,16 @@ switch ($_GET["op"]){
 			in_array(7,$valores)?$_SESSION['permisos']=1:$_SESSION['permisos']=0;
 			in_array(8,$valores)?$_SESSION['prontopago']=1:$_SESSION['prontopago']=0;			
 			in_array(9,$valores)?$_SESSION['reportes']=1:$_SESSION['reportes']=0;
+		} else {
+			//Declaramos las variables de sesion para los choferes
+			$_SESSION['idusuario']=$fetch->idusuario;
+			$_SESSION['nombre']=$fetch->nombre;
+			$_SESSION['imagen']=$fetch->imagen;
+			$_SESSION['login']=$fetch->login;
+			$_SESSION['idchofer']=$fetch->idchofer;
 		}
 			echo json_encode($fetch);
-		} 
-		else{
-				//Declaramos las variables de sesion para los choferes
-				$_SESSION['idusuario']=$fetch->idusuario;
-				$_SESSION['nombre']=$fetch->nombre;
-				$_SESSION['imagen']=$fetch->imagen;
-				$_SESSION['login']=$fetch->login;
-				$_SESSION['idchofer']=$fetch->idchofer;			
-		 }
+	} 
 
 	break;
         
