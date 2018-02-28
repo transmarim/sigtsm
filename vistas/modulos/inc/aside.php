@@ -1,4 +1,4 @@
-    <header class="main-header">
+<header class="main-header">
     <a href="index" class="logo"> <span class="logo-mini"><b>T</b>SM</span> <span class="logo-lg"><b>SIG</b>TRANS</span> </a>
     <nav class="navbar navbar-static-top">
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button"> <span class="sr-only">Toggle navigation</span> </a>
@@ -20,52 +20,36 @@
         </div>
     </nav>
 </header>
-<!-- ASIDE PARA CHOFERES
+
+<?php 
+    if(!isset($_SESSION['idchofer'])){
+    /*INICIO HTML DE LOS USUARIOS COMUNES*/
+?>
+
 <aside class="main-sidebar">
     <section class="sidebar">
         <div class="user-panel">
             <div class="pull-left image"> <img src="vistas/img/user2-160x160.jpg" class="img-circle" alt="User Image"> </div>
             <div class="pull-left info">
-                <p>Luis Villalba</p> <a href="#"><i class="fa fa-circle text-success"></i> Online</a> </div>
+                <p> <?php echo $_SESSION["nombre"]; ?> </p> <a href="#"><i class="fa fa-circle text-success"></i> Online</a> </div>
         </div>
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MENU NAVEGACION</li>
-            <li>
+
+            <?php $_SESSION['escritorio']==1 ? $pagina = '<li>
                 <a href="escritorio"> <i class="fa fa-dashboard"></i> <span>Escritorio</span> </a>
-            </li>
-            <li>
-                <a href="perfilchofer"> <i class="fa fa-address-card-o"></i> <span>Datos Chofer</span> </a>
-            </li>
-            <li>
-                <a href="datosvc"> <i class="fa fa-car"></i> <span>Datos Vehiculo</span> </a>
-            </li>
-            <li>
-                <a href="imprimirc"> <i class="fa fa-file-text"></i> <span>Imprimir</span> </a>
-            </li>
-        </ul>
-    </section>
-</aside>-->
-<aside class="main-sidebar">
-    <section class="sidebar">
-        <div class="user-panel">
-            <div class="pull-left image"> <img src="vistas/img/user2-160x160.jpg" class="img-circle" alt="User Image"> </div>
-            <div class="pull-left info">
-                <p> <?php echo $_SESSION["nombre"] ?> </p> <a href="#"><i class="fa fa-circle text-success"></i> Online</a> </div>
-        </div>
-        <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MENU NAVEGACION</li>
-            <li>
-                <a href="escritorio"> <i class="fa fa-dashboard"></i> <span>Escritorio</span> </a>
-            </li>
-            <li class="treeview">
+            </li>' : $pagina = ''; echo $pagina;?>
+
+            <?php $_SESSION['boletas']==1 ? $pagina = '<li class="treeview">
                 <a href=""> <i class="fa fa-files-o"></i> <span>Boletas</span> </a>
                 <ul class="treeview-menu">
                     <li><a href="tickettsm"><i class="fa fa-trademark"></i>TSM</a></li>
                     <li><a href="ticketcarib"><i class="fa fa-contao"></i>Caribbean</a></li>
                     <li><a href="descuentochofer"><i class="fa fa-usd"></i>Descuentos Boletas</a></li>
                 </ul>
-            </li>
-            <li class="treeview">
+            </li>' : $pagina = ''; echo $pagina;?>
+
+            <?php $_SESSION['ingresar']==1 ? $pagina = '<li class="treeview">
                 <a href=""> <i class="fa fa-user-plus"></i> <span>Ingresar</span> </a>
                 <ul class="treeview-menu">
                     <li><a href="cliente"><i class="fa fa-users"></i>Clientes</a></li>
@@ -73,8 +57,9 @@
                     <li><a href="chofer"><i class="fa fa-id-card"></i>Chofer</a></li>
                     <li><a href="descuento"><i class="fa fa-minus-circle"></i>Descuentos</a></li>
                 </ul>
-            </li>
-            <li class="treeview">
+            </li>' : $pagina = ''; echo $pagina;?>
+
+            <?php $_SESSION['documentos']==1 ? $pagina = '<li class="treeview">
                 <a href=""> <i class="fa fa-address-book-o"></i> <span>Documentos</span> </a>
                 <ul class="treeview-menu">
                     <li class="treeview">
@@ -100,8 +85,9 @@
                           </ul>
                     </li>
                 </ul>
-            </li>
-             <li class="treeview">
+            </li>' : $pagina = ''; echo $pagina;?>
+
+            <?php $_SESSION['carteleras']==1 ? $pagina = '<li class="treeview">
                 <a href=""> <i class="fa fa-external-link"></i> <span>Carteleras</span> </a>
                 <ul class="treeview-menu">
                     <li><a href="tarifas"><i class="fa fa-money"></i>Tarifas</a></li>
@@ -109,29 +95,63 @@
                     <li><a href="talonario"><i class="fa fa-book"></i>Talonarios - TSM</a></li>
                     <li><a href="talonariocaribe"><i class="fa fa-book"></i>Talonarios - CARIB</a></li>
                 </ul>
-            </li>
-            <li class="treeview">
+            </li>' : $pagina = ''; echo $pagina;?>
+
+            <?php $_SESSION['alertas']==1 ? $pagina = '<li class="treeview">
                <a href=""> <i class="fa fa-exclamation-triangle"></i> <span>Alertas</span> </a>
                <ul class="treeview-menu">
                    <li><a href="veralert"><i class="fa fa-eye"></i>Ver Alertas</a></li>
                    <li><a href="enviaralert"><i class="fa fa-paper-plane"></i>Enviar Alertas</a></li>
                </ul>
-           </li>
-             <li>
+           </li>' : $pagina = ''; echo $pagina;?>
+
+            <?php $_SESSION['permisos']==1 ? $pagina = '<li>
                 <a href="usuario"> <i class="fa fa-wrench"></i> <span>Permisos</span> </a>
-            </li>
+            </li>' : $pagina = ''; echo $pagina;?>
 <!--
             <li>
                 <a href="pagoticket"> <i class="fa fa-paypal"></i> <span>Tickets por Pagar</span> </a>
             </li>
 -->
-            <li>
+            <?php $_SESSION['prontopago']==1 ? $pagina = '<li>
                 <a href="prontopago"> <i class="fa fa-envelope-o"></i> <span>Enviar Pronto-Pago</span> </a>
-            </li>
-            <li>
+            </li>' : $pagina = ''; echo $pagina;?>
+
+            <?php $_SESSION['reportes']==1 ? $pagina = '<li>
                 <a href="imprimiru"> <i class="fa fa-print"></i> <span>Reportes</span> </a>
-            </li>
+            </li>' : $pagina = ''; echo $pagina;?>
 
         </ul>
     </section>
 </aside>
+
+<?php
+} else {
+    ?>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <div class="user-panel">
+                    <div class="pull-left image"> <img src="vistas/img/user2-160x160.jpg" class="img-circle" alt="User Image"> </div>
+                    <div class="pull-left info">
+                        <p> <?php echo $_SESSION["nombre"]; ?> </p> <a href="#"><i class="fa fa-circle text-success"></i> Online</a> </div>
+                </div>
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">MENU NAVEGACION</li>
+                    <li>
+                        <a href="escritorio"> <i class="fa fa-dashboard"></i> <span>Escritorio</span> </a>
+                    </li>
+                    <li>
+                        <a href="perfilchofer"> <i class="fa fa-address-card-o"></i> <span>Datos Chofer</span> </a>
+                    </li>
+                    <li>
+                        <a href="datosvc"> <i class="fa fa-car"></i> <span>Datos Vehiculo</span> </a>
+                    </li>
+                    <li>
+                        <a href="imprimirc"> <i class="fa fa-file-text"></i> <span>Imprimir</span> </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+    <?php
+}
+?>
