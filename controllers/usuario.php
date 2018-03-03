@@ -175,8 +175,8 @@ switch ($_GET["op"]){
 			$_SESSION['login']=$fetch->login;
 			$_SESSION['idchofer']=$fetch->idchofer;
 		}
-			echo json_encode($fetch);
-	} 
+	}
+	echo json_encode($fetch); 
 
 	break;
         
