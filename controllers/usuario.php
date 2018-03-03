@@ -144,6 +144,7 @@ switch ($_GET["op"]){
 			$_SESSION['nombre']=$fetch->nombre;
 			$_SESSION['imagen']=$fetch->imagen;
 			$_SESSION['login']=$fetch->login;
+			$_SESSION['validarTSM']=1;
 
 	        //Obtenemos los permisos del usuario
 	    	$marcados = $usuario->listarmarcados($fetch->idusuario);
@@ -174,6 +175,7 @@ switch ($_GET["op"]){
 			$_SESSION['imagen']=$fetch->imagen;
 			$_SESSION['login']=$fetch->login;
 			$_SESSION['idchofer']=$fetch->idchofer;
+			$_SESSION['validarTSM']=1;
 		}
 	}
 	echo json_encode($fetch); 

@@ -1,7 +1,15 @@
-<?php include_once("vistas/modulos/inc/aside.php"); ?>
-   <body class="hold-transition skin-blue sidebar-mini">
+<?php
+  if(!$_SESSION['validarTSM']){
+      header("location:inicio");
+      exit();
+  } else {
+      if($_SESSION['ingresar']==1){
+        include_once("vistas/modulos/inc/aside.php");
+?>
+<!-- INICIO DEL M.CERTIFICADO -->
+  <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-   <div class="content-wrapper">
+      <div class="content-wrapper">
     <section class="content-header">
         <h1>
         Control
@@ -93,9 +101,6 @@
                       <!-- /.modal-dialog -->
                     </div>
     </section>
-    <!-- Main content -->
-
-    <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
     <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
     <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
@@ -106,3 +111,10 @@
     <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
     <script type="text/javascript" src="vistas/js/certificado.js"></script>
 </div>
+<!-- FIN DEL M.CENTRO -->
+<?php
+    }
+      header("location:escritorio");
+      exit();
+    }
+?>
