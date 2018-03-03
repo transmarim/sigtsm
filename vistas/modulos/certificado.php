@@ -3,7 +3,7 @@
       header("location:inicio");
       exit();
   } else {
-      if($_SESSION['ingresar']==1){
+      if($_SESSION['documentos']==1){
         include_once("vistas/modulos/inc/aside.php");
 ?>
 <!-- INICIO DEL M.CERTIFICADO -->
@@ -113,8 +113,10 @@
 </div>
 <!-- FIN DEL M.CENTRO -->
 <?php
-    }
+    } else {
       header("location:escritorio");
+      ob_end_flush();
       exit();
     }
+  }
 ?>

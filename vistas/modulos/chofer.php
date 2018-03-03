@@ -1,5 +1,13 @@
-<?php include_once("vistas/modulos/inc/aside.php"); ?>
-   <body class="hold-transition skin-blue sidebar-mini">
+<?php
+  if(!$_SESSION['validarTSM']){
+      header("location:inicio");
+      exit();
+  } else {
+      if($_SESSION['ingresar']==1){
+        include_once("vistas/modulos/inc/aside.php");
+?>
+<!-- INICIO DEL M.CHOFER -->
+<body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
    <div class="content-wrapper">
     <section class="content-header">
@@ -118,27 +126,27 @@
                           </div>
                           <div class="modal-body">
                              <div class="box-body">
-                                          <dl class="dl-horizontal">
-                                            <dt>Nombre</dt>
-                                            <dd style="text-align:justify">Ingrese el nombre del nuevo chofer en el sistema, se recomienda identificarlo correctamente.</dd>
-                                            <dt>Vehiculo</dt>
-                                            <dd style="text-align:justify">Seleccione del listado, el vehiculo asignado al chofer, si el vehiculo que desea no se encuentra en la lista, verifique que haya sido registrado, este activo o no se encuentre ya asignado a otro chofer.</dd>
-                                            <dt>Licencia</dt>
-                                            <dd style="text-align:justify">Seleccione del lista, la licencia asignada al chofer, si la licencia que desea no se encuentra en la lista, verifique que haya sido registrada, este activa o no se encuentre ya asignada a otro chofer.</dd>
-                                            <dt>Certificado</dt>
-                                            <dd style="text-align:justify">Seleccione del listado, el certificado asignado al chofer, si el certificado que desea no se encuentra en la lista, verifique que haya sido registrado, este activo o no se encuentre ya asignado a otro chofer.</dd>
-                                            <dt>Cedula</dt>
-                                            <dd style="text-align:justify">Seleccione del listado, la cedula asignada al chofer, si la cedula que desea no se encuentra en la lista, verifique que haya sido registrada, este activa o no se encuentre ya asignada a otro chofer.</dd>
-                                            <dt>Telefono</dt>
-                                            <dd style="text-align:justify">Ingresar el telefono fijo o movil de contacto del chofer a ingresar.</dd>
-                                            <dt>Fecha Nac</dt>
-                                            <dd style="text-align:justify">Ingresar la fecha de nacimiento del chofer.</dd>
-                                            <dt>Email</dt>
-                                            <dd style="text-align:justify">Ingresar el email del chofer, este campo es obligatorio, ya que a esta direccion llegaran los reportes de los pronto pago.</dd>
-                                            <dt>Imagen</dt>
-                                            <dd style="text-align:justify">Seleccione la imagen del chofer, los formatos permitidos son JPG y PNG. Con resolucion maxima de 50px x 50px</dd>
-                                          </dl>
-                                    </div>
+                                    <dl class="dl-horizontal">
+                                      <dt>Nombre</dt>
+                                      <dd style="text-align:justify">Ingrese el nombre del nuevo chofer en el sistema, se recomienda identificarlo correctamente.</dd>
+                                      <dt>Vehiculo</dt>
+                                      <dd style="text-align:justify">Seleccione del listado, el vehiculo asignado al chofer, si el vehiculo que desea no se encuentra en la lista, verifique que haya sido registrado, este activo o no se encuentre ya asignado a otro chofer.</dd>
+                                      <dt>Licencia</dt>
+                                      <dd style="text-align:justify">Seleccione del lista, la licencia asignada al chofer, si la licencia que desea no se encuentra en la lista, verifique que haya sido registrada, este activa o no se encuentre ya asignada a otro chofer.</dd>
+                                      <dt>Certificado</dt>
+                                      <dd style="text-align:justify">Seleccione del listado, el certificado asignado al chofer, si el certificado que desea no se encuentra en la lista, verifique que haya sido registrado, este activo o no se encuentre ya asignado a otro chofer.</dd>
+                                      <dt>Cedula</dt>
+                                      <dd style="text-align:justify">Seleccione del listado, la cedula asignada al chofer, si la cedula que desea no se encuentra en la lista, verifique que haya sido registrada, este activa o no se encuentre ya asignada a otro chofer.</dd>
+                                      <dt>Telefono</dt>
+                                      <dd style="text-align:justify">Ingresar el telefono fijo o movil de contacto del chofer a ingresar.</dd>
+                                      <dt>Fecha Nac</dt>
+                                      <dd style="text-align:justify">Ingresar la fecha de nacimiento del chofer.</dd>
+                                      <dt>Email</dt>
+                                      <dd style="text-align:justify">Ingresar el email del chofer, este campo es obligatorio, ya que a esta direccion llegaran los reportes de los pronto pago.</dd>
+                                      <dt>Imagen</dt>
+                                      <dd style="text-align:justify">Seleccione la imagen del chofer, los formatos permitidos son JPG y PNG. Con resolucion maxima de 50px x 50px</dd>
+                                    </dl>
+                              </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
@@ -149,9 +157,6 @@
                       <!-- /.modal-dialog -->
                     </div>
     </section>
-    <!-- Main content -->
-    
-    <!-- /.content -->
     <?php include_once("vistas/modulos/inc/footer.php"); ?>
     <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
     <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
@@ -162,3 +167,12 @@
     <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
     <script type="text/javascript" src="vistas/js/chofer.js"></script>
 </div>
+<!-- FIN DEL M.CHOFER -->
+<?php
+    } else {
+      header("location:escritorio");
+      ob_end_flush();
+      exit();
+    }
+  }
+?>

@@ -92,20 +92,22 @@
           <!-- /.modal-dialog -->
         </div>
     </section>
-    <?php include_once("vistas/modulos/inc/footer.php"); ?>
-    <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
-    <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
-    <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
-    <script src="vistas/plugins/datatables/jszip.min.js"></script>
-    <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
-    <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
-    <script type="text/javascript" src="vistas/js/centro.js"></script>
-    </div>
+<?php include_once("vistas/modulos/inc/footer.php"); ?>
+<script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+<script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+<script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+<script src="vistas/plugins/datatables/jszip.min.js"></script>
+<script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+<script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+<script type="text/javascript" src="vistas/js/centro.js"></script>
+</div>
 <!-- FIN DEL M.CENTRO -->
 <?php
-    }
+    } else {
       header("location:escritorio");
+      ob_end_flush();
       exit();
     }
+  }
 ?>
