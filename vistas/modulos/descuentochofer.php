@@ -1,13 +1,17 @@
-<?php include_once("vistas/modulos/inc/aside.php"); ?>
-
-    <body class="hold-transition skin-blue sidebar-mini">
-        <div class="wrapper">
-            <div class="content-wrapper">
-                <section class="content-header">
-                    <h1>
-        Descuentos
-        <small>Choferes</small>
-      </h1>
+<?php
+  if(!$_SESSION['validarTSM']){
+      header("location:inicio");
+      exit();
+  } else {
+      if($_SESSION['boletas']==1){
+        include_once("vistas/modulos/inc/aside.php");
+?>
+<!-- INICIO DEL M.DESCUENTOCHOFER -->
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>Descuentos <small>Choferes</small></h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i>Inicio</a></li>
                         <li class="active">Descuentos Choferes</li>
@@ -99,24 +103,24 @@
                           </div>
                           <div class="modal-body">
                              <div class="box-body">
-                                          <dl class="dl-horizontal">
-                                            <dt>Chofer</dt>
-                                            <dd style="text-align:justify">Seleccione un chofer al cual se le aplicará el descuento, este chofer debe estar activo y/o registrado previamente en el sistema.</dd>
-                                            <dt>Fecha</dt>
-                                            <dd style="text-align:justify">Indique la fecha donde se aplicará el descuento.</dd>
-                                            <dt>Descuento</dt>
-                                            <dd>Seleccione el descuento que sera aplicado.</dd>
-                                            <dt>¿Es Porcentual?</dt>
-                                            <dd>Seleccione si el descuento es porcentual o no.
-                                            </dd>
-                                            <dt>Monto descontado</dt>
-                                            <dd>Ingrese el monto exacto descontado.
-                                            </dd>
-                                            <dt>% Descontado</dt>
-                                            <dd>Ingrese el porcentaje del monto descontado sobre el total.
-                                            </dd>
-                                          </dl>
-                                    </div>
+                                    <dl class="dl-horizontal">
+                                      <dt>Chofer</dt>
+                                      <dd style="text-align:justify">Seleccione un chofer al cual se le aplicará el descuento, este chofer debe estar activo y/o registrado previamente en el sistema.</dd>
+                                      <dt>Fecha</dt>
+                                      <dd style="text-align:justify">Indique la fecha donde se aplicará el descuento.</dd>
+                                      <dt>Descuento</dt>
+                                      <dd>Seleccione el descuento que sera aplicado.</dd>
+                                      <dt>¿Es Porcentual?</dt>
+                                      <dd>Seleccione si el descuento es porcentual o no.
+                                      </dd>
+                                      <dt>Monto descontado</dt>
+                                      <dd>Ingrese el monto exacto descontado.
+                                      </dd>
+                                      <dt>% Descontado</dt>
+                                      <dd>Ingrese el porcentaje del monto descontado sobre el total.
+                                      </dd>
+                                    </dl>
+                            </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
@@ -129,15 +133,22 @@
                     <!-- Modal -->
                     <!-- Fin modal -->
                 </section>
-                <!-- Main content -->
-                <!-- /.content -->
-                    <?php include_once("vistas/modulos/inc/footer.php"); ?>
-            <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
-            <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
-            <script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
-            <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
-            <script src="vistas/plugins/datatables/jszip.min.js"></script>
-            <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
-            <script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
-            <script type="text/javascript" src="vistas/js/descuentochofer.js"></script>
-            </div>
+<?php include_once("vistas/modulos/inc/footer.php"); ?>
+<script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
+<script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="vistas/plugins/datatables/buttons.html5.min.js"></script>
+<script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
+<script src="vistas/plugins/datatables/jszip.min.js"></script>
+<script src="vistas/plugins/datatables/pdfmake.min.js"></script>
+<script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+<script type="text/javascript" src="vistas/js/descuentochofer.js"></script>
+</div>
+<!-- FIN DEL M.DESCUENTOCHOFER -->
+<?php
+    } else {
+      header("location:escritorio");
+      ob_end_flush();
+      exit();
+    }
+  }
+?>
