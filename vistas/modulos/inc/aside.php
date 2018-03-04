@@ -80,8 +80,8 @@
                         </span>
                         </a>
                         <ul class="treeview-menu" style="display: none;">
-                            <li><a href="seguro"><i class="fa fa-address-card"></i> Licencia</a></li>
-                            <li><a href="vehiculo"><i class="fa fa-credit-card"></i> Certificado</a></li>
+                            <li><a href="licencia"><i class="fa fa-address-card"></i> Licencia</a></li>
+                            <li><a href="certificado"><i class="fa fa-credit-card"></i> Certificado</a></li>
                           </ul>
                     </li>
                 </ul>
