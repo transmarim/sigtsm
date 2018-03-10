@@ -120,7 +120,7 @@ switch ($_GET["op"]){
         //Destruimos la sesion
     session_destroy();
         //Redireccionamos al login
-    header("Location: inicio");
+    header("Location: ../inicio");
 	break;
     
     case 'verificar':

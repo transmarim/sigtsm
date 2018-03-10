@@ -12,7 +12,7 @@
                         </li>
                         <li class="user-footer">
                             <div class="pull-left"> <a href="perfilchofer" class="btn btn-default btn-flat">Editar</a> </div>
-                            <div class="pull-right"> <a href="#" class="btn btn-default btn-flat">Salir</a> </div>
+                            <div class="pull-right"> <a href="controllers/usuario.php?op=salir" class="btn btn-default btn-flat">Salir</a> </div>
                         </li>
                     </ul>
                 </li>
