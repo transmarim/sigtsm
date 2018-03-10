@@ -27,10 +27,10 @@ class Enviaralert{
                   <td align="center" valign="top" bgcolor="#ffffff" style="background-color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000000; padding:12px;"><table width="100%" border="0" cellspacing="0" cellpadding="10" style="margin-bottom:10px;">
                     <tr>
                       <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#525252;">
-                      <div style="font-size:18px; color:#183152;"><h3>Estimado $nombre, has recibido un mensaje del SigTSM</h3></div>
+                      <div style="font-size:18px; color:#183152;"><h3>Estimado '.$nombre.', has recibido un mensaje del sistema SigTSM</h3></div>
                         <div style="font-size:28px;">Uno de nuestros trabajadores te ha enviado el siguiente mensaje: </div>
           <div><br>
-            <p>'.$descripcion.'</p><br><p>Puedes ponerte en contacto al email: ejemplo@gmail.com o por su numero tlf: 99999 </p>.</div> </td>
+            <p>'.$descripcion.'</p><br><p>Puedes ponerte en contacto al email: asistente@transmarim.com o por su numero tlf: 99999 </p>.</div> </td>
                     </tr>
                   </table>
                   </td>
@@ -38,7 +38,7 @@ class Enviaralert{
                 <tr>
                   <td align="left" valign="top" bgcolor="#183152" style="background-color:#183152;"><table width="100%" border="0" cellspacing="0" cellpadding="15">
                     <tr>
-                      <td align="left" valign="top" style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:13px;"><p>Este mensaje ha sido generado automaticamente desde seamasterinc.com. (NO RESPONDER)</p></td>
+                      <td align="left" valign="top" style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:13px;"><p>Este mensaje ha sido generado automaticamente desde la web sigtsm.transmarim.com (NO RESPONDER)</p></td>
                     </tr>
                   </table></td>
                 </tr>
@@ -59,7 +59,7 @@ class Enviaralert{
         $mail->addAddress($email,"Informacion");     // Add a recipient
         $mail->addReplyTo('info@seamasterinc.com', 'NO-REPLY');
         $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = 'Mensaje desde SigTSM ';
+        $mail->Subject = 'Mensaje desde SigTSM + '.$asunto;
         $mail->Body = $contenido;
         if(!$mail->send()) {
             $sw = false;

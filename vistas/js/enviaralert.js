@@ -69,6 +69,7 @@ function guardaryeditar(e){
         , confirmButtonText: "Si, deseo enviarlo!"
         , closeOnConfirm: false
         }, function () {
+            $("#nombre").prop('disabled', false);
             var formData = new FormData($("#formulario")[0]);
             $.ajax({
             url:"controllers/enviaralert.php?op=enviaralert",
@@ -79,6 +80,7 @@ function guardaryeditar(e){
             success: function(respuesta){
                 swal(respuesta, "Presione OK para continuar",);
                 swal(respuesta, e , "success");
+                $("#nombre").prop('disabled', true);
             }
             });
         });
