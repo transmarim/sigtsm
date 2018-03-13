@@ -53,16 +53,12 @@
                                 <h3 class="box-title">Pronto-Pago Chofer</h3>
                             </div>
                             <div class="panel-body" id="formularioregistros">
-                                <form name="formulario" id="formulario" method="POST">
+                                <form name="formulario1" id="formulario1" method="POST">
                                     <div class="form-group">
                                         <label class="col-sm-3 col-xs-12 control-label">Chofer:</label>
                                         <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                                         <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                            <select id="idchofer" class="form-control selectpicker" data-live-search="true" name="idchofer" required>
-                                                <option value="">--</option>
-                                                <option value="1">TRANSMARIM</option>
-                                                <option value="2">CARIBBEAN</option>
-                                            </select>
+                                        <select id="idchofer" class="form-control selectpicker" data-live-search="true" name="idchofer"></select>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -104,6 +100,7 @@
                                     <div class="input-group margin col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                         <input type="number" class="form-control" name="ticket" id="ticket" required min="1">
                                         <input type="hidden" class="form-control" name="idchofer" id="idchofer">
+                                        <input type="hidden" class="form-control" id="numeroform" name ="numeroform">
                                         <span class="input-group-btn">
                                             <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                                         </span>

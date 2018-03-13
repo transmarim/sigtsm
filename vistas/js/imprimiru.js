@@ -3,6 +3,12 @@ var tabla;
 var bandera;
 
 function init(){
+/*TRAEMOS LOS CHOFERES POR POST*/
+    $.post("controllers/chofer.php?op=selectc",function(respuesta){
+        $("#idchofer").html(respuesta);
+        $("#idchofer").selectpicker('refresh');
+        });
+
     mostrarform(false,0);
     
     /*USAR ESTO PARA MANDAR A IMPRIMIR POR POST*/
@@ -11,8 +17,25 @@ function init(){
 //    $("#idcliente").selectpicker('refresh');
 //    });
 
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+     $("#formulario1").on("submit",function(e){
+        e.preventDefault();
+        var formData = new FormData($("#formulario")[0]);
+        var chofer = $("#idchofer").val();
+        var empresa = $("#idempresa").val();
+        var startDate = $("#fechaprepago").data("daterangepicker").startDate.format('YYYY-DD-MM');
+        var endDate = $("#fechaprepago").data("daterangepicker").endDate.format('YYYY-DD-MM');
+        // $.ajax({
+        //    url:"controllers/imprimiru.php?op=reporteProntoP",
+        //    type:"POST",
+        //    data: formData,
+        //    contentType: false,
+        //    processData: false,
+        //    success: function(respuesta){
+        //      swal(respuesta, "Presione OK para continuar");
+        //      mostrarform(false);
+        //      tabla.ajax.reload();
+        //    }
+        // });
     });
     
 }
@@ -25,6 +48,7 @@ function limpiar(){
     $("#montoret").val("");
     $("#montoc").val("");
     $("#descripcion").val("");
+    $("#numeroform").val("");
     $("#idcentro").selectpicker("val","");
     /*QUITAR CLASES A LOS ELEMENTOS*/
     $(".form-group").removeClass('has-success has-error');
