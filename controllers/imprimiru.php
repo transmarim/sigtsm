@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once("../modelos/Imprimir.php");
 require_once("fpdf/fpdf.php");
 
 $pdf = new FPDF();
@@ -8,23 +8,24 @@ $pdf = new FPDF();
 
 $idchofer=isset($_POST['idchofer'])? limpiarCadena($_POST['idchofer']):"";
 
-$nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
+$idempresa=isset($_POST["idempresa"])? limpiarCadena($_POST["idempresa"]):"";
 
-$montotsmp=isset($_POST['montotsmp'])? limpiarCadena($_POST['montotsmp']):"";
+$startDate=isset($_POST["startDate"])? limpiarCadena($_POST["startDate"]):"";
 
-$montotsmc=isset($_POST['montotsmc'])? limpiarCadena($_POST['montotsmc']):"";
-
-$montocaribec=isset($_POST['montocaribec'])? limpiarCadena($_POST['montocaribec']):"";
+$endDate=isset($_POST["endDate"])? limpiarCadena($_POST["endDate"]):"";
 
 switch ($_GET["op"]){
-    case 'guardaryeditar':
-		if (empty($idtarifa)){
-            $rspta=$tarifa->insertar($nombre,$montotsmp,$montotsmc,$montocaribec);
-            echo $rspta ? "Tarifa registrada con exito":"No se pudieron registrar todos los datos de la tarifa";
+    case 'reporteProntoP':
+		if (empty($idempresa) || empty($idempresa) || empty($startDate) || empty($endDate)){
+            $pdf->AddPage();
+            $pdf->SetFont('Arial','B',16);
+            $pdf->Cell(40,10,'Hola Mundo');
+            $pdf->Output('F','../vistas/reportes/doc.pdf',true);
+            $ruta = 'vistas/reportes/doc.pdf';
+            echo $ruta;
 		}
 		else {
-            $rspta=$tarifa->editar($idtarifa,$nombre,$montotsmp,$montotsmc,$montocaribec);
-			echo $rspta ? "Tarifa actualizada con exito":"No se pudieron actualizar los datos de la tarifa";
+			echo "No se puede generar el reporte solicitado, faltan datos por completar";
 		}
     break;
 

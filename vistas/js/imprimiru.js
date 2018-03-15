@@ -20,22 +20,24 @@ function init(){
      $("#formulario1").on("submit",function(e){
         e.preventDefault();
         var formData = new FormData($("#formulario")[0]);
-        var chofer = $("#idchofer").val();
-        var empresa = $("#idempresa").val();
+        /*var chofer = $("#idchofer").val();
+        var empresa = $("#idempresa").val();*/
         var startDate = $("#fechaprepago").data("daterangepicker").startDate.format('YYYY-DD-MM');
         var endDate = $("#fechaprepago").data("daterangepicker").endDate.format('YYYY-DD-MM');
-        // $.ajax({
-        //    url:"controllers/imprimiru.php?op=reporteProntoP",
-        //    type:"POST",
-        //    data: formData,
-        //    contentType: false,
-        //    processData: false,
-        //    success: function(respuesta){
-        //      swal(respuesta, "Presione OK para continuar");
-        //      mostrarform(false);
-        //      tabla.ajax.reload();
-        //    }
-        // });
+        formData.append("startDate",startDate);
+        formData.append("endDate",endDate);
+         $.ajax({
+            url:"controllers/imprimiru.php?op=reporteProntoP",
+            type:"POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(respuesta){
+              /*swal(respuesta, "Presione OK para continuar");*/
+              alert(respuesta);
+              window.open(respuesta,"_blank");
+            }
+         });
     });
     
 }
