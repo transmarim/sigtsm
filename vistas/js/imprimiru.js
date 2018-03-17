@@ -20,10 +20,13 @@ function init(){
      $("#formulario1").on("submit",function(e){
         e.preventDefault();
         var formData = new FormData($("#formulario")[0]);
-        /*var chofer = $("#idchofer").val();
-        var empresa = $("#idempresa").val();*/
-        var startDate = $("#fechaprepago").data("daterangepicker").startDate.format('YYYY-DD-MM');
-        var endDate = $("#fechaprepago").data("daterangepicker").endDate.format('YYYY-DD-MM');
+        var chofer = $("#idchofer").val();
+        var empresa = $("#idempresa").val();
+        var startDate = $("#fechaprepago").data("daterangepicker").startDate.format('YYYY-MM-DD');
+        var endDate = $("#fechaprepago").data("daterangepicker").endDate.format('YYYY-MM-DD');
+
+        formData.append("idchofer",chofer);
+        formData.append("idempresa",empresa);
         formData.append("startDate",startDate);
         formData.append("endDate",endDate);
          $.ajax({

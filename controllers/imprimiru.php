@@ -1,8 +1,7 @@
 <?php
 require_once("../modelos/Imprimir.php");
 require_once("fpdf/fpdf.php");
-
-$pdf = new FPDF();
+require_once("fpdf/config.php");
 
 /*INICIALIZO VARIABLES*/
 
@@ -16,10 +15,37 @@ $endDate=isset($_POST["endDate"])? limpiarCadena($_POST["endDate"]):"";
 
 switch ($_GET["op"]){
     case 'reporteProntoP':
-		if (empty($idempresa) || empty($idempresa) || empty($startDate) || empty($endDate)){
+		if (!empty($idchofer) || !empty($idempresa) || !empty($startDate) || !empty($endDate)){
+
+            $pdf = new PDF();
             $pdf->AddPage();
-            $pdf->SetFont('Arial','B',16);
-            $pdf->Cell(40,10,'Hola Mundo');
+            $X=5;
+		    $Y=5;
+
+            // // Títulos de las columnas
+            // $header = array('País', 'Capital', 'Superficie (km2)', 'Pobl. (en miles)');
+            // // Carga de datos
+            // $data = $pdf->LoadData('paises.txt');
+            // $pdf->SetFont('Arial','',14);
+            // $pdf->AddPage();
+            // $pdf->BasicTable($header,$data);
+            // $pdf->AddPage();
+            // $pdf->ImprovedTable($header,$data);
+            // $pdf->AddPage();
+            // $pdf->Output();
+            $pdf->SetFont('Courier','B',10);
+            $pdf->SetXY($X+5,$Y+13);
+            $pdf->MultiCell(200,5,'RELACION DE SERVICIOS POR TRANSPORT AND SERVICES MARINE, C.A',0,'L'); 
+
+            $pdf->SetFont('Courier','',8);
+            $pdf->SetXY($X+5,$Y+20);
+            $pdf->MultiCell(60,5,'Chofer:   '.$idchofer,1,'L');
+            $pdf->SetXY($X+5,$Y+25);
+            $pdf->MultiCell(60,5,'Semana del:    '.date('d-m-Y',strtotime($startDate)),1,'L');
+            $pdf->SetXY($X+5,$Y+30);
+            $pdf->MultiCell(60,5,'Al:            '.date('d-m-Y',strtotime($endDate)),1,'L');
+
+            $pdf->AliasNbPages();
             $pdf->Output('F','../vistas/reportes/doc.pdf',true);
             $ruta = 'vistas/reportes/doc.pdf';
             echo $ruta;
