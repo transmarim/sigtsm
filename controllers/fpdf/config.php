@@ -11,7 +11,7 @@
                 $this->SetDrawColor(21,46,105);
                 $this->SetFillColor(41,57,179);
                 $this->Rect(177,10,26,5,'FD');
-                $this->SetFont('Arial','B',10);
+                $this->SetFont('Courier','B',10);
                 $this->SetXY(30,11);
                 $this->Cell(10,4,'TRANSPORT AND SERVICES MARINE, C.A.');
                 $this->SetFont('Arial','B',8);
@@ -31,7 +31,7 @@
             function ImprovedTable($header, $data)
             {
                 // Anchuras de las columnas
-                $w = array(40, 35, 45, 40);
+                $w = array(40, 35, 40, 45);
                 // Cabeceras
                 for($i=0;$i<count($header);$i++)
                     $this->Cell($w[$i],7,$header[$i],1,0,'C');
@@ -39,10 +39,12 @@
                 // Datos
                 foreach($data as $row)
                 {
-                    $this->Cell($w[0],6,$row[0],'LR');
-                    $this->Cell($w[1],6,$row[1],'LR');
-                    $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R');
-                    $this->Cell($w[3],6,number_format($row[3]),'LR',0,'R');
+                    $this->Cell($w[0],6,$row['fecha'],'LRB',0,'C');
+                    $this->Cell($w[1],6,$row['nombre'],'LRB',0,'C');
+                    $this->Cell($w[2],6,$row['codigo'],'LRB',0,'C');
+                    $this->Cell($w[3],6,number_format($row['montop'],2,',','.'),'LRB',0,'R');
+                    // $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R');
+                    // $this->Cell($w[3],6,number_format($row[3]),'LR',0,'R');
                     $this->Ln();
                 }
                 // Línea de cierre

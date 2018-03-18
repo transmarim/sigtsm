@@ -15,7 +15,7 @@ $endDate=isset($_POST["endDate"])? limpiarCadena($_POST["endDate"]):"";
 
 switch ($_GET["op"]){
     case 'reporteProntoP':
-		if (!empty($idchofer) || !empty($idempresa) || !empty($startDate) || !empty($endDate)){
+		if ($idchofer != "" || $idempresa != "" || $startDate != "" || $endDate != "" ){
 
             $pdf = new PDF();
             $pdf->AddPage();
@@ -27,9 +27,6 @@ switch ($_GET["op"]){
             // // Carga de datos
             // $data = $pdf->LoadData('paises.txt');
             // $pdf->SetFont('Arial','',14);
-            // $pdf->AddPage();
-            // $pdf->BasicTable($header,$data);
-            // $pdf->AddPage();
             // $pdf->ImprovedTable($header,$data);
             // $pdf->AddPage();
             // $pdf->Output();
@@ -37,17 +34,34 @@ switch ($_GET["op"]){
             $pdf->SetXY($X+5,$Y+13);
             $pdf->MultiCell(200,5,'RELACION DE SERVICIOS POR TRANSPORT AND SERVICES MARINE, C.A',0,'L'); 
 
+            /*TRAEMOS EL NOMBRE DEL CHOFER POR EL MODELO */
+            require_once("../modelos/Chofer.php");
+            $chofer = new Chofer();
+            $rspta = $chofer->mostrar($idchofer);
             $pdf->SetFont('Courier','',8);
             $pdf->SetXY($X+5,$Y+20);
-            $pdf->MultiCell(60,5,'Chofer:   '.$idchofer,1,'L');
+            $pdf->MultiCell(60,5,'Chofer:   '.$rspta['nombre'],1,'L'); 
+            /*FIN DEL RSPTA*/
+            
             $pdf->SetXY($X+5,$Y+25);
             $pdf->MultiCell(60,5,'Semana del:    '.date('d-m-Y',strtotime($startDate)),1,'L');
             $pdf->SetXY($X+5,$Y+30);
             $pdf->MultiCell(60,5,'Al:            '.date('d-m-Y',strtotime($endDate)),1,'L');
+            /*IMPRIMO LOS ITEMS DE PRONTOP*/
+            $itemprontop = new Imprimir();
+            $rsptaitem = $itemprontop->mostrarProntoPago($idchofer,$startDate,$endDate);
+            $header = array('FECHA', 'EMPRESA','TICKET','MONTO');
+            $pdf->ImprovedTable($header,$rsptaitem);
+            // while ($reg = $rsptaitem->fetch_object())
+            // {
+            //     $pdf->SetXY($X++,$Y++);
+            //     $pdf->MultiCell(60,5,$reg->nombre.' '.$reg->codigo,1,'L');
+            // }
 
             $pdf->AliasNbPages();
             $pdf->Output('F','../vistas/reportes/doc.pdf',true);
             $ruta = 'vistas/reportes/doc.pdf';
+            /*IMPRIMIR LA RUTA*/
             echo $ruta;
 		}
 		else {

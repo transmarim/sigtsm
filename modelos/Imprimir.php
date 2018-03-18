@@ -1,15 +1,13 @@
 <?php
 require_once("conexion.php");
 
-class Cliente{
+class Imprimir{
     function __construct(){
         
     }
-    public static function insertar($nombre,$codigo,$tipo_documento,$direccion,$telefono,$email){
-        $sql = "INSERT INTO cliente (nombre,codigo,tipo_documento,direccion,telefono,email,condicion) VALUES ('$nombre','$codigo','$tipo_documento','$direccion','$telefono','$email',1)";
-        $sw = true;
-        Consulta($sql) or $sw = false;
-        return $sw;
+    public static function mostrarProntoPago($idchofer,$startDate,$endDate){
+        $sql = "SELECT T2.nombre, T1.codigo, T1.fecha, T1.montop, T1.montoret, T1.descripcion FROM tickettsm AS T1 LEFT JOIN cliente AS T2 ON T2.idcliente = T1.idcliente WHERE T1.condicion = 1 AND T1.fechapago BETWEEN '$startDate' AND '$endDate' AND T1.idchofer = $idchofer";
+        return Consulta($sql);
     }
     
     public static function editar($idcliente,$nombre,$codigo,$tipo_documento,$direccion,$telefono,$email){
