@@ -48,9 +48,11 @@ switch ($_GET["op"]){
             $pdf->SetXY($X+5,$Y+30);
             $pdf->MultiCell(60,5,'Al:            '.date('d-m-Y',strtotime($endDate)),1,'L');
             /*IMPRIMO LOS ITEMS DE PRONTOP*/
+            
             $itemprontop = new Imprimir();
             $rsptaitem = $itemprontop->mostrarProntoPago($idchofer,$startDate,$endDate);
-            $header = array('FECHA', 'EMPRESA','TICKET','MONTO');
+            $header = array('FECHA', 'AGENCIA','TICKET','BUQUE','MONTO');
+            $pdf->SetXY($X+5,$Y+40);
             $pdf->ImprovedTable($header,$rsptaitem);
             // while ($reg = $rsptaitem->fetch_object())
             // {

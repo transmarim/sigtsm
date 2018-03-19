@@ -31,18 +31,20 @@
             function ImprovedTable($header, $data)
             {
                 // Anchuras de las columnas
-                $w = array(40, 35, 40, 45);
+                $w = array(30, 40, 30, 35, 40);
                 // Cabeceras
+                $this->SetFont('Courier','B',8);
                 for($i=0;$i<count($header);$i++)
                     $this->Cell($w[$i],7,$header[$i],1,0,'C');
                 $this->Ln();
-                // Datos
+                $this->SetFont('Courier','',8);
                 foreach($data as $row)
                 {
-                    $this->Cell($w[0],6,$row['fecha'],'LRB',0,'C');
-                    $this->Cell($w[1],6,$row['nombre'],'LRB',0,'C');
-                    $this->Cell($w[2],6,$row['codigo'],'LRB',0,'C');
-                    $this->Cell($w[3],6,number_format($row['montop'],2,',','.'),'LRB',0,'R');
+                    $this->Cell($w[0],5,$row['fecha'],'LRB',0,'C');
+                    $this->Cell($w[1],5,$row['nombre'],'LRB',0,'C');
+                    $this->Cell($w[2],5,$row['codigo'],'LRB',0,'C');
+                    $this->Cell($w[3],5,$row['nombrec'],'LRB',0,'C');
+                    $this->Cell($w[4],5,number_format($row['montop'],2,',','.'),'LRB',0,'R');
                     // $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R');
                     // $this->Cell($w[3],6,number_format($row[3]),'LR',0,'R');
                     $this->Ln();
