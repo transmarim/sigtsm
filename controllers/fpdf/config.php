@@ -47,10 +47,17 @@
                     $this->Cell($w[4],5,number_format($row['montop'],2,',','.'),'LRB',0,'R');
                     // $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R');
                     // $this->Cell($w[3],6,number_format($row[3]),'LR',0,'R');
+                    $totalp = $row['montop'] += $row['montop'];
                     $this->Ln();
                 }
                 // Línea de cierre
                 $this->Cell(array_sum($w),0,'','T');
+                $this->Ln();
+                //CELDA EN BLANCO PARA EMPUJAR
+                $this->Cell(100,5,'',0,0,'C');
+                $this->SetFont('Courier','B',8);
+                $this->Cell($w[3],5,'SUBTOTAL BS:',1,0,'L');
+                $this->Cell($w[4],5,number_format($totalp,2,',','.'),1,0,'R');
             }
         }
 
