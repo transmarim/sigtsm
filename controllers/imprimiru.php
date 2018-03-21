@@ -51,9 +51,10 @@ switch ($_GET["op"]){
             
             $itemprontop = new Imprimir();
             $rsptaitem = $itemprontop->mostrarProntoPago($idchofer,$startDate,$endDate);
+            $rsptadctos = $itemprontop->dctosPP($idchofer,$startDate,$endDate);
             $header = array('FECHA', 'AGENCIA','TICKET','BUQUE','MONTO');
             $pdf->SetXY($X+5,$Y+40);
-            $pdf->ImprovedTable($header,$rsptaitem);
+            $pdf->ImprovedTable($header,$rsptaitem,$rsptadctos);
             // while ($reg = $rsptaitem->fetch_object())
             // {
             //     $pdf->SetXY($X++,$Y++);

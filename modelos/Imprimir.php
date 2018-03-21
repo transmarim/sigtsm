@@ -11,11 +11,9 @@ class Imprimir{
         return Consulta($sql);
     }
     
-    public static function editar($idcliente,$nombre,$codigo,$tipo_documento,$direccion,$telefono,$email){
-        $sql = "UPDATE cliente SET nombre='$nombre',codigo='$codigo',tipo_documento='$tipo_documento',direccion='$direccion',telefono='$telefono',email='$email' WHERE idcliente = '$idcliente'";
-        $sw = true;
-        Consulta($sql) or $sw = false;
-        return $sw;
+    public static function dctosPP($idchofer,$startDate,$endDate){
+        $sql = "SELECT T2.nombre, T1.montodesc, T1.porcentaje FROM chofer_descuento AS T1 LEFT JOIN descuento AS T2 ON T2.iddescuento = T1.iddescuento WHERE T1.idchofer = $idchofer AND T1.fecha BETWEEN '$startDate' AND '$endDate'";
+        return Consulta($sql);
     }
     
     public static function desactivar($idcliente){

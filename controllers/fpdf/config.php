@@ -28,7 +28,7 @@
             }
 
             // Una tabla más completa
-            function ImprovedTable($header, $data)
+            function ImprovedTable($header, $data, $dctos)
             {
                 // Anchuras de las columnas
                 $w = array(30, 40, 30, 35, 40);
@@ -48,16 +48,30 @@
                     // $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R');
                     // $this->Cell($w[3],6,number_format($row[3]),'LR',0,'R');
                     $totalp = $row['montop'] += $row['montop'];
+                    $totalret = $row['montoret'] += $row['montoret'];
                     $this->Ln();
                 }
                 // Línea de cierre
                 $this->Cell(array_sum($w),0,'','T');
                 $this->Ln();
+                // Llamo descuentos
+                foreach($dctos as $row)
+                {
+                    $this->Cell(100,5,'',0,0,'C');
+                    $this->Cell($w[3],5,$row['nombre'],1,0,'L');
+                    $this->Cell($w[4],5,number_format($row['montodesc'],2,',','.'),'LRB',0,'R');
+                    $this->Ln();
+                }
+
                 //CELDA EN BLANCO PARA EMPUJAR
-                $this->Cell(100,5,'',0,0,'C');
-                $this->SetFont('Courier','B',8);
-                $this->Cell($w[3],5,'SUBTOTAL BS:',1,0,'L');
-                $this->Cell($w[4],5,number_format($totalp,2,',','.'),1,0,'R');
+                    $this->SetFont('Courier','B',8);
+                    $this->Cell(100,5,'',0,0,'C');
+                    $this->Cell($w[3],5,'SUBTOTAL BS:',1,0,'L');
+                    $this->Cell($w[4],5,number_format($totalp,2,',','.'),1,0,'R');
+                    $this->Ln();
+                    $this->Cell(100,5,'',0,0,'C');
+                    $this->Cell($w[3],5,'DSCTO ISLR:',1,0,'L');
+                    $this->Cell($w[4],5,number_format($totalret,2,',','.'),1,0,'R');
             }
         }
 
