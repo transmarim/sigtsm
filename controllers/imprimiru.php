@@ -21,18 +21,12 @@ switch ($_GET["op"]){
             $pdf->AddPage();
             $X=5;
 		    $Y=5;
-
-            // // Títulos de las columnas
-            // $header = array('País', 'Capital', 'Superficie (km2)', 'Pobl. (en miles)');
-            // // Carga de datos
-            // $data = $pdf->LoadData('paises.txt');
-            // $pdf->SetFont('Arial','',14);
-            // $pdf->ImprovedTable($header,$data);
-            // $pdf->AddPage();
-            // $pdf->Output();
             $pdf->SetFont('Courier','B',10);
             $pdf->SetXY($X+5,$Y+13);
-            $pdf->MultiCell(200,5,'RELACION DE SERVICIOS POR TRANSPORT AND SERVICES MARINE, C.A',0,'L'); 
+            switch($idempresa){
+                case 1: $nombreEmp='TRANSPORT AND SERVICES MARINE, C.A'; break;
+                case 2: $nombreEmp='CARIBBEAN OCEAN'; break;}
+            $pdf->MultiCell(200,5,'RELACION DE SERVICIOS POR '.$nombreEmp,0,'L'); 
 
             /*TRAEMOS EL NOMBRE DEL CHOFER POR EL MODELO */
             require_once("../modelos/Chofer.php");
@@ -55,12 +49,6 @@ switch ($_GET["op"]){
             $header = array('FECHA', 'AGENCIA','TICKET','BUQUE','MONTO');
             $pdf->SetXY($X+5,$Y+40);
             $pdf->ImprovedTable($header,$rsptaitem,$rsptadctos);
-            // while ($reg = $rsptaitem->fetch_object())
-            // {
-            //     $pdf->SetXY($X++,$Y++);
-            //     $pdf->MultiCell(60,5,$reg->nombre.' '.$reg->codigo,1,'L');
-            // }
-
             $pdf->AliasNbPages();
             $pdf->Output('F','../vistas/reportes/doc.pdf',true);
             $ruta = 'vistas/reportes/doc.pdf';
