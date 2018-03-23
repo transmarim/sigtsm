@@ -37,8 +37,17 @@ function init(){
             processData: false,
             success: function(respuesta){
               /*swal(respuesta, "Presione OK para continuar");*/
-              alert(respuesta);
-              window.open(respuesta,"_blank");
+              swal({
+                title: "Reporte ProntoPago"
+                , text: "Ha sido generado, continue para imprimir"
+                , type: "info"
+                , showCancelButton: true
+                , confirmButtonColor: "#da4f49"
+                , confirmButtonText: "Imprimir!"
+                , closeOnConfirm: true
+                }, function () {
+                    window.open(respuesta,"_blank");
+                });
             }
          });
     });

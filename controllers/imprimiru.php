@@ -24,8 +24,8 @@ switch ($_GET["op"]){
             $pdf->SetFont('Courier','B',10);
             $pdf->SetXY($X+5,$Y+13);
             switch($idempresa){
-                case 1: $nombreEmp='TRANSPORT AND SERVICES MARINE, C.A'; break;
-                case 2: $nombreEmp='CARIBBEAN OCEAN'; break;}
+                case 1: $nombreEmp='TRANSPORT AND SERVICES MARINE, C.A'; $tablaemp='tickettsm'; break;
+                case 2: $nombreEmp='CARIBBEAN OCEAN'; $tablaemp='ticketcaribe'; break;}
             $pdf->MultiCell(200,5,'RELACION DE SERVICIOS POR '.$nombreEmp,0,'L'); 
 
             /*TRAEMOS EL NOMBRE DEL CHOFER POR EL MODELO */
@@ -41,19 +41,34 @@ switch ($_GET["op"]){
             $pdf->MultiCell(60,5,'Semana del:    '.date('d-m-Y',strtotime($startDate)),1,'L');
             $pdf->SetXY($X+5,$Y+30);
             $pdf->MultiCell(60,5,'Al:            '.date('d-m-Y',strtotime($endDate)),1,'L');
+
+            /*NOMBRE ARCHIVO*/
+            $narchivo = 'PP'.$idempresa.'_C'.$idchofer.'_'.round(microtime(true));
             /*IMPRIMO LOS ITEMS DE PRONTOP*/
-            
-            $itemprontop = new Imprimir();
-            $rsptaitem = $itemprontop->mostrarProntoPago($idchofer,$startDate,$endDate);
-            $rsptadctos = $itemprontop->dctosPP($idchofer,$startDate,$endDate);
-            $header = array('FECHA', 'AGENCIA','TICKET','BUQUE','MONTO');
-            $pdf->SetXY($X+5,$Y+40);
-            $pdf->ImprovedTable($header,$rsptaitem,$rsptadctos);
-            $pdf->AliasNbPages();
-            $pdf->Output('F','../vistas/reportes/doc.pdf',true);
-            $ruta = 'vistas/reportes/doc.pdf';
-            /*IMPRIMIR LA RUTA*/
-            echo $ruta;
+            if($idempresa == 1){
+                $itemprontop = new Imprimir();
+                $rsptaitem = $itemprontop->mostrarProntoPago($idchofer,$startDate,$endDate,$tablaemp);
+                $rsptadctos = $itemprontop->dctosPP($idchofer,$startDate,$endDate);
+                $header = array('FECHA', 'AGENCIA','TICKET','BUQUE','MONTO');
+                $pdf->SetXY($X+5,$Y+40);
+                $pdf->tablaTSMPP($header,$rsptaitem,$rsptadctos);
+                $pdf->AliasNbPages();
+                $pdf->Output('F','../vistas/reportes/pp/'.$narchivo.'.pdf',true);
+                $ruta = 'vistas/reportes/pp/'.$narchivo.'.pdf';
+                /*IMPRIMIR LA RUTA*/
+                echo $ruta;
+            }else{
+                $itemprontop = new Imprimir();
+                $rsptaitem = $itemprontop->mostrarProntoPago($idchofer,$startDate,$endDate,$tablaemp);
+                $header = array('FECHA', 'AGENCIA','TICKET','BUQUE','MONTO');
+                $pdf->SetXY($X+5,$Y+40);
+                $pdf->tablaCBPP($header,$rsptaitem);
+                $pdf->AliasNbPages();
+                $pdf->Output('F','../vistas/reportes/pp/'.$narchivo.'.pdf',true);
+                $ruta = 'vistas/reportes/pp/'.$narchivo.'.pdf';
+                /*IMPRIMIR LA RUTA*/
+                echo $ruta;
+            }
 		}
 		else {
 			echo "No se puede generar el reporte solicitado, faltan datos por completar";

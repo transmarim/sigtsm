@@ -28,7 +28,7 @@
             }
 
             // Una tabla más completa
-            function ImprovedTable($header, $data, $dctos)
+            function tablaTSMPP($header, $data, $dctos)
             {
                 // Anchuras de las columnas
                 $w = array(30, 40, 30, 35, 40);
@@ -62,7 +62,7 @@
                     if($row['iddescuento'] != 1){
                         $this->Cell(100,5,'',0,0,'C');
                         $this->Cell($w[3],5,$row['nombre'],1,0,'L');
-                        $this->Cell($w[4],5,number_format($row['montodesc'],2,',','.'),'LRB',0,'R');
+                        $this->Cell($w[4],5,number_format($row['montodesc']*-1,2,',','.'),'LRB',0,'R');
                         $this->Ln();
                         $nombreISLR = 'RET. ISLR:';
                         $subtotal = $subtotal - $row['montodesc'];
@@ -83,6 +83,45 @@
                     $this->Cell(100,5,'',0,0,'C');
                     $this->Cell($w[3],5,$nombreISLR,1,0,'L');
                     $this->Cell($w[4],5,number_format($totalret,2,',','.'),1,0,'R');
+                    $this->Ln();
+                    $this->Cell(100,5,'',0,0,'C');
+                    $this->Cell($w[3],5,'TOTAL:',1,0,'L');
+                    $this->Cell($w[4],5,number_format($subtotal - $totalret,2,',','.'),1,0,'R');
+            }
+
+            function tablaCBPP($header, $data)
+            {
+                // Anchuras de las columnas
+                $w = array(30, 40, 30, 35, 40);
+                //Variable que indica si se aplico sustraendo o no
+                $nombreISLR = '';
+                $subtotal = 0;
+                $totalret = 0;
+                // Cabeceras
+                $this->SetFont('Courier','B',8);
+                for($i=0;$i<count($header);$i++)
+                    $this->Cell($w[$i],7,$header[$i],1,0,'C');
+                $this->Ln();
+                $this->SetFont('Courier','',8);
+                foreach($data as $row)
+                {
+                    $this->Cell($w[0],5,$row['fecha'],'LRB',0,'C');
+                    $this->Cell($w[1],5,$row['nombre'],'LRB',0,'C');
+                    $this->Cell($w[2],5,$row['codigo'],'LRB',0,'C');
+                    $this->Cell($w[3],5,$row['nombrec'],'LRB',0,'C');
+                    $this->Cell($w[4],5,number_format($row['montop'],2,',','.'),'LRB',0,'R');
+                    $subtotal = $subtotal + $row['montop'];
+                    $this->Ln();
+                }
+                // Línea de cierre
+                $this->Cell(array_sum($w),0,'','T');
+                $this->Ln();
+
+                //CELDA EN BLANCO PARA EMPUJAR
+                    $this->SetFont('Courier','B',8);
+                    $this->Cell(100,5,'',0,0,'C');
+                    $this->Cell($w[3],5,'SUBTOTAL BS:',1,0,'L');
+                    $this->Cell($w[4],5,number_format($subtotal,2,',','.'),1,0,'R');
                     $this->Ln();
                     $this->Cell(100,5,'',0,0,'C');
                     $this->Cell($w[3],5,'TOTAL:',1,0,'L');

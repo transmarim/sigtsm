@@ -81,7 +81,6 @@
                                             <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                                         </span>
                                     </div>
-                                    <iframe id="frame" style="width:500px; height:375px;" frameborder="0"></iframe>
                                     <!-- /.input group -->
                                 </form>
                             </div>
