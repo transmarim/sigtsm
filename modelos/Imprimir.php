@@ -22,13 +22,19 @@ class Imprimir{
         return Consulta($sql);
     }
         
-    public static function activar($idcliente){
-        $sql = "UPDATE cliente SET condicion='1' WHERE idcliente='$idcliente'";
-        return Consulta($sql);
+    public static function mostrarResumenPp($startDate,$endDate){
+        $sql = "SELECT T1.idchofer, T2.nombre, SUM(T1.montop) AS monto, SUM(T1.montoret) AS ret FROM tickettsm AS T1 LEFT JOIN chofer AS T2 ON T2.idchofer = T1.idchofer WHERE T1.condicion=1 AND T1.fechapago BETWEEN '$startDate' AND '$endDate' GROUP BY T1.idchofer";
+        $sw = true;
+        Consulta($sql) or $sw = false;
+        if($sw != false ){
+            return Consulta($sql);
+        } else {
+            return $sw;
+        }
     }
     
-    public static function mostrar($idcliente){
-        $sql = "SELECT * FROM cliente WHERE idcliente='$idcliente'";
+    public static function resumenDctosPP($startDate,$endDate){
+        $sql = "SELECT idchofer, SUM(montodesc) AS montodesc FROM chofer_descuento WHERE fecha BETWEEN '$startDate' AND '$endDate' GROUP BY idchofer";
         return ConsultaFila($sql);
     }
     
