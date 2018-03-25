@@ -75,26 +75,72 @@ switch ($_GET["op"]){
 		}
     break;
 
-    case 'listar':
-        $rspta = $tarifa->listar();
-        $data = Array();
-        while($reg = $rspta->fetch_object()){
-           $data[]=array(
- 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idtarifa.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="eliminar('.$reg->idtarifa.')"><i class="fa fa-trash"></i></button>',
- 				"1"=>$reg->nombre,
- 				"2"=>$reg->montotsmp,
- 				"3"=>$reg->montotsmc,
- 				"4"=>$reg->montocaribec
-           );
+    case 'resumenProntoP':
+    if ($idempresa != "" || $startDate != "" || $endDate != "" ){
+
+        $pdf = new PDF();
+        $pdf->AddPage('L');
+        $X=5;
+        $Y=5;
+        $pdf->SetFont('Courier','B',10);
+        $pdf->SetXY($X+5,$Y+13);
+        switch($idempresa){
+            case 1: $nombreEmp='TRANSPORT AND SERVICES MARINE, C.A'; $tablaemp='tickettsm'; break;
+            case 2: $nombreEmp='CARIBBEAN OCEAN'; $tablaemp='ticketcaribe'; break;}
+        $pdf->MultiCell(200,5,'RESUMEN PRONTO-PAGO POR '.$nombreEmp,0,'L'); 
+
+        $pdf->SetXY($X+5,$Y+20);
+        $pdf->MultiCell(60,5,'Semana del:    '.date('d-m-Y',strtotime($startDate)),1,'L');
+        $pdf->SetXY($X+65,$Y+20);
+        $pdf->MultiCell(60,5,'Hasta:         '.date('d-m-Y',strtotime($endDate)),1,'L');
+
+        /*NOMBRE ARCHIVO*/
+        $narchivo = 'RP'.$idempresa.'_'.round(microtime(true));
+        
+        
+        /*IMPRIMO LOS RESUMEN POR EMPRESA*/
+        if($idempresa == 1){
+            $itemresumenp = new Imprimir();
+            $rsptaitem = $itemresumenp->mostrarResumenPp($startDate,$endDate,$tablaemp);
+            $rsptadctos = $itemresumenp->resumenDctosPP($startDate,$endDate);
+            $header = array('NOMBRE', 'MONTO','RET ISLR','TOTAL');
+            $pdf->SetXY($X+5,$Y+35);
+            $pdf->tablaTSMRP($header,$rsptaitem,$rsptadctos);
+            $pdf->AliasNbPages();
+            $pdf->Output('F','../vistas/reportes/rp/'.$narchivo.'.pdf',true);
+            $ruta = 'vistas/reportes/rp/'.$narchivo.'.pdf';
+            /*IMPRIMIR LA RUTA*/
+            echo $ruta;
         }
-        /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/
-        $results = array(
- 			"sEcho"=>1, //Informacion para el datatables
- 			"iTotalRecords"=>count($data), //enviamos el total registros al datatable
- 			"iTotalDisplayRecords"=>count($data), //enviamos el total registros a visualizar
- 			"aaData"=>$data);
-        echo json_encode($results);
+    //     /*IMPRIMO LOS ITEMS DE PRONTOP*/
+    //     if($idempresa == 1){
+    //         $itemprontop = new Imprimir();
+    //         $rsptaitem = $itemprontop->mostrarProntoPago($idchofer,$startDate,$endDate,$tablaemp);
+    //         $rsptadctos = $itemprontop->dctosPP($idchofer,$startDate,$endDate);
+    //         $header = array('FECHA', 'AGENCIA','TICKET','BUQUE','MONTO');
+    //         $pdf->SetXY($X+5,$Y+40);
+    //         $pdf->tablaTSMPP($header,$rsptaitem,$rsptadctos);
+    //         $pdf->AliasNbPages();
+    //         $pdf->Output('F','../vistas/reportes/pp/'.$narchivo.'.pdf',true);
+    //         $ruta = 'vistas/reportes/pp/'.$narchivo.'.pdf';
+    //         /*IMPRIMIR LA RUTA*/
+    //         echo $ruta;
+    //     }else{
+    //         $itemprontop = new Imprimir();
+    //         $rsptaitem = $itemprontop->mostrarProntoPago($idchofer,$startDate,$endDate,$tablaemp);
+    //         $header = array('FECHA', 'AGENCIA','TICKET','BUQUE','MONTO');
+    //         $pdf->SetXY($X+5,$Y+40);
+    //         $pdf->tablaCBPP($header,$rsptaitem);
+    //         $pdf->AliasNbPages();
+    //         $pdf->Output('F','../vistas/reportes/pp/'.$narchivo.'.pdf',true);
+    //         $ruta = 'vistas/reportes/pp/'.$narchivo.'.pdf';
+    //         /*IMPRIMIR LA RUTA*/
+    //         echo $ruta;
+    //     }
+    }
+    else {
+        echo "No se puede generar el reporte solicitado, faltan datos por completar";
+    }
     break;
 
     case 'mostrar':

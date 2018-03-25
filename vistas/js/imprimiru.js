@@ -52,6 +52,39 @@ function init(){
          });
     });
     
+    $("#formulario2").on("submit",function(e){
+        e.preventDefault();
+        var formData = new FormData($("#formulario2")[0]);
+        var empresa = $("#idempresa2").val();
+        var startDate = $("#fechaprepago2").data("daterangepicker").startDate.format('YYYY-MM-DD');
+        var endDate = $("#fechaprepago2").data("daterangepicker").endDate.format('YYYY-MM-DD');
+
+        formData.append("idempresa",empresa);
+        formData.append("startDate",startDate);
+        formData.append("endDate",endDate);
+         $.ajax({
+            url:"controllers/imprimiru.php?op=resumenProntoP",
+            type:"POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(respuesta){
+              /*swal(respuesta, "Presione OK para continuar");*/
+              swal({
+                title: "Resumen ProntoPago"
+                , text: "Ha sido generado, continue para imprimir"
+                , type: "info"
+                , showCancelButton: true
+                , confirmButtonColor: "#da4f49"
+                , confirmButtonText: "Imprimir!"
+                , closeOnConfirm: true
+                }, function () {
+                    window.open(respuesta,"_blank");
+                });
+            }
+         });
+    });
+
 }
 
 function limpiar(){

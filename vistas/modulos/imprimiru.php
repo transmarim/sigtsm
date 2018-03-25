@@ -76,7 +76,7 @@
                                     <div class="clearfix"></div>
                                     <label class="col-sm-3 col-xs-12 control-label">Rango:</label>
                                     <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control fecharango" id="fechaprepago" required>
+                                    <input type="text" class="form-control fecharango" id="fecharesumen" required>
                                         <span class="input-group-btn">
                                             <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                                         </span>
@@ -125,12 +125,12 @@
                                 <h3 class="box-title">Resumen Pronto-Pago</h3>
                             </div>
                             <div class="panel-body" id="formularioregistros">
-                                <form name="formulario" id="formulario" method="POST">
+                                <form name="formulario" id="formulario2" method="POST">
                                     <div class="form-group">
                                         <label class="col-sm-3 col-xs-12 control-label">Empresa:</label>
                                         <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                                         <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                            <select id="idempresa" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
+                                            <select id="idempresa2" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
                                                 <option value="">--</option>
                                                 <option value="1">TRANSMARIM</option>
                                                 <option value="2">CARIBBEAN</option>
@@ -140,7 +140,7 @@
                                     <div class="clearfix"></div>
                                     <label class="col-sm-3 col-xs-12 control-label">Rango:</label>
                                     <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control fecharango" id="fechaprepago" required>
+                                        <input type="text" class="form-control fecharango" id="fechaprepago2" required>
                                         <span class="input-group-btn">
                                             <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                                         </span>

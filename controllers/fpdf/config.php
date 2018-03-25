@@ -127,6 +127,60 @@
                     $this->Cell($w[3],5,'TOTAL:',1,0,'L');
                     $this->Cell($w[4],5,number_format($subtotal - $totalret,2,',','.'),1,0,'R');
             }
+
+            function tablaTSMRP($header, $data, $dctos)
+            {
+                // Anchuras de las columnas
+                $w = array(65, 65, 65, 65);
+                //Variable que indica si se aplico sustraendo o no
+                $nombreISLR = '';
+                $subtotal = 0;
+                $totalret = 0;
+                // Cabeceras
+                $this->SetFont('Courier','B',8);
+                for($i=0;$i<count($header);$i++)
+                    $this->Cell($w[$i],7,$header[$i],1,0,'C');
+                $this->Ln();
+                $this->SetFont('Courier','',8);
+                foreach($data as $row)
+                {
+                    $this->Cell($w[0],5,$row['nombre'],'LRB',0,'L');
+                    $this->Cell($w[1],5,number_format($row['monto'],2,',','.'),'LRB',0,'R');
+                    $this->Cell($w[2],5,number_format($row['ret'],2,',','.'),'LRB',0,'R');
+                    $this->Cell($w[3],5,number_format($row['monto']-$row['ret'],2,',','.'),'LRB',0,'R');
+                    $subtotal = $subtotal + $row['monto'];
+                    $totalret = $totalret + $row['ret'];
+                    $this->Ln();
+                }
+                // Línea de cierre
+                $this->Cell(array_sum($w),0,'','T');
+                $this->Ln();
+                // Llamo descuentos
+                // foreach($dctos as $row)
+                // {
+                //     if($row['iddescuento'] != 1){
+                //         $this->Cell(100,5,'',0,0,'C');
+                //         $this->Cell($w[3],5,$row['nombre'],1,0,'L');
+                //         $this->Cell($w[4],5,number_format($row['montodesc']*-1,2,',','.'),'LRB',0,'R');
+                //         $this->Ln();
+                //         $nombreISLR = 'RET. ISLR:';
+                //         $subtotal = $subtotal - $row['montodesc'];
+                //         $totalret = $totalret - (0.01*$row['montodesc']);
+                //     } else {
+                //         $totalret = $totalret - $row['montodesc'];
+                //         $nombreISLR = 'RET. ISLR (-ST):';
+                //     }
+                    
+                // }
+
+                //CELDA FINALES
+                $this->SetFont('Courier','B',8);
+                $this->Cell($w[0],5,'TOTALES BS:','LRB',0,'L');
+                $this->Cell($w[1],5,number_format($subtotal,2,',','.'),'LRB',0,'R');
+                $this->Cell($w[2],5,number_format($totalret,2,',','.'),'LRB',0,'R');
+                $this->Cell($w[3],5,number_format($subtotal-$totalret,2,',','.'),'LRB',0,'R');
+            }
+
         }
 
 ?>

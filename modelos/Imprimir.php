@@ -22,8 +22,8 @@ class Imprimir{
         return Consulta($sql);
     }
         
-    public static function mostrarResumenPp($startDate,$endDate){
-        $sql = "SELECT T1.idchofer, T2.nombre, SUM(T1.montop) AS monto, SUM(T1.montoret) AS ret FROM tickettsm AS T1 LEFT JOIN chofer AS T2 ON T2.idchofer = T1.idchofer WHERE T1.condicion=1 AND T1.fechapago BETWEEN '$startDate' AND '$endDate' GROUP BY T1.idchofer";
+    public static function mostrarResumenPp($startDate,$endDate,$tablaemp){
+        $sql = "SELECT T1.idchofer, T2.nombre, SUM(T1.montop) AS monto, SUM(T1.montoret) AS ret FROM $tablaemp AS T1 LEFT JOIN chofer AS T2 ON T2.idchofer = T1.idchofer WHERE T1.condicion=1 AND T1.fechapago BETWEEN '$startDate' AND '$endDate' GROUP BY T1.idchofer";
         $sw = true;
         Consulta($sql) or $sw = false;
         if($sw != false ){
