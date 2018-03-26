@@ -102,41 +102,17 @@ switch ($_GET["op"]){
         if($idempresa == 1){
             $itemresumenp = new Imprimir();
             $rsptaitem = $itemresumenp->mostrarResumenPp($startDate,$endDate,$tablaemp);
-            $rsptadctos = $itemresumenp->resumenDctosPP($startDate,$endDate);
             $header = array('NOMBRE', 'MONTO','RET ISLR','TOTAL');
             $pdf->SetXY($X+5,$Y+35);
-            $pdf->tablaTSMRP($header,$rsptaitem,$rsptadctos);
+            $pdf->tablaTSMRP($header,$rsptaitem,$startDate,$endDate);
             $pdf->AliasNbPages();
             $pdf->Output('F','../vistas/reportes/rp/'.$narchivo.'.pdf',true);
             $ruta = 'vistas/reportes/rp/'.$narchivo.'.pdf';
             /*IMPRIMIR LA RUTA*/
             echo $ruta;
+        } else{
+
         }
-    //     /*IMPRIMO LOS ITEMS DE PRONTOP*/
-    //     if($idempresa == 1){
-    //         $itemprontop = new Imprimir();
-    //         $rsptaitem = $itemprontop->mostrarProntoPago($idchofer,$startDate,$endDate,$tablaemp);
-    //         $rsptadctos = $itemprontop->dctosPP($idchofer,$startDate,$endDate);
-    //         $header = array('FECHA', 'AGENCIA','TICKET','BUQUE','MONTO');
-    //         $pdf->SetXY($X+5,$Y+40);
-    //         $pdf->tablaTSMPP($header,$rsptaitem,$rsptadctos);
-    //         $pdf->AliasNbPages();
-    //         $pdf->Output('F','../vistas/reportes/pp/'.$narchivo.'.pdf',true);
-    //         $ruta = 'vistas/reportes/pp/'.$narchivo.'.pdf';
-    //         /*IMPRIMIR LA RUTA*/
-    //         echo $ruta;
-    //     }else{
-    //         $itemprontop = new Imprimir();
-    //         $rsptaitem = $itemprontop->mostrarProntoPago($idchofer,$startDate,$endDate,$tablaemp);
-    //         $header = array('FECHA', 'AGENCIA','TICKET','BUQUE','MONTO');
-    //         $pdf->SetXY($X+5,$Y+40);
-    //         $pdf->tablaCBPP($header,$rsptaitem);
-    //         $pdf->AliasNbPages();
-    //         $pdf->Output('F','../vistas/reportes/pp/'.$narchivo.'.pdf',true);
-    //         $ruta = 'vistas/reportes/pp/'.$narchivo.'.pdf';
-    //         /*IMPRIMIR LA RUTA*/
-    //         echo $ruta;
-    //     }
     }
     else {
         echo "No se puede generar el reporte solicitado, faltan datos por completar";

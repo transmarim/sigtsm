@@ -128,51 +128,62 @@
                     $this->Cell($w[4],5,number_format($subtotal - $totalret,2,',','.'),1,0,'R');
             }
 
-            function tablaTSMRP($header, $data, $dctos)
+            function tablaTSMRP($header, $data, $startDate, $endDate)
             {
                 // Anchuras de las columnas
                 $w = array(65, 65, 65, 65);
+                $itemresumenp = new Imprimir();
                 //Variable que indica si se aplico sustraendo o no
-                $nombreISLR = '';
                 $subtotal = 0;
                 $totalret = 0;
+                $descuentos = array();
                 // Cabeceras
                 $this->SetFont('Courier','B',8);
                 for($i=0;$i<count($header);$i++)
                     $this->Cell($w[$i],7,$header[$i],1,0,'C');
                 $this->Ln();
                 $this->SetFont('Courier','',8);
+
                 foreach($data as $row)
                 {
-                    $this->Cell($w[0],5,$row['nombre'],'LRB',0,'L');
-                    $this->Cell($w[1],5,number_format($row['monto'],2,',','.'),'LRB',0,'R');
-                    $this->Cell($w[2],5,number_format($row['ret'],2,',','.'),'LRB',0,'R');
-                    $this->Cell($w[3],5,number_format($row['monto']-$row['ret'],2,',','.'),'LRB',0,'R');
-                    $subtotal = $subtotal + $row['monto'];
-                    $totalret = $totalret + $row['ret'];
-                    $this->Ln();
+                    $rspta = $itemresumenp->resumenDctosPP($startDate,$endDate,$row['idchofer']);
+                    //Pregunto si tiene descuentos
+                    if($rspta['idchofer'] != null ){
+                        $this->Cell($w[0],5,$row['nombre'],'LRB',0,'L');
+                        //Verifico si tiene sustraendos
+                        $rspta2 = $itemresumenp->mostrarSustraendo($startDate,$endDate,$row['idchofer']);
+                        if($rspta2['iddescuento'] != null ){
+                            //Calculamos el monto y el ISLR OJO restar Sust al descuento
+                            $monto = ($row['monto']-$rspta['montodesc'])+$rspta2['montodesc'];
+                            $islr = ($row['ret']-(0.01*($rspta['montodesc']-$rspta2['montodesc'])))-$rspta2['montodesc'];
+                            $this->Cell($w[1],5,number_format($monto,2,',','.'),'LRB',0,'R');
+                            $this->Cell($w[2],5,number_format($islr,2,',','.'),'LRB',0,'R');
+                            $this->Cell($w[3],5,number_format($monto-$islr,2,',','.'),'LRB',0,'R');
+                            $subtotal = $subtotal+$monto;
+                            $totalret = $totalret+$islr;
+                        }else{
+                            $monto2 = $row['monto']-$rspta['montodesc'];
+                            $islr2 = $row['ret']-(0.01*$rspta['montodesc']);
+                            $this->Cell($w[1],5,number_format($monto2,2,',','.'),'LRB',0,'R');
+                            $this->Cell($w[2],5,number_format($islr2,2,',','.'),'LRB',0,'R');
+                            $this->Cell($w[3],5,number_format($monto2-$islr2,2,',','.'),'LRB',0,'R');
+                            $subtotal = $subtotal+$monto2;
+                            $totalret = $totalret+$islr2;
+                        }
+                        $this->Ln();
+                    }else{
+                        $this->Cell($w[0],5,$row['nombre'],'LRB',0,'L');
+                        $this->Cell($w[1],5,number_format($row['monto'],2,',','.'),'LRB',0,'R');
+                        $this->Cell($w[2],5,number_format($row['ret'],2,',','.'),'LRB',0,'R');
+                        $this->Cell($w[3],5,number_format($row['monto']-$row['ret'],2,',','.'),'LRB',0,'R');
+                        $subtotal = $subtotal+$row['monto'];
+                        $totalret = $totalret + $row['ret'];
+                        $this->Ln();
+                    }
                 }
                 // Línea de cierre
                 $this->Cell(array_sum($w),0,'','T');
                 $this->Ln();
-                // Llamo descuentos
-                // foreach($dctos as $row)
-                // {
-                //     if($row['iddescuento'] != 1){
-                //         $this->Cell(100,5,'',0,0,'C');
-                //         $this->Cell($w[3],5,$row['nombre'],1,0,'L');
-                //         $this->Cell($w[4],5,number_format($row['montodesc']*-1,2,',','.'),'LRB',0,'R');
-                //         $this->Ln();
-                //         $nombreISLR = 'RET. ISLR:';
-                //         $subtotal = $subtotal - $row['montodesc'];
-                //         $totalret = $totalret - (0.01*$row['montodesc']);
-                //     } else {
-                //         $totalret = $totalret - $row['montodesc'];
-                //         $nombreISLR = 'RET. ISLR (-ST):';
-                //     }
-                    
-                // }
-
                 //CELDA FINALES
                 $this->SetFont('Courier','B',8);
                 $this->Cell($w[0],5,'TOTALES BS:','LRB',0,'L');

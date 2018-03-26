@@ -33,14 +33,14 @@ class Imprimir{
         }
     }
     
-    public static function resumenDctosPP($startDate,$endDate){
-        $sql = "SELECT idchofer, SUM(montodesc) AS montodesc FROM chofer_descuento WHERE fecha BETWEEN '$startDate' AND '$endDate' GROUP BY idchofer";
+    public static function resumenDctosPP($startDate,$endDate,$idchofer){
+        $sql = "SELECT idchofer, SUM(montodesc) AS montodesc FROM chofer_descuento WHERE fecha BETWEEN '$startDate' AND '$endDate' AND idchofer=$idchofer";
         return ConsultaFila($sql);
     }
     
-    public static function listar(){
-        $sql = "SELECT * FROM cliente";
-        return Consulta($sql);
+    public static function mostrarSustraendo($startDate,$endDate,$idchofer){
+        $sql = "SELECT iddescuento, montodesc FROM chofer_descuento WHERE fecha BETWEEN '$startDate' AND '$endDate' AND idchofer=$idchofer AND iddescuento=1";
+        return ConsultaFila($sql);
     }
     
      public static function listarc(){
