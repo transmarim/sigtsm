@@ -67,20 +67,20 @@
                                             <select name="iddescuento" id="iddescuento" class="form-control selectpicker" required="">
                                             </select>
                                         </div>
-                                        <div id="tipodemontoform" class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                        <!-- <div id="tipodemontoform" class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
                                             <label>¿Es porcentual?:</label>
                                             <select name="tipodemonto" id="tipodemonto" class="form-control selectpicker" required="">
-                                                <option value="">--</option>
+                                                <option value=""></option>
                                                 <option value="1">Si</option>
                                                 <option value="0">No</option>
                                             </select>
-                                        </div>
+                                        </div> -->
                                         <div id="montodescform" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                            <label>Monto Descontado:</label>
-                                            <input type="text" class="form-control" name="montodesc" id="montodesc" maxlength="20" placeholder="Monto descontado"> </div>
-                                        <div id="porcentajeform" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <label>Monto Descontado(*):</label>
+                                            <input type="number" class="form-control" name="montodesc" id="montodesc" maxlength="20" placeholder="Monto descontado" required> </div>
+                                        <!-- <div id="porcentajeform" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <label>% Descontado:</label>
-                                            <input type="text" class="form-control" name="porcentaje" id="porcentaje" maxlength="2" placeholder="Ingrese porcentaje"> </div>
+                                            <input type="text" class="form-control" name="porcentaje" id="porcentaje" maxlength="2" placeholder="Ingrese porcentaje"> </div>-->
                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <button class="btn btn-primary" type="submit" id="btnGuardar">
                                                 <i class="fa fa-save"></i> Guardar</button>

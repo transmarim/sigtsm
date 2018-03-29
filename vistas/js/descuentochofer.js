@@ -1,29 +1,29 @@
 var tabla;
 
-function init(){
+function init() {
     mostrarform(false);
     listar();
-    mostrartipo();
-    $("#porcentajeform").hide();
-    $("#montodescform").hide();
-    
-     $.post("controllers/chofer.php?op=selectc",function(respuesta){
-    $("#idchofer").html(respuesta);
-    $("#idchofer").selectpicker('refresh');
+    //mostrartipo(); DESACTIVADA VER FINAL DE JS
+    //$("#porcentajeform").hide();
+    $("#montodescform").show();
+
+    $.post("controllers/chofer.php?op=selectc", function (respuesta) {
+        $("#idchofer").html(respuesta);
+        $("#idchofer").selectpicker('refresh');
     });
-    
-    $.post("controllers/descuento.php?op=listarc",function(respuesta){
-    $("#iddescuento").html(respuesta);
-    $("#iddescuento").selectpicker('refresh');
+
+    $.post("controllers/descuento.php?op=listarc", function (respuesta) {
+        $("#iddescuento").html(respuesta);
+        $("#iddescuento").selectpicker('refresh');
     });
-    
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+
+    $("#formulario").on("submit", function (e) {
+        guardaryeditar(e);
     });
-    
+
 }
 
-function limpiar(){
+function limpiar() {
     $("#idchofer_descuento").val("");
     $("#tipodemonto").val("");
     $("#tipodemonto").selectpicker('refresh');
@@ -33,15 +33,15 @@ function limpiar(){
     $(".form-group").removeClass('has-success has-error');
 }
 
-function mostrarform(flag){
+function mostrarform(flag) {
     limpiar();
-    if(flag){
+    if (flag) {
         $("#listadoregistros").hide();
         $("#formulario").show('fast');
-        $("#btnGuardar").prop("disabled",false);
+        $("#btnGuardar").prop("disabled", false);
         $("#btnagregar").hide();
-        
-    }else{
+
+    } else {
         $("#listadoregistros").show();
         $("#formulario").hide();
         $("#btnagregar").show();
@@ -142,6 +142,8 @@ function mostrar(idchofer_descuento){
         });
  }
 
+/*DESACTIVADA POR PROBLEMAS AL APLICAR % */
+/*
 function mostrartipo(){
     $("#tipodemonto").change(function(){
         $("#porcentaje").val("");
@@ -159,6 +161,7 @@ function mostrartipo(){
         }
     });
 }
+*/
 
 
 init();
