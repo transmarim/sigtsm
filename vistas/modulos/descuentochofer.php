@@ -77,7 +77,7 @@
                                         </div> -->
                                         <div id="montodescform" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <label>Monto Descontado(*):</label>
-                                            <input type="number" class="form-control" name="montodesc" id="montodesc" maxlength="20" placeholder="Monto descontado" required> </div>
+                                            <input type="number" class="form-control" name="montodesc" id="montodesc" maxlength="20" placeholder="Monto descontado" required step=".01"> </div>
                                         <!-- <div id="porcentajeform" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <label>% Descontado:</label>
                                             <input type="text" class="form-control" name="porcentaje" id="porcentaje" maxlength="2" placeholder="Ingrese porcentaje"> </div>-->

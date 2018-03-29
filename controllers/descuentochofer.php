@@ -41,19 +41,39 @@ switch ($_GET["op"]){
                 echo "Este chofer ya posee un sustraendo en el mes";
                     
                 }
-                
+
             }else{
 
                 $rspta=$descuentochofer->insertar($iddescuento,$idchofer,$montodesc,$porcentaje,$fecha);
                 echo $rspta ? "Descuento registrado con exito":"No se pudo registrar el descuento";
                 
             }
-            
-            
-		}
-		else {
-            $rspta=$descuentochofer->editar($idchofer_descuento,$iddescuento,$idchofer,$montodesc,$porcentaje,$fecha);
-			echo $rspta ? "Descuento actualizado con exito":"No se pudieron actualizar los datos del descuento";
+		}else{
+            if($iddescuento == 1){
+                
+                $fecha_array = explode("-",$fecha);
+                $fechainicio = $fecha_array[0]."-".$fecha_array[1]."-01";
+                $fechafin = $fecha_array[0]."-".$fecha_array[1]."-31";
+
+                $sw = $descuentochofer->validarmes($fechainicio,$fechafin,$iddescuento,$idchofer);
+                
+                if($sw == 0){
+                    
+                $rspta=$descuentochofer->editar($idchofer_descuento,$iddescuento,$idchofer,$montodesc,$porcentaje,$fecha);
+			    echo $rspta ? "Descuento actualizado con exito":"No se pudieron actualizar los datos del descuento";
+                    
+                }else{
+                    
+                echo "Este chofer ya posee un sustraendo en el mes";
+                    
+                }
+
+            }else{
+
+                $rspta=$descuentochofer->editar($idchofer_descuento,$iddescuento,$idchofer,$montodesc,$porcentaje,$fecha);
+			    echo $rspta ? "Descuento actualizado con exito":"No se pudieron actualizar los datos del descuento";
+                
+            }
 		}
     break;
 
