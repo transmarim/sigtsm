@@ -111,7 +111,16 @@ switch ($_GET["op"]){
             /*IMPRIMIR LA RUTA*/
             echo $ruta;
         } else{
-
+            $itemresumenp = new Imprimir();
+            $rsptaitem = $itemresumenp->mostrarResumenPp($startDate,$endDate,$tablaemp);
+            $header = array('NOMBRE', 'MONTO','DESCUENTOS','TOTAL');
+            $pdf->SetXY($X+5,$Y+35);
+            $pdf->tablaCARIBRP($header,$rsptaitem,$startDate,$endDate);
+            $pdf->AliasNbPages();
+            $pdf->Output('F','../vistas/reportes/rp/'.$narchivo.'.pdf',true);
+            $ruta = 'vistas/reportes/rp/'.$narchivo.'.pdf';
+            /*IMPRIMIR LA RUTA*/
+            echo $ruta;
         }
     }
     else {

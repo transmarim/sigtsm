@@ -36,6 +36,7 @@
                 $nombreISLR = '';
                 $subtotal = 0;
                 $totalret = 0;
+                $verificar = false;
                 // Cabeceras
                 $this->SetFont('Courier','B',8);
                 for($i=0;$i<count($header);$i++)
@@ -67,11 +68,12 @@
                         $nombreISLR = 'RET. ISLR:';
                         $subtotal = $subtotal - $row['montodesc'];
                         $totalret = $totalret - (0.01*$row['montodesc']);
+                        $verificar = true;
                     } else {
                         $totalret = $totalret - $row['montodesc'];
                         $nombreISLR = 'RET. ISLR (-ST):';
+                        $verificar = true;
                     }
-                    
                 }
 
                 //CELDA EN BLANCO PARA EMPUJAR
@@ -81,7 +83,11 @@
                     $this->Cell($w[4],5,number_format($subtotal,2,',','.'),1,0,'R');
                     $this->Ln();
                     $this->Cell(100,5,'',0,0,'C');
-                    $this->Cell($w[3],5,$nombreISLR,1,0,'L');
+                    if($verificar != false){
+                        $this->Cell($w[3],5,$nombreISLR,1,0,'L'); 
+                    }else{
+                        $this->Cell($w[3],5,'RET. ISLR:',1,0,'L');
+                    }
                     $this->Cell($w[4],5,number_format($totalret,2,',','.'),1,0,'R');
                     $this->Ln();
                     $this->Cell(100,5,'',0,0,'C');
@@ -136,7 +142,6 @@
                 //Variable que indica si se aplico sustraendo o no
                 $subtotal = 0;
                 $totalret = 0;
-                $descuentos = array();
                 // Cabeceras
                 $this->SetFont('Courier','B',8);
                 for($i=0;$i<count($header);$i++)
@@ -192,6 +197,41 @@
                 $this->Cell($w[3],5,number_format($subtotal-$totalret,2,',','.'),'LRB',0,'R');
             }
 
-        }
+            function tablaCARIBRP($header, $data, $startDate, $endDate)
+            {
+                // Anchuras de las columnas
+                $w = array(65, 65, 65, 65);
+                $itemresumenp = new Imprimir();
+                //Variable que indica si se aplico sustraendo o no
+                $subtotal = 0;
+                $totalret = 0;
+                // Cabeceras
+                $this->SetFont('Courier','B',8);
+                for($i=0;$i<count($header);$i++)
+                    $this->Cell($w[$i],7,$header[$i],1,0,'C');
+                $this->Ln();
+                $this->SetFont('Courier','',8);
+
+                foreach($data as $row)
+                    {
+                        $this->Cell($w[0],5,$row['nombre'],'LRB',0,'L');
+                        $monto = $row['monto'];
+                        $this->Cell($w[1],5,number_format($monto,2,',','.'),'LRB',0,'R');
+                        $this->Cell($w[2],5,number_format('0.00',2,',','.'),'LRB',0,'R');
+                        $this->Cell($w[3],5,number_format($monto,2,',','.'),'LRB',0,'R');
+                        $subtotal = $subtotal+$monto;
+                        $this->Ln();  
+                    }
+                // Línea de cierre
+                $this->Cell(array_sum($w),0,'','T');
+                $this->Ln();
+                //CELDA FINALES
+                $this->SetFont('Courier','B',8);
+                $this->Cell($w[0],5,'TOTALES BS:','LRB',0,'L');
+                $this->Cell($w[1],5,number_format($subtotal,2,',','.'),'LRB',0,'R');
+                $this->Cell($w[2],5,number_format('0.00',2,',','.'),'LRB',0,'R');
+                $this->Cell($w[3],5,number_format($subtotal,2,',','.'),'LRB',0,'R');
+                }   
+            }
 
 ?>
