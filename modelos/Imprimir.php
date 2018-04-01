@@ -43,9 +43,9 @@ class Imprimir{
         return ConsultaFila($sql);
     }
     
-     public static function listarc(){
-        $sql = "SELECT idcliente, nombre FROM cliente WHERE condicion=1";
-        return Consulta($sql);
+     public static function mostrarTalonario($idtalonario){
+        $sql = "SELECT T2.nombre, T2.cedula, T1.desde, T1.hasta, T1.fecha FROM talonario AS T1 LEFT JOIN chofer AS T2 ON T2.idchofer = T1.idchofer WHERE T1.idtalonario = $idtalonario";
+        return ConsultaFila($sql);
     }
     
 }
