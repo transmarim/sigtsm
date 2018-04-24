@@ -156,17 +156,7 @@ switch ($_GET["op"]){
             $pdf->Cell(10,4,'__________________________');
             $pdf->SetXY($X+120,$Y+135);
             $pdf->Cell(10,4,'          Entrega         ');
-            
-            // switch($idempresa){
-            //     case 1: $nombreEmp='TRANSPORT AND SERVICES MARINE, C.A'; $tablaemp='tickettsm'; break;
-            //     case 2: $nombreEmp='CARIBBEAN OCEAN'; $tablaemp='ticketcaribe'; break;}
-            // $pdf->MultiCell(200,5,'RESUMEN PRONTO-PAGO POR '.$nombreEmp,0,'L'); 
-             
-            // $pdf->SetXY($X+5,$Y+20);
-            // $pdf->MultiCell(60,5,'Semana del:    '.date('d-m-Y',strtotime($rsptaitem['fecha'])),1,'L');
-            // $pdf->SetXY($X+65,$Y+20);
-            // $pdf->MultiCell(60,5,'Hasta:         '.date('d-m-Y',strtotime($endDate)),1,'L');
-    
+
             /*NOMBRE ARCHIVO*/
             $narchivo = 'RT_'.round(microtime(true));
             
@@ -175,35 +165,50 @@ switch ($_GET["op"]){
             $ruta = 'vistas/reportes/rt/'.$narchivo.'.pdf';
             echo $ruta;
             
-            /*IMPRIMO LOS RESUMEN POR EMPRESA*/
-            // if($idempresa == 1){
-            //     $itemresumenp = new Imprimir();
-            //     $rsptaitem = $itemresumenp->mostrarResumenPp($startDate,$endDate,$tablaemp);
-            //     $header = array('NOMBRE', 'MONTO','RET ISLR','TOTAL');
-            //     $pdf->SetXY($X+5,$Y+35);
-            //     $pdf->tablaTSMRP($header,$rsptaitem,$startDate,$endDate);
-            //     $pdf->AliasNbPages();
-            //     $pdf->Output('F','../vistas/reportes/rp/'.$narchivo.'.pdf',true);
-            //     $ruta = 'vistas/reportes/rp/'.$narchivo.'.pdf';
-            //     /*IMPRIMIR LA RUTA*/
-            //     echo $ruta;
-            // } else{
-            //     $itemresumenp = new Imprimir();
-            //     $rsptaitem = $itemresumenp->mostrarResumenPp($startDate,$endDate,$tablaemp);
-            //     $header = array('NOMBRE', 'MONTO','DESCUENTOS','TOTAL');
-            //     $pdf->SetXY($X+5,$Y+35);
-            //     $pdf->tablaCARIBRP($header,$rsptaitem,$startDate,$endDate);
-            //     $pdf->AliasNbPages();
-            //     $pdf->Output('F','../vistas/reportes/rp/'.$narchivo.'.pdf',true);
-            //     $ruta = 'vistas/reportes/rp/'.$narchivo.'.pdf';
-            //     /*IMPRIMIR LA RUTA*/
-            //     echo $ruta;
-            // }
         }
         else {
             echo "No se puede generar el reporte solicitado, faltan datos por completar";
         }
     break;
+
+    case 'reporteTalonarioC':
+    /*ID USUARIO SE ENVIA POR POST ESTA DECLARADO EN LA INICIALIACION*/
+    if ($idtalonario != ""){
+        $pdf = new PDF();
+        $pdf->AddPage();
+        $X=5;
+        $Y=5;
+        $pdf->SetFont('Courier','B',12);
+        $pdf->SetXY($X+5,$Y+20);
+        $pdf->MultiCell(200,5,'CONSTANCIA DE ENTREGA DE TALONARIO',0,'C');
+        $talonario = new Imprimir();
+        $rsptaitem = $talonario->mostrarTalonarioC($idtalonario);
+        $pdf->SetXY($X+5,$Y+35);
+        $pdf->SetFont('Courier','',11);
+        $pdf->MultiCell(185,5,"Mediante la presente, se hace constar que el dia ".date('d-m-Y',strtotime($rsptaitem['fecha']))." se entrega de manera formal el Talonario correspondiente a la serie: ".$rsptaitem['desde']."-".$rsptaitem["hasta"].", Al Chofer o Proveedor ".$rsptaitem['nombre']." portador de la C.I: ".$rsptaitem['cedula'].", quien acepta bajo este documento, las politicas internas para el uso del o los talonarios las cuales se expresan a continuacion:",0,'L');
+        $pdf->SetFont('Courier','B',10);
+        $pdf->SetXY($X+5,$Y+65);
+        $pdf->Cell(10,4,'Politicas de uso del talonario:');
+        $pdf->SetXY($X+20,$Y+130);
+        $pdf->Cell(10,4,'__________________________');
+        $pdf->SetXY($X+20,$Y+135);
+        $pdf->Cell(10,4,'     Recibe Conforme      ');
+        $pdf->SetXY($X+120,$Y+130);
+        $pdf->Cell(10,4,'__________________________');
+        $pdf->SetXY($X+120,$Y+135);
+        $pdf->Cell(10,4,'          Entrega         ');
+
+        /*NOMBRE ARCHIVO*/
+        $narchivo = 'RTC_'.round(microtime(true));
+        $pdf->AliasNbPages();
+        $pdf->Output('F','../vistas/reportes/rt/'.$narchivo.'.pdf',true);
+        $ruta = 'vistas/reportes/rt/'.$narchivo.'.pdf';
+        echo $ruta;
+    }
+    else {
+        echo "No se puede generar el reporte solicitado, faltan datos por completar";
+    }
+break;
 
     case 'eliminar':
       $rspta = $tarifa->eliminar($idtarifa);

@@ -143,4 +143,30 @@ function validarinput(idcampo,texto){
       });
 }
 
+function imprimir(idtalonario){
+    var formData = new FormData();
+    var talonario = idtalonario;
+    formData.append("idtalonario",idtalonario);
+    $.ajax({
+        url:"controllers/imprimiru.php?op=reporteTalonarioC",
+        type:"POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(respuesta){
+          swal({
+            title: "Reporte de Entrega"
+            , text: "Ha sido generado, continue para imprimir"
+            , type: "info"
+            , showCancelButton: true
+            , confirmButtonColor: "#da4f49"
+            , confirmButtonText: "Imprimir!"
+            , closeOnConfirm: true
+            }, function () {
+                window.open(respuesta,"_blank");
+            });
+        }
+     });
+}
+
 init();

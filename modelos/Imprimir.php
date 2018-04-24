@@ -47,5 +47,9 @@ class Imprimir{
         $sql = "SELECT T2.nombre, T2.cedula, T1.desde, T1.hasta, T1.fecha FROM talonario AS T1 LEFT JOIN chofer AS T2 ON T2.idchofer = T1.idchofer WHERE T1.idtalonario = $idtalonario";
         return ConsultaFila($sql);
     }
-    
+
+    public static function mostrarTalonarioC($idtalonario){
+        $sql = "SELECT T2.nombre, T2.cedula, T1.desde, T1.hasta, T1.fecha FROM talonariocaribe AS T1 LEFT JOIN chofer AS T2 ON T2.idchofer = T1.idchofer WHERE T1.idtalonario = $idtalonario";
+        return ConsultaFila($sql);
+    }
 }
