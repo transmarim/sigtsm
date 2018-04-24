@@ -231,7 +231,36 @@
                 $this->Cell($w[1],5,number_format($subtotal,2,',','.'),'LRB',0,'R');
                 $this->Cell($w[2],5,number_format('0.00',2,',','.'),'LRB',0,'R');
                 $this->Cell($w[3],5,number_format($subtotal,2,',','.'),'LRB',0,'R');
-                }   
+                }
+
+           // Una tabla detalle ticket
+            function tablaDetalleT($header, $data)
+            {
+                // Anchuras de las columnas
+                $w = array(20, 20, 20, 50, 30, 30, 5);
+                // Cabeceras
+                $this->SetFont('Courier','B',8);
+                for($i=0;$i<count($header);$i++)
+                    $this->Cell($w[$i],7,$header[$i],1,0,'C');
+                $this->Ln();
+                $this->SetFont('Courier','',8);
+                foreach($data as $row)
+                {
+                    $this->Cell($w[0],5,$row['fecha'],'LRB',0,'C');
+                    $this->Cell($w[1],5,$row['chofer'],'LRB',0,'C');
+                    $this->Cell($w[2],5,$row['centro'],'LRB',0,'C');
+                    $this->Cell($w[3],5,$row['descripcion'],'LRB',0,'C');
+                    $this->Cell($w[4],5,$row['cliente'],'LRB',0,'C');
+                    $this->Cell($w[5],5,number_format($row['montop'],2,',','.'),'LRB',0,'R');
+                    $this->Cell($w[6],5,$row['estado'],'LRB',0,'C');
+                    $this->Ln();
+                }
+                // Línea de cierre
+                $this->Cell(array_sum($w),0,'','T');
+                $this->Ln();
             }
+        }
+
+
 
 ?>

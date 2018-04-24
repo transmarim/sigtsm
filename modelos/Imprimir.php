@@ -52,4 +52,9 @@ class Imprimir{
         $sql = "SELECT T2.nombre, T2.cedula, T1.desde, T1.hasta, T1.fecha FROM talonariocaribe AS T1 LEFT JOIN chofer AS T2 ON T2.idchofer = T1.idchofer WHERE T1.idtalonario = $idtalonario";
         return ConsultaFila($sql);
     }
+
+    public static function detalleTicket($idtickettsm,$tablaemp){
+        $sql = "SELECT T2.nombre AS chofer, T1.fecha, T1.descripcion,T1.estado,T3.nombre AS centro,T4.nombre AS cliente,T1.montop FROM $tablaemp AS T1 LEFT JOIN chofer AS T2 ON T1.idchofer = T2.idchofer LEFT JOIN centro AS T3 ON T1.idcentro = T3.idcentro LEFT JOIN cliente AS T4 ON T1.idcliente = T4.idcliente WHERE T1.codigo=$idtickettsm";
+        return Consulta($sql);
+    }
 }

@@ -93,7 +93,7 @@
                                 <h3 class="box-title">Detalle de Ticket</h3>
                             </div>
                             <div class="panel-body" id="formularioregistros">
-                                <form name="formulario" id="formulario" method="POST">
+                                <form name="formulario3" id="formulario3" method="POST">
                                     <div class="form-group">
                                         <label class="col-sm-3 col-xs-12 control-label">No de Ticket</label>
                                     </div>
@@ -109,7 +109,7 @@
                                     <label class="col-sm-3 col-xs-12 control-label">Empresa:</label>
                                     <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                                     <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                        <select id="idempresa" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
+                                        <select id="idempresa3" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
                                             <option value="">--</option>
                                             <option value="1">TRANSMARIM</option>
                                             <option value="2">CARIBBEAN</option>
