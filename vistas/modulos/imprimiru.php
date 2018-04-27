@@ -41,7 +41,7 @@
                                 <button type="button" class="btn btn-social btn-block btn-lg btn-github" onclick="mostrarform(true,3)">
                                     <i class="fa fa-paypal"></i>Resumen Pronto-Pago</button>
                                 <button type="button" class="btn btn-social btn-block btn-lg btn-github" onclick="mostrarform(true,4)">
-                                    <i class="fa fa-paypal"></i>Servicios por clientes</button>
+                                    <i class="fa fa-paypal"></i>Servicios por Clientes</button>
                             </div>
                         </div>
                     </div>
@@ -156,12 +156,12 @@
                                 <h3 class="box-title">Servicios por Cliente</h3>
                             </div>
                             <div class="panel-body" id="formularioregistros">
-                                <form name="formulario" id="formulario" method="POST">
+                                <form name="formulario4" id="formulario4" method="POST">
                                     <div class="form-group">
                                         <label class="col-sm-3 col-xs-12 control-label">Rango</label>
                                     </div>
                                     <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control fecharango" id="fechaempresa" required>
+                                        <input type="text" class="form-control fecharango" id="fechaprepago3" required>
                                         <span class="input-group-btn">
                                             <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                                         </span>
@@ -172,11 +172,7 @@
                                     </div>
                                     <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                                     <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                        <select id="idcliente" class="form-control selectpicker" data-live-search="true" name="idcliente" required>
-                                            <option value="">--</option>
-                                            <option value="1">TRANSMARIM</option>
-                                            <option value="2">CARIBBEAN</option>
-                                        </select>
+                                    <select id="idcliente" class="form-control selectpicker" data-live-search="true" name="idcliente"></select>
                                     </div>
                                     <!-- /.input group -->
                                 </form>

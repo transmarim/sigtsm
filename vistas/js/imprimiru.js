@@ -8,6 +8,11 @@ function init(){
         $("#idchofer").html(respuesta);
         $("#idchofer").selectpicker('refresh');
         });
+/*TRAEMOS LOS CLIENTES POR POST*/
+    $.post("controllers/cliente.php?op=listarc",function(respuesta){
+        $("#idcliente").html(respuesta);
+        $("#idcliente").selectpicker('refresh');
+        });
 
     mostrarform(false,0);
     
@@ -115,6 +120,39 @@ function init(){
             }
          });
     });
+
+    $("#formulario4").on("submit",function(e){
+        e.preventDefault();
+        var formData = new FormData($("#formulario3")[0]);
+        var cliente = $("#idcliente").val();
+        var startDate = $("#fechaprepago3").data("daterangepicker").startDate.format('YYYY-MM-DD');
+        var endDate = $("#fechaprepago3").data("daterangepicker").endDate.format('YYYY-MM-DD');
+
+        formData.append("cliente",cliente);
+        formData.append("startDate",startDate);
+        formData.append("endDate",endDate);
+         $.ajax({
+            url:"controllers/imprimiru.php?op=SxCliente",
+            type:"POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(respuesta){
+              /*swal(respuesta, "Presione OK para continuar");*/
+              swal({
+                title: "Servicios por Cliente"
+                , text: "Ha sido generado, continue para imprimir"
+                , type: "info"
+                , showCancelButton: true
+                , confirmButtonColor: "#da4f49"
+                , confirmButtonText: "Imprimir!"
+                , closeOnConfirm: true
+                }, function () {
+                    window.open(respuesta,"_blank");
+                });
+            }
+         });
+    });
 }
 
 function limpiar(){
@@ -126,6 +164,7 @@ function limpiar(){
     $("#montoc").val("");
     $("#descripcion").val("");
     $("#numeroform").val("");
+    $("#idcliente").val("");
     $("#idcentro").selectpicker("val","");
     /*QUITAR CLASES A LOS ELEMENTOS*/
     $(".form-group").removeClass('has-success has-error');

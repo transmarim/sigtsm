@@ -17,9 +17,11 @@ $idtalonario=isset($_POST["idtalonario"])? limpiarCadena($_POST["idtalonario"]):
 
 $ticket=isset($_POST["ticket"])? limpiarCadena($_POST["ticket"]):"";
 
+$idcliente=isset($_POST['idcliente'])? limpiarCadena($_POST['idcliente']):"";
+
 switch ($_GET["op"]){
     case 'reporteProntoP':
-		if ($idchofer != "" || $idempresa != "" || $startDate != "" || $endDate != "" ){
+		if ($idchofer != "" || $idempresa != "" || $startDate != "" || $endDate != ""){
 
             $pdf = new PDF();
             $pdf->AddPage();
@@ -243,17 +245,53 @@ if ($idempresa != "" || $ticket != ""){
         /*IMPRIMIR LA RUTA*/
         echo $ruta;
     } else{
-        // $itemresumenp = new Imprimir();
-        // $rsptaitem = $itemresumenp->mostrarResumenPp($startDate,$endDate,$tablaemp);
-        // $header = array('NOMBRE', 'MONTO','DESCUENTOS','TOTAL');
-        // $pdf->SetXY($X+5,$Y+35);
-        // $pdf->tablaCARIBRP($header,$rsptaitem,$startDate,$endDate);
-        // $pdf->AliasNbPages();
-        // $pdf->Output('F','../vistas/reportes/dt/'.$narchivo.'.pdf',true);
-        // $ruta = 'vistas/reportes/dt/'.$narchivo.'.pdf';
-        // /*IMPRIMIR LA RUTA*/
-        // echo $ruta;
+        $detalleT = new Imprimir();
+        $rsptaDetalle = $detalleT->detalleTicket($ticket,$tablaemp);
+        $header = array('FECHA', 'CHOFER','CENTRO','DESCRIPCION','CLIENTE','MONTO.P','PAGADO');
+        $pdf->SetXY($X+5,$Y+35);
+        $pdf->tablaDetalleT($header,$rsptaDetalle);
+        $pdf->AliasNbPages();
+        $pdf->Output('F','../vistas/reportes/dt/'.$narchivo.'.pdf',true);
+        $ruta = 'vistas/reportes/dt/'.$narchivo.'.pdf';
+        /*IMPRIMIR LA RUTA*/
+        echo $ruta;
     }
+}
+else {
+    echo "No se puede generar el reporte solicitado, faltan datos por completar";
+}
+break;
+
+case 'SxCliente':
+if ($idcliente != "" || $startDate != "" || $endDate != ""){
+
+    $pdf = new PDF();
+    $pdf->AddPage();
+    $X=5;
+    $Y=5;
+    $pdf->SetFont('Courier','B',10);
+    $pdf->SetXY($X+5,$Y+13);
+    
+    /*TRAEMOS EL NOMBRE DEL CLIENTE POR EL MODELO */
+    require_once("../modelos/Cliente.php");
+    $cliente = new Cliente();
+    $rspta = $cliente->mostrar($idcliente);    
+    $pdf->MultiCell(200,5,'DETALLE DE SERVICIOS PRESTADOS AL CLIENTE '.$rspta['nombre'],0,'L'); 
+
+    /*NOMBRE ARCHIVO*/
+    $narchivo = 'SXC'.$idcliente.'_'.round(microtime(true));
+    
+    /*IMPRIMO LOS TICKET POR EMPRESA*/
+        $detalleT = new Imprimir();
+        $rsptaDetalle = $detalleT->detalleTicket($ticket,$tablaemp);
+        $header = array('FECHA', 'CHOFER','CENTRO','DESCRIPCION','CLIENTE','MONTO.P','PAGADO');
+        $pdf->SetXY($X+5,$Y+35);
+        $pdf->tablaDetalleT($header,$rsptaDetalle);
+        $pdf->AliasNbPages();
+        $pdf->Output('F','../vistas/reportes/sxc/'.$narchivo.'.pdf',true);
+        $ruta = 'vistas/reportes/sxc/'.$narchivo.'.pdf';
+        /*IMPRIMIR LA RUTA*/
+        echo $ruta;
 }
 else {
     echo "No se puede generar el reporte solicitado, faltan datos por completar";
