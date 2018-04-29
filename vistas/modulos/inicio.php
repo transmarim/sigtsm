@@ -1,7 +1,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>SIG</b>TRANS</a>
+    <a href="inicio"><b>SIG</b>TSM</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
