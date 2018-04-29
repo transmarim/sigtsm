@@ -158,6 +158,24 @@
                             <div class="panel-body" id="formularioregistros">
                                 <form name="formulario4" id="formulario4" method="POST">
                                     <div class="form-group">
+                                        <label class="col-sm-3 col-xs-12 control-label">Empresa:</label>
+                                        <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                                        <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                            <select id="idempresa4" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
+                                                <option value="">--</option>
+                                                <option value="1">TRANSMARIM</option>
+                                                <option value="2">CARIBBEAN</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 col-xs-12 control-label">Cliente:</label>
+                                    </div>
+                                    <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                                    <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                        <select id="idcliente" class="form-control selectpicker" data-live-search="true" name="idcliente"></select>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-sm-3 col-xs-12 control-label">Rango</label>
                                     </div>
                                     <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
@@ -165,14 +183,6 @@
                                         <span class="input-group-btn">
                                             <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                                         </span>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 col-xs-12 control-label">Cliente:</label>
-                                    </div>
-                                    <!-- INCLUIMOS LA CLASE SELECTPICKER -->
-                                    <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                    <select id="idcliente" class="form-control selectpicker" data-live-search="true" name="idcliente"></select>
                                     </div>
                                     <!-- /.input group -->
                                 </form>

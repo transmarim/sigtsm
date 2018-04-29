@@ -231,7 +231,7 @@
                 $this->Cell($w[1],5,number_format($subtotal,2,',','.'),'LRB',0,'R');
                 $this->Cell($w[2],5,number_format('0.00',2,',','.'),'LRB',0,'R');
                 $this->Cell($w[3],5,number_format($subtotal,2,',','.'),'LRB',0,'R');
-                }
+            }
 
            // Una tabla detalle ticket
             function tablaDetalleT($header, $data)
@@ -258,6 +258,55 @@
                 // Línea de cierre
                 $this->Cell(array_sum($w),0,'','T');
                 $this->Ln();
+            }
+
+            //TABLA DE SERVICIOSXCLIENTES
+            function tablaSXC($header, $data, $startDate, $endDate)
+            {
+                // Anchuras de las columnas
+                $w = array(30, 20, 30, 35, 30, 30);
+                $itemresumenp = new Imprimir();
+                //Variable que indica si se aplico sustraendo o no
+                $subtotalp = 0;
+                $subtotalc = 0;
+                $totalret = 0;
+                // Cabeceras
+                $this->SetFont('Courier','B',8);
+                for($i=0;$i<count($header);$i++)
+                    $this->Cell($w[$i],7,$header[$i],1,0,'C');
+                $this->Ln();
+                $this->SetFont('Courier','',8);
+
+                foreach($data as $row)
+                    {
+                        $this->Cell($w[0],5,$row['fecha'],'LRB',0,'C');
+                        $this->Cell($w[1],5,$row['codigo'],'LRB',0,'C');
+                        $this->Cell($w[2],5,$row['nombre'],'LRB',0,'C');
+                        $montop = $row['montop'];
+                        $this->Cell($w[3],5,number_format($montop,2,',','.'),'LRB',0,'R');
+                        $montoret = $row['montoret'];
+                        $this->Cell($w[4],5,number_format($montoret,2,',','.'),'LRB',0,'R');
+                        $montoc = $row['montoc'];
+                        $this->Cell($w[5],5,number_format($montoc,2,',','.'),'LRB',0,'R');
+                        $subtotalp = $subtotalp+$montop;
+                        $subtotalc = $subtotalc+$montoc;
+                        $totalret = $totalret+$montoret;
+                        $this->Ln();  
+                    }
+                // Línea de cierre
+                $this->Cell(array_sum($w),0,'','T');
+                $this->Ln();
+                //CELDA FINALES
+                $this->SetFont('Courier','B',8);
+                $this->Cell($w[0],5,'TOTALES BS:','LRB',0,'L');
+                $this->Cell(50,5,'',0,0,'C');
+                $this->Cell($w[3],5,number_format($subtotalp,2,',','.'),'LRB',0,'R');
+                $this->Cell($w[4],5,number_format($totalret,2,',','.'),'LRB',0,'R');
+                $this->Cell($w[5],5,number_format($subtotalc,2,',','.'),'LRB',0,'R');
+                //INCLUYO NOTA
+                $this->Ln();
+                $this->Cell(0,10,'NOTA: LOS MONTOS EXPRESADOS NO INCLUYEN DESCUENTOS POR ST,ANULADOS U OTROS',0,0,'C');
+
             }
         }
 

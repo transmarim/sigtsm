@@ -263,7 +263,7 @@ else {
 break;
 
 case 'SxCliente':
-if ($idcliente != "" || $startDate != "" || $endDate != ""){
+if ($idempresa != "" || $idcliente != "" || $startDate != "" || $endDate != ""){
 
     $pdf = new PDF();
     $pdf->AddPage();
@@ -271,22 +271,32 @@ if ($idcliente != "" || $startDate != "" || $endDate != ""){
     $Y=5;
     $pdf->SetFont('Courier','B',10);
     $pdf->SetXY($X+5,$Y+13);
-    
+    switch($idempresa){
+        case 1: $nombreEmp='TSM, C.A'; $tablaemp='tickettsm'; break;
+        case 2: $nombreEmp='CARIBBEAN, C.A'; $tablaemp='ticketcaribe'; break;}
     /*TRAEMOS EL NOMBRE DEL CLIENTE POR EL MODELO */
     require_once("../modelos/Cliente.php");
     $cliente = new Cliente();
     $rspta = $cliente->mostrar($idcliente);    
-    $pdf->MultiCell(200,5,'DETALLE DE SERVICIOS PRESTADOS AL CLIENTE '.$rspta['nombre'],0,'L'); 
+    $pdf->MultiCell(200,5,'DETALLE DE SERVICIOS PRESTADOS AL CLIENTE POR '.$nombreEmp,0,'L'); 
+
+    $pdf->SetXY($X+5,$Y+25);
+    $pdf->MultiCell(60,5,'Cliente:  '.$rspta['nombre'],1,'L');
+    $pdf->SetXY($X+5,$Y+30);
+    $pdf->MultiCell(60,5,'Desde:    '.date('d-m-Y',strtotime($startDate)),1,'L');
+    $pdf->SetXY($X+5,$Y+35);
+    $pdf->MultiCell(60,5,'Al:       '.date('d-m-Y',strtotime($endDate)),1,'L');
+    
 
     /*NOMBRE ARCHIVO*/
     $narchivo = 'SXC'.$idcliente.'_'.round(microtime(true));
     
     /*IMPRIMO LOS TICKET POR EMPRESA*/
-        $detalleT = new Imprimir();
-        $rsptaDetalle = $detalleT->detalleTicket($ticket,$tablaemp);
-        $header = array('FECHA', 'CHOFER','CENTRO','DESCRIPCION','CLIENTE','MONTO.P','PAGADO');
-        $pdf->SetXY($X+5,$Y+35);
-        $pdf->tablaDetalleT($header,$rsptaDetalle);
+        $sxcDetalle = new Imprimir();
+        $rsptaDetalle = $sxcDetalle->mostrarSxClientes($startDate,$endDate,$idcliente,$tablaemp);
+        $header = array('FECHA', 'CODIGO','CENTRO','MONTO.P','MONTO.RET','MONTO.C');
+        $pdf->SetXY($X+5,$Y+45);
+        $pdf->tablaSXC($header, $rsptaDetalle, $startDate, $endDate);
         $pdf->AliasNbPages();
         $pdf->Output('F','../vistas/reportes/sxc/'.$narchivo.'.pdf',true);
         $ruta = 'vistas/reportes/sxc/'.$narchivo.'.pdf';

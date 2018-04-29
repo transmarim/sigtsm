@@ -127,10 +127,12 @@ function init(){
         var cliente = $("#idcliente").val();
         var startDate = $("#fechaprepago3").data("daterangepicker").startDate.format('YYYY-MM-DD');
         var endDate = $("#fechaprepago3").data("daterangepicker").endDate.format('YYYY-MM-DD');
+        var empresa = $("#idempresa4").val();
 
-        formData.append("cliente",cliente);
+        formData.append("idcliente",cliente);
         formData.append("startDate",startDate);
         formData.append("endDate",endDate);
+        formData.append("idempresa",empresa);
          $.ajax({
             url:"controllers/imprimiru.php?op=SxCliente",
             type:"POST",
