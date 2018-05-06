@@ -105,8 +105,12 @@
                </ul>
            </li>' : $pagina = ''; echo $pagina;?>
 
-            <?php $_SESSION['permisos']==1 ? $pagina = '<li>
-                <a href="usuario"> <i class="fa fa-wrench"></i> <span>Permisos</span> </a>
+            <?php $_SESSION['permisos']==1 ? $pagina = '<li class="treeview">
+                <a href=""> <i class="fa fa-wrench"></i> <span>Permisos</span> </a>
+                <ul class="treeview-menu">
+                   <li><a href="usuario"><i class="fa fa-sitemap"></i>Control de Usuarios</a></li>
+                   <li><a href="cierre"><i class="fa fa-unlock-alt"></i>Cierre de Sistema</a></li>
+               </ul>
             </li>' : $pagina = ''; echo $pagina;?>
 <!--
             <li>

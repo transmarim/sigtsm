@@ -24,6 +24,7 @@ class EnlacesModels{
        $enlaces == "talonariocaribe" ||
        $enlaces == "imprimiru" ||
        $enlaces == "veralert" ||
+       $enlaces == "cierre" ||
        $enlaces == "pagoticket" ||
        $enlaces == "enviaralert" ||
        $enlaces == "prontopago" ||
