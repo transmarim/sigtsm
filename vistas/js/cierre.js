@@ -5,8 +5,6 @@ function init(){
     
      $("#formulario").on("submit",function(e){
        guardaryeditar(e);
-       var startDate = $("#fechaprepago").data("daterangepicker").startDate.format('YYYY-MM-DD');
-       var endDate = $("#fechaprepago").data("daterangepicker").endDate.format('YYYY-MM-DD');
     });
     
 }
@@ -37,19 +35,34 @@ function cancelarform(){
 
 function guardaryeditar(e){
     e.preventDefault();
-    var formData = new FormData($("#formulario")[0]);
-    $.ajax({
-       url:"controllers/tarifas.php?op=guardaryeditar",
-       type:"POST",
-       data: formData,
-       contentType: false,
-	   processData: false,
-       success: function(respuesta){
-         swal(respuesta, "Presione OK para continuar");
-         mostrarform(false);
-	     tabla.ajax.reload();
-       }
-    });
+    var startDate = $("#fechaprepago").data("daterangepicker").startDate.format('YYYY-MM-DD');
+    var endDate = $("#fechaprepago").data("daterangepicker").endDate.format('YYYY-MM-DD');
+
+    swal({
+        title: "¿Esta seguro de cerrar el sistema?"
+        , text: "Desde "+startDate+" Hasta "+endDate
+        , type: "warning"
+        , showCancelButton: true
+        , confirmButtonColor: "#da4f49"
+        , showLoaderOnConfirm: true
+        , confirmButtonText: "Si, cerrar!"
+        , closeOnConfirm: false
+        }, function() {
+            var formData = new FormData($("#formulario")[0]);
+            formData.append("startDate",startDate);
+            formData.append("endDate",endDate);
+            $.ajax({
+                url:"controllers/cerrar.php?op=cerrarS",
+                type:"POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(respuesta){
+                  swal(respuesta, "Presione OK para continuar");
+                  mostrarform(false);
+                }
+             });
+        });
 }
 
 init();

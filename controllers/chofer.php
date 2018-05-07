@@ -88,7 +88,7 @@ switch ($_GET["op"]){
 
     case 'desactivar':
       $rspta = $chofer->desactivar($idchofer);
-      echo $rspta ? "Chofer desativado": "El chofer no se puede desactivar";
+      echo $rspta ? "Chofer desactivado": "El chofer no se puede desactivar";
     break;
 
     case 'activar':
