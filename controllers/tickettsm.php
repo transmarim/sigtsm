@@ -85,4 +85,8 @@ switch ($_GET["op"]){
         }
     break;
 
+    case 'contador':
+    $rspta = $tickettsm->contador();
+    echo $rspta;
+    break;
 }

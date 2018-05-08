@@ -33,5 +33,10 @@ class Tickettsm{
         $sql = "SELECT T1.idtickettsm, T4.nombre AS nombrech, T1.fechapago, T1.codigo, T2.nombre, T3.nombre AS nombrec, T1.montop, T1.condicion FROM tickettsm AS T1 LEFT JOIN cliente AS T2 ON T2.idcliente = T1.idcliente LEFT JOIN centro AS T3 ON T3.idcentro=T1.idcentro LEFT JOIN chofer AS T4 ON T4.idchofer = T1.idchofer WHERE estado=0";
         return Consulta($sql);
     }
+
+    public static function contador(){
+        $sql = "SELECT idtickettsm FROM tickettsm WHERE condicion=1";
+        return Consulta_num($sql);
+    }
     
 }

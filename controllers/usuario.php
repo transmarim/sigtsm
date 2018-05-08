@@ -190,5 +190,11 @@ switch ($_GET["op"]){
         {
             echo '<option value=' .$reg->idchofer. '>' .$reg->nombre. '</option>';
         }
+	break;
+	
+	case 'contador':
+    $rspta = $usuario->contador();
+    echo $rspta;
     break;
+
 }

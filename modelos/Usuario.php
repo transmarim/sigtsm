@@ -64,5 +64,9 @@ class Usuario{
         $sql = "SELECT idusuario,idchofer,nombre,login,clave,email,imagen FROM usuario WHERE login='$login' AND clave='$clave' AND condicion='1'";
         return Consulta($sql);
     }
+    public static function contador(){
+        $sql = "SELECT idusuario FROM usuario WHERE condicion=1";
+        return Consulta_num($sql);
+    }
     
 }

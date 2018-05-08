@@ -44,4 +44,9 @@ class Vehiculo{
         return Consulta($sql);
     }
     
+    public static function contador(){
+        $sql = "SELECT idvehiculo FROM vehiculo WHERE condicion=1";
+        return Consulta_num($sql);
+    }
+
 }

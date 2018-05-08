@@ -59,7 +59,7 @@ class Imprimir{
     }
 
     public static function mostrarSxClientes($startDate,$endDate,$idcliente,$tablaemp){
-        $sql = "SELECT T1.fecha, T1.codigo, T2.nombre, T1.montop, T1.montoret, T1.montoc FROM $tablaemp AS T1 LEFT JOIN centro AS T2 ON T1.idcentro = T2.idcentro WHERE T1.estado = 0 AND T1.idcliente = $idcliente";
+        $sql = "SELECT T1.fecha, T1.codigo, T2.nombre, T1.montop, T1.montoret, T1.montoc FROM $tablaemp AS T1 LEFT JOIN centro AS T2 ON T1.idcentro = T2.idcentro WHERE T1.condicion = 1 AND T1.idcliente = $idcliente";
         return Consulta($sql);
     }
 }

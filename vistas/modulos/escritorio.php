@@ -29,7 +29,7 @@
                     <div class="col-lg-3 col-xs-6">
                         <div class="small-box bg-aqua">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3 id="cantS"></h3>
                                 <p>Servicios - Tickets</p>
                             </div>
                             <a href="tickettsm">
@@ -55,8 +55,7 @@
                     <div class="col-lg-3 col-xs-6">
                         <div class="small-box bg-green">
                             <div class="inner">
-                                <h3>53
-                                    <sup style="font-size: 20px">%</sup>
+                                <h3 id="cantU">
                                 </h3>
                                 <p>Control de Usuarios</p>
                             </div>
@@ -70,7 +69,7 @@
                     <div class="col-lg-3 col-xs-6">
                         <div class="small-box bg-yellow">
                             <div class="inner">
-                                <h3>1</h3>
+                                <h3 id="cantV"></h3>
                                 <p>Datos del Vehiculo</p>
                             </div>
                             <a href="vehiculo">
@@ -127,25 +126,20 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-xs-12">
-                        <div class="box box-default">
+                        <div class="box box-primary">
                             <div class="box-header with-border">
-                                <i class="fa fa-warning"></i>
-                                <h3 class="box-title">Alertas</h3>
+                                <i class="fa fa-info"></i>
+                                <h3 class="box-title">¿Que es SIGTSM?</h3>
                             </div>
                             <div class="box-body">
-                                <div class="alert alert-danger alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h4>
-                                        <i class="icon fa fa-ban"></i> Alert!</h4> Su licencia esta vencida, renueve e ingrese el nuevo documento al
-                                    sistema </div>
-                                <div class="alert alert-warning alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h4>
-                                        <i class="icon fa fa-warning"></i> Alert!</h4> Faltan 04 dias para vencer su licencia </div>
-                                <div class="alert alert-success alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h4>
-                                        <i class="icon fa fa-check"></i> Alert!</h4> Todos sus documentos estan al dia. </div>
+                            <p><b>SIGTSM</b></p>
+                            <p>Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave put a bird
+                            on it aesthetic, bitters brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk. Ethical
+                            master cleanse Bushwick, occupy Thundercats banjo cliche ennui farm-to-table mlkshk fanny pack
+                            gluten-free. Marfa butcher vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3 wolf moon
+                            asymmetrical taxidermy pour-over. Quinoa tote bag fashion axe, Godard disrupt migas church-key tofu
+                            blog locavore. Thundercats cronut polaroid Neutra tousled, meh food truck selfies narwhal American
+                            Apparel.</p>
                             </div>
                         </div>
                     </div>
@@ -301,6 +295,7 @@
 <?php include_once("vistas/modulos/inc/footer.php"); ?>
 <!-- SCRIPT UNICOS-->
 <script src="vistas/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="vistas/js/escritorio.js"></script> 
 <script>
 $(document).ready(function () {
     $("#chat-box").slimscroll({

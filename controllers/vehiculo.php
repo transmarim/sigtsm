@@ -93,5 +93,10 @@ switch ($_GET["op"]){
 					echo '<option value=' .$reg->idvehiculo. '>'.$reg->placa.' - '.$reg->modelo.'</option>';
 				}
     break;
-
+    
+    case 'contador':
+    $rspta = $vehiculo->contador();
+    echo $rspta;
+    break;
+    
 }
