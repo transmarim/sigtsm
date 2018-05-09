@@ -9,6 +9,7 @@
 <!-- INICIO DEL M.PRONTOPAGO -->
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
+  <link rel="stylesheet" href="vistas/plugins/datarange/daterangepicker.css">
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
@@ -124,26 +125,30 @@
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Chofer(*):</label>
                     <input type="hidden" name="idchofer" id="idchofer">
+                    <input type="hidden" name="email" id="email">
                     <input type="text" class="form-control" id="nombre" name="nombre" required disabled>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Asunto(*):</label>
                     <select id="asunto" name="asunto" class="form-control selectpicker" data-live-search="true" required>
-                      <option value="">PRONTO PAGO SEMANAL</option>
-                      <option value="">CEDULA VENCIDA</option>
+                      <option value="PRONTO PAGO SEMANAL">PRONTO PAGO SEMANAL</option>
                     </select>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Desde(*):</label>
-                    <input type="date" class="form-control" id="fechaprepago" required>
+                    <label>Rango:</label>
+                    <input type="text" class="form-control fecharango" id="fechaprepago" required>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Hasta(*):</label>
-                    <input type="date" class="form-control" id="fechaprepago2" required>
+                    <label>Empresa:</label>
+                    <select id="idempresa" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
+                      <option value="">--</option>
+                      <option value="1">TRANSMARIM</option>
+                      <option value="2">CARIBBEAN</option>
+                    </select>
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="btnGuardar">
-                      <i class="fa fa-paper-plane"></i> Enviar</button>
+                      <i class="fa fa-download"></i> Generar</button>
                     <button id="btnCancelar" class="btn btn-danger" onclick="cancelarform()" type="button">
                       <i class="fa fa-trash"></i> Limpiar</button>
                   </div>
@@ -161,6 +166,9 @@
 <?php include_once("vistas/modulos/inc/footer.php"); ?>
 <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>    
 <script src="vistas/plugins/datatables/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="vistas/plugins/datarange/moment.js"></script>
+<script type="text/javascript" src="vistas/plugins/datarange/daterangepicker.js"></script>
+<script type="text/javascript">function imprimirc(){$("#fechaprepago").daterangepicker({timePicker:!1,timePickerIncrement:30,format:"DD/MM/YYYY"}),$("#fechaempresa").daterangepicker({timePicker:!1,timePickerIncrement:30,format:"DD/MM/YYYY"}),$(".fecharango").daterangepicker({locale:{format:"MM/DD/YYYY",separator:" - ",applyLabel:"Aceptar",cancelLabel:"Cancelar",fromLabel:"Desde",toLabel:"Hasta",customRangeLabel:"Custom",weekLabel:"S",daysOfWeek:["Dom","Lun","Mar","Mier","Jue","Vie","Sab"],monthNames:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],firstDay:1},linkedCalendars:!1,autoUpdateInput:!0,showCustomRangeLabel:!1})}$(document).ready(imprimirc);</script>
 <script type="text/javascript" src="vistas/js/prontopago.js"></script> 
 </div>
 <!-- FIN DEL M.PRONTOPAGO -->

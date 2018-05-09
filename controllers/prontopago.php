@@ -5,12 +5,19 @@ $prontopago = new ProntoPago();
 
 /*INICIALIZO VARIABLES*/
 
-//$grado=isset($_POST['grado'])? limpiarCadena($_POST['grado']):"";
-//
-//$fechaven=isset($_POST['fechaven'])? limpiarCadena($_POST['fechaven']):"";
-//
-//$idlicencia=isset($_POST['idlicencia'])? limpiarCadena($_POST['idlicencia']):"";
+$asunto=isset($_POST['asunto'])? limpiarCadena($_POST['asunto']):"";
 
+$idchofer=isset($_POST['idchofer'])? limpiarCadena($_POST['idchofer']):"";
+
+$nombre=isset($_POST['nombre'])? limpiarCadena($_POST['nombre']):"";
+
+$startDate=isset($_POST["startDate"])? limpiarCadena($_POST["startDate"]):"";
+
+$endDate=isset($_POST["endDate"])? limpiarCadena($_POST["endDate"]):"";
+
+$email=isset($_POST['email'])? limpiarCadena($_POST['email']):"";
+
+$idempresa=isset($_POST["idempresa"])? limpiarCadena($_POST["idempresa"]):"";
 
 switch ($_GET["op"]){
         
@@ -33,4 +40,8 @@ switch ($_GET["op"]){
         echo json_encode($results);
     break;
 
+    case 'enviarPP':
+    //$rspta = $prontopago->desactivar($idchofer);
+    echo $idempresa;
+    break;
 }
