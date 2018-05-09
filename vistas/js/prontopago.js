@@ -70,13 +70,28 @@ function guardaryeditar(e){
     formData.append("endDate",endDate);
 
     $.ajax({
-       url:"controllers/prontopago.php?op=enviarPP",
+       url:"controllers/imprimiru.php?op=reporteProntoP",
        type:"POST",
        data: formData,
        contentType: false,
 	   processData: false,
        success: function(respuesta){
-         swal(respuesta, "Presione OK para continuar");
+         window.open(respuesta,"_blank");
+         //PREGUNTA SI LO ENVIA O NO
+         var str = respuesta.substr(19,17);
+
+         swal({
+            title: "¿Desea enviar el reporte?"
+            , text: ""+str
+            , type: "warning"
+            , showCancelButton: true
+            , confirmButtonColor: "#da4f49"
+            , confirmButtonText: "Enviar!"
+            , closeOnConfirm: true
+            }, function () {
+                //EJECUTAR FUNCION POST ENVIAR PP
+            });
+
          mostrarform(false);
          $("#nombre").prop('disabled', true);
 	     tabla.ajax.reload();
