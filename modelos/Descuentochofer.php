@@ -6,7 +6,7 @@ class Descuentochofer{
         
     }
     public static function insertar($iddescuento,$idchofer,$montodesc,$porcentaje,$fecha){
-        $sql = "INSERT INTO chofer_descuento (iddescuento,idchofer,montodesc,porcentaje,fecha) VALUES ('$iddescuento','$idchofer','$montodesc','$porcentaje','$fecha')";
+        $sql = "INSERT INTO chofer_descuento (iddescuento,idchofer,montodesc,porcentaje,estado,fecha) VALUES ('$iddescuento','$idchofer','$montodesc','$porcentaje',0,'$fecha')";
         $sw = true;
         Consulta($sql) or $sw = false;
         return $sw;
@@ -25,7 +25,7 @@ class Descuentochofer{
     }
     
     public static function listar(){
-        $sql = "SELECT T1.idchofer_descuento, T3.nombre AS nombredesc, T2.nombre, T1.montodesc, T1.porcentaje, T1.fecha FROM chofer_descuento AS T1 LEFT JOIN chofer AS T2 ON T1.idchofer = T2.idchofer LEFT JOIN descuento AS T3 ON T3.iddescuento = T1.iddescuento";
+        $sql = "SELECT T1.idchofer_descuento, T3.nombre AS nombredesc, T2.nombre, T1.montodesc, T1.porcentaje, T1.fecha FROM chofer_descuento AS T1 LEFT JOIN chofer AS T2 ON T1.idchofer = T2.idchofer LEFT JOIN descuento AS T3 ON T3.iddescuento = T1.iddescuento WHERE T1.estado=0";
         return Consulta($sql);
     }
     
