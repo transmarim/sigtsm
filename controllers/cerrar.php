@@ -17,6 +17,7 @@ switch ($_GET["op"]){
     //TRAER LOS ARRAYS
     $rspta = $cerrar->listartsm($startDate,$endDate);
     $rspta2 = $cerrar->listarcaribe($startDate,$endDate);
+    $rspta3 = $cerrar->listardsctos($startDate,$endDate);
 
     //LEER EL ARRAY Y AL MISMO TIEMPO DARLE UPDATE
     foreach($rspta as $row){
@@ -24,6 +25,9 @@ switch ($_GET["op"]){
     }
     foreach($rspta2 as $row){
         $cerrar->cerrarCaribe($row['idticketcaribe']);
+    }
+    foreach($rspta3 as $row){
+        $cerrar->cerrarDscto($row['idchofer_descuento']);
     }
     
     echo "Cierre realizado con exito";
