@@ -65,6 +65,7 @@ function guardaryeditar(e){
     var formData = new FormData($("#formulario")[0]);
     var startDate = $("#fechaprepago").data("daterangepicker").startDate.format('YYYY-MM-DD');
     var endDate = $("#fechaprepago").data("daterangepicker").endDate.format('YYYY-MM-DD');
+    var id = $("#idchofer").val();
 
     formData.append("startDate",startDate);
     formData.append("endDate",endDate);
@@ -89,10 +90,13 @@ function guardaryeditar(e){
             , confirmButtonText: "Enviar!"
             , closeOnConfirm: true
             }, function () {
-                var id = respuesta.substr(24,1);
                 //EJECUTAR FUNCION POST ENVIAR PP
                $.post("controllers/prontopago.php?op=enviarEmailPP",{ruta:respuesta,idchofer:id,startDate:startDate,endDate:endDate},function(data){
-                   alert(data);
+                   if(data == 1){
+                    swal("Correo enviado con Exito!", "Presione OK para continuar", "success");
+                   } else {
+                    swal("ERROR", "Presione OK para continuar", "error");
+                   }
                });
                 
             });
