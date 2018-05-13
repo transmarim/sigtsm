@@ -89,7 +89,12 @@ function guardaryeditar(e){
             , confirmButtonText: "Enviar!"
             , closeOnConfirm: true
             }, function () {
+                var id = respuesta.substr(24,1);
                 //EJECUTAR FUNCION POST ENVIAR PP
+               $.post("controllers/prontopago.php?op=enviarEmailPP",{ruta:respuesta,idchofer:id,startDate:startDate,endDate:endDate},function(data){
+                   alert(data);
+               });
+                
             });
 
          mostrarform(false);

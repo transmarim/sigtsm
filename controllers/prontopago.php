@@ -19,6 +19,9 @@ $email=isset($_POST['email'])? limpiarCadena($_POST['email']):"";
 
 $idempresa=isset($_POST["idempresa"])? limpiarCadena($_POST["idempresa"]):"";
 
+$ruta=isset($_POST["ruta"])? limpiarCadena($_POST["ruta"]):"";
+
+
 switch ($_GET["op"]){
         
     case 'listarAlert':
@@ -40,8 +43,11 @@ switch ($_GET["op"]){
         echo json_encode($results);
     break;
 
-    case 'enviarPP':
-    //$rspta = $prontopago->desactivar($idchofer);
-    echo $idempresa;
+    case 'enviarEmailPP':
+        require_once("../modelos/Chofer.php");
+        $chofer = new Chofer();
+        $rspta = $chofer->mostrar($idchofer);
+        $rspta2 = $prontopago->enviarEmailPP($ruta,$rspta['nombre'],$rspta['email'],$startDate,$endDate);
+        echo $rspta2;
     break;
 }
