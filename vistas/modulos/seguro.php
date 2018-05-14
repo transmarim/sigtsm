@@ -58,22 +58,28 @@
                 <div class="panel-body" id="formularioregistros">
                   <form name="formulario" id="formulario" method="POST">
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Numero *:</label>
+                      <label class="col-sm-12 control-label" for="numero">Numero *:</label>
                       <input type="hidden" name="idseguro" id="idseguro">
-                      <input type="number" class="form-control" name="numero" id="numero" placeholder="Numero" required>
+                      <div class="col-sm-12">
+                        <input type="number" class="form-control" name="numero" id="numero" placeholder="Numero" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Vence *:</label>
-                      <input type="date" class="form-control" name="fechaven" id="fechaven" required>
+                      <label class="col-sm-12 control-label">Vence *:</label>
+                      <div class="col-sm-12">
+                        <input type="date" class="form-control" name="fechaven" id="fechaven" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Tipo *:</label>
+                      <label class="col-sm-12 control-label">Tipo *:</label>
                       <!-- INCLUIMOS LA CLASE SELECTPICKER -->
-                      <select id="tipo_seguro" class="form-control selectpicker" data-live-search="true" name="tipo_seguro" required>
-                        <option value="">--</option>
-                        <option value="RCV">RCV</option>
-                        <option value="TODO RIESGO">TODO RIESGO</option>
-                      </select>
+                      <div class="col-sm-12">
+                        <select id="tipo_seguro" class="form-control selectpicker" data-live-search="true" name="tipo_seguro" required>
+                          <option value="">--</option>
+                          <option value="RCV">RCV</option>
+                          <option value="TODO RIESGO">TODO RIESGO</option>
+                        </select>
+                      </div>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <button class="btn btn-primary" type="submit" id="btnGuardar">
@@ -131,7 +137,8 @@
 <script src="vistas/plugins/datatables/buttons.colVis.min.js"></script>
 <script src="vistas/plugins/datatables/jszip.min.js"></script>
 <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
-<script src="vistas/plugins/datatables/vfs_fonts.js"></script> 
+<script src="vistas/plugins/datatables/vfs_fonts.js"></script>
+<script src="vistas/plugins/jsvalidate/jquery.validate.min.js"></script>
 <script type="text/javascript" src="vistas/js/seguro.js"></script>
 </div>
 <!-- FIN DEL M.SEGURO -->

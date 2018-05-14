@@ -42,16 +42,6 @@
                       <th>Opciones</th>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>123456</td>
-                        <td>JOSE EJEMPLO</td>
-                        <td>
-                          <a data-toggle="modal" href="#myModal">
-                            <button id="btnAgregarArt" type="button" class="btn btn-primary btn-block btn-social" style="text-align:center;">
-                              <span class="fa fa-share-square-o"></span>Enviar Pronto-Pago</button>
-                          </a>
-                        </td>
-                      </tr>
                     </tbody>
                     <tfoot>
                       <th>Cedula</th>

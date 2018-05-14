@@ -4,11 +4,58 @@ function init(){
     mostrarform(false);
     listar();
     
-    validarinput('#numero',/^[0-9]+$/);
+    //validarinput('#numero',/^[0-9]+$/);
+
+    $("#formulario").validate({
+        rules:{
+            numero:{
+                required: true,
+                digits:true,
+                minlength:5
+            },
+            fechaven:{
+                required: true,
+                date:true
+            }
+        },
+        messages: {
+            numero:{
+                required: "Campo requerido",
+                minlength: "5 numeros como minimo",
+                digits: "Introduzca un numero valido",
+                number: "Introduzca un numero valido"
+            },
+            fechaven:{
+                required: "Campo requerido",
+                date: "Introduzca una fecha valida"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `help-block` class to the error element
+            error.addClass( "help-block" );
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.parent( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-error" ).removeClass( "has-success" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
+        }
+       });
     
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
+
+    
     
 }
 
@@ -62,7 +109,7 @@ function listar(){
 					}
 				},
 		"bDestroy": true,
-		"iDisplayLength": 5,//Paginacion
+		"iDisplayLength": 10,//Paginacion
 	    "order": [[ 0, "desc" ]]//Ordenar (columna,orden)
 	}).DataTable();
 }
