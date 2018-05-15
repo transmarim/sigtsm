@@ -25,7 +25,7 @@ class ProntoPago{
         $mail->addAddress($email,"Informacion");     // Add a recipient
         $mail->addReplyTo('info@transmarim.com', 'NO-REPLY');
         $mail->AddAttachment('../'.$ruta, $name = 'PP',  $encoding = 'base64', $type = 'application/pdf');   // Optional name
-        $mail->AddCC('asistente@transmarim.com', 'TSM ADM');
+        $mail->AddCC('facturacion@transmarim.com', 'TSM ADM');
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'Mensaje SIGTSM + PRONTO-PAGO';
         $contenido = utf8_decode('<!doctype html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head><!-- NAME: SELL PRODUCTS --><!--[if gte mso 15]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]--><meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1"><title>PRONTOPAGO</title>  <style type="text/css">

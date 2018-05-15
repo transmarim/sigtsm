@@ -138,7 +138,6 @@
 <script src="vistas/plugins/datatables/jszip.min.js"></script>
 <script src="vistas/plugins/datatables/pdfmake.min.js"></script>
 <script src="vistas/plugins/datatables/vfs_fonts.js"></script>
-<script src="vistas/plugins/jsvalidate/jquery.validate.min.js"></script>
 <script type="text/javascript" src="vistas/js/seguro.js"></script>
 </div>
 <!-- FIN DEL M.SEGURO -->

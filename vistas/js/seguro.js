@@ -4,8 +4,6 @@ function init(){
     mostrarform(false);
     listar();
     
-    //validarinput('#numero',/^[0-9]+$/);
-
     $("#formulario").validate({
         rules:{
             numero:{
@@ -55,8 +53,6 @@ function init(){
         }
     });
 
-    
-    
 }
 
 function limpiar(){
@@ -177,25 +173,5 @@ function mostrar(idseguro){
             });
         });
  }
-
-function validarinput(idcampo,texto){
-    $(idcampo).change(function(){
-          var expreTexto = texto;
-          var cajetin = $(this).parent();
-          if(!expreTexto.test($(this).val())){
-              if(cajetin.hasClass("has-success")){
-                cajetin.removeClass("has-success");
-              } 
-              cajetin.addClass("has-error");
-              bandera = true;
-          } else {
-              if(cajetin.hasClass("has-error")){
-                cajetin.removeClass("has-error");
-              }
-             cajetin.addClass("has-success");
-              bandera = false;
-          } 
-      });
-}
 
 init();

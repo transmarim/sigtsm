@@ -4,13 +4,85 @@ function init(){
     mostrarform(false);
     listar();
     
-    validarinput('#nombre',/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/);
+    jQuery.validator.addMethod("cliente", function(value, element){
+        if (/^[a-zA-Z0-9]+(\s*[a-zA-Z0-9]*)*[a-zA-Z0-9]+$/.test(value)) {
+            return true;  // FAIL validation when REGEX matches
+        } else {
+            return false;   // PASS validation otherwise
+        };
+    }, "No se permiten caracteres especiales ni dobles espacios"); 
+
+    $("#formulario").validate({
+        rules:{
+            nombre:{
+                required: true,
+                cliente:true,
+            },
+            telefono:{
+                required: true,
+                digits:true,
+                minlength:11,
+                maxlength:11
+            },
+            codigo:{
+                required: true,
+                digits:true
+            },
+            email:{
+                required: true,
+                email:true
+            },
+            direccion:{
+                maxlength:45
+            }
+        },
+        messages: {
+            nombre:{
+                required: "Campo requerido"
+            },
+            telefono:{
+                required: "Campo requerido",
+                minlength: "Minimo 11 Digitos / Ejem: 04249999999",
+                maxlength: "Maximo 11 Digitos / Ejem: 04249999999"
+            },
+            codigo:{
+                required: "Campo requerido",
+                digits: "No se aceptan decimales"
+            },
+            email:{
+                required: "Campo requerido",
+                email: "Por favor ingrese un email valido"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `help-block` class to the error element
+            error.addClass( "help-block" );
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.parent( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-error" ).removeClass( "has-success" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
+        }
+       });
+
+
+    //validarinput('#nombre',/^[a-zA-Z0-9]+(\s*[a-zA-Z0-9]*)*[a-zA-Z0-9]+$/);
     validarinput('#telefono',/^[0-9]+$/);
     validarinput('#codigo',/^[0-9]+$/);
     validarinput('#email',/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/);
     
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
     
 }

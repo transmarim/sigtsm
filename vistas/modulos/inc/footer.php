@@ -13,3 +13,4 @@
 <script src="vistas/js/adminlte.min.js"></script>
 <script src="vistas/js/bootstrap-select.min.js"></script>
 <script src="vistas/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="vistas/plugins/jsvalidate/jquery.validate.min.js"></script>
