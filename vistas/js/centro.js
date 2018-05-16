@@ -4,11 +4,53 @@ function init(){
     mostrarform(false);
     listar();
     
-    validarinput('#nombre',/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/);
+    //validarinput('#nombre',/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/);
+
+    jQuery.validator.addMethod("cliente", function(value, element){
+        if (/^[a-zA-Z0-9]+(\s*[a-zA-Z0-9]*)*[a-zA-Z0-9]+$/.test(value)) {
+            return true;  // FAIL validation when REGEX matches
+        } else {
+            return false;   // PASS validation otherwise
+        };
+    }, "No se permiten caracteres especiales ni dobles espacios");
+
+    $("#formulario").validate({
+        rules:{
+            nombre:{
+                required: true,
+                cliente:true,
+            }
+        },
+        messages: {
+            nombre:{
+                required: "Campo requerido"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `help-block` class to the error element
+            error.addClass( "help-block" );
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.parent( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-error" ).removeClass( "has-success" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
+        }
+       });
     
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
+    
     
 }
 
@@ -60,7 +102,7 @@ function listar(){
 					}
 				},
 		"bDestroy": true,
-		"iDisplayLength": 5,//Paginacion
+		"iDisplayLength": 10,//Paginacion
 	    "order": [[ 0, "desc" ]]//Ordenar (columna,orden)
 	}).DataTable();
 }
@@ -125,25 +167,5 @@ function mostrar(idcentro){
             });
         });
  }
-
-function validarinput(idcampo,texto){
-    $(idcampo).change(function(){
-          var expreTexto = texto;
-          var cajetin = $(this).parent();
-          if(!expreTexto.test($(this).val())){
-              if(cajetin.hasClass("has-success")){
-                cajetin.removeClass("has-success");
-              } 
-              cajetin.addClass("has-error");
-              bandera = true;
-          } else {
-              if(cajetin.hasClass("has-error")){
-                cajetin.removeClass("has-error");
-              }
-             cajetin.addClass("has-success");
-              bandera = false;
-          } 
-      });
-}
 
 init();

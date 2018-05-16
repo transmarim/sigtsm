@@ -57,44 +57,62 @@
                     <div class="panel-body" id="formularioregistros">
                       <form name="formulario" id="formulario" method="POST">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <label>Nombre *:</label>
+                          <label class="col-sm-12 control-label" for="nombre">Nombre *:</label>
                           <input type="hidden" name="idchofer" id="idchofer">
+                          <div class="col-sm-12">
                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required>
+                           </div>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                         <label>Vehiculo *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                         <label class="col-sm-12 control-label" for="vehiculo" >Vehiculo *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                         <div class="col-sm-12">
                           <select id="idvehiculo" class="form-control selectpicker" data-live-search="true" name="idvehiculo" required>
                           </select>
+                          </div>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                         <label>Licencia *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                         <label class="col-sm-12 control-label" for="licencia">Licencia *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                         <div class="col-sm-12">
                           <select id="idlicencia" class="form-control selectpicker" data-live-search="true" name="idlicencia" required>
                           </select>
+                         </div>
                         </div>
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                         <label>Certificado *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                         <label class="col-sm-12 control-label" for="certificado">Certificado *:</label>   <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                         <div class="col-sm-12">
                           <select id="idcertificado" class="form-control selectpicker" data-live-search="true" name="idcertificado" required>
                           </select>
+                          </div>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <label>Cedula *:</label>
+                          <label class="col-sm-12 control-label" for="cedula">Cedula *:</label>
+                          <div class="col-sm-12">
                            <input type="number" class="form-control" name="cedula" id="cedula" placeholder="Cedula" required>
+                           </div>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                         <label>Telefono :</label> 
+                         <label class="col-sm-12 control-label" for="telefono">Telefono :</label>
+                         <div class="col-sm-12">
                           <input type="number" class="form-control" name="telefono" id="telefono" placeholder="Telefono" min="1" max="99999999999">
-                        </div>
+                         </div>
+                        </div>                        
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <label>Fecha Nac:</label>
-                          <input type="date" class="form-control" name="fechanac" id="fechanac">
+                          <label class="col-sm-12 control-label" for="fechanac">Fecha Nac:</label>
+                          <div class="col-sm-12">
+                          <input type="date" class="form-control" name="fechanac" id="fechanac" required>
+                          </div>
                         </div>
                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <label>Email :</label>
+                          <label class="col-sm-12 control-label" for="email">Email :</label>
+                           <div class="col-sm-12">
                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                           </div>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <label>Direccion:</label>
+                          <label class="col-sm-12 control-label" for="direccion">Direccion:</label>
+                          <div class="col-sm-12">
                           <textarea class="form-control" name="direccion" id="direccion" placeholder="Direccion" maxlength="45" cols="30" rows="3"></textarea>
+                        </div>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label>Imagen:</label>

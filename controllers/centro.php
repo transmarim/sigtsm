@@ -12,7 +12,7 @@ $nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
 
 switch ($_GET["op"]){
     case 'guardaryeditar':
-		if (empty($idcliente)){
+		if (empty($idcentro)){
             $rspta=$centro->insertar($nombre);
             echo $rspta ? "Buque registrado con exito":"No se pudieron registrar todos los datos del Buque";
 		}

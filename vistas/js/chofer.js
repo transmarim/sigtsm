@@ -5,15 +5,107 @@ function init(){
     mostrarform(false);
     listar();
     $("#imagenmuestra").hide();
+
+    jQuery.validator.addMethod("chofer", function(value, element){
+        if (/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/.test(value)) {
+            return true;  // FAIL validation when REGEX matches
+        } else {
+            return false;   // PASS validation otherwise
+        };
+    }, "No se permiten numeros ni terminales en blanco");
     
+    $("#formulario").validate({
+        rules: {
+            nombre: {
+                required: true,
+                chofer: true
+            },
+            idvehiculo: {
+                required: true
+            },
+            idlicencia: {
+                required: true
+            },
+            idcertificado: {
+                required: true
+            },
+            cedula: {
+                required: true,
+                digits: true
+            },
+            telefono: {
+                required: true,
+                digits: true,
+                minlength: 11,
+                maxlength: 11
+            },
+            fechanac: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            nombre: {
+                required: "Campo requerido"
+            },
+            idvehiculo: {
+                required: "Campo requerido"
+            },
+            idlicencia: {
+                required: "Campo requerido"
+            },
+            idcertificado: {
+                required: "Campo requerido"
+            },
+            cedula: {
+                required: "Campo requerido",
+                digits: "Introduzca un numero valido"
+            },
+            telefono: {
+                required: "Campo requerido",
+                minlength: "Minimo 11 Digitos / Ejem: 04249999999",
+                maxlength: "Maximo 11 Digitos / Ejem: 04249999999"
+            },
+            fechanac: {
+                required: "Campo requerido"
+            },
+            email: {
+                required: "Campo requerido",
+                email: "Por favor ingrese un email valido"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function (error, element) {
+            // Add the `help-block` class to the error element
+            error.addClass("help-block");
+
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.parent("label"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).parents(".col-sm-12").addClass("has-error").removeClass("has-success");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).parents(".col-sm-12").addClass("has-success").removeClass("has-error");
+        }
+    });
+
     /*MOSTRAR SELECT LICENCIA*/
     $.post("controllers/licencia.php?op=selectLicencia",function(respuesta){
     $("#idlicencia").html(respuesta);
     $("#idlicencia").selectpicker('refresh');
     });
     
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
     
 }

@@ -72,12 +72,6 @@ function init(){
             $( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
         }
        });
-
-
-    //validarinput('#nombre',/^[a-zA-Z0-9]+(\s*[a-zA-Z0-9]*)*[a-zA-Z0-9]+$/);
-    validarinput('#telefono',/^[0-9]+$/);
-    validarinput('#codigo',/^[0-9]+$/);
-    validarinput('#email',/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/);
     
     $("#formulario").on("submit",function(e){
         if ($("#formulario").validate().form() == true){
