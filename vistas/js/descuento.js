@@ -4,10 +4,42 @@ function init(){
     mostrarform(false);
     listar();
     
-    validarinput('#nombre',/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/);
-    
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+    jQuery.validator.addMethod("cliente",function(e,a){return!!/^[a-zA-Z0-9]+(\s*[a-zA-Z0-9]*)*[a-zA-Z0-9]+$/.test(e)},"No se permiten caracteres especiales ni dobles espacios");
+
+    $("#formulario").validate({
+        rules: {
+            nombre: {
+                required: true,
+                cliente: true,
+            }
+        },
+        messages: {
+            nombre: {
+                required: "Campo requerido"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function (error, element) {
+            error.addClass("help-block");
+
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.parent("label"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).parents(".col-sm-12").addClass("has-error").removeClass("has-success");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).parents(".col-sm-12").addClass("has-success").removeClass("has-error");
+        }
+    });
+
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
     
 }
@@ -125,25 +157,5 @@ function mostrar(iddescuento){
             });
         });
  }
-
-function validarinput(idcampo,texto){
-    $(idcampo).change(function(){
-          var expreTexto = texto;
-          var cajetin = $(this).parent();
-          if(!expreTexto.test($(this).val())){
-              if(cajetin.hasClass("has-success")){
-                cajetin.removeClass("has-success");
-              } 
-              cajetin.addClass("has-error");
-              bandera = true;
-          } else {
-              if(cajetin.hasClass("has-error")){
-                cajetin.removeClass("has-error");
-              }
-             cajetin.addClass("has-success");
-              bandera = false;
-          } 
-      });
-}
 
 init();

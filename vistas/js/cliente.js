@@ -19,10 +19,9 @@ function init(){
                 cliente:true,
             },
             telefono:{
-                required: true,
-                digits:true,
-                minlength:11,
-                maxlength:11
+                digits: true,
+                minlength: 10,
+                maxlength: 10
             },
             codigo:{
                 required: true,
@@ -41,9 +40,8 @@ function init(){
                 required: "Campo requerido"
             },
             telefono:{
-                required: "Campo requerido",
-                minlength: "Minimo 11 Digitos / Ejem: 04249999999",
-                maxlength: "Maximo 11 Digitos / Ejem: 04249999999"
+                minlength: "Minimo 10 Digitos / Ejem: 4249999999",
+                maxlength: "Maximo 10 Digitos / Ejem: 4249999999"
             },
             codigo:{
                 required: "Campo requerido",

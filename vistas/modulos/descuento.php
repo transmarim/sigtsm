@@ -54,9 +54,11 @@
                 <div class="panel-body" id="formularioregistros">
                   <form name="formulario" id="formulario" method="POST">
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Concepto del descuento *:</label>
+                      <label class="col-sm-12 control-label">Concepto del descuento *:</label>
                       <input type="hidden" name="iddescuento" id="iddescuento">
+                      <div class="col-sm-12">
                       <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <button class="btn btn-primary" type="submit" id="btnGuardar">

@@ -5,6 +5,7 @@ function init(){
     mostrarform(false);
     listar();
     $("#imagenmuestra").hide();
+    validarimg();
 
     jQuery.validator.addMethod("chofer", function(value, element){
         if (/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/.test(value)) {
@@ -34,10 +35,9 @@ function init(){
                 digits: true
             },
             telefono: {
-                required: true,
                 digits: true,
-                minlength: 11,
-                maxlength: 11
+                minlength: 10,
+                maxlength: 10
             },
             fechanac: {
                 required: true
@@ -45,7 +45,7 @@ function init(){
             email: {
                 required: true,
                 email: true
-            }
+            },
         },
         messages: {
             nombre: {
@@ -65,9 +65,8 @@ function init(){
                 digits: "Introduzca un numero valido"
             },
             telefono: {
-                required: "Campo requerido",
-                minlength: "Minimo 11 Digitos / Ejem: 04249999999",
-                maxlength: "Maximo 11 Digitos / Ejem: 04249999999"
+                minlength: "Minimo 10 Digitos / Ejem: 4249999999",
+                maxlength: "Maximo 10 Digitos / Ejem: 4249999999"
             },
             fechanac: {
                 required: "Campo requerido"
@@ -122,7 +121,8 @@ function limpiar(){
     $("#email").val("");
     $("#direccion").val("");
     $("#imagenmuestra").attr("src","");
-	$("#imagenactual").val("");
+    $("#imagenactual").val("");
+    $("#imagen").val("");
     /*QUITAR CLASES A LOS ELEMENTOS*/
     $(".form-group").removeClass('has-success has-error');
 }
@@ -275,6 +275,21 @@ function mostrar(idchofer){
             });
         });
  }
+
+ function validarimg(){
+    $("#imagen").change(function(){
+        var imagen = this.files[0];
+        var imagenType = imagen.type;
+        var flag = false;
+        var imagenSize = imagen.size;
+         if(Number(imagenSize)<500000 && (imagenType == "image/jpeg" || imagenType == "image/png")){
+             swal('Excelente!','La imagen cumple con los parametros permitidos.','success');
+         }else{
+             swal('Error!','El archivo que intenta subir no cumple con los parametros permitidos.','error');
+             $("#imagen").val("");
+         }
+    });
+}
 
 
 init();

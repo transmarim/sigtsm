@@ -6,6 +6,75 @@ function init(){
     calcularRet();
     listar();
     
+    $("#formulario").validate({
+        rules:{
+            idcliente:{
+                required: true
+            },
+            idchofer:{
+                required: true
+            },
+            codigo:{
+                required: true,
+                digits:true
+            },
+            idcentro:{
+                required: true,
+            },
+            fechapago:{
+                required: true,
+            },
+            fecha:{
+                required: true,
+            },
+            montop:{
+                required: true,
+                number: true
+            }
+        },
+        messages: {
+            idcliente:{
+                required: "Campo requerido"
+            },
+            idchofer:{
+                required: "Campo requerido"
+            },
+            codigo:{
+                required: "Campo requerido",
+                digits: "No se aceptan decimales"
+            },
+            idcentro:{
+                required: "Campo requerido"
+            },
+            fechapago:{
+                required: "Campo requerido"
+            },
+            montop:{
+                required: "Campo requerido"
+            },
+            fecha:{
+                required: "Campo requerido"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `help-block` class to the error element
+            error.addClass( "help-block" );
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.parent( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-error" ).removeClass( "has-success" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
+        }
+       });
+
     /*MOSTRAR SELECT LICENCIA*/
     $.post("controllers/cliente.php?op=listarc",function(respuesta){
     $("#idcliente").html(respuesta);
@@ -22,10 +91,11 @@ function init(){
     $("#idcentro").selectpicker('refresh');
     });
     
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
-    
 }
 
 function limpiar(){
