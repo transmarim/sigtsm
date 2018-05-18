@@ -63,48 +63,68 @@
                 <div class="panel-body" id="formularioregistros">
                   <form name="formulario" id="formulario" method="POST">
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Cliente *:</label>
+                      <label class="col-sm-12 control-label">Cliente *:</label>
                       <input type="hidden" name="idticketcaribe" id="idticketcaribe">
+                      <div class="col-sm-12">
                       <select id="idcliente" class="form-control selectpicker" data-live-search="true" name="idcliente"></select>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Chofer *:</label>
+                      <label class="col-sm-12 control-label">Chofer *:</label>
                       <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                      <div class="col-sm-12">
                       <select id="idchofer" class="form-control selectpicker" data-live-search="true" name="idchofer"></select>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Buque *:</label>
+                      <label class="col-sm-12 control-label" >Buque *:</label>
                       <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                      <div class="col-sm-12">
                       <select id="idcentro" class="form-control selectpicker" data-live-search="true" name="idcentro"></select>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Codigo *:</label>
+                      <label class="col-sm-12 control-label" >Codigo *:</label>
+                      <div class="col-sm-12">
                       <input type="number" class="form-control" name="codigo" id="codigo" step="1" placeholder="Codigo del ticket" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Fecha Pago *:</label>
+                      <label class="col-sm-12 control-label" >Fecha Pago *:</label>
+                      <div class="col-sm-12">
                       <input type="date" class="form-control" name="fechapago" id="fechapago" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Fecha Posteo *:</label>
+                      <label class="col-sm-12 control-label" >Fecha Posteo *:</label>
+                      <div class="col-sm-12">
                       <input type="date" class="form-control" name="fecha" id="fecha" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Monto a Pagar *:</label>
-                      <input type="number" class="form-control" name="montop" id="montop" step="0.1" required>
+                      <label class="col-sm-12 control-label" >Monto a Pagar *:</label>
+                      <div class="col-sm-12">
+                      <input type="number" class="form-control" name="montop" id="montop" step="0.01" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Monto a Retener
+                      <label class="col-sm-12 control-label" >Monto a Retener
                         <span style="color:red">1%</span>:</label>
+                      <div class="col-sm-12">
                       <input type="number" class="form-control" name="montoret" id="montoret" required disabled>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Monto a Cobrar:</label>
-                      <input type="number" class="form-control" name="montoc" id="montoc" step="0.1">
+                      <label class="col-sm-12 control-label" >Monto a Cobrar:</label>
+                      <div class="col-sm-12">
+                      <input type="number" class="form-control" name="montoc" id="montoc" step="0.01">
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Descripcion:</label>
+                      <label class="col-sm-12 control-label" >Descripcion:</label>
+                      <div class="col-sm-12">                     
                       <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" maxlength="255" cols="30" rows="3"></textarea>
+                      </div>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <button class="btn btn-primary" type="submit" id="btnGuardar">

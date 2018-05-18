@@ -7,6 +7,57 @@ function init() {
     //$("#porcentajeform").hide();
     $("#montodescform").show();
 
+    $("#formulario").validate({
+        rules:{
+            idchofer:{
+                required: true
+            },
+            fecha:{
+                required: true
+            },
+            montodesc:{
+                required: true,
+                number: true,
+                min:1
+            },
+            iddescuento:{
+                required: true
+            }
+        },
+        messages: {
+            idchofer:{
+                required: "Campo requerido"
+            },
+            fecha:{
+                required: "Campo requerido"
+            },
+            montodesc:{
+                required: "Campo requerido",
+                min: "No se aceptan numeros negativos"
+            },
+            iddescuento:{
+                required: "Campo requerido"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `help-block` class to the error element
+            error.addClass( "help-block" );
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.parent( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-error" ).removeClass( "has-success" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
+        }
+       });
+
     $.post("controllers/chofer.php?op=selectc", function (respuesta) {
         $("#idchofer").html(respuesta);
         $("#idchofer").selectpicker('refresh');
@@ -17,8 +68,10 @@ function init() {
         $("#iddescuento").selectpicker('refresh');
     });
 
-    $("#formulario").on("submit", function (e) {
-        guardaryeditar(e);
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
 
 }

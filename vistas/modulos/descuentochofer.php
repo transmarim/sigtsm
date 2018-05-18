@@ -55,17 +55,23 @@
                                 <div class="panel-body" id="formularioregistros">
                                     <form name="formulario" id="formulario" method="POST">
                                         <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                            <label>Chofer(*):</label>
+                                            <label class="col-sm-12 control-label">Chofer(*):</label>
                                             <input type="hidden" name="idchofer_descuento" id="idchofer_descuento">
+                                            <div class="col-sm-12">
                                             <select id="idchofer" name="idchofer" class="form-control selectpicker" data-live-search="true" required> </select>
+                                            </div>
                                         </div>
                                         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <label>Fecha(*):</label>
+                                            <label class="col-sm-12 control-label">Fecha(*):</label>
+                                            <div class="col-sm-12">
                                             <input type="date" class="form-control" name="fecha" id="fecha" required=""> </div>
+                                            </div>
                                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <label>Descuento(*):</label>
+                                            <label class="col-sm-12 control-label">Descuento(*):</label>
+                                            <div class="col-sm-12">
                                             <select name="iddescuento" id="iddescuento" class="form-control selectpicker" required="">
                                             </select>
+                                            </div>
                                         </div>
                                         <!-- <div id="tipodemontoform" class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
                                             <label>¿Es porcentual?:</label>
@@ -76,12 +82,14 @@
                                             </select>
                                         </div> -->
                                         <div id="montodescform" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                            <label>Monto Descontado(*):</label>
-                                            <input type="number" class="form-control" name="montodesc" id="montodesc" maxlength="20" placeholder="Monto descontado" required step=".01"> </div>
+                                            <label class="col-sm-12 control-label">Monto Descontado(*):</label>
+                                            <div class="col-sm-12">
+                                            <input type="number" class="form-control" name="montodesc" id="montodesc" maxlength="20" placeholder="Monto descontado" required step="0.01"> </div>
                                         <!-- <div id="porcentajeform" class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <label>% Descontado:</label>
                                             <input type="text" class="form-control" name="porcentaje" id="porcentaje" maxlength="2" placeholder="Ingrese porcentaje"> </div>-->
-                                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            </div>
+                                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <button class="btn btn-primary" type="submit" id="btnGuardar">
                                                 <i class="fa fa-save"></i> Guardar</button>
                                             <button id="btnCancelar" class="btn btn-danger" onclick="cancelarform()" type="button">

@@ -5,10 +5,88 @@ function init(){
     mostrarform(false);
     listar();
     $("#imagenmuestra").hide();
-     
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+    validarimg();
+    
+    jQuery.validator.addMethod("placa", function(value, element){
+        if (/^[0-9-zA-Z]+$/.test(value)) {
+            return true;  // FAIL validation when REGEX matches
+        } else {
+            return false;   // PASS validation otherwise
+        };
+    }, "Solo se aceptan mayusculas y sin espacios");
+
+    jQuery.validator.addMethod("modelo", function(value, element){
+        if (/^[a-zA-Z0-9]+(\s*[a-zA-Z0-9]*)*[a-zA-Z0-9]+$/.test(value)) {
+            return true;  // FAIL validation when REGEX matches
+        } else {
+            return false;   // PASS validation otherwise
+        };
+    }, "No se aceptan caracteres especiales ni dobles espacios");
+
+    $("#formulario").validate({
+        rules:{
+            placa:{
+                required: true,
+                placa:true
+            },
+            fecha:{
+                required: true
+            },
+            idseguro:{
+                required: true
+            },
+            modelo:{
+                required: true,
+                modelo: true
+            },
+            anovehiculo:{
+                required: true,
+                number: true,
+                min:1
+            }
+        },
+        messages: {
+            placa:{
+                required: "Campo requerido"
+            },
+            fecha:{
+                required: "Campo requerido"
+            },
+            idseguro:{
+                required: "Campo requerido"
+            },
+            modelo:{
+                required: "Campo requerido"
+            },
+            anovehiculo:{
+                required: "Campo requerido"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `help-block` class to the error element
+            error.addClass( "help-block" );
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.parent( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-error" ).removeClass( "has-success" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
+        }
+       });
+
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
+
     
 }
 
@@ -155,6 +233,21 @@ function mostrar(idvehiculo){
             });
         });
  }
+
+ function validarimg(){
+    $("#imagen").change(function(){
+        var imagen = this.files[0];
+        var imagenType = imagen.type;
+        var flag = false;
+        var imagenSize = imagen.size;
+         if(Number(imagenSize)<500000 && (imagenType == "image/jpeg" || imagenType == "image/png")){
+             swal('Excelente!','La imagen cumple con los parametros permitidos.','success');
+         }else{
+             swal('Error!','El archivo que intenta subir no cumple con los parametros permitidos.','error');
+             $("#imagen").val("");
+         }
+    });
+}
 
 
 init();

@@ -60,32 +60,42 @@
                 <div class="panel-body" id="formularioregistros">
                   <form name="formulario" id="formulario" method="POST">
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Placa *:</label>
+                      <label class="col-sm-12 control-label">Placa *:</label>
                       <input type="hidden" name="idvehiculo" id="idvehiculo">
+                      <div class="col-sm-12">
                       <input type="text" class="form-control" name="placa" id="placa" placeholder="Placa" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Seguro *:</label>
+                      <label class="col-sm-12 control-label">Seguro *:</label>
                       <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                      <div class="col-sm-12">
                       <select id="idseguro" class="form-control selectpicker" data-live-search="true" name="idseguro" required>
                         <option value="">--</option>
                         <option value="V-">A00A</option>
                         <option value="J-">A00B</option>
                       </select>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Titulo:</label>
+                      <label class="col-sm-12 control-label">Titulo:</label>
+                      <div class="col-sm-12">
                       <input type="file" class="form-control" name="imagen" id="imagen">
                       <input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
                       <img src="" width="150px" height="120px" id="imagenmuestra">
+                      </div>
                     </div>
                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                      <label>Modelo *:</label>
+                      <label class="col-sm-12 control-label">Modelo *:</label>
+                      <div class="col-sm-12">
                       <input type="text" class="form-control" name="modelo" id="modelo" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                      <label>Año *:</label>
+                      <label class="col-sm-12 control-label">Año *:</label>
+                      <div class="col-sm-12">
                       <input type="number" class="form-control" name="anovehiculo" id="anovehiculo" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <button class="btn btn-primary" type="submit" id="btnGuardar">

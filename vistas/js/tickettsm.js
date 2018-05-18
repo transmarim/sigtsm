@@ -29,7 +29,12 @@ function init(){
             },
             montop:{
                 required: true,
-                number: true
+                number: true,
+                min:1
+            },
+            montoc:{
+                number: true,
+                min:1
             }
         },
         messages: {
@@ -50,7 +55,12 @@ function init(){
                 required: "Campo requerido"
             },
             montop:{
-                required: "Campo requerido"
+                required: "Campo requerido",
+                min: "No se aceptan numeros negativos"
+            },
+            montoc:{
+                required: "Campo requerido",
+                min: "No se aceptan numeros negativos"
             },
             fecha:{
                 required: "Campo requerido"
