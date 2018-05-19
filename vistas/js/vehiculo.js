@@ -98,6 +98,7 @@ function limpiar(){
     $("#idseguro").selectpicker("val","");
     $("#idseguro").selectpicker('refresh');
     $("#imagenmuestra").attr("src","");
+    $("#rutarchivo").attr("href","");
 	$("#imagenactual").val("");
     /*QUITAR CLASES A LOS ELEMENTOS*/
     $(".form-group").removeClass('has-success has-error');
@@ -174,6 +175,9 @@ function guardaryeditar(e){
 
 function mostrar(idvehiculo){
     var seguro;
+    function getFileExtension(filename) {
+        return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined;
+    }
      $.post("controllers/vehiculo.php?op=mostrar",{idvehiculo:idvehiculo},function(data,status){
           /*Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript*/
          data = JSON.parse(data);
@@ -195,7 +199,13 @@ function mostrar(idvehiculo){
 
          /*MOSTRAMOS IMG DE MUESTRA*/
          $("#imagenmuestra").show();
-         $("#imagenmuestra").attr("src","vistas/img/vehiculos/"+data.imagen);
+         var ext = getFileExtension(data.imagen);
+         if(ext != 'pdf'){
+            $("#imagenmuestra").attr("src","vistas/img/vehiculos/"+data.imagen);
+         }else{
+            $("#imagenmuestra").attr("src","vistas/img/vehiculos/pdf.png");
+            $("#rutarchivo").attr("href","vistas/img/vehiculos/"+data.imagen);
+         }
          $("#imagenactual").val(data.imagen);
      });
     }
@@ -240,8 +250,8 @@ function mostrar(idvehiculo){
         var imagenType = imagen.type;
         var flag = false;
         var imagenSize = imagen.size;
-         if(Number(imagenSize)<500000 && (imagenType == "image/jpeg" || imagenType == "image/png")){
-             swal('Excelente!','La imagen cumple con los parametros permitidos.','success');
+         if(Number(imagenSize)<500000 && (imagenType == "image/jpeg" || imagenType == "image/png" || imagenType == "application/pdf")){
+             swal('Excelente!','El archivo cumple con los parametros permitidos.','success');
          }else{
              swal('Error!','El archivo que intenta subir no cumple con los parametros permitidos.','error');
              $("#imagen").val("");
