@@ -12,16 +12,96 @@ function init(){
 	});
     
     validarimg();
-    validarinput('#nombre',/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/);
-    validarinput('#login',/^[a-z\d_]{4,15}$/i);
-    validarinput('#clave',/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/);
-    validarinput('#email',/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/);
+    //validarinput('#login',/^[a-z\d_]{4,15}$/i);
     
-     $("#formulario").on("submit",function(e){
-        if(!bandera){
+    jQuery.validator.addMethod("pw", function(value, element){
+        if (/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value)) {
+            return true;  // FAIL validation when REGEX matches
+        } else {
+            return false;   // PASS validation otherwise
+        };
+    }, "La clave debe ser mayor a 8 caracteres, incluir minuscula, mayuscula o simbolo");
+
+    jQuery.validator.addMethod("nombre", function(value, element){
+        if (/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/.test(value)) {
+            return true;  // FAIL validation when REGEX matches
+        } else {
+            return false;   // PASS validation otherwise
+        };
+    }, "No se permiten numeros ni terminales en blanco");
+
+    jQuery.validator.addMethod("usuario", function(value, element){
+        if (/^[a-z\d_]{4,15}$/i.test(value)) {
+            return true;  // FAIL validation when REGEX matches
+        } else {
+            return false;   // PASS validation otherwise
+        };
+    }, "Debe contener 4 caracteres minimos, sin espacios");    
+
+    $("#formulario").validate({
+        rules: {
+            nombre: {
+                required: true,
+                nombre: true
+            },
+            login: {
+                required: true,
+                usuario:true
+            },
+            clave: {
+                required: true,
+                pw: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            'permiso[]': {
+                required:true,
+                minlength:1
+            }
+        },
+        messages: {
+            nombre: {
+                required: "Campo requerido"
+            },
+            login: {
+                required: "Campo requerido"
+            },
+            clave: {
+                required: "Campo requerido"
+            },
+            email: {
+                required: "Campo requerido",
+                email: "Por favor ingrese un email valido"
+            },
+            'permiso[]': {
+                required: "Campo requerido",
+                minlength: "Debe seleccionar 1 permiso como minimo"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function (error, element) {
+            // Add the `help-block` class to the error element
+            error.addClass("help-block");
+
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.parent("label"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).parents(".col-sm-12").addClass("has-error").removeClass("has-success");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).parents(".col-sm-12").addClass("has-success").removeClass("has-error");
+        }
+    });
+
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
             guardaryeditar(e);
-        }else{
-            e.preventDefault(); swal('Error!','Los datos a ingresar no son validos.','error');
         }
     });
     
@@ -35,7 +115,8 @@ function limpiar(){
     $("#email").val("");
     $("#idchofer").selectpicker("val","");
     $("#imagenmuestra").attr("src","");
-	$("#imagenactual").val("");
+    $("#imagenactual").val("");
+    $("#imagen").val("");
     /*QUITAR CLASES A LOS ELEMENTOS*/
     $(".form-group").removeClass('has-success has-error');
 }
@@ -196,27 +277,6 @@ function validarimg(){
              $("#imagen").val("");
          }
     });
-}
-
-
-function validarinput(idcampo,texto){
-    $(idcampo).change(function(){
-          var expreTexto = texto;
-          var cajetin = $(this).parent();
-          if(!expreTexto.test($(this).val())){
-              if(cajetin.hasClass("has-success")){
-                cajetin.removeClass("has-success");
-              } 
-              cajetin.addClass("has-error");
-              bandera = true;
-          } else {
-              if(cajetin.hasClass("has-error")){
-                cajetin.removeClass("has-error");
-              }
-             cajetin.addClass("has-success");
-              bandera = false;
-          } 
-      });
 }
 
 init();

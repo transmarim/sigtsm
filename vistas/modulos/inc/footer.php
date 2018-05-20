@@ -3,7 +3,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.1
     </div>
-    <strong>Copyright &copy; 2017 <a href="https://transmarim.com">TRANSMARIM</a>.</strong>
+    <strong>Copyright &copy; 2018 <a href="https://transmarim.com">TRANSMARIM</a>.</strong>
   </footer>
 
 <script src="vistas/plugins/jquery/jquery.min.js"></script>

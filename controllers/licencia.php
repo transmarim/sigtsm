@@ -22,7 +22,7 @@ switch ($_GET["op"]){
 		else
 		{
 			$ext = explode(".", $_FILES["imagen"]["name"]);
-			if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
+			if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png" || $_FILES['imagen']['type'] == "application/pdf")
 			{
                 if($_FILES["imagen"]["size"]<500000){
 				$imagen = round(microtime(true)) . '.' . end($ext);
@@ -45,15 +45,30 @@ switch ($_GET["op"]){
         $rspta = $licencia->listar();
         $data = Array();
         while($reg = $rspta->fetch_object()){
-           $data[]=array(
-               "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idlicencia.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="desactivar('.$reg->idlicencia.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idlicencia.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-primary" onclick="activar('.$reg->idlicencia.')"><i class="fa fa-check"></i></button>',
-               "1"=>$reg->grado,
-               "2"=>$reg->fechaven,
-               "3"=>"<img src='vistas/img/licencias/".$reg->imagen."' height='50px' width='50px'>",
-               "4"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
-           );
+            /*OBTENER EXTENSION PDF PARA CAMBIAR A ANCLE*/
+           $val = explode(".",$reg->imagen);
+           $ext = $val[count($val)-1];
+           if($ext != 'pdf'){
+            $data[]=array(
+                "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idlicencia.')"><i class="fa fa-pencil"></i></button>'.
+                      ' <button class="btn btn-danger" onclick="desactivar('.$reg->idlicencia.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idlicencia.')"><i class="fa fa-pencil"></i></button>'.
+                      ' <button class="btn btn-primary" onclick="activar('.$reg->idlicencia.')"><i class="fa fa-check"></i></button>',
+                "1"=>$reg->grado,
+                "2"=>$reg->fechaven,
+                "3"=>"<img src='vistas/img/licencias/".$reg->imagen."' height='50px' width='50px'>",
+                "4"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+            );
+           }else{
+            $data[]=array(
+                "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idlicencia.')"><i class="fa fa-pencil"></i></button>'.
+                      ' <button class="btn btn-danger" onclick="desactivar('.$reg->idlicencia.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idlicencia.')"><i class="fa fa-pencil"></i></button>'.
+                      ' <button class="btn btn-primary" onclick="activar('.$reg->idlicencia.')"><i class="fa fa-check"></i></button>',
+                "1"=>$reg->grado,
+                "2"=>$reg->fechaven,
+                "3"=>"<a href='vistas/img/licencias/".$reg->imagen."' target='_blank'><img src='vistas/img/licencias/pdf.png' height='50px' width='50px'></a>",
+                "4"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+            );
+           }
         }
         /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/
         $results = array(

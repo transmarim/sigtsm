@@ -5,10 +5,50 @@ function init(){
     mostrarform(false);
     listar();
     $("#imagenmuestra").hide();
-      
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+    validarimg();
+    
+    $("#formulario").validate({
+        rules:{
+            grado:{
+                required: true
+            },
+            fechaven:{
+                required: true
+            }
+        },
+        messages: {
+            grado:{
+                required: "Campo requerido"
+            },
+            fechaven:{
+                required: "Campo requerido"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `help-block` class to the error element
+            error.addClass( "help-block" );
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.parent( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-error" ).removeClass( "has-success" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
+        }
+       });
+
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
+
     
 }
 
@@ -17,7 +57,9 @@ function limpiar(){
     $("#fechaven").val("");
     $("#grado").selectpicker("val","");
     $("#imagenmuestra").attr("src","");
-	$("#imagenactual").val("");
+    $("#rutarchivo").attr("href","");
+    $("#imagenactual").val("");
+    $("#imagen").val("");
     /*QUITAR CLASES A LOS ELEMENTOS*/
     $(".form-group").removeClass('has-success has-error');
 }
@@ -87,6 +129,9 @@ function guardaryeditar(e){
 }
 
 function mostrar(idlicencia){
+    function getFileExtension(filename) {
+        return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined;
+    }
      $.post("controllers/licencia.php?op=mostrar",{idlicencia:idlicencia},function(data,status){
           /*Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript*/
          data = JSON.parse(data);
@@ -96,8 +141,15 @@ function mostrar(idlicencia){
          $("#grado").selectpicker('refresh');
          $("#fechaven").val(data.fechaven);
          /*MOSTRAMOS IMG DE MUESTRA*/
+         /*MOSTRAMOS IMG DE MUESTRA*/
          $("#imagenmuestra").show();
-         $("#imagenmuestra").attr("src","vistas/img/licencias/"+data.imagen);
+         var ext = getFileExtension(data.imagen);
+         if(ext != 'pdf'){
+            $("#imagenmuestra").attr("src","vistas/img/licencias/"+data.imagen);
+         }else{
+            $("#imagenmuestra").attr("src","vistas/img/licencias/pdf.png");
+            $("#rutarchivo").attr("href","vistas/img/licencias/"+data.imagen);
+         }
          $("#imagenactual").val(data.imagen);
      });
     }
@@ -135,6 +187,21 @@ function mostrar(idlicencia){
             });
         });
  }
+
+ function validarimg(){
+    $("#imagen").change(function(){
+        var imagen = this.files[0];
+        var imagenType = imagen.type;
+        var flag = false;
+        var imagenSize = imagen.size;
+         if(Number(imagenSize)<500000 && (imagenType == "image/jpeg" || imagenType == "image/png" || imagenType == "application/pdf")){
+             swal('Excelente!','El archivo cumple con los parametros permitidos.','success');
+         }else{
+             swal('Error!','El archivo que intenta subir no cumple con los parametros permitidos.','error');
+             $("#imagen").val("");
+         }
+    });
+}
 
 
 init();

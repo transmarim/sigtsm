@@ -56,13 +56,17 @@
                 <div class="panel-body" id="formularioregistros">
                   <form name="formulario" id="formulario" method="POST">
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Numero *:</label>
+                      <label class="col-sm-12 control-label">Numero *:</label>
+                      <div class="col-sm-12">
                       <input type="hidden" name="idcertificado" id="idcertificado">
                       <input type="number" class="form-control" name="numero" id="numero" placeholder="Numero" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Vence *:</label>
+                      <label class="col-sm-12 control-label">Vence *:</label>
+                      <div class="col-sm-12">
                       <input type="date" class="form-control" name="fechaven" id="fechaven" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <button class="btn btn-primary" type="submit" id="btnGuardar">

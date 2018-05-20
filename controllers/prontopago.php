@@ -31,7 +31,7 @@ switch ($_GET["op"]){
            $data[]=array(
                "0"=>$reg->cedula,
                "1"=>$reg->nombre,
-               "2"=>"<button onclick='mostrar(".$reg->idchofer.")' id='btnAgregarArt' type='button' class='btn btn-primary btn-block' btn-social style='text-align:center;'><span class='fa fa-share-square-o'></span>Enviar Pronto-Pago</button>"
+               "2"=>"<button onclick='mostrar(".$reg->idchofer.")' id='btnAgregarArt' type='button' class='btn btn-primary btn-block btn-social' style='text-align:center;'><span class='fa fa-share-square-o'></span>Enviar Pronto-Pago</button>"
            );
         }
         /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/

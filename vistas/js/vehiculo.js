@@ -42,7 +42,8 @@ function init(){
             anovehiculo:{
                 required: true,
                 number: true,
-                min:1
+                min:1,
+                digits: true
             }
         },
         messages: {
@@ -99,7 +100,8 @@ function limpiar(){
     $("#idseguro").selectpicker('refresh');
     $("#imagenmuestra").attr("src","");
     $("#rutarchivo").attr("href","");
-	$("#imagenactual").val("");
+    $("#imagenactual").val("");
+    $("#imagen").val("");
     /*QUITAR CLASES A LOS ELEMENTOS*/
     $(".form-group").removeClass('has-success has-error');
 }

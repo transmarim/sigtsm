@@ -59,8 +59,9 @@
                   <form name="formulario" id="formulario" method="POST">
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <input type="hidden" name="idlicencia" id="idlicencia">
-                      <label>Grado*:</label>
+                      <label class="col-sm-12 control-label">Grado*:</label>
                       <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                      <div class="col-sm-12">
                       <select id="grado" class="form-control selectpicker" data-live-search="true" name="grado" required>
                         <option value="">--</option>
                         <option value="1">1RA</option>
@@ -68,16 +69,21 @@
                         <option value="3">3RA</option>
                         <option value="4">4TA</option>
                       </select>
+                      </div>                      
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Vence *:</label>
+                      <label class="col-sm-12 control-label">Vence *:</label>
+                      <div class="col-sm-12">                      
                       <input type="date" class="form-control" name="fechaven" id="fechaven" required>
+                      </div>                    
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Imagen:</label>
+                      <label class="col-sm-12 control-label">Imagen:</label>
+                      <div class="col-sm-12">
                       <input type="file" class="form-control" name="imagen" id="imagen">
                       <input type="hidden" name="imagenactual" id="imagenactual">
                       <img src="" width="150px" height="150px" id="imagenmuestra">
+                      </div>                      
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <button class="btn btn-primary" type="submit" id="btnGuardar">

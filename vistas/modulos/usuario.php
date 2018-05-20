@@ -60,40 +60,50 @@
                 <div class="panel-body" id="formularioregistros">
                   <form name="formulario" id="formulario" method="POST">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <label>Nombre(*):</label>
+                      <label class="col-sm-12 control-label">Nombre(*):</label>
                       <input type="hidden" name="idusuario" id="idusuario">
+                      <div class="col-sm-12">
                       <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Login (*):</label>
+                      <label class="col-sm-12 control-label">Login (*):</label>
+                      <div class="col-sm-12">
                       <input type="text" class="form-control" name="login" id="login" maxlength="20" placeholder="Login" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Clave (*):</label>
+                      <label class="col-sm-12 control-label">Clave (*):</label>
+                      <div class="col-sm-12">
                       <input type="password" class="form-control" name="clave" id="clave" maxlength="45" placeholder="Clave" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Email (*):</label>
+                      <label class="col-sm-12 control-label">Email (*):</label>
+                      <div class="col-sm-12">
                       <input type="email" class="form-control" name="email" id="email" maxlength="45" placeholder="Email" required>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Vincular a Chofer:</label>
+                      <label class="col-sm-12 control-label">Vincular a Chofer:</label>
                       <!-- INCLUIMOS LA CLASE SELECTPICKER -->
+                      <div class="col-sm-12">
                       <select id="idchofer" class="form-control selectpicker" data-live-search="true" name="idchofer">
                       </select>
+                      </div>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Permisos:</label>
+                      <label class="col-sm-12 control-label">Permisos:</label>
                       <ul style="list-style: none;" id="permisos">
-                        <li>Permisos</li>
                       </ul>
                     </div>
-
                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <label>Imagen:</label>
+                      <label class="col-sm-12 control-label">Imagen:</label>
+                      <div class="col-sm-12">
                       <input type="file" class="form-control" name="imagen" id="imagen">
                       <input type="hidden" name="imagenactual" id="imagenactual">
                       <img src="" width="150px" height="150px" id="imagenmuestra">
+                      </div>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <button class="btn btn-primary" type="submit" id="btnGuardar">

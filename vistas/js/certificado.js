@@ -4,10 +4,48 @@ function init(){
     mostrarform(false);
     listar();
     
-    validarinput('#numero',/^[0-9]+$/);
-    
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+    $("#formulario").validate({
+        rules:{
+            numero:{
+                required: true,
+                digits:true
+            },
+            fechaven:{
+                required: true
+            }
+        },
+        messages: {
+            numero:{
+                required: "Campo requerido",
+                digits: "No se permiten decimales"
+            },
+            fechaven:{
+                required: "Campo requerido"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `help-block` class to the error element
+            error.addClass( "help-block" );
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.parent( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-error" ).removeClass( "has-success" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
+        }
+       });
+
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
     
 }
@@ -130,24 +168,5 @@ function mostrar(idcertificado){
         });
  }
 
-function validarinput(idcampo,texto){
-    $(idcampo).change(function(){
-          var expreTexto = texto;
-          var cajetin = $(this).parent();
-          if(!expreTexto.test($(this).val())){
-              if(cajetin.hasClass("has-success")){
-                cajetin.removeClass("has-success");
-              } 
-              cajetin.addClass("has-error");
-              bandera = true;
-          } else {
-              if(cajetin.hasClass("has-error")){
-                cajetin.removeClass("has-error");
-              }
-             cajetin.addClass("has-success");
-              bandera = false;
-          } 
-      });
-}
 
 init();
