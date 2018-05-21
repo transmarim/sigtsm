@@ -85,7 +85,7 @@
                         <div class="box box-success">
                             <div class="box-header">
                                 <i class="fa fa-comments-o"></i>
-                                <h3 class="box-title">Chat</h3>
+                                <h3 class="box-title">Muro</h3>
                             </div>
                             <div class="box-body chat" id="chat-box">
                                 <div class="item">

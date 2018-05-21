@@ -28,6 +28,7 @@ class EnlacesModels{
        $enlaces == "pagoticket" ||
        $enlaces == "enviaralert" ||
        $enlaces == "prontopago" ||
+       $enlaces == "pases" ||
        $enlaces == "tarifas" ||
        $enlaces == "imprimirc"){
        /*MODULO A CARGAR SERA*/

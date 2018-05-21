@@ -90,8 +90,8 @@
             <?php $_SESSION['carteleras']==1 ? $pagina = '<li class="treeview">
                 <a href=""> <i class="fa fa-external-link"></i> <span>Carteleras</span> </a>
                 <ul class="treeview-menu">
+                    <li><a href="pases"><i class="fa fa-object-group"></i>Pases</a></li>
                     <li><a href="tarifas"><i class="fa fa-money"></i>Tarifas</a></li>
-                    <li><a href="#"><i class="fa fa-object-group"></i>Guardia Semanal</a></li>
                     <li><a href="talonario"><i class="fa fa-book"></i>Talonarios - TSM</a></li>
                     <li><a href="talonariocaribe"><i class="fa fa-book"></i>Talonarios - CARIB</a></li>
                 </ul>

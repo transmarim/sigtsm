@@ -4,13 +4,76 @@ function init(){
     mostrarform(false);
     listar();
     
-    validarinput('#nombre',/^[-_\w\.\s]*$/i);
-    validarinput('#montotsmp',/^[0-9]+$/);
-    validarinput('#montotsmc',/^[0-9]+$/);
-    validarinput('#montocaribec',/^[0-9]+$/);
+    jQuery.validator.addMethod("nombre", function(value, element){
+        if (/^[-_\w\.\s]*$/i.test(value)) {
+            return true;  // FAIL validation when REGEX matches
+        } else {
+            return false;   // PASS validation otherwise
+        };
+    }, "Ruta no valida");
     
-     $("#formulario").on("submit",function(e){
-       guardaryeditar(e);
+    $("#formulario").validate({
+        rules:{
+            nombre:{
+                required: true,
+                nombre:true
+            },
+            montotsmp:{
+                required: true,
+                number: true,
+                min:1
+            },
+            montotsmc:{
+                required: true,
+                number: true,
+                min:1
+            },
+            montocaribec:{
+                required: true,
+                number: true,
+                min:1
+            }
+        },
+        messages: {
+            nombre:{
+                required: "Campo requerido"
+            },
+            montotsmp:{
+                required: "Campo requerido",
+                min: "No se aceptan numeros negativos"
+            },
+            montotsmc:{
+                required: "Campo requerido",
+                min: "No se aceptan numeros negativos"
+            },
+            montocaribec:{
+                required: "Campo requerido",
+                min: "No se aceptan numeros negativos"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Add the `help-block` class to the error element
+            error.addClass( "help-block" );
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.parent( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-error" ).removeClass( "has-success" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
+        }
+       });
+
+    $("#formulario").on("submit",function(e){
+        if ($("#formulario").validate().form() == true){
+            guardaryeditar(e);
+        }
     });
     
 }
@@ -118,25 +181,5 @@ function mostrar(idtarifa){
             });
         });
  }
-
-function validarinput(idcampo,texto){
-    $(idcampo).change(function(){
-          var expreTexto = texto;
-          var cajetin = $(this).parent();
-          if(!expreTexto.test($(this).val())){
-              if(cajetin.hasClass("has-success")){
-                cajetin.removeClass("has-success");
-              } 
-              cajetin.addClass("has-error");
-              bandera = true;
-          } else {
-              if(cajetin.hasClass("has-error")){
-                cajetin.removeClass("has-error");
-              }
-             cajetin.addClass("has-success");
-              bandera = false;
-          } 
-      });
-}
 
 init();

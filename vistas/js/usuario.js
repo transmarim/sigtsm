@@ -57,8 +57,7 @@ function init(){
                 email: true
             },
             'permiso[]': {
-                required:true,
-                minlength:1
+                required:true
             }
         },
         messages: {
@@ -76,8 +75,7 @@ function init(){
                 email: "Por favor ingrese un email valido"
             },
             'permiso[]': {
-                required: "Campo requerido",
-                minlength: "Debe seleccionar 1 permiso como minimo"
+                required: "Debe seleccionar 1 permiso como mínimo"
             }
         },
         errorElement: "em",
@@ -86,7 +84,7 @@ function init(){
             error.addClass("help-block");
 
             if (element.prop("type") === "checkbox") {
-                error.insertAfter(element.parent("label"));
+                error.appendTo("#errorToShow");
             } else {
                 error.insertAfter(element);
             }
