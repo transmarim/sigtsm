@@ -81,7 +81,12 @@ function cancelarform(){
 
 function guardaryeditar(e){
     e.preventDefault();
+    var startDate = $("#fecha").data("daterangepicker").startDate.format('YYYY-MM-DD');
+    var endDate = $("#fecha").data("daterangepicker").endDate.format('YYYY-MM-DD');
+
     var formData = new FormData($("#formulario")[0]);
+    formData.append("startDate",startDate);
+    formData.append("endDate",endDate);
     $.ajax({
        url:"controllers/pases.php?op=guardaryeditar",
        type:"POST",
@@ -89,7 +94,8 @@ function guardaryeditar(e){
        contentType: false,
 	   processData: false,
        success: function(respuesta){
-         swal(respuesta, "Presione OK para continuar");
+        window.open(respuesta,"_blank");
+        //alert(respuesta);
        }
     });
 }
