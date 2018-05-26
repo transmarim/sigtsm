@@ -14,6 +14,8 @@ $placa=isset($_POST["placa"])? limpiarCadena($_POST["placa"]):"";
 
 $modelo=isset($_POST["modelo"])? limpiarCadena($_POST["modelo"]):"";
 
+$color=isset($_POST["color"])? limpiarCadena($_POST["color"]):"";
+
 $anovehiculo=isset($_POST["anovehiculo"])? limpiarCadena($_POST["anovehiculo"]):"";
 
 $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
@@ -37,11 +39,11 @@ switch ($_GET["op"]){
 		}
 
 		if (empty($idvehiculo)){
-            $rspta=$vehiculo->insertar($idseguro,$placa,$modelo,$anovehiculo,$imagen);
+            $rspta=$vehiculo->insertar($idseguro,$placa,$modelo,$color,$anovehiculo,$imagen);
             echo $rspta ? "Vehiculo registrado con exito":"No se pudieron registrar todos los datos del vehiculo";
 		}
 		else {
-            $rspta=$vehiculo->editar($idvehiculo,$idseguro,$placa,$modelo,$anovehiculo,$imagen);
+            $rspta=$vehiculo->editar($idvehiculo,$idseguro,$placa,$modelo,$color,$anovehiculo,$imagen);
 			echo $rspta ? "Vehiculo actualizado con exito":"No se pudieron actualizar los datos del vehiculo";
 		}
     break;

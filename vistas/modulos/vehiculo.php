@@ -71,18 +71,34 @@
                       <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                       <div class="col-sm-12">
                       <select id="idseguro" class="form-control selectpicker" data-live-search="true" name="idseguro" required>
-                        <option value="">--</option>
-                        <option value="V-">A00A</option>
-                        <option value="J-">A00B</option>
                       </select>
                       </div>
                     </div>
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                       <label class="col-sm-12 control-label">Titulo:</label>
                       <div class="col-sm-12">
                       <input type="file" class="form-control" name="imagen" id="imagen">
                       <input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
                       <a id="rutarchivo" href="" target="_blank"><img src="" width="150px" height="150px" id="imagenmuestra"></a>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                      <label class="col-sm-12 control-label">Color:</label>
+                      <div class="col-sm-12">
+                      <select id="color" class="form-control selectpicker" data-live-search="true" name="color" required>
+                        <option value="">--</option>
+                        <option value="AMARILLO">AMARILLO</option>
+                        <option value="AZUL">AZUL</option>
+                        <option value="ROJO">ROJO</option>
+                        <option value="VERDE">VERDE</option>
+                        <option value="DORADO">DORADO</option>
+                        <option value="BEIGE">BEIGE</option>
+                        <option value="BLANCO">BLANCO</option>
+                        <option value="GRIS">GRIS</option>
+                        <option value="PLATEADO">PLATEADO</option>
+                        <option value="VINOTINTO">VINOTINTO</option>
+                        <option value="NEGRO">NEGRO</option>
+                      </select>
                       </div>
                     </div>
                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">

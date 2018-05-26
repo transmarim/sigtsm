@@ -35,6 +35,9 @@ function init(){
             idseguro:{
                 required: true
             },
+            color:{
+                required: true
+            },
             modelo:{
                 required: true,
                 modelo: true
@@ -54,6 +57,9 @@ function init(){
                 required: "Campo requerido"
             },
             idseguro:{
+                required: "Campo requerido"
+            },
+            color:{
                 required: "Campo requerido"
             },
             modelo:{
@@ -98,6 +104,8 @@ function limpiar(){
     $("#anovehiculo").val("");
     $("#idseguro").selectpicker("val","");
     $("#idseguro").selectpicker('refresh');
+    $("#color").selectpicker("val","");
+    $("#color").selectpicker('refresh');
     $("#imagenmuestra").attr("src","");
     $("#rutarchivo").attr("href","");
     $("#imagenactual").val("");
@@ -187,6 +195,8 @@ function mostrar(idvehiculo){
          $("#idvehiculo").val(data.idvehiculo);
          $("#placa").val(data.placa);
          $("#modelo").val(data.modelo);
+         $("#color").val(data.color);
+         $("#color").selectpicker('refresh');
          $("#anovehiculo").val(data.anovehiculo);
          
          seguro = data.idseguro;

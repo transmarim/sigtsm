@@ -40,7 +40,7 @@
                     $this->Cell($w[0],5,$row['nombre'],'LRB',0,'C');
                     $this->Cell($w[1],5,number_format($row['cedula'],0,',','.'),'LRB',0,'C');
                     $this->Cell($w[2],5,$row['modelo'],'LRB',0,'C');
-                    $this->Cell($w[3],5,'COLOR','LRB',0,'C');
+                    $this->Cell($w[3],5,$row['color'],'LRB',0,'C');
                     $this->Cell($w[4],5,$row['placa'],'LRB',0,'C');
                     $this->Cell($w[5],5,$row['telefono'],'LRB',0,'C');
                     $this->Ln();

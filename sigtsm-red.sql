@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `otjlvill_sigtsm`.`vehiculo` (
   `idseguro` INT NOT NULL,
   `placa` VARCHAR(10) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
+  `color` VARCHAR(20) NOT NULL,
   `anovehiculo` INT NOT NULL,
   `imagen` VARCHAR(50) NULL,
   `condicion` TINYINT(1) NOT NULL DEFAULT 1,

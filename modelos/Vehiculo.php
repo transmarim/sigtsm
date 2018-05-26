@@ -5,15 +5,15 @@ class Vehiculo{
     function __construct(){
         
     }
-    public static function insertar($idseguro,$placa,$modelo,$anovehiculo,$imagen){
-        $sql = "INSERT INTO vehiculo (idseguro,placa,modelo,anovehiculo,imagen,condicion) VALUES ('$idseguro','$placa','$modelo','$anovehiculo','$imagen',1)";
+    public static function insertar($idseguro,$placa,$modelo,$color,$anovehiculo,$imagen){
+        $sql = "INSERT INTO vehiculo (idseguro,placa,modelo,color,anovehiculo,imagen,condicion) VALUES ('$idseguro','$placa','$modelo','$color','$anovehiculo','$imagen',1)";
         $sw = true;
         Consulta($sql) or $sw = false;
         return $sw;
     }
     
-    public static function editar($idvehiculo,$idseguro,$placa,$modelo,$anovehiculo,$imagen){
-        $sql = "UPDATE vehiculo SET idseguro='$idseguro', placa='$placa', modelo='$modelo', anovehiculo='$anovehiculo', imagen='$imagen' WHERE idvehiculo = '$idvehiculo'";
+    public static function editar($idvehiculo,$idseguro,$placa,$modelo,$color,$anovehiculo,$imagen){
+        $sql = "UPDATE vehiculo SET idseguro='$idseguro', placa='$placa', modelo='$modelo', color='$color', anovehiculo='$anovehiculo', imagen='$imagen' WHERE idvehiculo = '$idvehiculo'";
         $sw = true;
         Consulta($sql) or $sw = false;
         return $sw;
