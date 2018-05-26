@@ -12,15 +12,32 @@ $numero=isset($_POST["numero"])? limpiarCadena($_POST["numero"]):"";
 
 $fechaven=isset($_POST['fechaven'])? limpiarCadena($_POST['fechaven']):"";
 
+$imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
 
 switch ($_GET["op"]){
     case 'guardaryeditar':
+    if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
+		{
+			$imagen=$_POST["imagenactual"];
+		}
+		else
+		{
+			$ext = explode(".", $_FILES["imagen"]["name"]);
+			if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png" || $_FILES['imagen']['type'] == "application/pdf")
+			{
+                if($_FILES["imagen"]["size"]<500000){
+				$imagen = round(microtime(true)) . '.' . end($ext);
+				move_uploaded_file($_FILES["imagen"]["tmp_name"], "../vistas/img/certificados/". $imagen);
+                }
+			}
+		}
+
 		if (empty($idcertificado)){
-            $rspta=$certificado->insertar($numero,$fechaven);
+            $rspta=$certificado->insertar($numero,$fechaven,$imagen);
             echo $rspta ? "Certificado registrado con exito":"No se pudieron registrar todos los datos del certificado";
 		}
 		else {
-            $rspta=$certificado->editar($idcertificado,$numero,$fechaven);
+            $rspta=$certificado->editar($idcertificado,$numero,$fechaven,$imagen);
 			echo $rspta ? "Certificado actualizado con exito":"No se pudieron actualizar los datos del certificado";
 		}
     break;
@@ -29,14 +46,30 @@ switch ($_GET["op"]){
         $rspta = $certificado->listar();
         $data = Array();
         while($reg = $rspta->fetch_object()){
-           $data[]=array(
-               "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idcertificado.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="desactivar('.$reg->idcertificado.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idcertificado.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-primary" onclick="activar('.$reg->idcertificado.')"><i class="fa fa-check"></i></button>',
-               "1"=>$reg->numero,
-               "2"=>$reg->fechaven,
-               "3"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
-           );
+        /*OBTENER EXTENSION PDF PARA CAMBIAR A ANCLE*/
+        $val = explode(".",$reg->imagen);
+        $ext = $val[count($val)-1]; 
+        if($ext != 'pdf'){
+            $data[]=array(
+                "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idcertificado.')"><i class="fa fa-pencil"></i></button>'.
+                      ' <button class="btn btn-danger" onclick="desactivar('.$reg->idcertificado.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idcertificado.')"><i class="fa fa-pencil"></i></button>'.
+                      ' <button class="btn btn-primary" onclick="activar('.$reg->idcertificado.')"><i class="fa fa-check"></i></button>',
+                "1"=>$reg->numero,
+                "2"=>$reg->fechaven,
+                "3"=>"<img src='vistas/img/certificados/".$reg->imagen."' height='50px' width='50px'>",
+                "4"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+                );
+            } else {
+                $data[]=array(
+                    "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idcertificado.')"><i class="fa fa-pencil"></i></button>'.
+                          ' <button class="btn btn-danger" onclick="desactivar('.$reg->idcertificado.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idcertificado.')"><i class="fa fa-pencil"></i></button>'.
+                          ' <button class="btn btn-primary" onclick="activar('.$reg->idcertificado.')"><i class="fa fa-check"></i></button>',
+                    "1"=>$reg->numero,
+                    "2"=>$reg->fechaven,
+                    "3"=>"<a href='vistas/img/certificados/".$reg->imagen."' target='_blank'><img src='vistas/img/certificados/pdf.png' height='50px' width='50px'></a>",
+                    "4"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+                    );
+                }
         }
         /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/
         $results = array(

@@ -5,15 +5,15 @@ class Certificado{
     function __construct(){
         
     }
-    public static function insertar($numero,$fechaven){
-        $sql = "INSERT INTO certificado (numero,fechaven,condicion) VALUES ('$numero','$fechaven',1)";
+    public static function insertar($numero,$fechaven,$imagen){
+        $sql = "INSERT INTO certificado (numero,fechaven,imagen,condicion) VALUES ('$numero','$fechaven','$imagen',1)";
         $sw = true;
         Consulta($sql) or $sw = false;
         return $sw;
     }
     
-    public static function editar($idcertificado,$numero,$fechaven){
-        $sql = "UPDATE certificado SET numero='$numero',fechaven='$fechaven' WHERE idcertificado = '$idcertificado'";
+    public static function editar($idcertificado,$numero,$fechaven,$imagen){
+        $sql = "UPDATE certificado SET numero='$numero',fechaven='$fechaven',imagen='$imagen' WHERE idcertificado = '$idcertificado'";
         $sw = true;
         Consulta($sql) or $sw = false;
         return $sw;

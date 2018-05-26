@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `otjlvill_sigtsm`.`certificado` (
   `idcertificado` INT NOT NULL AUTO_INCREMENT,
   `numero` INT NOT NULL,
   `fechaven` DATE NOT NULL,
+  `imagen` VARCHAR(50) NULL,
   `condicion` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`idcertificado`))
 ENGINE = InnoDB;

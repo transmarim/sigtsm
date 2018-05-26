@@ -3,6 +3,8 @@ var bandera;
 function init(){
     mostrarform(false);
     listar();
+    $("#imagenmuestra").hide();
+    validarimg();
     
     $("#formulario").validate({
         rules:{
@@ -54,9 +56,10 @@ function limpiar(){
     $("#idcertificado").val("");
     $("#numero").val("");
     $("#fechaven").val("");
-
-    /*QUITAR CLASES A LOS ELEMENTOS*/
-    $(".form-group").removeClass('has-success has-error');
+    $("#imagenmuestra").attr("src","");
+    $("#rutarchivo").attr("href","");
+    $("#imagenactual").val("");
+    $("#imagen").val("");
 }
 
 function mostrarform(flag){
@@ -101,7 +104,7 @@ function listar(){
 					}
 				},
 		"bDestroy": true,
-		"iDisplayLength": 5,//Paginacion
+		"iDisplayLength": 10,//Paginacion
 	    "order": [[ 0, "desc" ]]//Ordenar (columna,orden)
 	}).DataTable();
 }
@@ -124,6 +127,9 @@ function guardaryeditar(e){
 }
 
 function mostrar(idcertificado){
+    function getFileExtension(filename) {
+        return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined;
+    }
      $.post("controllers/certificado.php?op=mostrar",{idcertificado:idcertificado},function(data,status){
           /*Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript*/
          data = JSON.parse(data);
@@ -131,6 +137,17 @@ function mostrar(idcertificado){
          $("#idcertificado").val(data.idcertificado);
          $("#numero").val(data.numero);
          $("#fechaven").val(data.fechaven);
+
+         /*MOSTRAMOS IMG DE MUESTRA*/
+         $("#imagenmuestra").show();
+         var ext = getFileExtension(data.imagen);
+         if(ext != 'pdf'){
+            $("#imagenmuestra").attr("src","vistas/img/certificados/"+data.imagen);
+         }else{
+            $("#imagenmuestra").attr("src","vistas/img/certificados/pdf.png");
+            $("#rutarchivo").attr("href","vistas/img/certificados/"+data.imagen);
+         }
+         $("#imagenactual").val(data.imagen);
      });
     }
 
@@ -168,5 +185,19 @@ function mostrar(idcertificado){
         });
  }
 
+ function validarimg(){
+    $("#imagen").change(function(){
+        var imagen = this.files[0];
+        var imagenType = imagen.type;
+        var flag = false;
+        var imagenSize = imagen.size;
+         if(Number(imagenSize)<500000 && (imagenType == "image/jpeg" || imagenType == "image/png" || imagenType == "application/pdf")){
+             swal('Excelente!','El archivo cumple con los parametros permitidos.','success');
+         }else{
+             swal('Error!','El archivo que intenta subir no cumple con los parametros permitidos.','error');
+             $("#imagen").val("");
+         }
+    });
+} 
 
 init();
