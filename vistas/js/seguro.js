@@ -3,6 +3,8 @@ var bandera;
 function init(){
     mostrarform(false);
     listar();
+    $("#imagenmuestra").hide();
+    validarimg();
     
     $("#formulario").validate({
         rules:{
@@ -61,6 +63,10 @@ function limpiar(){
     $("#numero").val("");
     $("#tipo_seguro").val("");
     $(".form-group").removeClass('has-success has-error');
+    $("#imagenmuestra").attr("src","");
+    $("#rutarchivo").attr("href","");
+    $("#imagenactual").val("");
+    $("#imagen").val("");
 }
 
 function mostrarform(flag){
@@ -128,6 +134,9 @@ function guardaryeditar(e){
 }
 
 function mostrar(idseguro){
+    function getFileExtension(filename) {
+        return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined;
+    }
      $.post("controllers/seguro.php?op=mostrar",{idseguro:idseguro},function(data,status){
           /*Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript*/
          data = JSON.parse(data);
@@ -137,7 +146,20 @@ function mostrar(idseguro){
          $("#tipo_seguro").val(data.tipo_seguro);
          $("#tipo_seguro").selectpicker('refresh');
          $("#fechaven").val(data.fechaven);
+
+         /*MOSTRAMOS IMG DE MUESTRA*/
+         $("#imagenmuestra").show();
+         var ext = getFileExtension(data.imagen);
+         if(ext != 'pdf'){
+            $("#imagenmuestra").attr("src","vistas/img/seguros/"+data.imagen);
+         }else{
+            $("#imagenmuestra").attr("src","vistas/img/seguros/pdf.png");
+            $("#rutarchivo").attr("href","vistas/img/seguros/"+data.imagen);
+         }
+         $("#imagenactual").val(data.imagen);
      });
+
+
     }
 
  function desactivar(idseguro){
@@ -173,5 +195,20 @@ function mostrar(idseguro){
             });
         });
  }
+
+ function validarimg(){
+    $("#imagen").change(function(){
+        var imagen = this.files[0];
+        var imagenType = imagen.type;
+        var flag = false;
+        var imagenSize = imagen.size;
+         if(Number(imagenSize)<500000 && (imagenType == "image/jpeg" || imagenType == "image/png" || imagenType == "application/pdf")){
+             swal('Excelente!','El archivo cumple con los parametros permitidos.','success');
+         }else{
+             swal('Error!','El archivo que intenta subir no cumple con los parametros permitidos.','error');
+             $("#imagen").val("");
+         }
+    });
+} 
 
 init();

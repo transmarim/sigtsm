@@ -5,15 +5,15 @@ class Seguro{
     function __construct(){
         
     }
-    public static function insertar($numero,$fechaven,$tipo_seguro){
-        $sql = "INSERT INTO seguro (numero,fechaven,tipo_seguro,condicion) VALUES ('$numero','$fechaven','$tipo_seguro',1)";
+    public static function insertar($numero,$fechaven,$tipo_seguro,$imagen){
+        $sql = "INSERT INTO seguro (numero,fechaven,tipo_seguro,imagen,condicion) VALUES ('$numero','$fechaven','$tipo_seguro','$imagen',1)";
         $sw = true;
         Consulta($sql) or $sw = false;
         return $sw;
     }
     
-    public static function editar($idseguro,$numero,$fechaven,$tipo_seguro){
-        $sql = "UPDATE seguro SET numero='$numero',fechaven='$fechaven',tipo_seguro='$tipo_seguro' WHERE idseguro = '$idseguro'";
+    public static function editar($idseguro,$numero,$fechaven,$tipo_seguro,$imagen){
+        $sql = "UPDATE seguro SET numero='$numero',fechaven='$fechaven',tipo_seguro='$tipo_seguro',imagen='$imagen' WHERE idseguro = '$idseguro'";
         $sw = true;
         Consulta($sql) or $sw = false;
         return $sw;

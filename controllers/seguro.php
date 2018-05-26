@@ -14,15 +14,32 @@ $fechaven=isset($_POST['fechaven'])? limpiarCadena($_POST['fechaven']):"";
 
 $tipo_seguro=isset($_POST['tipo_seguro'])? limpiarCadena($_POST['tipo_seguro']):"";
 
+$imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
 
 switch ($_GET["op"]){
     case 'guardaryeditar':
+    if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
+		{
+			$imagen=$_POST["imagenactual"];
+		}
+		else
+		{
+			$ext = explode(".", $_FILES["imagen"]["name"]);
+			if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png" || $_FILES['imagen']['type'] == "application/pdf")
+			{
+                if($_FILES["imagen"]["size"]<500000){
+				$imagen = round(microtime(true)) . '.' . end($ext);
+				move_uploaded_file($_FILES["imagen"]["tmp_name"], "../vistas/img/seguros/". $imagen);
+                }
+			}
+		}
+
 		if (empty($idseguro)){
-            $rspta=$seguro->insertar($numero,$fechaven,$tipo_seguro);
+            $rspta=$seguro->insertar($numero,$fechaven,$tipo_seguro,$imagen);
             echo $rspta ? "Seguro registrado con exito":"No se pudieron registrar todos los datos";
 		}
 		else {
-            $rspta=$seguro->editar($idseguro,$numero,$fechaven,$tipo_seguro);
+            $rspta=$seguro->editar($idseguro,$numero,$fechaven,$tipo_seguro,$imagen);
 			echo $rspta ? "Seguro actualizado con exito":"No se pudieron actualizar los datos";
 		}
     break;
@@ -31,15 +48,33 @@ switch ($_GET["op"]){
         $rspta = $seguro->listar();
         $data = Array();
         while($reg = $rspta->fetch_object()){
-           $data[]=array(
-               "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idseguro.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="desactivar('.$reg->idseguro.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idseguro.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-primary" onclick="activar('.$reg->idseguro.')"><i class="fa fa-check"></i></button>',
-               "1"=>$reg->numero,
-               "2"=>$reg->fechaven,
-               "3"=>$reg->tipo_seguro,
-               "4"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
-           );
+        /*OBTENER EXTENSION PDF PARA CAMBIAR A ANCLE*/
+        $val = explode(".",$reg->imagen);
+        $ext = $val[count($val)-1];
+        if($ext != 'pdf'){
+            $data[]=array(
+                "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idseguro.')"><i class="fa fa-pencil"></i></button>'.
+                      ' <button class="btn btn-danger" onclick="desactivar('.$reg->idseguro.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idseguro.')"><i class="fa fa-pencil"></i></button>'.
+                      ' <button class="btn btn-primary" onclick="activar('.$reg->idseguro.')"><i class="fa fa-check"></i></button>',
+                "1"=>$reg->numero,
+                "2"=>$reg->fechaven,
+                "3"=>$reg->tipo_seguro,
+                "4"=>"<img src='vistas/img/seguros/".$reg->imagen."' height='50px' width='50px'>",               
+                "5"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+                );
+            } else {
+            $data[]=array(
+                "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idseguro.')"><i class="fa fa-pencil"></i></button>'.
+                      ' <button class="btn btn-danger" onclick="desactivar('.$reg->idseguro.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idseguro.')"><i class="fa fa-pencil"></i></button>'.
+                      ' <button class="btn btn-primary" onclick="activar('.$reg->idseguro.')"><i class="fa fa-check"></i></button>',
+                "1"=>$reg->numero,
+                "2"=>$reg->fechaven,
+                "3"=>$reg->tipo_seguro,
+                "4"=>"<a href='vistas/img/seguros/".$reg->imagen."' target='_blank'><img src='vistas/img/vehiculos/pdf.png' height='50px' width='50px'></a>",              
+                "5"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+                ); 
+            }
+
         }
         /*CARGAMOS LA DATA EN LA VARIABLE USADA PARA EL DATATABLE*/
         $results = array(

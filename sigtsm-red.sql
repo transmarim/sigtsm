@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `otjlvill_sigtsm`.`seguro` (
   `numero` INT NOT NULL,
   `fechaven` DATE NOT NULL,
   `tipo_seguro` VARCHAR(45) NOT NULL,
+  `imagen` VARCHAR(50) NULL,
   `condicion` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`idseguro`))
 ENGINE = InnoDB;

@@ -74,7 +74,7 @@ switch ($_GET["op"]){
                 "1"=>$reg->placa,
                 "2"=>$reg->modelo,
                 "3"=>$reg->anovehiculo,
-                "4"=>"<a href='vistas/img/vehiculo/".$reg->imagen."' target='_blank'><img src='vistas/img/vehiculo/pdf.png' height='50px' width='50px'></a>",
+                "4"=>"<a href='vistas/img/vehiculos/".$reg->imagen."' target='_blank'><img src='vistas/img/vehiculos/pdf.png' height='50px' width='50px'></a>",
                 "5"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
             );
           }
