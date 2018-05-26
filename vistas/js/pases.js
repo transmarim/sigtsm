@@ -95,7 +95,6 @@ function guardaryeditar(e){
 	   processData: false,
        success: function(respuesta){
         window.open(respuesta,"_blank");
-        //alert(respuesta);
        }
     });
 }

@@ -20,6 +20,7 @@ $endDate=isset($_POST["endDate"])? limpiarCadena($_POST["endDate"]):"";
 switch ($_GET["op"]){
     case 'guardaryeditar':
 		if ($tipo_pase != "" || $startDate != "" || $endDate != "" ){
+            date_default_timezone_set('America/Caracas');  
             $pdf = new PDF();
             $pdf->AddPage();
             $X=5;
@@ -31,7 +32,7 @@ switch ($_GET["op"]){
                 case 2: $nombreEmp='Gerencia de Prevención y Control de Pérdidas'; break;}
 
             $pdf->SetXY($X+90,$Y+20);
-            $pdf->Cell(100,5,'Puerto La Cruz - '.utf8_decode($pdf->obFecha($startDate)),0,0,'R');
+            $pdf->Cell(100,5,'Puerto La Cruz - '.utf8_decode($pdf->obFecha(date('M. jS, Y'))),0,0,'R');
             $pdf->SetXY($X+90,$Y+25);
             $pdf->Cell(100,5,utf8_decode('Señores:'),0,0,'R');
             $pdf->SetFont('Arial','B',11);
@@ -46,7 +47,7 @@ switch ($_GET["op"]){
             $pdf->MultiCell(175,5,utf8_decode("Mediante la presente nos dirigimos a usted para solicitarle su autorización para el ingreso provisional de nuestro personal y unidades a las instalaciones del Terminal Marino de PVDSA JOSE, con la única finalidad de prestar el Servicio de Transporte de Personal de las Agencias Navieras a las cuales prestamos nuestros servicios tales como Seaport, Navieramar, Poseidon, entre otros. Este servicio se prestará en horario diurno, nocturno, feriados y fines de semana. Siempre y cuando tengamos buques en operaciones en sus muelles."),0,'J');
             $pdf->SetXY($X+15,$Y+85);
             $pdf->SetFont('Arial','B',11);
-            $pdf->Cell(100,5,utf8_decode('Desde el '.date("d/m/Y",strtotime($startDate)).' Al '.date("d/m/Y",strtotime($startDate))),0,0,'L');
+            $pdf->Cell(100,5,utf8_decode('Desde el '.date("d/m/Y",strtotime($startDate)).' Al '.date("d/m/Y",strtotime($endDate))),0,0,'L');
             $header = array('NOMBRE / APELLIDO', 'C.I','VEHICULO','COLOR','PLACA', 'TLF');
             $pdf->Ln(10);
             $pdf->SetX($X+15);
@@ -68,7 +69,27 @@ switch ($_GET["op"]){
                 $pdf->tablaChoferes($rspta);
                 $num = $num + 1;
             }
-       
+            $pdf->Ln(2);
+            $pdf->SetX($X+15);
+            $pdf->SetFont('Arial','',11);
+            $pdf->Cell(100,5,utf8_decode('Sin más que agregar y dándoles las gracias por su colaboración, nos despedimos.'),0,0,'L');
+            $pdf->Ln(5);
+            $pdf->SetX($X+15);
+            $pdf->Cell(100,5,utf8_decode('Atentamente.'),0,0,'L');
+            $pdf->Ln(15);
+            $pdf->SetX($X+15);
+            $pdf->SetFont('Arial','B',10);
+            $pdf->Cell(10,4,'__________________________');
+            $pdf->Ln();
+            $pdf->SetX($X+15);
+            $pdf->Cell(50,5,utf8_decode('ORLANDO MARTINEZ'),0,0,'C');
+            $pdf->Ln();
+            $pdf->SetX($X+15);
+            $pdf->Cell(50,5,utf8_decode('C.I: 20.298.582'),0,0,'C');
+            $pdf->Ln();
+            $pdf->SetX($X+15);
+            $pdf->Cell(50,5,utf8_decode('DPTO. DE OPERACIONES'),0,0,'C');
+            
             $pdf->AliasNbPages();
             $narchivo = 'PASE_'.round(microtime(true));
             $pdf->Output('F','../vistas/reportes/pf/'.$narchivo.'.pdf',true);

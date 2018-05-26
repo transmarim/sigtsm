@@ -81,17 +81,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                   <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">Modulo Seguros</h4>
+                <h4 class="modal-title">Modulo Pases</h4>
               </div>
               <div class="modal-body">
                 <div class="box-body">
                   <dl class="dl-horizontal">
-                    <dt>Numero</dt>
-                    <dd style="text-align:justify">Ingrese el numero de seguro del vehiculo.</dd>
-                    <dt>Vence</dt>
-                    <dd style="text-align:justify">Indique la fecha de vencimiento del seguro del vehiculo.</dd>
-                    <dt>Tipo</dt>
-                    <dd style="text-align:justify">Seleccione el tipo de seguro que posee el vehiculo.</dd>
+                    <dt>Formato</dt>
+                    <dd style="text-align:justify">Seleccione el formato del pase a generar.</dd>
+                    <dt>Fecha</dt>
+                    <dd style="text-align:justify">Indique el rango de fecha para el pase.</dd>
+                    <dt>Choferes</dt>
+                    <dd style="text-align:justify">Marque o desmarque los choferes que seran mostrados o no en el pase generado.</dd>
                   </dl>
                 </div>
               </div>
