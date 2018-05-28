@@ -114,14 +114,18 @@
                                 </div>
                             </div>
                             <div class="box-footer">
+                            <form name="formulario" id="formulario" method="POST">
                                 <div class="input-group">
-                                    <input class="form-control" placeholder="Escriba su mensaje...">
+                                    <input type="text" name="mensaje" id="mensaje" class="form-control" placeholder="Escriba su mensaje...">
+                                    <input type="hidden" name="idusuario" id="idusuario" value="<?php echo $_SESSION['idusuario']; ?>">
+                                    <input type="hidden" name="nombre" id="nombre" value="<?php echo $_SESSION['nombre']; ?>">
                                     <div class="input-group-btn">
-                                        <button type="button" class="btn btn-success">
+                                        <button type="submit" class="btn btn-success" id="btnGuardar">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -133,13 +137,8 @@
                             </div>
                             <div class="box-body">
                             <p><b>SIGTSM</b></p>
-                            <p>Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave put a bird
-                            on it aesthetic, bitters brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk. Ethical
-                            master cleanse Bushwick, occupy Thundercats banjo cliche ennui farm-to-table mlkshk fanny pack
-                            gluten-free. Marfa butcher vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3 wolf moon
-                            asymmetrical taxidermy pour-over. Quinoa tote bag fashion axe, Godard disrupt migas church-key tofu
-                            blog locavore. Thundercats cronut polaroid Neutra tousled, meh food truck selfies narwhal American
-                            Apparel.</p>
+                            <p align="Justify" ><b>S</b>istema <b>I</b>ntegrado de <b>G</b>estión de la empresa <b>Transport and Services Marine, C.A</b>, garantiza la automatización de los procesos operativos y administrativos dentro de la organización. A su vez permite la optimización de recursos empleados en diversas actividades realizadas por la empresa.</p>
+                            <p align="Justify" >SIGTSM fue desarrollado para trabajar bajo entorno Web, con compatibilidad en dispositivos móviles, emplea tecnologías como PHP, JS, SQL, AJAX y MVC.</p>
                             </div>
                         </div>
                     </div>

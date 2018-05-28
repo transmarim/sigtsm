@@ -337,15 +337,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `otjlvill_sigtsm`.`chat` (
   `idchat` INT NOT NULL AUTO_INCREMENT,
-  `idchofer` INT NOT NULL,
+  `idusuario` INT NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `tiempo` VARCHAR(45) NOT NULL,
   `comentario` TEXT(255) NOT NULL,
   PRIMARY KEY (`idchat`),
-  INDEX `fk_chat_chofer_id_idx` (`idchofer` ASC),
-  CONSTRAINT `fk_chat_chofer`
-    FOREIGN KEY (`idchofer`)
-    REFERENCES `otjlvill_sigtsm`.`chofer` (`idchofer`)
+  INDEX `fk_chat_usuario_id_idx` (`idusuario` ASC),
+  CONSTRAINT `fk_chat_usuario`
+    FOREIGN KEY (`idusuario`)
+    REFERENCES `otjlvill_sigtsm`.`usuario` (`idusuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
