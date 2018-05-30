@@ -88,37 +88,14 @@
                                 <h3 class="box-title">Muro</h3>
                             </div>
                             <div class="box-body chat" id="chat-box">
-                                <div class="item">
-                                    <img src="vistas/img/user4-128x128.jpg" alt="user image" class="online">
-                                    <p class="message">
-                                        <a href="#" class="name">
-                                            <small class="text-muted pull-right">
-                                                <i class="fa fa-clock-o"></i> 2:15</small> Pedro Torres </a> Buenas tardes, que ha pasado con el pago
-                                        de caribeean??? </p>
-                                </div>
-                                <div class="item">
-                                    <img src="vistas/img/user3-128x128.jpg" alt="user image" class="offline">
-                                    <p class="message">
-                                        <a href="#" class="name">
-                                            <small class="text-muted pull-right">
-                                                <i class="fa fa-clock-o"></i> 5:15</small> Leonardo Ferrer </a> Ya pagaron, confirma en tu banco.
-                                        </p>
-                                </div>
-                                <div class="item">
-                                    <img src="vistas/img/user2-160x160.jpg" alt="user image" class="offline">
-                                    <p class="message">
-                                        <a href="#" class="name">
-                                            <small class="text-muted pull-right">
-                                                <i class="fa fa-clock-o"></i> 5:30</small> Daniel Hernandez </a> Cuanto es la tarifa de puerto la
-                                        cruz hasta ccs? </p>
-                                </div>
                             </div>
                             <div class="box-footer">
                             <form name="formulario" id="formulario" method="POST">
                                 <div class="input-group">
-                                    <input type="text" name="mensaje" id="mensaje" class="form-control" placeholder="Escriba su mensaje...">
+                                    <input type="text" name="mensaje" id="mensaje" class="form-control" placeholder="Escriba su mensaje..." required maxlength="80">
                                     <input type="hidden" name="idusuario" id="idusuario" value="<?php echo $_SESSION['idusuario']; ?>">
                                     <input type="hidden" name="nombre" id="nombre" value="<?php echo $_SESSION['nombre']; ?>">
+                                    <input type="hidden" name="imagen" id="imagen" value="<?php echo $_SESSION['imagen']; ?>">
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-success" id="btnGuardar">
                                             <i class="fa fa-plus"></i>
@@ -218,47 +195,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
                         <div class="box box-success">
                             <div class="box-header">
                                 <i class="fa fa-comments-o"></i>
-                                <h3 class="box-title">Chat</h3>
+                                <h3 class="box-title">Muro</h3>
                             </div>
                             <div class="box-body chat" id="chat-box">
-                                <div class="item">
-                                    <img src="vistas/img/user4-128x128.jpg" alt="user image" class="online">
-                                    <p class="message">
-                                        <a href="#" class="name">
-                                            <small class="text-muted pull-right">
-                                                <i class="fa fa-clock-o"></i> 2:15</small> Pedro Torres </a> Buenas tardes, este menu es solo para
-                                        choferes?
-                                    </p>
-                                </div>
-                                <div class="item">
-                                    <img src="vistas/img/user3-128x128.jpg" alt="user image" class="offline">
-                                    <p class="message">
-                                        <a href="#" class="name">
-                                            <small class="text-muted pull-right">
-                                                <i class="fa fa-clock-o"></i> 5:15</small> Leonardo Ferrer </a> No sabemos. </p>
-                                </div>
-                                <div class="item">
-                                    <img src="vistas/img/user2-160x160.jpg" alt="user image" class="offline">
-                                    <p class="message">
-                                        <a href="#" class="name">
-                                            <small class="text-muted pull-right">
-                                                <i class="fa fa-clock-o"></i> 5:30</small> Daniel Hernandez </a> Espera confirmar
-                                    </p>
-                                </div>
                             </div>
                             <div class="box-footer">
+                            <form name="formulario" id="formulario" method="POST">
                                 <div class="input-group">
-                                    <input class="form-control" placeholder="Escriba su mensaje...">
+                                    <input type="text" name="mensaje" id="mensaje" class="form-control" placeholder="Escriba su mensaje..." required maxlength="80">
+                                    <input type="hidden" name="idusuario" id="idusuario" value="<?php echo $_SESSION['idusuario']; ?>">
+                                    <input type="hidden" name="nombre" id="nombre" value="<?php echo $_SESSION['nombre']; ?>">
+                                    <input type="hidden" name="imagen" id="imagen" value="<?php echo $_SESSION['imagen']; ?>">
                                     <div class="input-group-btn">
-                                        <button type="button" class="btn btn-success">
+                                        <button type="submit" class="btn btn-success" id="btnGuardar">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                         </div>
                     </div>
