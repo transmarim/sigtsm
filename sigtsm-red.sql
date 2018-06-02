@@ -341,6 +341,7 @@ CREATE TABLE IF NOT EXISTS `otjlvill_sigtsm`.`chat` (
   `nombre` VARCHAR(45) NOT NULL,
   `tiempo` VARCHAR(45) NOT NULL,
   `comentario` TEXT(255) NOT NULL,
+  `imagen` VARCHAR(50) NULL,
   PRIMARY KEY (`idchat`),
   INDEX `fk_chat_usuario_id_idx` (`idusuario` ASC),
   CONSTRAINT `fk_chat_usuario`
