@@ -104,4 +104,9 @@ switch ($_GET["op"]){
         }
     break;
 
+    case 'contador':
+    $rspta = $chofer->contador();
+    echo $rspta;
+    break;
+
 }

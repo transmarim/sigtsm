@@ -48,5 +48,10 @@ class Chofer{
         $sql = "SELECT idchofer, nombre FROM chofer WHERE condicion=1";
         return Consulta($sql);
     }
+
+    public static function contador(){
+        $sql = "SELECT idchofer FROM chofer WHERE condicion=1";
+        return Consulta_num($sql);
+    }
     
 }

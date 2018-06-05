@@ -16,6 +16,10 @@ function init(){
     $("#cantV").append(""+respuesta+"");
     });
 
+    $.post("controllers/chofer.php?op=contador",function(respuesta){
+    $("#cantC").append(""+respuesta+"");
+    });
+
     function cargarChat(){
     $.post("controllers/chat.php?op=mostrar",function(data,status){
         /*Convertir la cadena enviada desde PHP a un vector de objetos en JavaScript*/

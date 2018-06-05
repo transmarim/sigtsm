@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SIG | TSM</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="shortcut icon" href="vistas/img/favicon.ico">
   <link rel="stylesheet" href="vistas/plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="vistas/plugins/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="vistas/css/AdminLTE.min.css">

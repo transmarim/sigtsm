@@ -148,10 +148,10 @@
                     <div class="col-lg-3 col-xs-6">
                         <div class="small-box bg-aqua">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3 id="cantS"></h3>
                                 <p>Servicios - Tickets</p>
                             </div>
-                            <a>
+                            <a href="#">
                                 <div class="icon">
                                     <i class="ion ion-model-s"></i>
                                 </div>
@@ -161,9 +161,7 @@
                     <div class="col-lg-3 col-xs-6">
                         <div class="small-box bg-green">
                             <div class="inner">
-                                <h3>53
-                                    <sup style="font-size: 20px">%</sup>
-                                </h3>
+                                <h3 id="cantC"></h3>
                                 <p>Datos del chofer</p>
                             </div>
                             <div class="icon">
@@ -177,9 +175,11 @@
                                 <h3>1</h3>
                                 <p>Datos del Vehiculo</p>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-ios-speedometer"></i>
-                            </div>
+                            <a href="datosvc">
+                                <div class="icon">
+                                    <i class="ion ion-ios-speedometer"></i>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-xs-6">
@@ -188,9 +188,11 @@
                                 <h3>Imprimir</h3>
                                 <p>Reportes - Prepagos</p>
                             </div>
+                            <a href="imprimirc">
                             <div class="icon">
                                 <i class="ion ion-printer"></i>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
