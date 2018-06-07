@@ -6,7 +6,7 @@ class EnlacesModels{
   public static function enlacesModels($enlaces){
     if($enlaces == "escritorio" ||
        $enlaces == "perfilchofer" ||
-       $enlaces == "datosvc" ||
+       $enlaces == "calculadora" ||
        $enlaces == "panel" ||
        $enlaces == "tickettsm" ||
        $enlaces == "ticketcarib" ||

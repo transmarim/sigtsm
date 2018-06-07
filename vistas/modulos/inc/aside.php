@@ -148,7 +148,7 @@
                         <a href="perfilchofer"> <i class="fa fa-address-card-o"></i> <span>Datos Chofer</span> </a>
                     </li>
                     <li>
-                        <a href="datosvc"> <i class="fa fa-car"></i> <span>Datos Vehiculo</span> </a>
+                        <a href="calculadora"> <i class="fa fa-calculator"></i> <span>Calculadora</span> </a>
                     </li>
                     <li>
                         <a href="imprimirc"> <i class="fa fa-file-text"></i> <span>Imprimir</span> </a>

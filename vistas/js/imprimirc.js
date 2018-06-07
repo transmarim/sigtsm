@@ -4,30 +4,51 @@ var bandera;
 
 function init(){
     mostrarform(false,0);
-    
-    /*USAR ESTO PARA MANDAR A IMPRIMIR POR POST*/
-//    $.post("controllers/cliente.php?op=listarc",function(respuesta){
-//    $("#idcliente").html(respuesta);
-//    $("#idcliente").selectpicker('refresh');
-//    });
 
      $("#formulario").on("submit",function(e){
        guardaryeditar(e);
     });
+
+    $("#formulario1").on("submit",function(e){
+        e.preventDefault();
+        var formData = new FormData($("#formulario1")[0]);
+        var chofer = $("#idchofer2").val();
+        var empresa = $("#idempresa2").val();
+        var startDate = $("#fechaprepago").data("daterangepicker").startDate.format('YYYY-MM-DD');
+        var endDate = $("#fechaprepago").data("daterangepicker").endDate.format('YYYY-MM-DD');
+
+        formData.append("idchofer",chofer);
+        formData.append("idempresa",empresa);
+        formData.append("startDate",startDate);
+        formData.append("endDate",endDate);
+        
+         $.ajax({
+            url:"controllers/imprimiru.php?op=reporteProntoP",
+            type:"POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(respuesta){
+              swal({
+                title: "Reporte ProntoPago"
+                , text: "Ha sido generado, continue para imprimir"
+                , type: "info"
+                , showCancelButton: true
+                , confirmButtonColor: "#da4f49"
+                , confirmButtonText: "Imprimir!"
+                , closeOnConfirm: true
+                }, function () {
+                    window.open(respuesta,"_blank");
+                });
+            }
+         });
+    });
     
 }
 
+
 function limpiar(){
-    $("#idtickettsm").val("");
-    $("#codigo").val("");
-    $("#fecha").val("");
-    $("#montop").val("");
-    $("#montoret").val("");
-    $("#montoc").val("");
-    $("#descripcion").val("");
-    $("#idcentro").selectpicker("val","");
-    /*QUITAR CLASES A LOS ELEMENTOS*/
-    $(".form-group").removeClass('has-success has-error');
+
 }
 
 function mostrarform(flag,valor){

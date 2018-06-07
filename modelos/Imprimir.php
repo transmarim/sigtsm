@@ -39,7 +39,7 @@ class Imprimir{
     }
     
     public static function mostrarSustraendo($startDate,$endDate,$idchofer){
-        $sql = "SELECT iddescuento, montodesc FROM chofer_descuento WHERE fecha BETWEEN '$startDate' AND '$endDate' AND idchofer=$idchofer AND iddescuento=1";
+        $sql = "SELECT iddescuento, SUM(montodesc) AS montodesc FROM chofer_descuento WHERE fecha BETWEEN '$startDate' AND '$endDate' AND idchofer=$idchofer AND iddescuento=1";
         return ConsultaFila($sql);
     }
     

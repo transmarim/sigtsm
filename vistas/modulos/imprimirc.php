@@ -33,10 +33,10 @@
                                 <h3 class="box-title">Opciones de Reportes</h3>
                             </div>
                             <div class="box-body">
-                                <button type="button" class="btn btn-social btn-block btn-lg btn-github" onclick="mostrarform(true,2)">
-                                    <i class="fa fa-paypal"></i>Detalle de Ticket</button>
                                 <button type="button" class="btn btn-social btn-block btn-lg btn-github" onclick="mostrarform(true,3)">
                                     <i class="fa fa-paypal"></i>Resumen Pre-Pago</button>
+                                <button type="button" class="btn btn-social btn-block btn-lg btn-github" onclick="mostrarform(true,2)">
+                                    <i class="fa fa-paypal"></i>Detalle de Ticket</button>
                                 <button type="button" class="btn btn-social btn-block btn-lg btn-github" onclick="mostrarform(true,4)">
                                     <i class="fa fa-paypal"></i>Servicios por clientes</button>
                             </div>
@@ -56,7 +56,6 @@
                                     </div>
                                     <div class="input-group margin col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                         <input type="number" class="form-control" name="ticket" id="ticket" required min="1">
-                                        <input type="hidden" class="form-control" name="idchofer" id="idchofer">
                                         <span class="input-group-btn">
                                             <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                                         </span>
@@ -78,15 +77,17 @@
                         <div class="box box-primary reportes" id="cuadro3">
                             <div class="box-header" style="padding-bottom:0px">
                                 <i class="fa fa-print"></i>
-                                <h3 class="box-title">Resumen Pre-Pago</h3>
+                                <h3 class="box-title">Pronto-Pago Chofer</h3>
                             </div>
                             <div class="panel-body" id="formularioregistros">
-                                <form name="formulario" id="formulario" method="POST">
+                                <form name="formulario1" id="formulario1" method="POST">
+                                    <div class="clearfix"></div>
                                     <div class="form-group">
                                         <label class="col-sm-3 col-xs-12 control-label">Empresa:</label>
                                         <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                                         <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                            <select id="idempresa" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
+                                            <input type="hidden" id="idchofer2" class="form-control" name="idchofer2" value="<?php echo $_SESSION['idchofer']; ?>">
+                                            <select id="idempresa2" class="form-control selectpicker" data-live-search="true" name="idempresa2" required>
                                                 <option value="">--</option>
                                                 <option value="1">TRANSMARIM</option>
                                                 <option value="2">CARIBBEAN</option>
@@ -96,7 +97,7 @@
                                     <div class="clearfix"></div>
                                     <label class="col-sm-3 col-xs-12 control-label">Rango:</label>
                                     <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control fecharango" id="fechaprepago" required>
+                                    <input type="text" class="form-control fecharango" id="fechaprepago" required>
                                         <span class="input-group-btn">
                                             <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                                         </span>
@@ -112,7 +113,7 @@
                                 <h3 class="box-title">Servicios por Cliente</h3>
                             </div>
                             <div class="panel-body" id="formularioregistros">
-                                <form name="formulario" id="formulario" method="POST">
+                                <form name="formulario3" id="formulario3" method="POST">
                                     <div class="form-group">
                                         <label class="col-sm-3 col-xs-12 control-label">Rango</label>
                                     </div>
