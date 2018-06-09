@@ -95,11 +95,6 @@ function init(){
         }
     });
 
-    /*MOSTRAR SELECT LICENCIA*/
-    $.post("controllers/licencia.php?op=selectLicencia",function(respuesta){
-    $("#idlicencia").html(respuesta);
-    $("#idlicencia").selectpicker('refresh');
-    });
     
     $("#formulario").on("submit",function(e){
         if ($("#formulario").validate().form() == true){
@@ -134,7 +129,8 @@ function mostrarform(flag){
         $("#formulario").show('fast');
         $("#btnGuardar").prop("disabled",false);
         $("#btnagregar").hide();
-        
+    /*MOSTRAMOS LOS SELECT RENOVADOS*/
+    
     $.post("controllers/vehiculo.php?op=selectVehiculo",function(respuesta){
     $("#idvehiculo").html(respuesta);
     $("#idvehiculo").selectpicker('refresh');
@@ -143,6 +139,11 @@ function mostrarform(flag){
     $.post("controllers/certificado.php?op=selectCertificado",function(respuesta){
     $("#idcertificado").html(respuesta);
     $("#idcertificado").selectpicker('refresh');
+    });
+
+    $.post("controllers/licencia.php?op=selectLicencia",function(respuesta){
+    $("#idlicencia").html(respuesta);
+    $("#idlicencia").selectpicker('refresh');
     });
         
     }else{

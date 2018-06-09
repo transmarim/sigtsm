@@ -87,6 +87,8 @@ function limpiar(){
     $("#codigo").val("");
     $("#email").val("");
     $("#direccion").val("");
+    $("#tipo_documento").selectpicker("val","");
+    $("#tipo_documento").selectpicker('refresh');
     /*QUITAR CLASES A LOS ELEMENTOS*/
     $(".form-group").removeClass('has-success has-error');
 }

@@ -223,27 +223,15 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-xs-12">
-                        <div class="box box-default">
+                        <div class="box box-primary">
                             <div class="box-header with-border">
-                                <i class="fa fa-warning"></i>
-                                <h3 class="box-title">Alertas</h3>
-                                <button class="pull-right btn btn-primary" id="btnmostrar" onclick="mostrarAlert()">
-                                <i class="fa fa-refresh"></i> Mostrar</button>
+                                <i class="fa fa-info"></i>
+                                <h3 class="box-title">¿Que es SIGTSM?</h3>
                             </div>
                             <div class="box-body">
-                                <div class="alert alert-danger alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h4>
-                                        <i class="icon fa fa-ban"></i> Alert!</h4> Su licencia esta vencida, renueve e ingrese el nuevo documento al
-                                    sistema </div>
-                                <div class="alert alert-warning alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h4>
-                                        <i class="icon fa fa-warning"></i> Alert!</h4> Faltan 04 dias para vencer su licencia </div>
-                                <div class="alert alert-success alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <h4>
-                                        <i class="icon fa fa-check"></i> Alert!</h4> Todos sus documentos estan al dia. </div>
+                            <p><b>SIGTSM</b></p>
+                            <p align="Justify" ><b>S</b>istema <b>I</b>ntegrado de <b>G</b>estión de la empresa <b>Transport and Services Marine, C.A</b>, garantiza la automatización de los procesos operativos y administrativos dentro de la organización. A su vez permite la optimización de recursos empleados en diversas actividades realizadas por la empresa.</p>
+                            <p align="Justify" >SIGTSM fue desarrollado para trabajar bajo entorno Web, con compatibilidad en dispositivos móviles, emplea tecnologías como PHP, JS, SQL, AJAX y MVC.</p>
                             </div>
                         </div>
                     </div>

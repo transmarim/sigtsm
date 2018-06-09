@@ -76,7 +76,7 @@ function init(){
        mostrarAlertSeguro();
    });
     
-        function mostrarAlertSeguro(){
+    function mostrarAlertSeguro(){
         if(w3 == 0 && d3 == 0){
             $("#lsuccess3").show();$("#ldanger3").hide();$("#lwarning3").hide();
         } else if (w3 == 1 && d3 == 0){
