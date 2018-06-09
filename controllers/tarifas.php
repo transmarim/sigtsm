@@ -61,4 +61,12 @@ switch ($_GET["op"]){
       echo $rspta ? "Tarifa eliminada": "La tarifa no se puede eliminar";
     break;
 
+    case 'listarHTML':
+        $rspta = $tarifa->listar();
+        $data = Array();
+        while($reg = $rspta->fetch_object()){
+            echo '<tr id="vergacion"> <td>'.$reg->nombre.'</td> <td class="neto">'.$reg->montotsmp.'</td><td><input class="normal" type="number" step="1" max="10" min="0"></td></tr>';
+        }
+    break;
+
 }

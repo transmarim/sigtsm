@@ -227,6 +227,8 @@
                             <div class="box-header with-border">
                                 <i class="fa fa-warning"></i>
                                 <h3 class="box-title">Alertas</h3>
+                                <button class="pull-right btn btn-primary" id="btnmostrar" onclick="mostrarAlert()">
+                                <i class="fa fa-refresh"></i> Mostrar</button>
                             </div>
                             <div class="box-body">
                                 <div class="alert alert-danger alert-dismissible">

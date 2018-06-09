@@ -38,29 +38,16 @@
                       <th>Ruta</th>
                       <th>Neto</th>
                       <th>D. Normal</th>
-                      <th>D. Feriado</th>
                     </thead>
-                    <tbody>
-                    <tr id="vergacion">
-                    <td>Hola</td>
-                    <td class="neto">2000</td>
-                    <td><input class="normal" type="number" step="1" max="10" min="0"></td>
-                    <td><input type="number"></td>
-                    </tr>
-                    <tr id="trimardito">
-                    <td>Hola</td>
-                    <td class="neto">2000</td>
-                    <td><input class="normal" type="number" step="1" max="10" min="0"></td>
-                    <td><input type="number"></td>
-                    </tr>
+                    <tbody id="contenido">
+                    </tbody>
                     <tfoot>
                       <th>TOTAL BS S.</th>
                       <th></th>
-                      <th></th>
                       <th id="total"></th>
                     </tfoot>
-                    </tbody>
                   </table>
+                  <p>Colaborador: Juan Martinez.</p>
                 </div>
                 <!--Fin centro -->
               </div>
