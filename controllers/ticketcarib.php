@@ -49,7 +49,7 @@ switch ($_GET["op"]){
            $data[]=array(
                "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idticketcaribe.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="eliminar('.$reg->idticketcaribe.')"><i class="fa fa-trash"></i></button>',
                "1"=>$reg->nombrech,
-               "2"=>$reg->fechapago,
+               "2"=>$reg->fecha,
                "3"=>$reg->codigo,
                "4"=>$reg->nombre,
                "5"=>$reg->nombrec,
