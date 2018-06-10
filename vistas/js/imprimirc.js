@@ -43,6 +43,37 @@ function init(){
             }
          });
     });
+
+    $("#formulario3").on("submit",function(e){
+        e.preventDefault();
+        var formData = new FormData($("#formulario3")[0]);
+        var empresa = $("#idempresa3").val();
+        var ticket = $("#ticket").val();
+
+        formData.append("idempresa",empresa);
+        formData.append("ticket",ticket);
+         $.ajax({
+            url:"controllers/imprimiru.php?op=detalleTicketC",
+            type:"POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(respuesta){
+              /*swal(respuesta, "Presione OK para continuar");*/
+              swal({
+                title: "Detalle de Ticket"
+                , text: "Ha sido generado, continue para imprimir"
+                , type: "info"
+                , showCancelButton: true
+                , confirmButtonColor: "#da4f49"
+                , confirmButtonText: "Imprimir!"
+                , closeOnConfirm: true
+                }, function () {
+                    window.open(respuesta,"_blank");
+                });
+            }
+         });
+    });
     
 }
 

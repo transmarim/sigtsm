@@ -218,7 +218,7 @@ case 'detalleTicket':
 if ($idempresa != "" || $ticket != ""){
 
     $pdf = new PDF();
-    $pdf->AddPage('L');
+    $pdf->AddPage();
     $X=5;
     $Y=5;
     $pdf->SetFont('Courier','B',10);
@@ -230,13 +230,12 @@ if ($idempresa != "" || $ticket != ""){
 
     /*NOMBRE ARCHIVO*/
     $narchivo = 'DT'.$idempresa.'_'.round(microtime(true));
-    
-    
+
     /*IMPRIMO LOS TICKET POR EMPRESA*/
     if($idempresa == 1){
         $detalleT = new Imprimir();
         $rsptaDetalle = $detalleT->detalleTicket($ticket,$tablaemp);
-        $header = array('FECHA', 'CHOFER','CENTRO','DESCRIPCION','CLIENTE','MONTO.P','PAGADO');
+        $header = array('FECHA', 'CHOFER','BUQUE','DESCRIPCION','CLIENTE','MONTO.P','PAGADO');
         $pdf->SetXY($X+5,$Y+35);
         $pdf->tablaDetalleT($header,$rsptaDetalle);
         $pdf->AliasNbPages();
@@ -247,7 +246,54 @@ if ($idempresa != "" || $ticket != ""){
     } else{
         $detalleT = new Imprimir();
         $rsptaDetalle = $detalleT->detalleTicket($ticket,$tablaemp);
-        $header = array('FECHA', 'CHOFER','CENTRO','DESCRIPCION','CLIENTE','MONTO.P','PAGADO');
+        $header = array('FECHA', 'CHOFER','BUQUE','DESCRIPCION','CLIENTE','MONTO.P','PAGADO');
+        $pdf->SetXY($X+5,$Y+35);
+        $pdf->tablaDetalleT($header,$rsptaDetalle);
+        $pdf->AliasNbPages();
+        $pdf->Output('F','../vistas/reportes/dt/'.$narchivo.'.pdf',true);
+        $ruta = 'vistas/reportes/dt/'.$narchivo.'.pdf';
+        /*IMPRIMIR LA RUTA*/
+        echo $ruta;
+    }
+}
+else {
+    echo "No se puede generar el reporte solicitado, faltan datos por completar";
+}
+break;
+
+case 'detalleTicketC':
+if ($idempresa != "" || $ticket != "" || $idchofer != ""){
+
+    $pdf = new PDF();
+    $pdf->AddPage();
+    $X=5;
+    $Y=5;
+    $pdf->SetFont('Courier','B',10);
+    $pdf->SetXY($X+5,$Y+13);
+    switch($idempresa){
+        case 1: $nombreEmp='TRANSPORT AND SERVICES MARINE, C.A'; $tablaemp='tickettsm'; break;
+        case 2: $nombreEmp='CARIBBEAN OCEAN'; $tablaemp='ticketcaribe'; break;}
+    $pdf->MultiCell(200,5,'DETALLE DEL TICKET '.$ticket.' POR '.$nombreEmp,0,'L'); 
+
+    /*NOMBRE ARCHIVO*/
+    $narchivo = 'DT'.$idempresa.'_'.round(microtime(true));
+
+    /*IMPRIMO LOS TICKET POR EMPRESA*/
+    if($idempresa == 1){
+        $detalleT = new Imprimir();
+        $rsptaDetalle = $detalleT->detalleTicketC($ticket,$tablaemp,$idchofer);
+        $header = array('FECHA', 'CHOFER','BUQUE','DESCRIPCION','CLIENTE','MONTO.P','PAGADO');
+        $pdf->SetXY($X+5,$Y+35);
+        $pdf->tablaDetalleT($header,$rsptaDetalle);
+        $pdf->AliasNbPages();
+        $pdf->Output('F','../vistas/reportes/dt/'.$narchivo.'.pdf',true);
+        $ruta = 'vistas/reportes/dt/'.$narchivo.'.pdf';
+        /*IMPRIMIR LA RUTA*/
+        echo $ruta;
+    } else{
+        $detalleT = new Imprimir();
+        $rsptaDetalle = $detalleT->detalleTicketC($ticket,$tablaemp,$idchofer);
+        $header = array('FECHA', 'CHOFER','BUQUE','DESCRIPCION','CLIENTE','MONTO.P','PAGADO');
         $pdf->SetXY($X+5,$Y+35);
         $pdf->tablaDetalleT($header,$rsptaDetalle);
         $pdf->AliasNbPages();

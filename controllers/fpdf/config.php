@@ -237,7 +237,7 @@
             function tablaDetalleT($header, $data)
             {
                 // Anchuras de las columnas
-                $w = array(20, 20, 20, 50, 30, 30, 5);
+                $w = array(20, 25, 25, 50, 30, 20, 15);
                 // Cabeceras
                 $this->SetFont('Courier','B',8);
                 for($i=0;$i<count($header);$i++)
@@ -249,11 +249,15 @@
                     $this->Cell($w[0],5,$row['fecha'],'LRB',0,'C');
                     $this->Cell($w[1],5,$row['chofer'],'LRB',0,'C');
                     $this->Cell($w[2],5,$row['centro'],'LRB',0,'C');
-                    $this->Cell($w[3],5,$row['descripcion'],'LRB',0,'C');
+                    $x2 = $this->GetX();
+                    $y2 = $this->GetY();
+                    $this->MultiCell($w[3],5,$row['descripcion'],'LRB','C',0);
+                    $this->SetXY($x2+$w[3],$y2);
                     $this->Cell($w[4],5,$row['cliente'],'LRB',0,'C');
                     $this->Cell($w[5],5,number_format($row['montop'],2,',','.'),'LRB',0,'R');
-                    $this->Cell($w[6],5,$row['estado'],'LRB',0,'C');
+                    $this->Cell($w[6],5,($row['estado'] != 0) ? 'SI' : 'NO','LRB',0,'C');
                     $this->Ln();
+                    
                 }
                 // Línea de cierre
                 $this->Cell(array_sum($w),0,'','T');

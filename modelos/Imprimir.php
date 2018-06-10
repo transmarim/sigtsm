@@ -62,4 +62,10 @@ class Imprimir{
         $sql = "SELECT T1.fecha, T1.codigo, T2.nombre, T1.montop, T1.montoret, T1.montoc FROM $tablaemp AS T1 LEFT JOIN centro AS T2 ON T1.idcentro = T2.idcentro WHERE T1.condicion = 1 AND T1.idcliente = $idcliente";
         return Consulta($sql);
     }
+
+    public static function detalleTicketC($idtickettsm,$tablaemp,$idchofer){
+        $sql = "SELECT T2.nombre AS chofer, T1.fecha, T1.descripcion,T1.estado,T3.nombre AS centro,T4.nombre AS cliente,T1.montop FROM $tablaemp AS T1 LEFT JOIN chofer AS T2 ON T1.idchofer = T2.idchofer LEFT JOIN centro AS T3 ON T1.idcentro = T3.idcentro LEFT JOIN cliente AS T4 ON T1.idcliente = T4.idcliente WHERE T1.codigo=$idtickettsm AND T1.idchofer=$idchofer";
+        return Consulta($sql);
+    }
+
 }

@@ -50,12 +50,13 @@
                                 <h3 class="box-title">Solo de Ticket</h3>
                             </div>
                             <div class="panel-body" id="formularioregistros">
-                                <form name="formulario" id="formulario" method="POST">
+                                <form name="formulario3" id="formulario3" method="POST">
                                     <div class="form-group">
                                         <label class="col-sm-3 col-xs-12 control-label">No de Ticket</label>
                                     </div>
                                     <div class="input-group margin col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                         <input type="number" class="form-control" name="ticket" id="ticket" required min="1">
+                                        <input type="hidden" class="form-control" name="idchofer" id="idchofer" value="<?php echo $_SESSION['idchofer']; ?>">
                                         <span class="input-group-btn">
                                             <button type="submit" name="btnTicket" id="btnTicket" class="btn btn-danger btn-flat">Imprimir</button>
                                         </span>
@@ -64,7 +65,7 @@
                                     <label class="col-sm-3 col-xs-12 control-label">Empresa:</label>
                                     <!-- INCLUIMOS LA CLASE SELECTPICKER -->
                                     <div class="input-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                        <select id="idempresa" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
+                                        <select id="idempresa3" class="form-control selectpicker" data-live-search="true" name="idempresa" required>
                                             <option value="">--</option>
                                             <option value="1">TRANSMARIM</option>
                                             <option value="2">CARIBBEAN</option>
@@ -113,7 +114,7 @@
                                 <h3 class="box-title">Servicios por Cliente</h3>
                             </div>
                             <div class="panel-body" id="formularioregistros">
-                                <form name="formulario3" id="formulario3" method="POST">
+                                <form name="formulario" id="formulario" method="POST">
                                     <div class="form-group">
                                         <label class="col-sm-3 col-xs-12 control-label">Rango</label>
                                     </div>
