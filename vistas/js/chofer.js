@@ -226,11 +226,14 @@ function mostrar(idchofer){
             $("#idcertificado").selectpicker('refresh');
             });
          
-         /*MODIFICAR SELECT*/
-         $("#idlicencia").find("option[value='"+data.idlicencia+"']").remove();
-         $("#idlicencia").append('<option value="'+data.idlicencia+'">'+data.idlicencia+'</option>');
-         $("#idlicencia").val(data.idlicencia);
-         $("#idlicencia").selectpicker('refresh');
+         $.post("controllers/licencia.php?op=mostrar",{idlicencia:data.idlicencia},function(dato3,status){
+            dato3 = JSON.parse(dato3);
+            $("#idlicencia").find("option[value='"+dato3.idlicencia+"']").remove();
+            $("#idlicencia").append('<option value="'+dato3.idlicencia+'">'+dato3.fechaven+'</option>');
+            $("#idlicencia").val(dato3.idlicencia);
+            $("#idlicencia").selectpicker('refresh');
+            });
+
          $("#cedula").val(data.cedula);
          $("#telefono").val(data.telefono);
          $("#fechanac").val(data.fechanac);
