@@ -141,7 +141,7 @@ function mostrar(idcertificado){
          /*MOSTRAMOS IMG DE MUESTRA*/
          $("#imagenmuestra").show();
          var ext = getFileExtension(data.imagen);
-         if(ext != 'pdf'){
+         if(ext != 'pdf' && ext != 'PDF'){
             $("#imagenmuestra").attr("src","vistas/img/certificados/"+data.imagen);
          }else{
             $("#imagenmuestra").attr("src","vistas/img/certificados/pdf.png");

@@ -144,7 +144,7 @@ function mostrar(idlicencia){
          /*MOSTRAMOS IMG DE MUESTRA*/
          $("#imagenmuestra").show();
          var ext = getFileExtension(data.imagen);
-         if(ext != 'pdf'){
+         if(ext != 'pdf' && ext != 'PDF'){
             $("#imagenmuestra").attr("src","vistas/img/licencias/"+data.imagen);
          }else{
             $("#imagenmuestra").attr("src","vistas/img/licencias/pdf.png");

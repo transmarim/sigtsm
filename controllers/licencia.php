@@ -48,7 +48,7 @@ switch ($_GET["op"]){
             /*OBTENER EXTENSION PDF PARA CAMBIAR A ANCLE*/
            $val = explode(".",$reg->imagen);
            $ext = $val[count($val)-1];
-           if($ext != 'pdf'){
+           if($ext != 'pdf' && $ext != 'PDF'){
             $data[]=array(
                 "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idlicencia.')"><i class="fa fa-pencil"></i></button>'.
                       ' <button class="btn btn-danger" onclick="desactivar('.$reg->idlicencia.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="mostrar('.$reg->idlicencia.')"><i class="fa fa-pencil"></i></button>'.

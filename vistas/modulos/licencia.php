@@ -82,7 +82,7 @@
                       <div class="col-sm-12">
                       <input type="file" class="form-control" name="imagen" id="imagen">
                       <input type="hidden" name="imagenactual" id="imagenactual">
-                      <img src="" width="150px" height="150px" id="imagenmuestra">
+                      <a id="rutarchivo" href="" target="_blank"><img src="" width="150px" height="150px" id="imagenmuestra"></a>
                       </div>                      
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

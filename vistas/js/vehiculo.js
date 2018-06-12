@@ -212,7 +212,7 @@ function mostrar(idvehiculo){
          /*MOSTRAMOS IMG DE MUESTRA*/
          $("#imagenmuestra").show();
          var ext = getFileExtension(data.imagen);
-         if(ext != 'pdf'){
+         if(ext != 'pdf' && ext != 'PDF'){
             $("#imagenmuestra").attr("src","vistas/img/vehiculos/"+data.imagen);
          }else{
             $("#imagenmuestra").attr("src","vistas/img/vehiculos/pdf.png");

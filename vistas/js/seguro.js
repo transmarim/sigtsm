@@ -148,7 +148,7 @@ function mostrar(idseguro){
          $("#fechaven").val(data.fechaven);
 
          /*MOSTRAMOS IMG DE MUESTRA*/
-         $("#imagenmuestra").show();
+         $("#imagenmuestra" && ext != 'PDF').show();
          var ext = getFileExtension(data.imagen);
          if(ext != 'pdf'){
             $("#imagenmuestra").attr("src","vistas/img/seguros/"+data.imagen);
